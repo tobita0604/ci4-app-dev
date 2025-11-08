@@ -1,0 +1,39 @@
+services:
+  app:
+    build: .
+    container_name: admin-temp
+    ports:
+      - "8080:80"
+    volumes:
+      - ./ci4-app:/var/www/html
+    environment:
+      - CI_ENVIRONMENT=development
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7.44
+    container_name: ci4-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ci4
+      MYSQL_USER: ci4user
+      MYSQL_PASSWORD: ci4pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ci4-phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: ci4user
+      PMA_PASSWORD: ci4pass
+      PMA_ARBITRARY: 1
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+volumes:
+  db-data:
