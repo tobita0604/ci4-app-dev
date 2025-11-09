@@ -12,7 +12,10 @@
     - `symfony/cache`（キャッシュ機能）
     - `tecnickcom/tcpdf`（PDF生成）
     - `setasign/fpdi`（PDF編集・合成）
-
+- 管理画面テンプレート
+    - デモサイト：https://themesbrand.com/velzon/codeigniter.html
+    - ダウンロードURL：https://themeforest.net
+    
 ---
 
 ## 前提条件
