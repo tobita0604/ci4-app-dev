@@ -1,0 +1,184 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+<!-- Section1 about---------------------------------------------------> 
+<style>
+	dl.tours{
+		padding-left: 2em;
+	}
+	dl.tours dt {
+		display:inline-block;
+		vertical-align:top;
+	}
+	dl.tours dd {
+		display:inline-block;
+	}
+	td.time {
+		word-break:keep-all;
+	}
+	table.border2 td.avail {
+		text-align:center;
+		vertical-align:middle;
+	}
+	.btn,
+	a.btn,
+	button.btn {
+	font-size: 1.3rem;
+	font-weight: 700;
+	line-height: 0.9;
+	position: relative;
+	display: inline-block;
+	padding: 1rem 4rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+	color: #212529;
+	border-radius: 0.5rem;
+	}
+	.btn--orange,
+	a.btn--orange {
+	color: #fff;
+	background-color: #eb6100;
+	}
+	.btn--orange:hover,
+	a.btn--orange:hover {
+	color: #fff;
+	background: #f56500;
+	}
+
+	.btn--bule,
+	a.btn--bule {
+	color: #fff;
+	background-color: #0027eb;
+	}
+	.btn--bule:hover,
+	a.btn--bule:hover {
+	color: #fff;
+	background: #3b00eb;
+	}
+</style>
+<section id="about">
+<div id="main">
+<!-- システムメッセージ -->
+<div id="systemMsg"></div>
+<form action="" method="post" autocomplete="off" id="golf_data" > 
+	<h2 style ="background:#005084">EPC2025　ゴルフコンペ確認</h2>
+	<input type="hidden" name="<?= $this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>"/>
+	<?php if(!empty($this->session->tempdata('success_flash'))):?>
+		<div class="alert alert-success" role="alert">
+			<strong><?= $this->session->tempdata('success_flash');?></strong>
+		</div>
+	<?php endif;?>
+
+	<table class="border2" width="100%" style="table-layout:fixed;margin-bottom:1em;">
+		<tr>
+			<th width="30%">オプショナルツアー<br>ご参加者名</th>
+			<th width="10%">年齢</th>
+			<th>ゴルフコンペ</th>
+		</tr>
+		<?php foreach($members as $member): ?>
+			<tr <?=!empty($member['R01_Cancel_Flg'])?'hidden':''?>>
+				<td>
+				<?php
+					echo $member['R01_Name'];
+				?>
+				</td>
+				<td>
+				<?php
+					$age = calculate_age($member['R01_Birthdate']);
+					//if($age != -1) {
+					if ($member['R01_Birthdate']!='0000-00-00') {
+						echo $age.'才';
+					}
+				?>
+				</td>
+
+				<td>
+					<?php if(!empty($member['R02_Golf_Flg'])):?>
+						<span class="club">
+						クラブ<br>
+						&emsp;<?=get_label('クラブ', $member['R02_Golf_Club']);?>
+						</span>
+
+						<br>
+<!--
+						<span class="shoes">
+						レンタルシューズ<br>
+						<?php if(!empty($member['R02_Golf_Shoes']) && $member['R02_Golf_Shoes'] == 99.0) :?>
+							&emsp;持参する
+						<?php else:?>
+							&emsp;<?=$member['R02_Golf_Shoes'] ;?>
+						<?php endif;?>
+						</span>
+						<br>
+-->
+
+						<span class="shoes">
+						備考
+							<div style="margin-left: 15px;">
+							<?=nl2br(h($member['R02_Golf_Biko']));?>
+							</div>
+						</span>
+					<?php else:?>
+						不参加
+					<?php endif;?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+	<br>
+	●ゴルコンペ実施日　3月30日（土）
+	
+
+<div style="text-align: center;margin-top:1em;">
+	<div class="his-button" style="border-radius: 5px;">
+		<a onclick="go_back();" class="btn btn--bule">マイページに戻る</a>
+<?php
+//入力締め切り制御
+	$today = date('Y-m-d H:i:s');
+	$this->entry_limit = $this->config->item('entry_limit');
+	if(($today < $this->entry_limit)||($common['R01_reentry']==1)){
+?>
+		&nbsp;&nbsp;&nbsp;
+		<?php if(!empty($golf_limit) && !empty($current_date)) :?>
+		<?php if($golf_limit >= $current_date) :?>
+		<a href="<?php echo base_url(); ?>Golf_con/edit" class="btn btn--orange">申し込み</a>
+		<?php endif;?>
+		<?php endif;?>
+<?php
+	}
+?>
+</div>
+</div>
+
+
+</form>
+<br><br><br><br>
+<p>
+	<strong>注意事項について</strong><br>
+	<ul class="notes">
+	<li>
+	●申込みいただいた内容をキャンセルする場合は、再度申込み画面へ進み「申込み」を「不参加」へ戻し登録ボタンを押してください。
+	</li>
+	<li>
+	●クラブをレンタルする方について、お支払いは現地にて直接お願いいたします。
+	</li>
+	<li>
+	●ゴルフ場までは専用バスにてお連れいたします。
+	</li>
+<!--
+	<li>
+	●8月の沖縄はとても暑いため、熱中症などにお気を付けください。熱中症対策として、日焼け止め、お飲み物、氷嚢（ひょうのう）など各自にご用意をお願いいたします。
+	</li>
+-->
+</p>
+
+</div>
+</section>

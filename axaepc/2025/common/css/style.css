@@ -1,0 +1,1128 @@
+@charset "utf-8";
+/**===========================================================
+
+===========================================================**/
+
+
+/** RESPONSIVE BREAKPOINTS
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■**/
+
+
+@media(min-width: 1201px){
+	
+.font160 { font-size:19.5px; }
+.font150 { font-size:18.5px; }
+.font140 { font-size:17.5px; }
+.font130 { font-size:16.5px; }
+.font120 { font-size:15.5px; }
+.font115 { font-size:15px; }
+.font110 { font-size:14.5px; }
+.font105 { font-size:14px; }
+
+.font95 { font-size:13px; }
+.font90 { font-size:12.5px; }
+.font80 { font-size:11.5px; }
+.font70 { font-size:10.5px; }
+.font60 { font-size:9.5px; }
+
+
+/** (6)COMMON 
+==========================================================================**/
+
+/*リスト list
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*ノーマルリスト------------------------------------*/
+.lista li{ list-style-type:disc;margin:0 15px 0 25px; }
+.listb li{ list-style-type: decimal;margin:0 15px 0 25px; }
+.listc li{ list-style-type:none; background:url(../img/list_bg.gif) no-repeat 0 4px; padding-left:17px; margin-left:15px; }
+.listd li{ list-style-type:lower-alpha;margin:0 15px 0 25px; }
+.liste li{ list-style-type:lower-roman;margin:0 15px 0 25px; }
+.listf li{ list-style-type:square;margin:0 15px 0 25px; }
+.listg li{ list-style-type:none; background:url(../img/common/list_g.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0px 6px; }
+.listh li{ list-style-type:none; background:url(../img/common/list_h.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0 6px; }
+.listi li{ list-style-type:none; background:url(../img/common/list_i.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0 6px; }
+.listj li{ list-style-type:none; background:url(../img/common/list_j.gif) no-repeat 0 3px; padding-left:19px; margin:0 15px 0 6px; }
+.listk li{ list-style-type:none; background:url(../img/common/list_k.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0 6px; }
+.listz li{ list-style-type:none;margin:0 15px 0 25px; }
+	
+	/*画像 img
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+.img100{ }
+.img50{ }
+.img25{ }
+.kikaku { float:right;margin:8px 20px 0 0; }
+.logo_knt{ float:right; width:250px; height:auto; }
+	
+.pmark { width:100px;height:auto;float:right;margin-right:15px; }
+img.totop { width:100px;height:100px; }
+
+/*ボックス Box/TourPoint
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+.box { padding:5px 10px; border-style:solid;border-width:1px; margin:4px 0px; }/*ノーマル--*/
+.box2 {	padding:10px 15px; border-style:solid;border-width:1px; margin:12px 10px; }/*ノーマル(マージンあり)--*/
+.box2 p.title { font-size:17.5px; font-weight:bold; padding:10px 0; }
+.box_nb { border:none; padding:8px 5px; }/*ボックス 枠線なし)--*/
+.box_nb2 { border:none;	padding:3px 0 0 12px; }/*ボックス (枠線なし)----*/
+.box_n { border:none; padding:8px 5px; line-height:19px; font-size:98%; }/*ボックス (脚注)--*/
+.box_dot { padding:10px 15px; border-style:dotted;border-width:1px; margin:12px 10px; line-height:20px; }/*ボックス 点線枠--*/
+.box_dot p.title { font-size:17.5px; font-weight:bold; padding:10px 0; }
+	
+/*ボックス 背景色あり-----*/
+.box_bg{ padding:20px; margin:12px 10px; line-height:22px; }
+.box_bg p.title{ margin:0px 0 13px 0; padding:0px 0px 7px 8px; border-bottom-style:dotted;border-bottom-width:1px; font-weight:bold; font-size:19px; }
+
+/*ボックス フレームあり---*/
+.box_fr{ border-style:ridge;border-width:10px; padding:15px; margin:20px 10px; line-height:22px; }
+.box_fr p.title { font-size:19px; border-bottom-style:solid;border-bottom-width:1px; font-weight:bold; padding-bottom:8px; margin-bottom:15px; }
+	
+/*ボックス 表型-----------*/
+.box_info{ margin:20px 30px; padding:0 15px 15px 15px; border-style:solid;border-width:1px; line-height:22px; }	
+.box_info p.title { font-size:18px; font-weight: bolder; text-align: left; padding:13px 13px 13px 20px; margin:0px -15px 15px -15px;}
+
+/*ボックス 角丸-----------*/
+.box_r{	padding:25px 20px; margin:20px 25px; line-height:22px; -webkit-border-radius:8px; -o-border-radius:8px; -moz-border-radius:8px; border-radius:8px; box-shadow:0px 2px 7px #939393; 
+		font-size:15px;	line-height:23px; }
+.box_r p.title{ margin:0px 0 13px 0; padding:0px 0px 8px 10px; border-bottom-style:solid;border-bottom-width:1px; font-weight:bold; font-size:22px; }
+
+/*ボックス 強調1----------*/
+.box_em1 { width:849px;	box-shadow:1px 1px 1px 1px #666666; margin:40px 10px 40px 20px ; padding:0px 15px 15px 15px; box-sizing:border-box; line-height:22px; }	
+.box_em1 p.title { width:859px; font-size:17.5px; font-weight: bolder; border-top:3px solid #ff6347; position: relative; box-sizing:border-box; padding:15px 0px 15px 30px; margin:0px 0px 15px -25px; box-shadow:1px 1px 1px 0px  #666666 ; }
+.box_em1 p.title:after { content: ""; position: absolute; top: 100%; height: 0; width: 0; left: 0; border-top-style:solid;border-top-width:5px; border-right-style:solid;border-right-width:5px; border-style:solid;border-width:5px; }
+
+/*ボックス 強調2--------------------------------*/
+.box_em2 { position:relative; width:92%; font-size:16px; font-weight:bold; text-shadow:0 1px 0 #fff; line-height:1.8em; border-radius:5px; margin-top:0; padding:4%; -webkit-border-radius:5px; -o-border-radius:5px; -moz-border-radius:5px; border-radius:5px; }
+.box_em2:before, .box_em2:after { z-index:-1; position:absolute; content:""; top:80%; bottom:10px; left:10px; width:50%;
+	-webkit-box-shadow:0 10px 10px #000; -moz-box-shadow:0 10px 10px #000; box-shadow:0 10px 10px #000; -webkit-transform:rotate(-3deg); -moz-transform:rotate(-3deg); -o-transform:rotate(-3deg); transform:rotate(-3deg); }
+.box_em2:after { right:10px; left:auto; -webkit-transform:rotate(3deg); -moz-transform:rotate(3deg); -o-transform:rotate(3deg); transform:rotate(3deg); }
+.box_em2 p.title { font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; text-align:center; font-size:34px; margin-bottom:20px;	}
+
+/*ボックス 強調3------------------------------*/
+.box_em3 { width:750px; font-size:17px; line-height:25px;
+	-webkit-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	-moz-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	-o-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	padding:50px 25px 30px 25px;margin:40px auto; }
+.box_em3 p.title{ width:785px; height:60px; box-sizing:border-box; position:relative; margin:-30px 0 25px -35px; padding:9px; font:normal 28px/1.6 "Times New Roman", Times, serif; text-align:center; box-shadow:0 1px 0px 0 rgba(0,0,0,0.2); }
+.box_em3 p.title:before{ content:" "; position:absolute;  top:-5px; left:0; width:0; height:0; border-width:0 0 5px 10px; border-style:solid; border-left-color:transparent; }
+.box_em3 p.title:after{ content:" "; position:absolute; top:0px; right:0px; width:0; height:0; border-top:solid 32px transparent; border-bottom:solid 32px transparent; border-right-style:solid;border-right-width:32px;
+	border-left:solid 30px transparent; }		
+	
+
+/*ボックス 強調4-----------------------------------*/
+.box_em4{ width:740px; padding:20px 30px; margin:40px auto; position:relative; -webkit-border-radius:5px; -o-border-radius:5px; -moz-border-radius:5px; border-radius:5px; font-size:20px;
+	font-weight:bold; line-height:30px; box-shadow:1px 1px 6px #5D5D5D; }
+.box_em4 p.title { position:relative; font-size:32px; font-weight:bold; margin:5px 0 35px 0px; padding:10px 0 0 80px; text-shadow:2px 2px 6px #888888;	}
+.box_em4 p.title:after{ content:""; position: absolute; top:-40px; left:0px; width:60px; height:70px; border:none; content: "";　}	
+.box_em4 p.title:before{ content:" "; position:absolute; top:10px; left:0px; width:0px; height:10px; border-top:solid 17px transparent; border-right:solid 30px #B00002; border-bottom:solid 17px transparent;
+	border-left:solid 30px #B00002; }
+	
+/*ボックス 強調5----------------------------------*/
+.box_em5{ width:740px; padding:20px; margin:70px auto 30px auto; position:relative; box-shadow: 10px 0 0 0 #88ccef,	-10px 0 0 0 #88ccef, 0 3px 3px 0 rgba(0,0,0,0.1);
+			border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; font-size:18px; line-height:30px; }
+.box_em5 p.title{ font-size:22px; font-weight:bold; margin:-60px 0 22px 0; background:#88ccef; width:230px; height:40px; padding:10px 30px; position:relative; box-sizing:border-box;
+	border-top-left-radius: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-topleft: 6px; }
+.box_em5 p.title:before{ content:""; position:absolute; top:0px; right:-30px; width:0px; height:0px; border-left:solid 15px #88ccef;
+	border-bottom:solid 20px #88ccef; border-right:solid 15px transparent; border-top:solid 20px transparent; }
+		
+/*ボックス 強調6----------------------------------*/
+.box_em6 { width:760px; position: relative; padding:30px; margin:30px auto; font-size:15px; line-height:23px; color:#303030; }
+.box_em6 p.title{ font-size:25px; font-weight:bold; line-height:25px; margin-bottom:10px; color:#4682B4; }
+.box_em6:before{ content: ''; position: absolute; border: 1px dashed #bbb; top: 7px; bottom: 7px; left: 7px; right: 7px; -moz-box-shadow: 0 0 0 1px #eee; -webkit-box-shadow: 0 0 0 1px #eee; box-shadow: 0 0 0 1px #eee; }
+.box_em6 p.title{ }
+
+
+/*ボックス 背景画像リピート------------------------------*/
+.box_bgimg { background-image:url(../img/tour/tourpoint_bg.jpg); border-radius:7px; position: relative; padding:30px; margin:30px auto; font-size:15px; line-height:23px; width:800px; box-shadow:0 3px 5px #ccc; }
+.box_bgimg p.title { font-size:28px; font-weight:bold; line-height:25px; margin-bottom:10px; color:#F40079; }
+
+/*ボックス 背景画像リピートしない------------------------------*/
+.box_nrbgimg { background-image:url(../img/tour/tourpoint_nrbg.jpg); border-radius:7px; position: relative; padding:30px; margin:30px auto; font-size:15px; line-height:23px; width:800px; background-repeat:no-repeat;
+	background-size:100% auto; 	box-shadow:0 3px 5px #ccc; }
+.box_nrbgimg p.title { font-size:28px; font-weight:bold; line-height:25px; margin-bottom:10px; color:#1235D9; }
+
+/*ボックス 背景画像フレーム------------------------------*/
+.box_frimg { background-image:url(../img/tour/tourpoint_f.jpg); position: relative; padding:35px; width:800px; margin:30px auto; font-size:15px; line-height:23px; background-repeat: no-repeat; background-size:100% 100%;}
+.box_frimg p.title { font-size:25px; font-weight:bold; line-height:28px; margin-bottom:10px; color:#4682B4; }
+
+
+/** (7) table
+==========================================================================**/
+
+/*通常テーブル border
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*通常テーブル① 空箱---------------*/
+table.border{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border tr td{ padding:5px 0px; border-style:solid;border-width:1px; }
+
+/*通常テーブル② td(左寄せ・上寄せ)--------*/
+table.border2 {
+    border-width: 1px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 3em;
+}
+table.border2 tr th {
+    text-align: center;
+    padding: 0.7em;
+    vertical-align: middle;
+    background-color: #d6ebf5;
+    color: #214fce;
+    border: 1px solid #666;
+}
+table.border2 tr td {
+    padding: 0.7em;
+    border: 1px solid #666;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/*通常テーブル③ td(左寄せ・中央寄せ)------*/
+table.border3{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border3 tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border3 tr td{ padding:10px 5px; border-style:solid;border-width:1px; text-align:left; vertical-align:middle; }
+
+/*通常テーブル④ td(中央寄せ・上寄せ)--------*/
+table.border4{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border4 tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border4 tr td{ padding:5px 0px; border-style:solid;border-width:1px; text-align:center; vertical-align:middle; }
+
+/*通常テーブル⑤ td(中央寄せ・中央寄せ)-----*/
+table.border5{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border5 tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border5 tr td{ padding:5px 0px; border-style:solid;border-width:1px; text-align:center; vertical-align:middle; }
+	
+/*フォームテーブル---------------*/
+table.form{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em; font-size: 1.3rem; }
+table.form tr th{ text-align:center; padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd;font-weight: normal; }
+table.form tr td{ padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px;vertical-align:middle;text-align:left; }
+	
+/*行程表 sch
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*行程表① ノーマル--------------------------------*/
+table.sch{ border-collapse: collapse; margin-bottom:1em; border:1px solid #666; margin-left:0px; width:100%; }
+table.sch th { background:#477fc2; color:#ffffff; text-align:center; font-weight:bold; padding:0.3em; border:1px solid #666; }
+table.sch td { padding:0.3em; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:1em; border-bottom:1px solid #666; }
+.mark{ font-size:13px; }
+
+/*行程表② 列毎に色付1(日次あり)--------------------*/
+table.sch2{ border-collapse:collapse; border-spacing:0; margin-bottom:5px; width:100%; margin-top:1%; border-bottom-style:solid;border-bottom-width:1px; }
+table.sch2 th { text-align:center; font-weight:bold; padding:5px 12px; border-style:solid;border-width:1px; font-size:90%; }
+table.sch2 td { padding:2px 7px; border-left-style:solid;border-left-width:1px; border-right-style:solid;border-right-width:1px; font-size:80%; }
+/* tdの文字配置 */
+/* 1列目 */ table.sch2 tr td { text-align:center;vertical-align:top; }
+/* 2列目 */ table.sch2 tr td + td { text-align:center; }
+/* 3列目 */ table.sch2 tr td + td + td { text-align:center; }
+/* 4列目 */ table.sch2 td + td + td + td { text-align:center; }
+/* 5列目 */ table.sch2 td + td + td + td + td { text-align:center;}
+/* 6列目 */ table.sch2 td + td + td + td + td + td { text-align:left; }
+/* 7列目 */ table.sch2 td + td + td + td + td + td + td { text-align:center; }
+table.sch2 tr td img { width:15px;hight:15px; }
+table.sch2 tr td.right { text-align:right; }
+table.sch2 tr td.center { text-align:center; }
+table.sch2 tr td.info {	padding:2px 7px; text-align:left; vertical-align:top; background-color:#FFFFFF; line-height:1.65em; }
+
+/*行程表③ 列毎に色付2(日次なし)--------------------*/
+table.sch3{ border-collapse:collapse; border-spacing:0; margin-bottom:5px; width:100%; margin-top:1%; border-bottom-style:solid;border-bottom-width:1px; }
+table.sch3 th { text-align:center; font-weight:bold; padding:5px 12px; border-style:solid;border-width:1px; font-size:90%; }
+table.sch3 td { padding:2px 7px; border-left-style:solid;border-left-width:1px; border-right-style:solid;border-right-width:1px; font-size:80%; }
+/* tdの文字配置 */
+/* 1列目 */ table.sch3 tr td { text-align:center;vertical-align:top; }
+/* 2列目 */ table.sch3 tr td + td { text-align:center; }
+/* 3列目 */ table.sch3 tr td + td + td { text-align:center; }
+/* 4列目 */ table.sch3 td + td + td + td { text-align:center; }
+/* 5列目 */ table.sch3 td + td + td + td + td { text-align:left;}
+/* 6列目 */ table.sch3 td + td + td + td + td + td { text-align:center; }
+table.sch3 tr td img { width:15px;height:15px; }
+table.sch3 tr td.right { text-align:right; }
+table.sch3 tr td.center { text-align:center; }
+table.sch3 tr td.info { padding:2px 7px; text-align:left; vertical-align:top; background-color:#FFFFFF; line-height:1.65em; }
+
+/*フォームテーブル---------------*/
+table.form{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em; font-size: 1.3rem; }
+table.form tr th{ text-align:center; padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd;font-weight: normal; }
+table.form tr td{ padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px;vertical-align:middle;text-align:left; }
+
+/*行程表 共通要素--------------------------------*/
+.point { font-weight: bolder; padding: 5px; text-align: center; margin-bottom:6px; background-color: #6A58DF; color: #fff; }
+.point2 { font-weight: bolder; padding: 5px; text-align: center; margin-bottom:6px; }
+.point_sch{ margin-top:-6px; padding:5px 15px; margin-bottom:3px;}
+.point_sch dl dt{ float:left; width:50px;}
+.point_sch dl dd{ margin-left:50px; padding-bottom:1px;	}
+tr.first td{ padding:10px 7px 3px 7px;}	
+tr.endline td{ padding:3px 7px 10px 7px; border-bottom-style:solid;border-bottom-width:1px; }
+.meal{ border:solid #666 2px; padding:0px 3px 0 4px; font-size:14px; line-height:14px; }
+td.info .meal{ border:solid #666 1px; padding:0px 3px 0 4px; font-size:12px; }
+
+/*料金表 price
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*料金表① thの改行なし--------------------*/
+table.price{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; width: 100%; }
+table.price tr th{ text-align:center; padding:0.7em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd }
+table.price tr td{ padding:0.7em; border-style:solid;border-width:1px; }
+
+
+/*料金表② thの改行あり--------------------*/
+table.price2{ width:100%; border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-left:0px; }
+table.price2 tr th{	text-align:center; padding:7px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.price2 tr td{ padding:10px 5px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.price2 tr td.info{ padding:6px; border-style:solid;border-width:1px; vertical-align:middle; text-align:left; }
+
+/*料金表 共通要素--------------------------------*/
+.cap_price{ text-align:right; }	
+
+/** ボタン button
+==========================================================================**/
+
+/*ホバー hover (マウスをのせたとき)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*ホバー① 文字色変化--------------------------------*/
+.click1 { font-style:normal;text-decoration:none; }
+.click1:hover{ }
+
+/*ホバー② モヤがかる--------------------------------*/
+.click2 { font-style:normal;text-decoration:none;opacity:1.0; }
+.click2:hover{ opacity: 0.7;filter:alpha(opacity=70); }
+
+/*ホバー③ 表示位置がずれる----------------------------*/
+.click3 { font-style:normal;text-decoration:none; }	
+.click3:hover{ position:relative;top:2px;left:2px; }
+
+/*ホバー④ アニメーション----------------------------*/
+.click4 { font-style:normal;text-decoration:none; }	
+.click4:hover { }
+
+/*ホバー⑤ アニメーション----------------------------*/
+.click5 { font-style:normal;text-decoration:none; }	
+.click5:hover { letter-spacing: 5px; }
+
+/*ホバー⑥ アニメーション----------------------------*/
+.click6 { font-style:normal;text-decoration:none; }	
+.click6:hover { }
+
+/*ホバー⑦ ボタンを押すアニメーション-----------------*/
+.click7 { font-style:normal;text-decoration:none; }	
+.click7:hover { border-bottom:none;position:relative;top:2px;}
+
+/*リンクをつけない---------------------------*/
+.nolink{color:#ffffff;}
+
+
+
+/*ボタン button
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*ボタン① 詳細はこちら------------------------*/
+.shosai{ text-align:center; font-weight:bolder; border:1px solid #CCC; font-size:15px; text-decoration:none; width:140px; margin:6px auto; padding:10px 0px; display:block; border-radius: 10px;
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-radius: 10px; box-shadow: 1px 2px 5px  #666; 	-webkit-box-shadow:1px 2px 5px #666; -moz-box-shadow:1px 2px 5px #666; -o-box-shadow: 1px 2px 5px #666; }	
+
+/*ボタン② 申込はこちら------------------------*/
+.registArea{ margin:25px 0; text-align: center;}
+.registArea p{ font-size: 105%; font-weight: bold; color: #FF5A33; }
+.register{ text-align:center; color:#FFF; font-weight:bolder; font-size:18px; text-decoration:none; letter-spacing: 3px; width:400px; margin:0 auto 10px auto; padding:20px 0; display:block; border:1px solid #CCC; border-radius: 10px;
+	-webkit-box-shadow:1px 2px 5px #666; -moz-box-shadow:1px 2px 5px #666; -o-box-shadow: 1px 2px 5px #666; box-shadow: 1px 2px 5px  #666; }	
+
+/*ボタン③　ページにボタンを複数並べる--------------*/
+.btn_list{ margin:0 auto; width:760px; }
+.btn_list a{ padding:15px 0px; margin:15px 2px 15px 28px; width:342px; height:70px; display:block; color:#FFF; text-align:center; font-weight:bolder; font-size:18px; text-decoration:none; border:1px solid #CCC; float:left;		
+	-moz-border-radius: 10px; -webkit-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; -webkit-box-shadow:1px 2px 5px #666;
+	-moz-box-shadow:1px 2px 5px #666; -o-box-shadow: 1px 2px 5px #666; box-shadow: 1px 2px 5px  #666; }	
+.btn_lh1 { line-height:70px;min-height:70px; }
+.btn_lh2{ line-height:35px;min-height:35px; }
+.btn_lh3{ line-height:23px;min-height:23px; }
+
+
+/*ボタン④　Yes/Noボタン----------------*/
+.btn_yesno{ margin:0 auto; width:604px; }
+.btn_yesno a{ position:relative; width:260px; margin:5px 20px; padding:23px 0px 47px 0px; display:block; font-size:16px;
+	float:left;	text-decoration:none; text-align:center; font-weight:bolder;	
+	-webkit-box-shadow:1px 2px 5px #666; -moz-box-shadow:1px 2px 5px #666; -o-box-shadow: 1px 2px 5px #666; box-shadow: 1px 2px 5px  #666;	
+	-moz-border-radius: 5px; -o-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }	
+.btn_yesno a.yes{ border:1px solid #ccc; }
+.btn_yesno a.yes:after{ content:"YES"; position: absolute; bottom:17px; left:105px; font-size:25px; font-weight:bold;}  
+.btn_yesno a.no{ border:1px solid #ccc; }
+.btn_yesno a.no:after{ content:"NO"; position: absolute; bottom:17px; left:109px; font-size:25px; font-weight:bold; }  
+
+/*横並び複数ボタン-----------*/	
+.btn_box{ margin:0px auto 30px auto; width:80%; text-align:center; }
+.btn_box a { border-bottom:#666666 solid 2px; border-left:none; border-right:none; border-top:none; color: #fff; text-decoration:none; font-size:100%; text-align:center; padding:8px 20px; margin:0 8px; border-radius:4px;}	
+
+/*ボタン⑤　ノーマルボタン1-----------*/
+.button{ position:relative; text-align:center; color:#FFF; font-weight:bolder; border:1px solid #CCC; width:400px; margin:5px 30px 5px auto; padding:6px 0px; display:block; text-decoration:none;
+		-moz-border-radius: 15px; -o-border-radius:15px; -webkit-border-radius:15px; border-radius: 15px;	
+		-webkit-box-shadow:1px 2px 5px #666; -moz-box-shadow:1px 2px 5px #666; -o-box-shadow: 1px 2px 5px #666; box-shadow: 1px 2px 5px  #666; }	
+
+/*ボタン⑥　ノーマルボタン2-----------*/
+.button2 { border-style:solid;border-width:2px; color: #fff; line-height: 50px; text-decoration:none; padding:8px 18px; font-size:16px; }	
+
+/*ボタン⑦　ノーマルボタン3-------------------*/
+.button3 { border-style:solid;border-width:2px; color: #fff; line-height: 50px; text-decoration:none; padding:8px 18px; font-size:16px; width:500px; display:block; text-align:center; }	
+
+}
+
+
+
+/** RESPONSIVE BREAKPOINTS
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■**/
+
+
+@media(min-width: 741px) and (max-width: 1200px){
+	
+/** (4)font
+==========================================================================**/
+/*フォント font
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+.nedan{	font-size:110%; font-weight:bolder;	}
+.bold{ font-weight:bold; }
+.fontred{ color:#ff0000; }
+.fontred_b{ color:#ff0000; font-weight:bold; }
+.fontred_bb{ color:#ff0000; font-weight:bold; font-size:130%; }
+.kanri { text-align: center; margin-top: 30px; font-size:11px; }	
+
+.font160 { font-size:19px; }
+.font150 { font-size:18px; }
+.font140 { font-size:17px; }
+.font130 { font-size:16px; }
+.font120 { font-size:15px; }
+.font110 { font-size:14px; }
+
+.font90 { font-size:12px; }
+.font80 { font-size:11px; }
+.font70 { font-size:10px; }
+.font60 { font-size:9px; }
+
+
+
+/** (6)COMMON 
+==========================================================================**/
+/*リスト list
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+/*ノーマルリスト------------------------------------*/
+
+.lista li{ list-style-type:disc;margin:0 15px 0 25px; }
+.listb li{ list-style-type: decimal;margin:0 15px 0 25px; }
+.listc li{ list-style-type:none; text-align: left; background:url(../img/list_bg.gif) no-repeat 0 4px; padding-left:2em; margin-left:1em; }
+.listd li{ list-style-type:lower-alpha;margin:0 15px 0 25px; }
+.liste li{ list-style-type:lower-roman;margin:0 15px 0 25px; }
+.listf li{ list-style-type:square;margin:0 15px 0 25px; }
+.listg li{ list-style-type:none; background:url(../img/common/list_g.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0 6px; }
+.listh li{ list-style-type:none; background:url(../img/common/list_h.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0 6px; }
+.listi li{ list-style-type:none; background:url(../img/common/list_i.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0 6px; }
+.listj li{ list-style-type:none; background:url(../img/common/list_j.gif) no-repeat 0 2px; padding-left:19px; margin:0 15px 0 6px; }
+.listk li{ list-style-type:none; background:url(../img/common/list_k.gif) no-repeat 0 3px; padding-left:19px; margin:0 15px 0 6px; }
+.listz li{ list-style-type:none;margin:0 15px 0 25px; }
+
+/*ツアーポイント------------------------------------*/
+
+.tourpoint ul li{ margin-left:50px; list-style-type:square; font-size:18px; line-height:30px; font-weight:bold; }
+.tourpoint2 ul li{ list-style-type:upper-roman; margin-left:100px; padding-left:10px; font-size:18px; }
+.tourpoint2 p.title{ font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; }
+.tourpoint3 ul li{ list-style-type:upper-roman; margin-left:100px; padding-left:10px; font-size:18px; }
+.tourpoint3 p.title{ font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; }
+
+/*画像 img
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+.img100{ }
+.img50{ }
+.img25{ }
+.kikaku { float:right;margin:5px 15px 0 0;width:30%; }
+.logo_knt{ float:right; width:300px; height:auto; }
+.pmark { width:80px;height:auto;float:right; }
+img.totop { width:100px;height:100px; }
+
+/*ボックス Box/TourPoint
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+/*ボックス ノーマル------------------------------------*/
+.box { padding:5px 10px; border-style:solid;border-width:1px; margin:4px 0px; }
+
+/*ボックス ノーマル(マージンあり)----------------------*/
+.box2 { padding:10px 15px; border-style:solid;border-width:1px; margin:20px 10px; line-height:20px; }
+.box2 p.title { font-size:17.5px; font-weight:bold; padding:10px 0; }
+
+/*ボックス 点線枠--------------------------------------*/
+.box_dot { padding:10px 15px; border-style:dotted;border-width:1px; margin:20px 10px; line-height:20px; }
+.box_dot p.title { font-size:17.5px; font-weight:bold; padding:10px 0; }
+
+/*ボックス 背景色あり----------------------------------*/
+.box_bg{ padding:20px; margin:20px 10px; line-height:22px; }
+.box_bg p.title{ margin:0px 0 13px 0; padding:0px 0px 7px 8px; border-bottom-style:dotted;border-bottom-width:1px; font-weight:bold; font-size:19px; }
+
+/*ボックス フレームあり-----------------------------------*/
+.box_fr{ border-style:ridge;border-width:10px; padding:15px; margin:20px 10px; line-height:22px; }
+.box_fr p.title { font-size:19px; border-bottom-style:solid;border-bottom-width:1px; font-weight:bold; padding-bottom:8px; margin-bottom:15px; }
+
+/*ボックス 表型------------------------------------------*/
+.box_info{ margin:20px 30px; padding:0 15px 15px 15px; border-style:solid;border-width:1px; line-height:22px; }	
+.box_info p.title { font-size:18px; font-weight: bolder; text-align: left; padding:13px 13px 13px 20px; margin:0px -15px 15px -15px;}
+
+/*ボックス 角丸----------------------------------*/
+.box_r{	padding:25px 20px; margin:20px 25px; line-height:22px; -webkit-border-radius:8px; -o-border-radius:8px; -moz-border-radius:8px ; border-radius:8px; box-shadow:0px 2px 7px #939393; font-size:15px; line-height:23px; }
+.box_r p.title{ margin:0px 0 13px 0; padding:0px 0px 8px 10px; border-bottom-style:solid;border-bottom-width:1px; font-weight:bold; font-size:22px; }
+
+/*ボックス 強調1----------------------------------------*/
+.box_em1 { width:849px; box-shadow:1px 1px 1px 1px #666666; margin:40px 10px 40px 20px ; padding:0px 15px 15px 15px; box-sizing:border-box; line-height:22px; }	
+.box_em1 p.title { width:859px; font-size:17.5px; font-weight: bolder; border-top:3px solid #ff6347; position: relative; box-sizing:border-box; padding:15px 0px 15px 30px; margin:0px 0px 15px -25px; box-shadow:1px 1px 1px 0px  #666666 ; }
+.box_em1 p.title:after { content: ""; position: absolute; top: 100%; height: 0; width: 0; left: 0; border-top-style:solid;border-top-width:5px; border-right-style:solid;border-right-width:5px; border-style:solid;border-width:5px; }
+
+/*ボックス 強調2--------------------------------*/
+.box_em2 { position:relative; width:92%; font-size:120%; font-weight:bold; text-shadow:0 1px 0 #fff; line-height:1.8em; border-radius:5px; margin-top:0; padding:4%; -webkit-border-radius:5px; -o-border-radius:5px; -moz-border-radius:5px; border-radius:5px; }
+.box_em2:before, .box_em2:after { z-index:-1; position:absolute; content:""; top:80%; bottom:10px; left:10px; width:50%; -webkit-box-shadow:0 10px 10px #000; -moz-box-shadow:0 10px 10px #000; box-shadow:0 10px 10px #000; -webkit-transform:rotate(-3deg);
+	-moz-transform:rotate(-3deg); -o-transform:rotate(-3deg); transform:rotate(-3deg); }
+.box_em2:after { right:10px; left:auto; -webkit-transform:rotate(3deg); -moz-transform:rotate(3deg); -o-transform:rotate(3deg); transform:rotate(3deg); }
+.box_em2 p.title { font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; text-align:center; font-size:34px; margin-bottom:20px;	}
+
+/*ボックス 強調3------------------------------*/
+.box_em3 { width:750px; font-size:17px; line-height:25px;
+	-webkit-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	-moz-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	-o-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	padding:50px 25px 30px 25px; margin:40px auto; }
+.box_em3 p.title{ width:785px; height:60px; box-sizing:border-box; position:relative; margin:-30px 0 25px -35px; padding:9px; font:normal 28px/1.6 "Times New Roman", Times, serif; text-align:center; box-shadow:0 1px 0px 0 rgba(0,0,0,0.2); }
+.box_em3 p.title:before{ content:" "; position:absolute; top:-5px; left:0; width:0; height:0; border-width:0 0 5px 10px; border-style:solid; border-left-color:transparent; }
+.box_em3 p.title:after{ content:" "; position:absolute; top:0px; right:0px; width:0; height:0; border-top:solid 32px transparent; border-bottom:solid 32px transparent; border-right-style:solid;border-right-width:32px; border-left:solid 30px transparent; }		
+
+/*ボックス 強調4-----------------------------------*/
+.box_em4{ width:740px; padding:20px 30px; margin:40px auto; position:relative; 
+	-webkit-border-radius:5px;	
+	-o-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px; font-size:20px; font-weight:bold; line-height:30px; box-shadow:1px 1px 6px #5D5D5D; }
+.box_em4 p.title { position:relative; font-size:32px; font-weight:bold; margin:5px 0 35px 0px; padding:10px 0 0 80px; text-shadow:2px 2px 6px #888888;	}
+.box_em4 p.title:after{ content:""; position: absolute; top:-40px; left:0px; width:60px; height:70px; border:none; content: "";　}	
+.box_em4 p.title:before{ content:" "; position:absolute; top:10px; left:0px; width:0px; height:10px; border-top:solid 17px transparent; border-right:solid 30px #B00002; border-bottom:solid 17px transparent; border-left:solid 30px #B00002; }
+
+/*ボックス 強調5----------------------------------*/
+.box_em5{ width:740px; padding:20px; margin:70px auto 30px auto; position:relative; box-shadow: 10px 0 0 0 #88ccef, -10px 0 0 0 #88ccef, 0 3px 3px 0 rgba(0,0,0,0.1); border-radius: 3px;-webkit-border-radius: 3px; -moz-border-radius: 3px; 
+	font-size:18px;	line-height:30px; }
+.box_em5 p.title{ font-size:22px; font-weight:bold; margin:-60px 0 22px 0; background:#88ccef; width:230px; height:40px; padding:10px 30px; position:relative; box-sizing:border-box; border-top-left-radius: 6px;
+-webkit-border-top-left-radius: 6px;-moz-border-radius-topleft: 6px; }
+.box_em5 p.title:before{ content:""; position:absolute; top:0px; right:-30px; width:0px; height:0px; border-left:solid 15px #88ccef; border-bottom:solid 20px #88ccef; border-right:solid 15px transparent; border-top:solid 20px transparent; }
+
+/*ボックス 強調6----------------------------------*/
+.box_em6 { width:760px; position: relative; padding:30px; margin:30px auto; font-size:15px; line-height:23px; color:#303030; }
+.box_em6 p.title{ font-size:25px; font-weight:bold; line-height:25px; margin-bottom:10px; color:#4682B4; }
+.box_em6:before{ content: ''; position: absolute; border: 1px dashed #bbb; top: 7px; bottom: 7px; left: 7px; right: 7px; -moz-box-shadow: 0 0 0 1px #eee; -webkit-box-shadow: 0 0 0 1px #eee; box-shadow: 0 0 0 1px #eee; }
+.box_em6 p.title{ }
+
+/*ボックス 背景画像リピート------------------------------*/
+.box_bgimg { background-image:url(../img/tour/tourpoint_bg.jpg); border-radius:7px; position: relative; padding:30px; margin:30px auto; font-size:15px; line-height:23px; width:800px; box-shadow:0 3px 5px #ccc; }
+.box_bgimg p.title { font-size:28px; font-weight:bold; line-height:25px; margin-bottom:10px; color:#F40079; }
+
+/*ボックス 背景画像リピートしない------------------------------*/
+.box_nrbgimg { background-image:url(../img/tour/tourpoint_nrbg.jpg); border-radius:7px; position: relative; padding:30px; margin:30px auto; font-size:15px; line-height:23px; width:800px; background-repeat:no-repeat; background-size:100% auto; box-shadow:0 3px 5px #ccc;
+}
+.box_nrbgimg p.title { font-size:28px; font-weight:bold; line-height:25px; margin-bottom:10px; color:#1235D9; }
+
+/*ボックス 背景画像フレーム------------------------------*/
+.box_frimg { background-image:url(../img/tour/tourpoint_f.jpg); position: relative; padding:35px; width:800px; margin:30px auto; font-size:15px; line-height:23px; background-repeat: no-repeat; background-size:100% 100%; }
+.box_frimg p.title { font-size:25px; font-weight:bold; line-height:28px; margin-bottom:10px; color:#4682B4; }
+
+/** (7) table
+==========================================================================**/
+
+/*通常テーブル border
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*通常テーブル① 空箱--------------------------------*/
+table.border{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border tr th{ text-align:center; padding-top:1%; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border tr td{ padding:1%; border-style:solid; border-width:1px; vertical-align:middle; }
+
+/*通常テーブル② td(左寄せ・上寄せ)------------------*/
+/* table.border2{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; } */
+/* table.border2 tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; } */
+/* table.border2 tr td{ padding:5px 0px; border-style:solid;border-width:1px; text-align:left; vertical-align:top; } */
+table.border2 {
+    border-width: 1px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 3em;
+}
+table.border2 tr th {
+    text-align: center;
+    padding: 0.7em;
+    vertical-align: middle;
+    background-color: #d6ebf5;
+    color: #214fce;
+    border: 1px solid #666;
+}
+table.border2 tr td {
+    padding: 0.7em;
+    border: 1px solid #666;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/*通常テーブル③ td(左寄せ・中央寄せ)----------------*/
+table.border3{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border3 tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border3 tr td{ padding:10px 15px; border-style:solid;border-width:1px; text-align:center; vertical-align:middle; }
+
+/*通常テーブル④ td(中央寄せ・上寄せ)----------------*/
+table.border4{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border4 tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border4 tr td{ padding:5px 0px; border-style:solid;border-width:1px; text-align:center; vertical-align:middle; }
+
+/*通常テーブル⑤ td(中央寄せ・中央寄せ)--------------*/
+table.border5{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border5 tr th{ text-align:center; padding-top:5px 3px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border5 tr td{ padding:5px 0px; border-style:solid;border-width:1px; text-align:center; vertical-align:middle; }
+
+
+/*フォームテーブル---------------*/
+table.form{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em; font-size: 1.3rem; }
+table.form tr th{ text-align:center; padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd;font-weight: normal; }
+table.form tr td{ padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px;vertical-align:middle;text-align:left; }
+	
+/*行程表 sch
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*行程表① ノーマル--------------------------------*/
+table.sch{ border-collapse: collapse; margin-bottom:1em; border:1px solid #666; margin-left:0px; width:100%; }
+table.sch th { background:#477fc2; color:#ffffff; text-align:center; font-weight:bold; padding:0.3em; border:1px solid #666; }
+table.sch td { padding:0.3em; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:1em; border-bottom:1px solid #666; }
+.mark{ font-size:13px; }
+
+/*行程表② 列毎に色付1(日次あり)--------------------*/
+table.sch2{ border-collapse:collapse; border-spacing:0; margin-bottom:5px; width:100%; margin-top:1%; border-bottom-style:solid;border-bottom-width:1px; }
+table.sch2 th { text-align:center; font-weight:bold; padding:5px 12px; border-style:solid;border-width:1px; font-size:90%; }
+table.sch2 td { padding:2px 7px; border-left-style:solid;border-left-width:1px; border-right-style:solid;border-right-width:1px; font-size:80%; }
+/* tdの文字配置 */
+/* 1列目 */ table.sch2 tr td { text-align:center;vertical-align:top; }
+/* 2列目 */ table.sch2 tr td + td { text-align:center; }
+/* 3列目 */ table.sch2 tr td + td + td { text-align:center; }
+/* 4列目 */ table.sch2 td + td + td + td { text-align:center; }
+/* 5列目 */ table.sch2 td + td + td + td + td { text-align:center;}
+/* 6列目 */ table.sch2 td + td + td + td + td + td { text-align:left; }
+/* 7列目 */ table.sch2 td + td + td + td + td + td + td { text-align:center; }
+table.sch2 tr td img { width:15px;hight:15px; }
+table.sch2 tr td.right { text-align:right; }
+table.sch2 tr td.center { text-align:center; }
+table.sch2 tr td.info {	padding:2px 7px; text-align:left; vertical-align:top; background-color:#FFFFFF; line-height:1.65em; }
+
+/*行程表③ 列毎に色付2(日次なし)--------------------*/
+table.sch3{ border-collapse:collapse; border-spacing:0; margin-bottom:5px; width:100%; margin-top:1%; border-bottom-style:solid;border-bottom-width:1px; }
+table.sch3 th { text-align:center; font-weight:bold; padding:5px 12px; border-style:solid;border-width:1px; font-size:90%; }
+table.sch3 td { padding:2px 7px; border-left-style:solid;border-left-width:1px; border-right-style:solid;border-right-width:1px; font-size:80%; }
+/* tdの文字配置 */
+/* 1列目 */ table.sch3 tr td { text-align:center;vertical-align:top; }
+/* 2列目 */ table.sch3 tr td + td { text-align:center; }
+/* 3列目 */ table.sch3 tr td + td + td { text-align:center; }
+/* 4列目 */ table.sch3 td + td + td + td { text-align:center; }
+/* 5列目 */ table.sch3 td + td + td + td + td { text-align:left;}
+/* 6列目 */ table.sch3 td + td + td + td + td + td { text-align:center; }
+table.sch3 tr td img { width:15px;height:15px; }
+table.sch3 tr td.right { text-align:right; }
+table.sch3 tr td.center { text-align:center; }
+table.sch3 tr td.info { padding:2px 7px; text-align:left; vertical-align:top; background-color:#FFFFFF; line-height:1.65em; }
+
+/*フォームテーブル---------------*/
+table.form{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em; font-size: 1.3rem; }
+table.form tr th{ text-align:center; padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd;font-weight: normal; }
+table.form tr td{ padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px;vertical-align:middle;text-align:left; }
+
+/*行程表 共通要素--------------------------------*/
+.point { font-weight: bolder; padding: 5px; text-align: center; margin-bottom:6px; }
+.point2 { font-weight: bolder; padding: 5px; text-align: center; margin-bottom:6px; }
+.point_sch{ margin-top:-6px; padding:5px 15px; margin-bottom:3px;}
+.point_sch dl dt{ float:left; width:50px;}
+.point_sch dl dd{ margin-left:50px; padding-bottom:1px;	}
+tr.first td{ padding:10px 7px 3px 7px;}	
+tr.endline td{ padding:3px 7px 10px 7px; border-bottom-style:solid;border-bottom-width:1px; }
+.meal{ border:solid #666 2px; padding:0px 3px 0 4px; font-size:14px; line-height:14px; }
+td.info .meal{ border:solid #666 1px; padding:0px 3px 0 4px; font-size:12px; }
+
+/*料金表 price
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*料金表① thの改行なし--------------------*/
+table.price{ width:100%; border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-left:0px; }
+table.price tr th{ text-align:center; padding:10px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.price tr td{ padding:5px; border-style:solid;border-width:1px; vertical-align:middle; text-align:center; font-size:80% }
+
+/*料金表② thの改行あり--------------------*/
+table.price2{ width:100%; border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-left:0px; }
+table.price2 tr th{	text-align:center; padding:7px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.price2 tr td{ padding:10px 5px; border-style:solid;border-width:1px; vertical-align:middle; }
+table.price2 tr td.info{ padding:6px; border-style:solid;border-width:1px; vertical-align:middle; text-align:left; }
+
+/*料金表 共通要素--------------------------------*/
+.cap_price{ text-align:right; }
+
+/** ボタン button
+==========================================================================**/
+
+/*ホバー hover (マウスをのせたとき)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*ホバー① 文字色変化--------------------------------*/
+.click1 { font-style:normal;text-decoration:none; }
+.click1:hover{ }
+
+/*ホバー② モヤがかる--------------------------------*/
+.click2 { font-style:normal;text-decoration:none;opacity:1.0; }
+.click2:hover{ opacity: 0.7;filter:alpha(opacity=70); }
+
+/*ホバー③ 表示位置がずれる----------------------------*/
+.click3 { font-style:normal;text-decoration:none; }	
+.click3:hover{ position:relative;top:2px;left:2px; }
+
+/*ホバー④ アニメーション----------------------------*/
+.click4 { font-style:normal;text-decoration:none; }	
+.click4:hover { }
+
+/*ホバー⑤ アニメーション----------------------------*/
+.click5 { font-style:normal;text-decoration:none; }	
+.click5:hover { letter-spacing: 5px; }
+
+/*ホバー⑥ アニメーション----------------------------*/
+.click6 { font-style:normal;text-decoration:none; }	
+.click6:hover { }
+
+/*ホバー⑦ ボタンを押すアニメーション-----------------*/
+.click7 { font-style:normal;text-decoration:none; }	
+.click7:hover { border-bottom:none;position:relative;top:2px;}
+
+/*リンクをつけない---------------------------*/
+.nolink{color:#ffffff;}
+
+/*ボタン button
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*ボタン① 詳細はこちら--------------------------------*/
+.shosai{ text-align:center; font-weight:bolder; border:1px solid #CCC; font-size:13px; text-decoration:none; width:80%; margin:6px auto; padding:10px 0px; display:block; border-radius: 10px;
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-radius: 10px; box-shadow: 1px 2px 5px  #666; -webkit-box-shadow:1px 2px 5px #666; -moz-box-shadow:1px 2px 5px #666; -o-box-shadow: 1px 2px 5px #666; }	
+
+/*ボタン② 申込はこちら--------------------------------*/
+.register{ text-align:center; color:#FFF; font-weight:bolder; font-size:14px; text-decoration:none; width:70%; margin:0 auto; padding:15px 0; display:block; border:1px solid #CCC; border-radius: 10px;
+	-webkit-box-shadow:1px 2px 5px #666; -moz-box-shadow:1px 2px 5px #666; -o-box-shadow: 1px 2px 5px #666; box-shadow: 1px 2px 5px  #666; }	
+
+/*ボタン③　ページにボタンを複数並べる--------------*/
+.btn_list{ margin:0 auto; width:100%; }
+.btn_list a{ padding:15px 0px; margin:15px 2px 15px 28px; width:40%; height:50px; display:block; color:#FFF; text-align:center; font-weight:bolder; font-size:12px; text-decoration:none; border:1px solid #CCC; float:left;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px; 
+    border-radius: 10px;
+	-webkit-box-shadow:1px 2px 5px #666;/* webkit */
+	-moz-box-shadow:1px 2px 5px #666;/* fx */
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666;}
+.btn_lh1 { line-height:50px;min-height:50px; }
+.btn_lh2{ line-height:25px;min-height:25px; }
+.btn_lh3{ line-height:17px;min-height:17px; }
+
+/*ボタン④　Yes/Noボタン------------------------*/
+.btn_yesno{ margin:0 auto; width:100% }
+.btn_yesno a{ position:relative; background-color:#2B44A5; width:43%; margin:5px 3%; padding:23px 0px 47px 0px; display:block; font-size:16px; float:left; text-decoration:none; text-align:center; font-weight:bolder;	
+	-webkit-box-shadow:1px 2px 5px #666;
+	-moz-box-shadow:1px 2px 5px #666;
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666;	
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
+.btn_yesno a.yes{ border:1px solid #ccc; }
+.btn_yesno a.yes:after{ content:"YES"; position: absolute; bottom:17px; left:37%; font-size:25px; font-weight:bold;}  
+.btn_yesno a.no{ border:1px solid #ccc; }
+.btn_yesno a.no:after{ content:"NO"; position: absolute; bottom:17px; left:40%;	font-size:25px; font-weight:bold; }  
+
+/*横並び複数ボタン-------------------*/	
+.btn_box{ margin:30px auto 15px auto; width:100%; text-align:center;}
+.btn_box a { border-bottom:#666666 solid 2px; border-left:none; border-right:none; border-top:none;	color: #fff; text-decoration:none; font-size:100%; text-align:center; padding:1% 2%; margin:0 0.6%; border-radius:4px;}	
+
+/*ボタン⑤　ノーマルボタン1-------------------*/
+.button{ position:relative; text-align:center; color:#FFF; font-weight:bolder; border:1px solid #CCC; width:400px; margin:5px 30px 5px auto; padding:6px 0px; display:block; text-decoration:none; 
+	-moz-border-radius: 15px;
+    -o-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius: 15px;	
+	-webkit-box-shadow:1px 2px 5px #666;/* webkit */
+	-moz-box-shadow:1px 2px 5px #666;/* fx */
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666; }	
+
+/*ボタン⑥　ノーマルボタン2-------------------*/
+.button2 { border-style:solid;border-width:2px; color: #fff; line-height: 50px; text-decoration:none; padding:8px 18px; font-size:16px; }	
+
+/*ボタン⑦　ノーマルボタン3-------------------*/
+.button3 { border-style:solid;border-width:2px; color: #fff; line-height: 50px; text-decoration:none; padding:8px 18px; font-size:16px; width:500px; display:block; text-align:center; }	
+
+
+}
+
+
+
+
+/** RESPONSIVE BREAKPOINTS
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■**/
+@media(max-width: 740px){
+
+
+/*フォント font
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+.nedan{ font-size:120%; font-weight:bolder;	}
+.bold{ font-weight:bold; }
+.fontred{ color:#ff0000; }
+.fontred_b{ color:#ff0000; font-weight:bold; }
+.fontred_bb{ color:#ff0000; font-weight:bold; font-size:19px; }
+.kanri { text-align: center; margin-top: 3%; font-size:90%; }	
+
+.font160 { font-size:160%; }
+.font150 { font-size:150%; }
+.font140 { font-size:140%; }
+.font130 { font-size:130%; }
+.font120 { font-size:120%; }
+.font110 { font-size:110%; }
+
+.font90 { font-size:90%; }
+.font80 { font-size:80%; }
+.font70 { font-size:70%; }
+.font60 { font-size:60%; }
+
+.mfont160 { font-size:160%; }
+.mfont150 { font-size:150%; }
+.mfont140 { font-size:140%; }
+.mfont130 { font-size:130%; }
+.mfont120 { font-size:120%; }
+.mfont110 { font-size:110%; }
+
+.mfont90 { font-size:90%; }
+.mfont85 { font-size:85%; }
+.mfont80 { font-size:80%; }
+.mfont75 { font-size:75%; }
+.mfont70 { font-size:70%; }
+.mfont65 { font-size:65%; }
+.mfont60 { font-size:60%; }
+.mfont55 { font-size:55%; }
+.mfont50 { font-size:50%; }
+
+
+
+/** (6)COMMON 
+==========================================================================**/
+
+/*リスト list
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+/*ノーマルリスト------------------------------------*/
+
+.lista li{ list-style-type:disc;margin:0 5% 0 7%; }
+.listb li{ list-style-type: decimal;margin:0 5% 0 7%; }
+.listc li{ list-style-type:none; background:url(../img/list_bg.gif) no-repeat 0 4px; padding-left:5%; margin:0px 3% 0 3%; }
+.listd li{ list-style-type:lower-alpha;margin:0 5% 0 5%; }
+.liste li{ list-style-type:lower-roman;margin:0 5% 0 5%; }
+.listf li{ list-style-type:square;margin:0 5% 0 5%; }
+.listg li{ list-style-type:none; background:url(/img/common/list_g.gif) no-repeat 0 4px; padding-left:5%; margin:0 15px 0 6px; }
+.listh li{ list-style-type:none; background:url(/img/common/list_h.gif) no-repeat 0 4px; padding-left:5%; margin:0 5% 0 2%; }
+.listi li{ list-style-type:none; background:url(../img/common/list_i.gif) no-repeat 0 4px; padding-left:19px; margin:0 15px 0 6px; }
+.listj li{ list-style-type:none; background:url(../img/common/list_j.gif) no-repeat 0 4px; padding-left:19px; margin:0 15px 0 6px; }
+.listk li{ list-style-type:none; background:url(../img/common/list_k.gif) no-repeat 0 4px; padding-left:19px; margin:0 15px 0 6px; }
+.listz li{ list-style-type:none;margin:0 5% 0 5%; }
+
+
+
+
+/*画像 img
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+.img100{ }
+.img50{ }
+.img25{ }
+.logo_knt{ width:60%; height:auto; }
+.logo_knt img{ width:100%; height:auto; }
+.pmark { width:26%;height:auto;float:right;padding-left:1em; padding-bottom:1em;  }
+.pmark img{ width:100%; height:auto; }
+img.totop { display:none; }
+.kikaku {width:85%;display:block;margin:0 auto 2% auto; }
+
+/*ボックス Box/TourPoint
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+
+.box { padding:3% 3%; border-style:solid;border-width:1px; box-sizing: border-box; margin:3% 0; }/*① ノーマル--------------*/
+.box2 { padding:3% 3%; border-style:solid;border-width:1px; box-sizing: border-box; margin:3%; }/*ノーマル(マージンあり)------------*/
+.box_dot { padding:3% 3%; border-style:dotted; border-width:1px; box-sizing: border-box; margin:3% 0; }/*ボックス② 点線枠----------*/
+.box_bg{ padding:3%; margin:3% 0; }/*ボックス③ 背景色あり-----------------*/
+.box_bg p.title{ margin:0px 0 10px 0; padding:0px 0px 1% 2%; border-bottom-style:dotted;border-bottom-width:1px; font-weight:bold; font-size:120%; }
+
+/*ボックス④ フレームあり-----------------------------------*/
+.box_fr{ border-style:ridge; border-width:1%; box-sizing: border-box; padding:3%; margin:3% 0; }
+.box_fr p.title { font-size:120%; border-bottom-style:solid;border-bottom-width:1px; font-weight:bold; margin-bottom:5px; }
+
+/*ボックス⑤ 表型------------------------------------------*/
+.box_info{ margin:3% 0; padding:2%; border-style:solid; border-width:1px; margin-left:5%; margin-right:5%; }	
+.box_info p.title { font-size:120%; font-weight: bolder; text-align: left; padding:1% 2% 1% 2%; margin:-3% -3% 3% -3%; }
+.box_info p { margin:0 1% 1% 1%; }
+
+/*ボックス⑥ 強調1----------------------------------------*/
+.box_em1 { width:90%; box-shadow:1px 1px 1px 1px #666666; margin:0 0 0 5%; box-sizing: border-box; padding:0px 2% 2% 2%; }	
+.box_em1 p.title { width:100%; font-size: 120%; position: relative;	font-weight: bolder; line-height: 1; padding: 2% 4% 2% 3%; margin:0px 0px 3% -4.5%;	box-shadow:1px 1px 1px 0px  #666666 ; border-top:1% solid #ff6347; }
+.box_em1 p.title:after { content: ""; position: absolute; top: 100%; height: 0; width: 0; left: 0; border-top-style:solid;border-top-width:1%; border-right-style:solid;border-right-width:1%; border-style:solid;border-width:1%; }
+
+/*ボックス⑦ 強調2--------------------------------*/
+.box_em2 { position:relative; width:88%; font-size:120%; font-weight:bold; text-shadow:0 1px 0 #fff; line-height:2.0em; border-radius:5px; -moz-border-radius:5px; margin:2% auto 2%; padding:4%; }
+.box_em2:before, .box_em2:after { z-index:-1; position:absolute; content:""; top:80%; bottom:1%; left:1%; width:50%; 
+	-webkit-box-shadow:0 3% 3% #000;
+	-moz-box-shadow:0 3% 3% #000;
+	box-shadow:0 3% 3% #000;
+	-webkit-transform:rotate(-5deg);
+	-moz-transform:rotate(-5deg);
+	-o-transform:rotate(-5deg);
+	-ms-transform:rotate(-5deg);
+	transform:rotate(-5deg); }
+.box_em2:after { right:3%; left:auto;
+	-webkit-transform:rotate(5deg);
+	-moz-transform:rotate(5deg);
+	-o-transform:rotate(5deg);
+	-ms-transform:rotate(5deg);
+	transform:rotate(5deg); }
+.box_em2 p.title { font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; text-align:center; font-size:130%; margin-top:2%; margin-bottom:3%;	}
+
+/*ボックス⑧ 強調3------------------------------*/
+.box_em3 { width:90%; font-size:120%; text-align:center;
+	-webkit-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	-moz-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),20px 10px 0 -5px #ffffa8,20px 10px 1px -4px rgba(0,0,0,0.2);
+	padding:3%; }
+.box_em3 p.title{ width:100%; position:relative; margin-left:-4%; padding:2%; font:normal 120%/1.6 "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif "Times New Roman", Times, serif, ;
+	text-align:center; font-weight:bolder; box-shadow:0 1px 0px 0 rgba(0,0,0,0.2); }
+.box_em3 p.title:before{ content:" "; position:absolute; top:-1%; left:0; width:0; height:0; border-width:0 0 1% 2%; border-style:solid; }
+.box_em3 p.title:after{ content:" "; position:absolute; top:0px; right:0; width:0; height:0; border-top-style:solid;border-top-width:1em; border-right-style:solid;border-right-width:1em; border-bottom-style:solid;border-bottom-width:1em; border-left-style:solid;border-left-width:1em; }		
+
+/*ボックス⑨ 強調4-----------------------------------*/
+.box_em4{ padding:3%; margin:10% 0; position:relative; }
+.box_em4 p.title { position:relative; font-size:120%; font-weight:bold; margin-bottom:1%; padding-left:13%; padding-top:0%; }
+.box_em4:after{ content:" "; position:absolute; top:-4%; left:2%; width:0px; height:0.5; border-top:solid 1em #B00002; border-right:solid 1em  #B00002; border-bottom:solid 1em #B00002; border-left:solid 1em  #B00002; }	
+.box_em4:before{ content:" "; position:absolute; top:2%; left:2%; width:0px; height:0.5em; border-top:solid 1em transparent; border-right:solid 1em  #B00002; border-bottom:solid 1em  transparent; border-left:solid 1em  #B00002; }
+	
+/*ボックス⑩ 強調5----------------------------------*/
+.box_em5{ position:relative; padding:3%; box-shadow: 10px 0 0 0 #88ccef, -10px 0 0 0 #88ccef, 0 1% 1% 0 rgba(0,0,0,0.1); }
+.box_em5 p.title{ font-size:130%; font-weight:bold; }
+.box_em5 :before{ content:" "; position:absolute; top:-10%; left:0; width:40%; height:0; border-width:0 1em 1em 0; border-style:solid; border-color:transparent; }
+
+/*ボックス⑪ 強調6----------------------------------*/
+.box_em6 { margin:10% 0%; height:10%; position: relative; padding:10%; }
+.box_em6:before{ content: ''; position: absolute; border: 1px dashed #bbb; top: 1%; bottom: 1%; left: 1%; right: 1%; -moz-box-shadow: 0 0 0 1px #eee; -webkit-box-shadow: 0 0 0 1px #eee; box-shadow: 0 0 0 1px #eee; }
+.box_em6 p.title{ }
+
+/*ボックス⑫ 背景画像------------------------------*/
+.box_bgimg { }
+.box_bgimg p.title { }
+
+/*フィールドセット--------------------------------*/
+
+
+/** (7) table
+==========================================================================**/
+
+/*通常テーブル border
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*通常テーブル① 空箱--------------------------------*/
+table.border{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; font-size:80%; box-sizing:border-box; }
+table.border tr th{ text-align:center; padding-top:1% 1%; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border tr td{ padding:1% 0px; border-style:solid;border-width:1px; }
+
+/*通常テーブル② td(左寄せ・上寄せ)------------------*/
+table.border2{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em;}
+table.border2 tr th{ text-align:center; padding-top:1% 1%; border-style:solid;border-width:1px; vertical-align:middle;white-space: pre-line;background-color: #d6ebf5;
+    color: #214fce;
+    border: 1px solid #666; }
+table.border2 tr td{ padding:1% 0px; border-style:solid;border-width:1px; text-align:left; vertical-align:top; }
+
+/*通常テーブル③ td(左寄せ・中央寄せ)----------------*/
+table.border3{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border3 tr th{ text-align:center; padding-top:1% 1%; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border3 tr td{ padding:1% 0px; border-style:solid;border-width:1px; text-align:left; vertical-align:middle; }
+
+/*通常テーブル④ td(中央寄せ・上寄せ)----------------*/
+table.border4{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border4 tr th{ text-align:center; padding-top:1% 1%; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border4 tr td{ padding:1% 0px; border-style:solid;border-width:1px; text-align:center; vertical-align:middle; }
+
+/*通常テーブル⑤ td(中央寄せ・中央寄せ)--------------*/
+table.border5{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+table.border5 tr th{ text-align:center; padding-top:1% 1%; border-style:solid;border-width:1px; vertical-align:middle; }
+table.border5 tr td{ padding:1% 0px; border-style:solid;border-width:1px; text-align:center; vertical-align:middle; }
+	
+/*フォームテーブル---------------*/
+table.form{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em; font-size: 0.9rem; }
+table.form tr th{ text-align:center; padding:0.1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd;font-weight: normal; }
+table.form tr td{ padding:0.1em; border-style:solid;border-width:1px;vertical-align:middle;text-align:left; }
+
+/*行程表 sch
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*行程表① ノーマル--------------------------------*/
+table.sch{ border-collapse: collapse; margin-bottom:1em; border:1px solid #666; margin-left:0px; width:100%; font-size: 60%; }
+table.sch th { background:#477fc2; color:#ffffff; text-align:center; font-weight:bold; padding:1%; border:1px solid #666; }
+table.sch td { padding:1%; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:1em; border-bottom:1px solid #666; }
+
+/*行程表② 列毎に色付1(日次あり)--------------------*/
+table.sch2{ border-collapse:collapse; border-spacing:0; margin-bottom:1%; width:100%; margin-top:1%; border-bottom-style:solid;border-bottom-width:1px; }
+table.sch2 th { text-align:center; font-weight:bold; padding:1% 2%; border-style:solid;border-width:1px; }
+table.sch2 td { padding:1% 2%; border-left-style:solid;border-left-width:1px; border-right-style:solid;border-right-width:1px; }
+/* tdの文字配置 */
+/* 1列目 */ table.sch2 tr td { text-align:center;vertical-align:top; }
+/* 2列目 */ table.sch2 tr td + td { text-align:center; }
+/* 3列目 */ table.sch2 tr td + td + td { text-align:center; }
+/* 4列目 */ table.sch2 td + td + td + td { text-align:center; }
+/* 5列目 */ table.sch2 td + td + td + td + td { text-align:center;}
+/* 6列目 */ table.sch2 td + td + td + td + td + td { text-align:left; }
+/* 7列目 */ table.sch2 td + td + td + td + td + td + td { text-align:center; }
+table.sch2 tr td img { width:2%;hight:2%; }
+table.sch2 tr td.right { text-align:right; }
+table.sch2 tr td.info { padding:1% 2%; text-align:left; vertical-align:top; background-color:#FFFFFF; }
+
+/*行程表③ 列毎に色付2(日次なし)--------------------*/
+table.sch3{ border-collapse:collapse; border-spacing:0; margin-bottom:1%; width:100%; margin-top:1%; border-bottom-style:solid;border-bottom-width:1px; }
+table.sch3 th { text-align:center; font-weight:bold; padding:1% 2%; border-style:solid;border-width:1px; }
+table.sch3 td { padding:1% 2%; border-left-style:solid;border-left-width:1px; border-right-style:solid;border-right-width:1px; }
+/* tdの文字配置 */
+/* 1列目 */ table.sch3 tr td { text-align:center;vertical-align:top; }
+/* 2列目 */ table.sch3 tr td + td { text-align:center; }
+/* 3列目 */ table.sch3 tr td + td + td { text-align:center; }
+/* 4列目 */ table.sch3 td + td + td + td { text-align:center; }
+/* 5列目 */ table.sch3 td + td + td + td + td { text-align:left;}
+/* 6列目 */ table.sch3 td + td + td + td + td + td { text-align:center; }
+table.sch3 tr td img { width:2%;hight:2%; }
+table.sch3 tr td.right { text-align:right; }
+table.sch3 tr td.info {	padding:1% 2%; text-align:left; vertical-align:top; background-color:#FFFFFF; }
+	
+/*行程表 共通要素--------------------------------*/
+.point { font-weight: bolder; padding: 1%; text-align: center; margin-bottom:2%; }
+.point2 { font-weight: bolder; padding: 1%; text-align: center; margin-bottom:2%; }
+.point_sch{ margin-top:-1%; padding:1% 2%; margin-bottom:1%;}
+.point_sch dl dt{ float:left; width:10%;}
+.point_sch dl dd{ margin-left:10%; padding-bottom:1px;	}
+.endline{ padding-bottom:2%; border-bottom-style:solid;border-bottom-width:1px; }
+
+/*料金表 price
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+table.price{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; font-size: 75%; }
+table.price tr th{ text-align:center; padding:0.15em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd ; }
+table.price tr td{ padding:0.15em; border-style:solid;border-width:1px; }
+
+/*料金表② thの改行あり--------------------*/
+table.price2{ width:100%; border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; text-align: center; margin-left:0px; }
+table.price2 tr th{ text-align:center; padding:2% 1%; border-style:solid;border-width:1px; vertical-align:middle; }
+table.price2 tr td{ padding:2% 1%; border-style:solid;border-width:1px; vertical-align:middle; }
+table.price2 tr td.info{ padding:1%; border-style:solid;border-width:1px; vertical-align:middle; text-align:left; }
+
+/** ボタン button
+==========================================================================**/
+
+/*ホバー hover (マウスをのせたとき)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*ホバー① 文字色変化--------------------------------*/
+.click1 { font-style:normal;text-decoration:none; }
+.click1:hover{ }
+
+/*ホバー② モヤがかる--------------------------------*/
+.click2 { font-style:normal;text-decoration:none;opacity:1.0; }
+.click2:hover{ opacity: 0.7;filter:alpha(opacity=70); }
+
+/*ホバー③ 表示位置がずれる----------------------------*/
+.click3 { font-style:normal;text-decoration:none; }	
+.click3:hover{ position:relative;top:1%;left:1%; }
+
+/*ホバー④ アニメーション----------------------------*/
+.click4 { font-style:normal;text-decoration:none; }	
+.click4:hover { }
+
+/*ホバー⑤ アニメーション----------------------------*/
+.click5 { font-style:normal;text-decoration:none; }	
+.click5:hover { letter-spacing: 1%; }
+
+/*ホバー⑥ アニメーション----------------------------*/
+.click6 { font-style:normal;text-decoration:none; }	
+.click6:hover { }
+
+/*ホバー⑦ ボタンを押すアニメーション-----------------*/
+.click7 { font-style:normal;text-decoration:none; }	
+.click7:hover { border-bottom:none;position:relative;top:2px;}
+
+/*リンクをつけない---------------------------*/
+.nolink{color:#ffffff;}
+
+/*ボタン button
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*ボタン① 詳細はこちら--------------------------------*/
+
+.shosai{ text-align:center; font-weight:bolder; border:1px solid #CCC; text-decoration:none; width:75%; margin:1% auto; padding:2% 5%; display:block; border-radius: 10px; 
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+    -o-radius: 10px;
+	box-shadow: 1px 2px 5px  #666;
+	-webkit-box-shadow:1px 2px 5px #666; 
+	-moz-box-shadow:1px 2px 5px #666; 
+	-o-box-shadow: 1px 2px 5px #666; }	
+
+/*ボタン② 申込はこちら--------------------------------*/
+.register{ text-align:center; color:#FFF; font-weight:bolder; font-size:130%; text-decoration:none; width:90%; margin:0 auto; padding:3% 0; display:block; border:1px solid #CCC; border-radius: 10px;
+	-webkit-box-shadow:1px 2px 5px #666;
+	-moz-box-shadow:1px 2px 5px #666;
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666; }	
+
+/*ボタン③　ページにボタンを複数並べる--------------*/
+.btn_list{ margin:0 auto; width:100%; }	
+.btn_list a{ padding:2% 1%; margin:2% 2% 2% 2%; width:43%; height:5em; display:block; color:#FFF; text-align:center; font-weight:bolder; font-size:120%; text-decoration:none; border:1px solid #CCC; float:left;		
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+	-webkit-box-shadow:1px 2px 5px #666;
+	-moz-box-shadow:1px 2px 5px #666;
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666;}	
+.btn_lh1:before{ content: ""; display: block; height: 1.7em; vertical-align: middle; }	
+.btn_lh1 { line-height:1.5;min-height:1.5;  }
+.btn_lh2:before{ content: ""; display: block; height: 1em; vertical-align: middle;}	
+.btn_lh2{ line-height:1;min-height:1; }
+.btn_lh3{ line-height:1.5;min-height:1.5; }
+
+/*ボタン④　Yes/Noボタン------------------------*/
+.btn_yesno{ }
+.btn_yesno a{ margin:0 auto; height:4em; line-height:1.5; width:86%; position:relative; margin:3% 5%; padding:2% 2% 2% 2%; display:block; font-size:120%; float:left; text-decoration:none; text-align:center; font-weight:bolder;
+	-webkit-box-shadow:1px 2px 5px #666;
+	-moz-box-shadow:1px 2px 5px #666;
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666;	
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }	
+.btn_yesno a.yes{ border:1px solid #ccc; }
+.btn_yesno a.yes:after{ content:"YES"; position: absolute; bottom:10%; left:45%; font-size:150%; font-weight:bold;}  
+.btn_yesno a.no{ border:1px solid #ccc; }
+.btn_yesno a.no:after{ content:"NO"; position: absolute; bottom:10%; left:45%; font-size:150%; font-weight:bold; }  
+
+/*横並び複数ボタン-------------------*/	
+.btn_box{ margin:30px auto 15px auto; width:100%; text-align:center; }
+.btn_box a { border-bottom:#666666 solid 2px; border-left:none; border-right:none; border-top:none;	color: #fff; text-decoration:none; font-size:130%; text-align:center; padding:1% 2%; margin:3% 0.6%; border-radius:4px;}	
+
+/*ボタン⑤　ノーマルボタン1-------------------*/
+.button{ position:relative; text-align:center; color:#FFF; font-weight:bolder; border:1px solid #CCC; width:86%; margin:1% 5% 1% auto; padding:2% 2%; display:block; text-decoration:none; 			
+	-moz-border-radius: 15px;
+    -o-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius: 15px;	
+		-webkit-box-shadow:1px 2px 5px #666;/* webkit */
+	-moz-box-shadow:1px 2px 5px #666;/* fx */
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666; }	
+
+/*ボタン⑥　ノーマルボタン2-------------------*/
+.button2 { border-style:solid;border-width:2px; color: #fff; line-height: 1.5em; text-decoration:none; padding:2% 5%; font-size:120%; }	
+
+/*ボタン⑦　ノーマルボタン3-------------------*/
+.button3 { border-style:solid;border-width:2px; color: #fff; line-height: 1.5; text-decoration:none; padding:2% 5%; font-size:100%; width:70%; display:block; text-align:center; }	
+
+/*ボタン⑧　ノーマルボタン4-------------------*/
+.button4 { border-style:solid;border-width:2px; color: #fff; line-height: 1.5; text-decoration:none; padding:2% 5%; font-size:100%; width:80px; text-align:center; }	
+
+
+}

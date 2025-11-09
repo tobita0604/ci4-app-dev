@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+
+<title>EPC2024 お申込みサイト</title>
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="viewport" content="width=device-width,initial-scale=1.0">
+ <meta name="robots" content="all" />
+ <meta name="format-detection" content="telephone=no">
+ <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" >
+ 
+  <!-- CSS設定
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<link rel="stylesheet" href="<?php echo base_url();?>common/css/common.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo base_url();?>common/css/contents.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo base_url();?>common/css/style.css" type="text/css" />
+ 
+<link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui-1.12.1.css" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-ui-1.12.1.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/datepicker-ja.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/ajaxzip3.js"></script>
+</head>
+
+<body id ="top_g">
+<div id="wrapper">
+	<div class="login_wrapper">
+		<h1>パスワードリセット</h1>
+		<form action="<?php echo base_url();?>login_con/forget_password" method="post">
+			<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+			<!-- <img src="<?php echo base_url();?>common/img/logo.png" alt="" height= "80px"/> -->
+			</br>
+			
+			<p style="color: red; font-size: 120%; font-weight: bolder;text-align: center;"><?php if(isset($messager)) { echo $messager;} ?></p>				
+			<div class="login_form">
+				<dl>
+					<dt>ログインID</dt>
+					<dd><input type="text" name="R00_Id" id="R00_Id" value="<?php echo h($R00_Id);?>"></dd>							
+					<?php if(isset($R00_Id_Err)){?>
+						<dd><span style="color: red;"><?php echo $R00_Id_Err;?></span></dd>
+					<?php }?>
+					<dt>生年月日</dt>
+					<dd>
+						<select name="birth_yy">
+							<?php for($yy=2022;$yy>=1900;$yy--){?>
+								<option value="<?php echo $yy?>" <?php echo $birth_yy== $yy ? 'selected':'';?>><?php echo $yy?></option>
+							<?php }?>
+						</select>　年
+						<select name="birth_mm">
+							<?php for($mm=1;$mm<=12;$mm++){?>
+								<option value="<?php echo str_pad($mm, 2, "0", STR_PAD_LEFT );?>"<?php echo $birth_mm==str_pad($mm, 2, "0", STR_PAD_LEFT )? 'selected':'';?>><?php echo str_pad($mm, 2, "0", STR_PAD_LEFT );?></option>
+							<?php }?>
+						</select>　月
+						<select name="birth_dd">
+							<?php for($dd=1;$dd<=31;$dd++){?>
+								<option value="<?php echo str_pad($dd, 2, "0", STR_PAD_LEFT );?>" <?php echo $birth_dd==str_pad($dd, 2, "0", STR_PAD_LEFT )? 'selected':'';?>><?php echo str_pad($dd, 2, "0", STR_PAD_LEFT );?></option>
+							<?php }?>
+						</select>　日
+					</dd>												
+				</dl>
+				<p style="color: red; text-align: center;">パスワードをお忘れの場合、ログインIDと生年月日を入力してください。<br>生年月日情報が未登録の場合は「EPC2024」事務局までご連絡ください。</p>
+				<p class="login_submit"><input type="button" class = "button_log" style ="background-color: #E6703A !important;" name="btn_back" value="ログイン画面に戻る" onclick="window.location.href='<?php echo base_url();?>login_con'">
+				&nbsp;&nbsp;&nbsp;<input type="submit" class = "button_log" name="password_reset" value="リセット"></p>				
+			</div>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>

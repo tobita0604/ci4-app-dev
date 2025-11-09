@@ -1,0 +1,272 @@
+body,td,th {
+	color: #666;
+	font-family: "メイリオ","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+}
+
+h1 {
+	color: #666666;
+}
+img {
+	border:none;
+}
+.textalign_center {
+	text-align:center;
+}
+.marginleft5px {
+	margin-left:5px;
+}
+.marginleft1px {
+	margin-left:1px;
+}
+.marginbottom20px {
+	margin-bottom:20px;
+}
+A:link {
+	COLOR: #94846e;
+	TEXT-DECORATION: none
+}
+A:active {
+	background:#036;
+	COLOR: #94846e;
+	TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #94846e;
+	TEXT-DECORATION: none
+}
+.margintop10px {
+	margin-top:10px;
+}
+A:hover {
+	COLOR: #94846e;
+	TEXT-DECORATION: underline;
+	background-color: #f8f8f1;
+}
+A:hover NOBR {
+	COLOR: #94846e! important; TEXT-DECORATION: underline! important
+}
+A:hover STRONG {
+	COLOR: #94846e! important; TEXT-DECORATION: underline! important
+}
+A:hover EM {
+	COLOR: #94846e! important; TEXT-DECORATION: underline! important
+}
+A:hover I {
+	COLOR: #94846e! important; TEXT-DECORATION: underline! important
+}
+A:hover FONT {
+	COLOR: #94846e! important; TEXT-DECORATION: underline! important
+}
+
+#back {
+	MARGIN: 20px auto 0px;
+	WIDTH: 960px;
+	TEXT-ALIGN: left;
+}
+#head {
+	WIDTH: 938px;
+	HEIGHT: 50px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+}
+#head H1 {
+	FLOAT: left
+}
+#pan {
+	width: 900px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	clear: both;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0px;
+}
+#pan p {
+	margin: 0px;
+}
+.submenu {
+	padding-right: 10px;
+	padding-left: 6px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	text-align: left;
+}
+#hright {
+	FLOAT: right;
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.ap_dl {
+	margin-top: 0px;
+	margin-right: 13px;
+	margin-bottom: 5px;
+	margin-left: 13px;
+}
+.gray_9p {
+	font-size: 9pt;
+	color: #666666;
+	line-height: 16px;
+}
+.bl_11p_bld {
+	font-style: normal;
+	line-height: 16px;
+	font-weight: bold;
+	font-variant: normal;
+	color: #003B75;
+}
+.gray_8p {
+	font-size: 8pt;
+	color: #666666;
+}
+.f_pink {
+	color: #ff69b4;
+}
+.orange_11p {
+	font-size: 11pt;
+	color: #FF6600;
+}
+.orange_10p {
+	font-size: 10pt;
+	color: #FF6600;
+}
+.red_10p_b {
+	font-size: 12pt;
+	color: #FF0000;
+	font-weight: bold;
+	text-align: left;
+}
+.red_11p_b {
+	font-size: 11pt;
+	color: #FF0000;
+	font-weight: bold;
+}
+.gray_10p {
+	font-size: 10pt;
+	color: #666666;
+}
+.bl_9p {
+	font-size: 9pt;
+	color: #003B75;
+	font-style: normal;
+	line-height: 16px;
+	font-weight: normal;
+	text-align: left;
+}
+.size9pt {
+	font-size: 9pt;
+}
+.f_red {
+	color:#F00;
+}
+.ud_txt {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: right;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+}
+.hikaru a:hover img {
+	opacity:0.8;
+	filter: alpha(opacity=80);
+}
+ul {
+	margin-left: 1px;
+	list-style-type: square;
+}
+li {
+	padding-left: 0.1em;
+	line-height: 140%;
+}
+.moushi_r1 {
+	float: left ;
+	width: 315px;
+	padding-top: 5px;
+	padding-right: 20px;
+	text-align: right;
+}
+.moushi_r2 {
+	float: right;
+	width: 315px;
+	padding-top: 5px;
+	padding-right: 20px;
+	text-align: right;
+}
+.textalign_right {
+	text-align:right;
+}
+.marginright10px {
+	margin-right:10px;
+}
+.marginleft10px {
+	margin-left:10px;
+}
+.marginbottom10px {
+	margin-bottom:10px;
+}
+.marginleft15px {
+	margin-left:15px;
+}
+.f_large {
+	font-size:14pt;
+}
+.f_9pt {
+	font-size:9pt;
+}
+.f_orange {
+	color:#ea5506;
+}
+.f_blue {
+	color:#1e50a2;
+}
+.f_green {
+	color:#007b43;
+}
+.float_right {
+	float:right;
+}
+.float_left {
+	float:left;
+}
+div.div042-hpl {
+  margin: 10px 0 0;
+  background: url(img/b_chui_corner.gif) no-repeat bottom;
+}
+div.div042-hpl p {
+	padding:10px;
+}
+div.totop {
+	padding:10px 0 10px 0;
+	margin:0 auto 10px auto;
+	clear:both;
+	text-align:right;
+}
+table.list {
+	width:100%;
+	border:solid 1px
+#333333;
+	border-collapse:collapse;
+	text-align:center;
+}
+table.list th {
+	white-space:nowrap;
+	border:solid 1px;
+	background: #E6E6E6;
+	
+}
+table.list tr {
+	white-space:nowrap;
+	
+}
+table.list td {
+	border:solid 1px;
+	white-space:nowrap;
+	padding:5px;
+}
+
+.login_wrapper{ width: 960px;  margin:0 auto; display: block; }
+

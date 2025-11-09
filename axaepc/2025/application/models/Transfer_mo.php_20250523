@@ -1,0 +1,51 @@
+<?php
+if (! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Transfer_mo extends CI_Model
+{
+    private $table;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+        $this->table = 'R02_Option';
+    }
+
+    //==============================================
+    // 移動方法情報登録処理
+    //==============================================
+    public function insert($data)
+    {
+        $this->db->insert($this->table, $data);
+        return $this->db->insert_id();
+    }
+
+    //==============================================
+    // 移動方法情報登録更新処理
+    //==============================================
+    public function save_bus_info($R01_Id, $R01_seq, $bus_dep, $bus_arr)
+    {
+        // すでにレコードがあるかチェック
+        $this->db->from($this->table);
+        $this->db->where('R02_Id', $R01_Id);
+        $this->db->where('R02_seq', $R01_seq);
+        $query = $this->db->get();
+
+        $data = [
+            'R02_bus_dep' => $bus_dep,
+            'R02_bus_arr' => $bus_arr
+        ];
+
+        if ($query->num_rows() > 0) {
+            // UPDATE
+            $this->db->where('R02_Id', $R01_Id);
+            $this->db->where('R02_seq', $R01_seq);
+            $this->db->update($this->table, $data);
+        } else {
+            // INSERT
+            $data['R02_Id'] = $R01_Id;
+            $data['R02_seq'] = $R01_seq;
+            $this->db->insert($this->table, $data);
+        }
+    }
+}

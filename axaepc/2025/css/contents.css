@@ -1,0 +1,320 @@
+@charset "utf-8";
+/**===========================================================
+- reset
+
+**Break Point(min-width: 1201px)
+- A-1.index
+- A-2.
+- A-3.
+- A-4.
+- A-5.
+- A-6.
+- A-7.
+- A-8.
+
+
+
+@media only screen and (max-width: 720px)
+
+===========================================================**/
+
+@media(min-width: 1201px) {
+/**Break Point
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+**/
+/** A-1.index
+==========================================================================**/
+	.dl30030 { margin-top: 0;}
+	.dl30030 dl dt {float: left; clear: left; width: 300px;}
+	.dl30030 dl dt img {width: 100%; height: auto;}
+	.dl30030 dl dd { margin-left: 330px; clear: right;}
+	.dl30030:after {content: ""; display: block; clear: both; margin-bottom: 30px;}
+	.megumititle { font-size: 24px !important; font-weight: bolder; margin-bottom: 15px;}
+	
+	.point3 { width:auto;}
+	.point3 ul li{ float:left; display:block; width:32%; margin-right:2%; padding:2%; text-align:left; list-style-type:none; background-color:#002244; color:#fff; }
+	.point3 ul li:last-child { margin-right:0;}
+	.point3 ul li dl dt { font-size:120%; font-weight:bolder;}
+	
+	.textleftw{ text-align:left; color:#fff; margin-bottom:2em;}
+		
+	.bgworld { background-image:url(../img/worldmap1.png);}
+	.bgskyblue { background-color:#689AFF;}
+	
+	.sidemenu ul li { width:100%; margin-bottom:30px; clear:both;}
+	.sidemenu ul li img { width:100%; height:auto;}
+	
+	.whatsnew { background-color: #F5F3F2; width:100%; }
+	.whatsnew_title { position:relative; background-color:#BEB1AA; text-align:center; width:150px; padding-top:5px; padding-bottom:5px; color:#fff; }
+	
+	table.course{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+	table.course tr th{ text-align:center; padding:1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #333; color: #fff; }
+	table.course tr td{ padding:1em; border-style:solid;border-width:1px;vertical-align:middle; }
+	
+/** Country
+==========================================================================**/
+	table.bluetable{ border-spacing:0; border: 1px solid #003399;  border-collapse:collapse; }
+	table.bluetable tr th{ text-align:center; padding-top:5px 3px; border: 1px solid #003399; vertical-align:middle; background-color: #175AE1; color: #fff; }
+	table.bluetable tr td{ padding:5px 3px;border: 1px solid #003399;  text-align: center; vertical-align:middle;  }
+	
+	.illust80{ width:80%; margin-top:1em; margin-bottom:1em; margin:0 auto; }
+	.illust80 img{ width:100%; height:auto; }
+	.illust100{ width:100%; margin-top:1em; margin-bottom:1em; margin:0 auto; }
+	.illust100 img{ width:100%; height:auto; }
+
+
+/** FAQ
+==========================================================================**/
+	.faqq{ border-bottom: 1px dotted  #007ABF; margin-bottom:1em; font-size:110%; font-weight:bolder; color:#007ABF; }
+	.faqa:before{ content:"Ａ．"; display: block; float: left; margin-left: -2em; width: 2em; text-align: center; }
+	.faqa{ display: block; padding-left: 2em; margin-bottom:2em; }
+
+/** Experiences
+==========================================================================**/
+	.taiken{ background-color:#83C5F0; width:100%; padding:5%; margin-bottom:30px; }
+	.taiken_contents { background-color:#fff; width:100%; padding:5%;
+	-moz-border-radius: 15px; /* Firefox */  -webkit-border-radius: 15px; /* Safari and Chrome */  border-radius: 15px; behavior: url(border-radius.htc); /* IE */}
+	.taiken_title{ font-weight:bolder; font-size:130%; border-left:5px solid ; padding-left:15px; margin-bottom:20px; }
+	.taiken_main{ border-top:1px solid ; padding-top:20px; padding-bottom:20px; border-bottom:1px solid; }
+	.exp_photo { float:right; padding-left:1em; padding-bottom:1em; width:200px;} 
+	.exp_photo img { width:100%; height:auto;}
+
+
+
+/** tour
+==========================================================================**/
+
+.yoko dl dt{ float:left;padding:5px }
+.yoko dl dd{ margin-left:170px; text-align:left;padding:5px }
+
+
+
+
+
+.step {	border: 1px solid #323232; width: 90%; padding:0.7em; margin: 0 auto; box-sizing: border-box;}
+.step_num { font-size: 120%; width:90%; font-weight: bolder; color: #FFFFFF; text-align: center; padding: 0.7em; background-color: #5F5F5F; border-top: 1px solid #323232;border-left: 1px solid #323232; border-right: 1px solid #323232; box-sizing: border-box; margin: 0 auto;}
+#bank { background-color: #FFFFFF; border: 1px solid #cccccc; padding: 10px; margin-top: 10px; margin-bottom: 10px; font-size:95%; }
+
+.arr { margin:10px 0; text-align:center; }
+
+
+.h2adjust { margin-top: 0px!important; margin-bottom: 20px !important; }
+
+
+
+/** Form
+==========================================================================**/
+table.formd{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em; font-size: 1.2rem; }
+table.formd tr th{ text-align:center; padding:0.3em 1em 0.3em 1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd;font-weight: normal; }
+table.formd tr td{ padding:0.3em 0.3em 0.3em 0.3em; border-style:solid;border-width:1px;vertical-align:middle;text-align:left;  }
+
+/** Mypage_login
+==========================================================================**/
+	.login_wrapper{ width:500px; margin:0 auto;}
+	#mypage_login{ width: 100%; padding: 2em;}
+	.login_form dl{ margin-bottom: 1em;}
+	.login_form dl dt{ float: left; width: 100px; clear: left; margin-bottom: 10px; text-align: right;}
+	.login_form dl dd{ margin-left: 150px; margin-bottom: 10px; width: 250px;}
+	.login_form dl dd input { width: 100%;}
+	.login_submit {text-align: center; margin-top: 1em; margin-bottom: 1em; clear: both; }
+	.login_submit input {font-size:1.4rem; padding: 0.5em 2em 0.5em 2em; }
+	
+/** Mypage_aside
+==========================================================================**/
+.mypage_box1_title{	background-color:#333; padding-top:3px; padding-bottom:3px; color:#FFF; text-align:center; }
+.mypage_box1{ width:100%; background-color:#eee; padding:1em;  }
+.mypage_box1 ul li{ list-style-type: square; margin-bottom: 0.7em; margin-left: 1em; }
+
+
+
+/** Entry
+==========================================================================**/
+.entryflow img{ width:100%; height:auto; }
+	.entryflow { margin-bottom: 30px; margin-top: 30px; }
+
+	
+
+/** MENU
+==========================================================================**/
+	.menuback{ background-color: #2F549F; clear: both; padding: 1px; margin-top: 60px; }
+	.menuback h1 {color:#fff;}
+	.menuback:after{content:""; display: block; clear: both;}
+	
+	.menubutton ul li{float:left; width: 30%; margin-right: 5%; list-style-type: none; margin-bottom: 2em;}
+	.menubutton ul li:nth-child(3n){margin-right: 0;}
+	.menubutton ul li input { width: 80%; text-align: center; padding: 0.5em; font-size: 120%; margin: 0 auto;}
+
+
+/** Admin Search
+==========================================================================**/
+table.search{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; margin-bottom: 3em; font-size: 1.2rem; }
+table.search tr th{ text-align:center; padding:0.3em ; border-style:solid;border-width:1px; vertical-align:middle; background-color: #ddd;font-weight: normal; }
+table.search tr td{ padding:0.3em 0.3em 0.3em 0.3em; border-style:solid;border-width:1px;vertical-align:middle;text-align:left;  }
+	
+}
+
+
+/** RESPONSIVE BREAKPOINTS==========**/
+@media(min-width: 721px) and (max-width: 1200px){ /**Break Point
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+**/
+/** A-1.index
+==========================================================================**/
+
+	.dl30030 { margin-top: 0;}
+	.dl30030 dl dt {float: left; clear: left; width: 30%;}
+	.dl30030 dl dt img {width: 100%; height: auto;}
+	.dl30030 dl dd { margin-left: 33%; clear: right;}
+	.dl30030:after {content: ""; display: block; clear: both; margin-bottom: 30px;}
+	.megumititle { font-size: 24px !important; font-weight: bolder; margin-bottom: 15px;}
+	
+	.point3 { width:auto;}
+	.point3 ul li{ float:left; display:block; width:32%; margin-right:2%; padding:2%; text-align:left; list-style-type:none; background-color:#002244; color:#fff; }
+	.point3 ul li:last-child { margin-right:0;}
+	.point3 ul li dl dt { font-size:120%; font-weight:bolder;}
+	
+	.textleftw{ text-align:left; color:#fff; margin-bottom:2em;}
+	
+	.bgworld { background-image:url(../img/worldmap1.png);}
+	.bgskyblue { background-color:#689AFF;}
+	
+	table.course{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+	table.course tr th{ text-align:center; padding:1em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #333; color: #fff; }
+	table.course tr td{ padding:1em; border-style:solid;border-width:1px;vertical-align:middle; }
+	
+/** Country
+==========================================================================**/
+	table.bluetable{ border-spacing:0; border: 1px solid #003399;  border-collapse:collapse; }
+	table.bluetable tr th{ text-align:center; padding-top:5px 3px; border: 1px solid #003399; vertical-align:middle; background-color: #175AE1; color: #fff; }
+	table.bluetable tr td{ padding:5px 3px;border: 1px solid #003399;  text-align: center; vertical-align:middle;  }
+	
+	.illust80{ width:80%; margin-top:1em; margin-bottom:1em; margin:0 auto; }
+	.illust80 img{ width:100%; height:auto; }
+	.illust100{ width:100%; margin-top:1em; margin-bottom:1em; margin:0 auto; }
+	.illust100 img{ width:100%; height:auto; }
+
+
+/** FAQ
+==========================================================================**/
+	.faqq{ border-bottom: 1px dotted  #007ABF; margin-bottom:1em; font-size:110%; font-weight:bolder; color:#007ABF; }
+	.faqa:before{ content:"Ａ．"; display: block; float: left; margin-left: -2em; width: 2em; text-align: center; }
+	.faqa{ display: block; padding-left: 2em; margin-bottom:2em; }
+
+/** Experiences
+==========================================================================**/
+	.taiken{ background-color:#83C5F0; width:100%; padding:5%; margin-bottom:30px; }
+	.taiken_contents { background-color:#fff; width:100%; padding:5%;
+	-moz-border-radius: 15px; /* Firefox */  -webkit-border-radius: 15px; /* Safari and Chrome */  border-radius: 15px; behavior: url(border-radius.htc); /* IE */}
+	.taiken_title{ font-weight:bolder; font-size:130%; border-left:5px solid ; padding-left:15px; margin-bottom:20px; }
+	.taiken_main{ border-top:1px solid ; padding-top:20px; padding-bottom:20px; border-bottom:1px solid; }
+	.exp_photo { float:right; padding-left:1em; padding-bottom:1em; width:200px;} 
+	.exp_photo img { width:100%; height:auto;}
+
+
+/** tour
+==========================================================================**/
+
+.yoko dl dt{ float:left; }
+.yoko dl dd{ margin-left:13em; text-align:left; }
+
+.step {	border: 1px solid #323232; width: 90%; padding:0.7em; margin: 0 auto; box-sizing: border-box;}
+.step_num { font-size: 120%; width:90%; font-weight: bolder; color: #FFFFFF; text-align: center; padding: 0.7em; background-color: #5F5F5F; border-top: 1px solid #323232;border-left: 1px solid #323232; border-right: 1px solid #323232; box-sizing: border-box; margin: 0 auto;}
+#bank { background-color: #FFFFFF; border: 1px solid #cccccc; padding: 10px; margin-top: 10px; margin-bottom: 10px; font-size:95%; }
+
+.arr { margin:10px 0; text-align:center; }
+
+
+.h2adjust { margin-top: 1em!important; margin-bottom: 1em !important; }
+	
+
+/** Entry
+==========================================================================**/
+.entryflow img{ width:100%; height:auto; }
+	.entryflow { margin-bottom: 2em; }
+
+	
+}
+
+
+/** RESPONSIVE BREAKPOINTS==========**/
+@media(max-width: 720px){ /**Break Point
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+**/
+/** A-1.index
+==========================================================================**/
+	.dl30030 { margin-top: 0;}
+	.dl30030 dl dt {float: left; clear: left; width: 30%;}
+	.dl30030 dl dt img {width: 100%; height: auto; padding-right:1em; padding-bottom:1em;}
+	.dl30030 dl dd { clear: right;}
+	.dl30030:after {content: ""; display: block; clear: both; margin-bottom: 2em;}
+	.megumititle { font-size: 1.8rem !important; font-weight: bolder; margin-bottom: 1em;}
+	
+	
+	.point3 { width:auto;}
+	.point3 ul li{ float:left; display:block; width:100%; padding:2em; text-align:left; list-style-type:none; background-color:#002244; color:#fff; margin-bottom:3em }
+	.point3 ul li:last-child { margin-right:0;}
+	.point3 ul li dl dt { font-size:120%; font-weight:bolder;}
+	
+	.textleftw{ text-align:left; color:#fff; margin-bottom:1em;}
+	
+	.bgworld { background-image:url(../img/worldmap1.png);}
+	.bgskyblue { background-color:#689AFF;}
+	
+	table.course{ border-spacing:0; border-style:solid;border-width:1px; border-collapse:collapse; }
+	table.course tr th{ text-align:center; padding:0.3em; border-style:solid;border-width:1px; vertical-align:middle; background-color: #333; color: #fff; }
+	table.course tr td{ padding:0.3em; border-style:solid;border-width:1px;vertical-align:middle; }
+	
+
+/** Country
+==========================================================================**/
+	table.bluetable{ border-spacing:0; border: 1px solid #003399;  border-collapse:collapse; }
+	table.bluetable tr th{ text-align:center; padding-top:5px 3px; border: 1px solid #003399; vertical-align:middle; background-color: #175AE1; color: #fff; }
+	table.bluetable tr td{ padding:5px 3px;border: 1px solid #003399;  text-align: center; vertical-align:middle;  }
+	
+	.illust80{ width:80%; margin-top:1em; margin-bottom:1em; margin:0 auto; }
+	.illust80 img{ width:100%; height:auto; }
+	.illust100{ width:100%; margin-top:1em; margin-bottom:1em; margin:0 auto; }
+	.illust100 img{ width:100%; height:auto; }
+
+
+
+/** FAQ
+==========================================================================**/
+	.faqq{ border-bottom: 1px dotted  #007ABF; margin-bottom:1em; font-size:110%; font-weight:bolder; color:#007ABF; }
+	.faqa:before{ content:"Ａ．"; display: block; float: left; margin-left: -2em; width: 2em; text-align: center; }
+	.faqa{ display: block; padding-left: 2em; margin-bottom:2em; }
+
+/** Experiences
+==========================================================================**/
+	.taiken{ background-color:#83C5F0; width:100%; padding:5%; margin-bottom:30px; }
+	.taiken_contents { background-color:#fff; width:100%; padding:5%;
+	-moz-border-radius: 15px; /* Firefox */  -webkit-border-radius: 15px; /* Safari and Chrome */  border-radius: 15px; behavior: url(border-radius.htc); /* IE */}
+	.taiken_title{ font-weight:bolder; font-size:130%; border-left:5px solid ; padding-left:15px; margin-bottom:20px; }
+	.taiken_main{ border-top:1px solid ; padding-top:20px; padding-bottom:20px; border-bottom:1px solid; }
+	.exp_photo { float:right; padding-left:1em; padding-bottom:1em; width:200px;} 
+	.exp_photo img { width:100%; height:auto;}
+
+/** tour
+==========================================================================**/
+
+.yoko dl dt{ float:left; }
+.yoko dl dd{ margin-left:10em; text-align:left; }
+
+.step {	border: 1px solid #323232; width: 100%; padding:0.7em; margin: 0 auto; box-sizing: border-box;}
+.step_num { font-size: 120%; width:100%; font-weight: bolder; color: #FFFFFF; text-align: center; padding: 0.7em; background-color: #5F5F5F; border-top: 1px solid #323232;border-left: 1px solid #323232; border-right: 1px solid #323232; box-sizing: border-box; margin: 0 auto;}
+#bank { background-color: #FFFFFF; border: 1px solid #cccccc; padding: 10px; margin-top: 10px; margin-bottom: 10px; font-size:95%; }
+
+.arr { margin:10px 0; text-align:center; }
+
+
+.h2adjust { margin-top: 1em!important; margin-bottom: 1em !important; }
+
+/** Entry
+==========================================================================**/
+.entryflow img{ width:100%; height:auto; }
+.ppfile{ width:90%; font-size:70%;}
+}
+

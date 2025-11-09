@@ -1,0 +1,607 @@
+@charset "utf-8";
+
+
+/* ---------------------------------------------------------------------------------
+	Reset
+--------------------------------------------------------------------------------- */
+
+
+* {	margin:0; padding:0;}
+body {	background:#fff; color:#000; font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;}
+img { border:0; vertical-align:bottom; }
+ol{ list-style-position:inside; }
+
+
+
+@media(min-width: 1201px) { /**Break Point
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+
+/* ---------------------------------------------------------------------------------
+	Layout
+--------------------------------------------------------------------------------- */
+#wrapper { margin:0 auto; width:100%; border-left:1px solid #888888; border-right:1px solid #888888; border-bottom:1px solid #888888; font-size: 14px;}
+#contents{ width:1150px; margin:0 auto; padding:10px 0px 10px 0px; line-height:1.7; margin-top:20px; }
+#tour{ width:850px; float:left; margin:0 auto; padding-top:10px; padding-left:0px; padding-right:0px; padding-bottom:10px; background:#fff; }
+.sub { float: right; width:200px; margin-top:0px; }
+#tour p{ padding-left:10px; padding-right:10px; }
+
+.logoarea{	Z-INDEX: 4; position:absolute; width:100%; height:300px; MARGIN:0 auto; padding-top:0px; text-align:center; }
+
+/* ---------------------------------------------------------------------------------
+	Header
+--------------------------------------------------------------------------------- */
+#bgImgArea { position:relative; left:0; width:100%; z-index:3;}
+#bgImgArea img {  width:100%;  height:auto;}
+#bgImgArea a{  position:absolute; z-index:10; right:10px; bottom:10px; padding:2px 10px; background:rgb(255, 255, 255); background:rgba(255, 255, 255, 0.6); border-radius: 2px;  
+	-webkit-border-radius:2px; -moz-border-radius:2px; text-decoration:none; }
+/* 読込先画像を変えて、更新 */
+.bg-01 { background:#eee url(../img/header.png) no-repeat top center; }
+
+/* ---------------------------------------------------------------------------------
+	Parts
+--------------------------------------------------------------------------------- */
+
+h1 { text-align:center; margin:0px;}
+h2 { border-bottom:#333 solid 2px; font-size:18px; color:#333; font-weight:bolder; padding-left:0px; padding-top:8px; margin-bottom:10px; margin-top:20px; }
+h3 { margin:15px 10px 10px 10px; padding-bottom:0px; border-bottom:1px dotted #172768; font-weight:bold; color:#172768; font-size:14px; }
+h4 { margin:5px 0px 5px 0px; font-weight:bold; color:#000; font-size:15px; }
+h5 { margin:5px 0px 5px 0px; padding:5px 20px 5px 20px; font-weight:bold; color:#000; font-size:15px; background-color:#FFF9AE;	border:2px solid #F6B353; }
+h6 { margin:5px 0px 5px 0px; padding:5px 20px 5px 20px; font-weight:bold; color:#000; font-size:15px; background-color:#99CFAA; border:2px solid #326332;}
+
+.lista ul li{ margin-left:25px; margin-right:25px; }
+.listb ul li{ list-style-type: decimal; margin-left:35px; margin-right:35px; }
+.listc ul li{ list-style-type: none; background:url(../img/list_bg.gif) no-repeat 10px 6px; padding-left:23px; margin-left:0px; }
+
+/*フォント--------------------*/
+.font120 { font-size:120%; }
+.font10 { font-size:10px; }
+.font11 { font-size:11px; }
+.font12 { font-size:12px; }
+.font13 { font-size:13px; }
+.font14 { font-size:14px; }
+.font15 { font-size:15px; }
+.font16 { font-size:16px; }
+.font18 { font-size:18px; }
+.font20 { font-size:20px; }
+.font24 { font-size:24px; }
+.font28 { font-size:28px; }
+
+.point { font-weight: bolder; padding: 5px; text-align: center; color: #ffffff; background-color: #CC0099; margin-bottom: 6px; }
+.nedan{ font-size:15px; font-weight:bolder; }
+
+	
+/* ---------------------------------------------------------------------------------
+	Navi-
+--------------------------------------------------------------------------------- */
+
+#nav { background-color:#333; height:50px; font-size: 12px; }
+
+	#nav #navcenter { z-index: 150; width:1150px; margin:0 auto; position: relative;  }
+	#nav  #navcenter .navmain {  height:40px; display: table; table-layout: fixed; text-align: center; width: 100%; padding-top:5px; padding-bottom:5px;  }
+	#nav  #navcenter .navmain li { display: table-cell; vertical-align: middle ; border-left: 1px #ccc solid;}
+	#nav  #navcenter .navmain li:first-child{ border-left:0;}
+	#nav  #navcenter .navmain li a { display:block; text-decoration:none; color: #fff;   }
+	#nav  #navcenter .navmain li a:hover { display:block; text-decoration:none; color: #ff0; }
+	
+
+#top{ height:0; }
+
+
+		
+/* ---------------------------------------------------------------------------------
+table
+--------------------------------------------------------------------------------- */
+
+/*メニュー------------*/
+table.pagemenu { border-collapse:collapse; border-spacing:0; }
+
+/*説明文------------*/
+#tour table.setsumei { border-collapse:collapse; border-spacing:0; margin-bottom:5px; }
+#tour table.setsumei th { background:#8EAEDD; color:#000000; font-weight:bold; padding:5px 12px; border:1px solid #666; }
+#tour table.setsumei td { background:#8EAEDD; padding:5px 12px; border:none; color:#ffffff; font-size:14px; text-align:left; }
+
+/*料金表------------*/
+#tour table.price{ width:98%; border-collapse:collapse; border-spacing:0; margin-bottom:5px; margin-left:10px; margin-right:10px; border-bottom:1px solid #666; }
+#tour table.price th { background:#333; color:#fff; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+#tour table.price td { padding:5px 12px; border:1px solid #666; font-size:13px; }
+
+
+/*行程表------------*/
+table.sch{ border-collapse:collapse; border-spacing:0; width:800px; margin-bottom:5px; margin-left:10px; font-size:85%; border-bottom:1px solid #666;  }
+table.sch th { background:#ccc; color:#000; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+table.sch td { padding:2px 7px; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:10px; border-bottom:1px solid #666; }
+.mark{ font-size:13px; }
+
+/*テーブルフォーム------------*/
+#tour table.entryform{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; }
+#tour table.entryform th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+#tour table.entryform td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff;	vertical-align : middle ; }
+#tour table.entryform td p{	padding-bottom:5px; }
+#tour table.entryform td .txtlong{ width:70%; }
+
+/*テーブル一般ボーダー------------*/
+table.border{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-collapse:collapse; }
+table.border th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+table.border td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff; vertical-align : middle ; }
+table.border td p{ padding-bottom:5px; }
+table.border td .txtlong{ width:70%; }	
+	
+	
+	
+/* ---------------------------------------------------------------------------------
+Contents
+--------------------------------------------------------------------------------- */
+	
+/*INDEX----------------------------*/
+.reason{ width:720px; padding:10px;	background-color:#78C3C9; }
+
+/*募集要項----------------------------*/
+
+.coursetitle{ color:#036; padding-top:5px; padding-bottom:0px; padding-left:15px; font-size:24px; border-left:10px solid #036; font-weight:bolder; margin-bottom:30px; }
+#tour .yoko{ float: left; padding: 0px 0px 0 15px; margin-top: 5px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; width:720px; }
+#tour .yoko dt { float:left; color:#09C; font-weight:bold; width:150px; padding: 1px 0 0 0;	 }
+#tour .yoko dt img { padding:0px 0 0 0; width:100px; vertical-align: top; }
+#tour .yoko dd {  float: left; padding: 1px 0px 10px 0; margin: 0px; width:570px; }
+
+/*お申込み方法------------*/
+.step {	border: 1px solid #005e8a; width:100%; padding: 15px; background-color: #FFFFEE; margin-bottom: 10px; box-sizing: border-box; }
+.step_num {	font-size: 120%; width:100%; font-weight: bolder; color: #FFFFFF; background-color: #005e8a; text-align: center; padding-top: 2px; padding-bottom: 2px; box-sizing: border-box;}
+#tour .arrow { text-align: center; margin-bottom: 10px; }
+#tour .step #bank {	background-color: #FFFFFF; border: 1px solid #666666; padding: 10px; margin-top: 10px; margin-bottom: 10px; }
+.arr { margin:10px 0; text-align:center; }
+#bank {	margin-bottom:10px; padding:10px; border:1px solid #ccc; }
+.box { padding:5px 10px; border:1px solid #666; margin-left:10px; margin-right:10px; }
+
+/*Right------------*/
+
+.contact_title{	background-color:#333; padding-top:3px; padding-bottom:3px; color:#FFF; text-align:center; }
+.contactbox{ width:170px; background-color:#eee; padding:10px; font-size:85%; }
+.moushikomi{ position:relative; padding-top:8px; padding-bottom:5px; background-color:#F00; text-align:center; color:#FFF; font-weight:bolder; border:1px solid #CCC;
+	-moz-border-radius: 10px; -webkit-border-radius: 10px; -khtml-border-radius: 10px; border-radius: 10px; -pie-border-radius: 10px; 
+	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4), 1px 1px 1px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow:1px 2px 5px #666;/* webkit */
+	-moz-box-shadow:1px 2px 5px #666;/* fx */
+	-pie-box-shadow:1px 2px 5px #666;
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666;
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#7B0000));/* webkit */
+	background: -moz-linear-gradient(top,  #C00,  #7B0000);/* fx */
+    -pie-background:linear-gradient(top,  #C00,  #7B0000);/* PIE */
+    behavior: url(PIE.htc);
+	}
+	
+.whatsnew dl dt{ float:left; padding-top:5px; vertical-align:top; }
+.whatsnew dl dd{ padding-top:5px; margin-left:130px; vertical-align:top; }
+.whatsnew dl{ clear:both; border-bottom:#CDDCFC 1px solid; }
+
+.agenda dl dt{ float:left; padding-top:5px; vertical-align:top; }
+.agenda dl dd{ padding-top:5px; margin-left:150px; vertical-align:top; }
+.agenda dl{	clear:both;	border-bottom:#CDDCFC 1px dotted; margin-left:20px; margin-right:20px; }
+.eventnight{ margin-top:10px; margin-bottom:10px; }
+.eventnight dl{	margin-top:10px; }
+.eventnight dl dt{ float:left; }
+.eventnight dl dd{ margin-left:230px; }
+	
+
+	
+/* ---------------------------------------------------------------------------------
+Slider
+--------------------------------------------------------------------------------- */	
+	
+#slider{ position: relative; width:100%; height: 300px; overflow: hidden; background: url(img/loading.gif) no-repeat center center; z-index:1; }
+#slider ul{	position: absolute; top: 0; left: 0; }
+#slider li{	float: left; list-style-type:none; }
+#slider #prev,#slider #next{ position: absolute; top:220px; cursor: pointer; }
+#slider #prev{ left:20px;}
+#slider #next{ right:20px;}
+
+	/* for script */
+#slider ul, #slider #next, #slider #prev{ visibility: hidden; }
+#slider .layer{	width: 1000px; height: 300px; position: absolute; top: 0; left: 0; background: url(../img/dot.gif) repeat 0 0 #666; opacity: 0.5; filter: alpha(opacity=50); }
+
+/*
+ * common
+ */
+.stage{	width: 980px; margin: 0 auto; }
+
+
+
+}
+
+	
+	
+	@media(min-width: 721px) and (max-width: 1200px){ /**Break Point
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+/* ---------------------------------------------------------------------------------
+	Layout
+--------------------------------------------------------------------------------- */
+#wrapper { margin:0 auto; width:100%; border-left:1px solid #888888; border-right:1px solid #888888; border-bottom:1px solid #888888; font-size: 14px;}
+#contents{ width:1000px; margin:0 auto; padding:10px 0px 10px 0px; background:#fff; line-height:1.7; margin-top:20px; }
+#tour{ margin:0 auto; padding-top:10px; padding-left:0px; padding-right:0px; padding-bottom:10px; background:#fff; width:740px; float:left }
+#tour p{ padding-left:10px; padding-right:10px; }
+
+.logoarea{	Z-INDEX: 4; position:absolute; width:100%; height:300px; MARGIN:0 auto; padding-top:0px; text-align:center; }
+
+/* ---------------------------------------------------------------------------------
+	Header
+--------------------------------------------------------------------------------- */
+#bgImgArea { position:relative; left:0; width:100%; z-index:3;}
+#bgImgArea img {  width:100%;  height:auto;}
+#bgImgArea a{  position:absolute; z-index:10; right:10px; bottom:10px; padding:2px 10px; background:rgb(255, 255, 255); background:rgba(255, 255, 255, 0.6); border-radius: 2px;  
+	-webkit-border-radius:2px; -moz-border-radius:2px; text-decoration:none;}
+/* 読込先画像を変えて、更新 */
+.bg-01 { background:#eee url(../img/header.png) no-repeat top center; }
+
+/* ---------------------------------------------------------------------------------
+	Parts
+--------------------------------------------------------------------------------- */
+
+h1 { text-align:center; margin:0px;}
+h2 { border-bottom:#333 solid 2px; font-size:18px; color:#333; font-weight:bolder; padding-left:0px; padding-top:8px; margin-bottom:10px; margin-top:20px; }
+h3 { margin:15px 10px 10px 10px; padding-bottom:0px; border-bottom:1px dotted #172768; font-weight:bold; color:#172768; font-size:14px; }
+h4 { margin:5px 0px 5px 0px; font-weight:bold; color:#000; font-size:15px; }
+h5 { margin:5px 0px 5px 0px; padding:5px 20px 5px 20px; font-weight:bold; color:#000; font-size:15px; background-color:#FFF9AE;	border:2px solid #F6B353; }
+h6 { margin:5px 0px 5px 0px; padding:5px 20px 5px 20px; font-weight:bold; color:#000; font-size:15px; background-color:#99CFAA; border:2px solid #326332; }
+
+.lista ul li{ margin-left:25px; margin-right:25px; }
+.listb ul li{ list-style-type: decimal; margin-left:35px; margin-right:35px; }
+.listc ul li{ list-style-type: none; background:url(../img/list_bg.gif) no-repeat 10px 6px; padding-left:23px; margin-left:0px; }
+
+/*フォント--------------------*/
+.font120 { font-size:120%; }
+.font10 { font-size:10px; }
+.font11 { font-size:11px; }
+.font12 { font-size:12px; }
+.font13 { font-size:13px; }
+.font14 { font-size:14px; }
+.font15 { font-size:15px; }
+.font16 { font-size:16px; }
+.font18 { font-size:18px; }
+.font20 { font-size:20px; }
+.font24 { font-size:24px; }
+.font28 { font-size:28px; }
+
+.point { font-weight: bolder; padding: 5px; text-align: center; color: #ffffff; background-color: #CC0099; margin-bottom: 6px; }
+.nedan{ font-size:15px; font-weight:bolder; }
+
+	
+/* ---------------------------------------------------------------------------------
+	Navi-
+--------------------------------------------------------------------------------- */
+
+#nav { background-color:#333; height:50px; }
+#nav ul { width:1000px;	margin:0 auto; padding-left:30px; }
+#nav ul li{	padding-right:30px; color:#fff; font-size:100%; list-style:none; float:left; padding-top:18px; }
+#nav ul li a{ color:#fff; font-style:normal; text-decoration:underline; }
+#nav ul li a:link { color:#fff; font-style:normal; text-decoration:none;}
+#nav ul li a:visited { color:#fff; font-style:normal; text-decoration:none;}
+#nav ul li a:hover { color:#FF0; font-style:normal; text-decoration:none; }
+#nav ul li a:active { color:#fff; font-style:normal; text-decoration:none;}
+#top{ height:0; }
+
+
+		
+/* ---------------------------------------------------------------------------------
+table
+--------------------------------------------------------------------------------- */
+
+/*メニュー------------*/
+table.pagemenu { border-collapse:collapse; border-spacing:0; }
+
+/*説明文------------*/
+#tour table.setsumei { border-collapse:collapse; border-spacing:0; margin-bottom:5px; }
+#tour table.setsumei th { background:#8EAEDD; color:#000000; font-weight:bold; padding:5px 12px; border:1px solid #666; }
+#tour table.setsumei td { background:#8EAEDD; padding:5px 12px; border:none; color:#ffffff; font-size:14px; text-align:left; }
+
+/*料金表------------*/
+#tour table.price{ width:98%; border-collapse:collapse; border-spacing:0; margin-bottom:5px; margin-left:10px; margin-right:10px; border-bottom:1px solid #666; }
+#tour table.price th { background:#333; color:#fff; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+#tour table.price td { padding:5px 12px; border:1px solid #666; font-size:13px; }
+
+
+/*行程表------------*/
+#tour table.sch{ border-collapse:collapse; border-spacing:0; width:720px; margin-bottom:5px; margin-left:10px; font-size:85%; border-bottom:1px solid #666; }
+#tour table.sch th { background:#ccc; color:#000; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+#tour table.sch td { padding:2px 7px; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:10px; border-bottom:1px solid #666; }
+.mark{ font-size:13px; }
+
+/*テーブルフォーム------------*/
+#tour table.entryform{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; }
+#tour table.entryform th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+#tour table.entryform td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff;	vertical-align : middle ; }
+#tour table.entryform td p{	padding-bottom:5px; }
+#tour table.entryform td .txtlong{ width:70%; }
+
+/*テーブル一般ボーダー------------*/
+#tour table.border{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-collapse:collapse; }
+#tour table.border th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+#tour table.border td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff; vertical-align : middle ; }
+#tour table.border td p{ padding-bottom:5px; }
+#tour table.border td .txtlong{ width:70%; }	
+	
+	
+	
+/* ---------------------------------------------------------------------------------
+Contents
+--------------------------------------------------------------------------------- */
+	
+/*INDEX----------------------------*/
+.reason{ width:720px; padding:10px;	background-color:#78C3C9; }
+
+/*募集要項----------------------------*/
+
+.coursetitle{ color:#036; padding-top:5px; padding-bottom:0px; padding-left:15px; font-size:24px; border-left:10px solid #036; font-weight:bolder; margin-bottom:30px; }
+#tour .yoko{ float: left; padding: 0px 0px 0 15px; margin-top: 5px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; width:720px; }
+#tour .yoko dt { float:left; color:#09C; font-weight:bold; width:150px; padding: 1px 0 0 0;	font-size: 13px; }
+#tour .yoko dt img { padding:0px 0 0 0; width:100px; vertical-align: top; }
+#tour .yoko dd {  float: left; padding: 1px 0px 10px 0; margin: 0px; font-size: 13px; width:570px; }
+
+/*お申込み方法------------*/
+.step {	border: 1px solid #005e8a; width:698px; padding: 10px; background-color: #FFFFEE; margin-bottom: 10px; margin-left: 10px; }
+.step_num {	font-size: 120%; width:700px; font-weight: bolder; color: #FFFFFF; background-color: #005e8a; text-align: center; padding-top: 2px; padding-bottom: 2px; margin-left:10px; }
+#tour .arrow { text-align: center; margin-bottom: 10px; }
+#tour .step #bank {	background-color: #FFFFFF; border: 1px solid #666666; padding: 10px; margin-top: 10px; margin-bottom: 10px; }
+.arr { margin:10px 0; text-align:center; }
+#bank {	margin-bottom:10px; padding:10px; border:1px solid #ccc; }
+.box { padding:5px 10px; border:1px solid #666; margin-left:10px; margin-right:10px; }
+
+/*Right------------*/
+.sub { float: right; width:190px; margin-top:0px; }
+.contact_title{	background-color:#333; padding-top:3px; padding-bottom:3px; color:#FFF; text-align:center; }
+.contactbox{ width:170px; background-color:#eee; padding:10px; font-size:85%; }
+.moushikomi{ position:relative; padding-top:8px; padding-bottom:5px; background-color:#F00; text-align:center; color:#FFF; font-weight:bolder; border:1px solid #CCC;
+	-moz-border-radius: 10px; -webkit-border-radius: 10px; -khtml-border-radius: 10px; border-radius: 10px; -pie-border-radius: 10px; 
+	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4), 1px 1px 1px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow:1px 2px 5px #666;/* webkit */
+	-moz-box-shadow:1px 2px 5px #666;/* fx */
+	-pie-box-shadow:1px 2px 5px #666;
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666;
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#7B0000));/* webkit */
+	background: -moz-linear-gradient(top,  #C00,  #7B0000);/* fx */
+    -pie-background:linear-gradient(top,  #C00,  #7B0000);/* PIE */
+    behavior: url(PIE.htc);
+	}
+
+.whatsnew dl dt{ float:left; padding-top:5px; vertical-align:top; }
+.whatsnew dl dd{ padding-top:5px; margin-left:130px; vertical-align:top; }
+.whatsnew dl{ clear:both; border-bottom:#CDDCFC 1px solid; }
+
+.agenda dl dt{ float:left; padding-top:5px; vertical-align:top; }
+.agenda dl dd{ padding-top:5px; margin-left:150px; vertical-align:top; }
+.agenda dl{	clear:both;	border-bottom:#CDDCFC 1px dotted; margin-left:20px; margin-right:20px; }
+.eventnight{ margin-top:10px; margin-bottom:10px; }
+.eventnight dl{	margin-top:10px; }
+.eventnight dl dt{ float:left; }
+.eventnight dl dd{ margin-left:230px; }
+
+}
+
+		
+	
+@media(max-width: 720px){ /**Break Point
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+	
+
+	
+	
+	
+	
+/* ---------------------------------------------------------------------------------
+	Layout
+--------------------------------------------------------------------------------- */
+#wrapper { margin:0 auto; display:block; overflow:hidden; width:100%; height:auto; text-align:left; text-decoration:none;
+	border-left:1px solid #888888; border-right:1px solid #888888; background:#fffffff; }
+#contents{ margin:0 auto; padding-left:2%; padding-right:2%; background:#fff; line-height:1.5; }
+#tour{ margin:0 auto; padding:2% 0px 0px 0px; background:#fff; font-size:90%; line-height:1.5;}
+
+/* ---------------------------------------------------------------------------------
+	Header
+--------------------------------------------------------------------------------- */
+#header img{ width:100%; height:auto; }
+#bgImgArea { position:relative; left:0; width:100%; height:100px; z-index:3; }
+#bgImgArea img{ width:100%; height:auto; }
+#bgImgArea p{ position:relative; width:980px; height:350px; margin:0 auto;}
+#bgImgArea a{ position:absolute; z-index:10; right:10px; bottom:10px; padding:2px 10px; background:rgb(255, 255, 255); background:rgba(255, 255, 255, 0.6); border-radius: 2px;
+  -webkit-border-radius:2px; -moz-border-radius:2px; text-decoration:none; }
+.bg-01 { background:#fff url(../img/header.png) no-repeat top center; background-size:100% auto;}
+	
+	
+/* ---------------------------------------------------------------------------------
+	Navi-
+--------------------------------------------------------------------------------- */
+	
+/*メニュー--------------------*/
+#header .pagemenu{ width:100%; height:auto; }
+#header .pagemenu .btn{ width:100%; height:auto; }
+.logoarea{ position:absolute; z-index:5;}
+.logoarea img{ width:100%; height:auto; padding-top:0px; z-index:4; }
+
+/* ---------------------------------------------------------------------------------
+	Parts
+--------------------------------------------------------------------------------- */	
+	
+/*見出し--------------------*/
+h1 { text-align:center; margin:0px; }
+h2 { border-bottom:#333 solid 2px; font-size:100%; color:#333; font-weight:bolder; padding-left:0px; padding-top:2%; margin-bottom:1%; margin-top:3%; clear:both; }
+h3 { clear:both; position:relative; margin:5% 1% 1% 1%; padding-bottom:0px; border-bottom:1px dotted #172768; font-weight:bold; color:#172768; font-size:90%;}
+
+	
+/*画像--------------------*/
+.img100{ width:100%; height:auto; }
+.btn{ width:70%; height:auto;}
+.submitbtn{ width:70%; height:auto; font-size:100%; }
+.space{	width:100%; height:20px; }
+	
+	
+/*ul--------------------*/
+.lista ul li{ margin-left:5%; margin-right:0; font-size:90%; }
+.listb ul li{ list-style-type: decimal; margin-left:7%; margin-right:0%; font-size:90%; }
+.listc ul li{ list-style-type: none; background:url(../img/list_bg.gif) no-repeat 0 -1% ; padding-left:5%; margin-left:0px; }
+
+/*フォント--------------------*/
+.font90 { font-size:90%;}
+.font80 { font-size:80%; }
+.font70 { font-size:70%; }
+.font110 { font-size:110%; }
+.font120 { font-size:120%; }
+.font140 { font-size:140%;}
+.nadan { font-size:120%; font-weight:bolder;}
+	
+/*要項--------------------*/
+#tour .yoko{ float: left; padding: 0px 0px 0 2%; margin-top: 1%; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; width:100%; }
+#tour .yoko dt { float: left; color:#09C; font-weight:bold; width:40%; padding: 1% 0 0 0; clear:left;}
+#tour .yoko dd { padding-left:42%; padding: 1% 0 0 0; margin: 0px; float:left; width:60%; }
+
+	
+		
+/* ---------------------------------------------------------------------------------
+table
+--------------------------------------------------------------------------------- */
+
+/*テーブル--------------------*/
+#tour table.setsumei { border-collapse:collapse; border-spacing:0; margin-bottom:2%; width:100%; }
+#tour table.setsumei th { background:#D7EA92; color:#687732; font-weight:bold; padding:2%; border:1px solid #666;}
+#tour table.setsumei td { background:#A8DCF7; padding:2%; border:1px solid #00A0E9; color:#00479D; text-align:left;}
+
+/*料金表------------*/
+#tour table.price{ width:96%; border-collapse:collapse;	border-spacing:0; margin-bottom:1%; margin-left:2%; margin-right:2%; border-bottom:1px solid #666; }
+#tour table.price th { background:#5686CC; color:#ffffff; text-align:center; font-weight:bold; padding:1% 3%; border:1px solid #666; font-size:70%; }
+#tour table.price td { padding:1% 3%; border:1px solid #666; font-size:75%;}
+
+/*行程表------------*/
+table.sch{ border-collapse:collapse; border-spacing:0; margin-bottom:2%; font-size:57%; border-bottom:1px solid #666; }
+table.sch th { background:#93B0C2; color:#ffffff; text-align:center; font-weight:bold; padding:2% 0px 2% 0px; border:1px solid #666; }
+table.sch td { padding:1% 1% 1% 1%; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:10px; border-bottom:1px solid #666; }
+.mark{ font-size:50%; }
+	
+table.sch td img{ width:100%; height:auto;}
+table.sch td.mark img{ width:3%; height:auto; }
+
+table.border{ border-collapse: collapse; border: 1px #000000 solid; padding: 0%; font-size:72%; }
+table.border th { background-color: #9CB5E0; color: #ffffff; border: 1px #000000 solid; padding: 0; text-align:center; }
+table.border td{ border: 1px #000000 solid; padding:2%; }
+table.border td p{ padding-bottom:2%; }
+
+	
+img.shosai { width: 40%; height: auto; }
+
+
+
+/*ul--------------------*/
+
+.lista ul{ margin-left:25px; margin-right:25px; }
+
+/* ---------------------------------------------------------------------------------
+Contents
+--------------------------------------------------------------------------------- */
+
+
+/*お申込み方法------------*/
+.step_num {	font-size: 120%; width:100%; font-weight: bolder; color: #FFFFFF; background-color: #005e8a; text-align: center; padding-top: 2%; padding-bottom: 2%; float:center; border-left:0px solid #005e8a; }
+.step {	border: 1px solid #005e8a; margin:0; float:none; clear:both; width:97%; text-align:left; padding:2% 1% 2% 2% ; font-size:90%; display:block; background-color: #FFFFEE; margin-bottom:2%;}
+#tour .arrow { text-align: center; margin-bottom: 1%; width:15%; height:auto; }
+#tour .step #bank { background-color: #FFFFFF; border: 1px solid #666666; padding: 3%; margin-top: 3%; margin-bottom: 3%; }
+.arr { margin:2% 0; text-align:center; }
+img.arr { width:50%; }
+#bank {	margin-bottom:2%; padding:2%; border:1px solid #ccc; }
+.box { padding:2%; border:1px solid #666; }
+
+	
+	
+/*お申込みフォーム------------*/
+
+#tour table.entryform{ border-collapse: collapse; border: 1px #000000 solid; padding: 0%; font-size:50%; }
+#tour table.entryform th{ background-color: #9CB5E0; color: #ffffff; border: 1px #000000 solid; padding: 0; text-align:center; font-size:60%; }
+#tour table.entryform td{ border: 1px #000000 solid; padding:2%; }
+#tour table.entryform td p{	padding-bottom:2%; }
+	
+	
+/*フッター------------*/
+.code {	text-align: center; margin-top: 30px; }
+
+
+.coursetitle{ color:#036; padding-top:1%; padding-bottom:0px; padding-left:3%; font-size:100%; border-left:10px solid #036; font-weight:bolder; margin-bottom:3%; clear:both; margin-top:3%; position:relative; }
+.agenda dl dt{ float:left; padding-top:1%; vertical-align:top; }
+.agenda dl dd{ padding-top:1%; margin-left:30%; vertical-align:top; }
+.agenda dl{	clear:both; border-bottom:#CDDCFC 1px dotted; margin-left:1%; margin-right:1%; font-size:70%; }
+
+.moushikomi{ position:relative; padding-top:8px; padding-bottom:5px; background-color:#F00; text-align:center; color:#FFF; width:100%; margin:0 auto; font-weight:bolder; border:1px solid #CCC;
+	-moz-border-radius: 10px; -webkit-border-radius: 10px; -khtml-border-radius: 10px; border-radius: 10px; -pie-border-radius: 10px;
+	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4), 1px 1px 1px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow:1px 2px 5px #666;/* webkit */
+	-moz-box-shadow:1px 2px 5px #666;/* fx */
+	-pie-box-shadow:1px 2px 5px #666;
+	-o-box-shadow: 1px 2px 5px #666;
+	box-shadow: 1px 2px 5px  #666;
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#7B0000));/* webkit */
+	background: -moz-linear-gradient(top,  #C00,  #7B0000);/* fx */
+    -pie-background:linear-gradient(top,  #C00,  #7B0000);/* PIE */
+	    behavior: url(PIE.htc);	}
+
+
+	
+	/* ---------------------------------------------------------------------------------
+Slider
+--------------------------------------------------------------------------------- */
+	#slider{ position: relative; width:100%; height: 150px; overflow: hidden; background: url(../img/loading.gif) no-repeat center center; z-index:2; }
+	#slider ul{ top: 0; left: 0; }
+	#slider li{ list-style-type:none; }
+	#slider img{ width:auto; height: 150px; }
+	#slider #prev,#slider #next{ position: absolute; top:60px; cursor: pointer; height:auto;}
+	#slider #prev{ left:10px;}
+	#slider #next{ right:10px;}
+	#slider #prev img{ width:40px; height:auto;}
+	#slider #next img{ width:40px; height:auto;}
+	
+	/* for script */
+	#slider ul,#slider #next,#slider #prev{	visibility: hidden;}
+	
+	/** common*/
+	.stage{ width: 98%; margin: 0 auto; }
+
+	
+	
+	}
+
+		
+		
+		
+ /**共通項目
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■**/
+		
+		
+.moushikomi a{ color:#fff; font-style:normal; text-decoration:underline; }
+.moushikomi a:link { color:#fff; font-style:normal; text-decoration:none;}
+.moushikomi a:visited { color:#fff; font-style:normal; text-decoration:none;}
+.moushikomi a:hover { color:#FF0; font-style:normal; text-decoration:none; }
+.moushikomi a:active { color:#fff; font-style:normal; text-decoration:none; }
+
+.whatsnew dl dt{ float:left; padding-top:5px; vertical-align:top; }
+.whatsnew dl dd{ padding-top:5px; margin-left:130px; vertical-align:top; }
+.whatsnew dl{ clear:both; border-bottom:#CDDCFC 1px solid; }
+
+.agenda dl dt{ float:left; padding-top:5px; vertical-align:top; }
+.agenda dl dd{ padding-top:5px; margin-left:150px; vertical-align:top; }
+.agenda dl{	clear:both;	border-bottom:#CDDCFC 1px dotted; margin-left:20px; margin-right:20px; }
+.eventnight{ margin-top:10px; margin-bottom:10px; }
+.eventnight dl{	margin-top:10px; }
+.eventnight dl dt{ float:left; }
+.eventnight dl dd{ margin-left:230px; }
+	
+/* ---------------------------------------------------------------------------------
+Footer
+--------------------------------------------------------------------------------- */	
+#footer{ background: #333; color: #fff; padding: 10px 0; }
+#footer p{ text-align: right; }	
+.kntlogo { float: right; }
+.code {	text-align: center;	margin-top: 30px;}

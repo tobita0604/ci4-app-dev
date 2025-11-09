@@ -1,0 +1,454 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+<!-- Section1 about---------------------------------------------------> 
+<style>
+	dl.tours{
+		padding-left: 2em;
+	}
+	dl.tours dt {
+		display:inline-block;
+		vertical-align:top;
+	}
+	dl.tours dd {
+		display:inline-block;
+	}
+	td.time {
+		word-break:keep-all;
+	}
+	table.border2 td.avail {
+		text-align:center;
+		vertical-align:middle;
+	}
+	table.border3 {
+		text-align:center;
+		vertical-align:middle;
+	}
+	table.border3 th {
+		background-color: 	#D3D3D3;
+	}
+	table.border3 td {
+		text-align:center;
+	}
+
+	.btn,
+	a.btn,
+	button.btn {
+	font-size: 1.3rem;
+	font-weight: 700;
+	line-height: 0.9;
+	position: relative;
+	display: inline-block;
+	padding: 1rem 4rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+	color: #212529;
+	border-radius: 0.5rem;
+	}
+	.btn--orange,
+	a.btn--orange {
+	color: #fff;
+	background-color: #eb6100;
+	}
+
+	.btn--orange:hover,
+	a.btn--orange:hover {
+	color: #fff;
+	background: #f56500;
+	}
+
+	.btn--bule,
+	a.btn--bule {
+	color: #fff;
+	background-color: #0027eb;
+	}
+	.btn--bule:hover,
+	a.btn--bule:hover {
+	color: #fff;
+	background: #3b00eb;
+	}
+
+	.btn--red,
+	a.btn--red {
+	color: #fff;
+	background-color: #e32424;
+	}
+
+	.btn--red:hover,
+	a.btn--red:hover {
+	color: #fff;
+	background: #e90e0e;
+	}
+
+	/* カレンダー */
+	input[type="date"]{
+	position: relative;
+	}
+
+	input[type=date]::-webkit-calendar-picker-indicator {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	}
+</style>
+<section id="about">
+<div id="main">
+<!-- システムメッセージ -->
+<div id="systemMsg"></div>
+<form action="<?php echo base_url();?>CarRental_con/save" method="post" autocomplete="off" id="car_rental" >
+	<h2 style ="background:#005084">EPC2024　レンタカー申込</h2>
+	<input type="hidden" name="<?= $this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>"/>
+	<input type="hidden" name="reserve[R01_User_Id]" value="<?= !empty($reserve['R01_User_Id'])?h($reserve['R01_User_Id']):''?>"/>
+	<?php if(!empty($this->session->tempdata('success_flash'))):?>
+		<div class="alert alert-success" role="alert">
+			<strong><?= $this->session->tempdata('success_flash');?></strong>
+		</div>
+	<?php endif;?>
+	
+	<!--<img src="<?php echo base_url();?>img/car_plan.png" alt="" style="margin-top: 20px; margin-bottom: 30px; max-width: 100%; height: auto;"/>-->
+	<table class="border3" width="100%" style="table-layout:fixed;">
+		<tr>
+			<th>予約クラス</th>
+			<!--<td style="text-align:center;"><B>Sクラス</B><br>禁煙車</td>-->
+			<td style="text-align:center;"><B>RAクラス</B><br>禁煙車</td>
+			<td style="text-align:center;"><B>EAクラス</B><br>禁煙車</td>
+			<td style="text-align:center;"><B>WAクラス</B><br>禁煙車</td>
+		</tr>
+		<tr>
+			<th>定員</th>
+			<!--<td style="text-align:center;">5名</td>-->
+			<td style="text-align:center;">5名</td>
+			<td style="text-align:center;">5名</td>
+			<td style="text-align:center;">8名</td>
+		</tr>
+		<tr>
+			<th>参考車種</th>
+			<!--<td style="text-align:center;">フィット・ノート他</td>-->
+			<td style="text-align:center;">ロッキー・ライズ他</td>
+			<td style="text-align:center;">ノートe-POWER・アクア他</td>
+			<td style="text-align:center;">ノア・ステップワゴン他</td>
+		</tr>
+		<tr>
+			<th style="color:red;border-color: #000 #000 #000 #000;">レンタル料金<br>1泊2日パッケージ</th>
+			<!--<td style="text-align:center;">29,200円</td>-->
+			<td style="text-align:center;">25,000円</td>
+			<td style="text-align:center;">25,000円</td>
+			<td style="text-align:center;">38,000円</td>
+		</tr>
+		<tr>
+			<th style="color:red;border-color: #000 #000 #000 #000;">レンタル料金<br>2泊3日パッケージ</th>
+			<!--<td style="text-align:center;">29,200円</td>-->
+			<td style="text-align:center;">32,000円</td>
+			<td style="text-align:center;">32,000円</td>
+			<td style="text-align:center;">53,000円</td>
+		</tr>
+	</table>
+	<br><br>
+	<table class="border2" width="100%" style="table-layout:fixed">
+		<tr>
+			<th class="required" style="width:30%">予約クラス</th>
+			<td>
+				<?php if(!empty($rental_stocks)):?>
+					<?php foreach($rental_stocks as $stocks):?>
+						<label class="form-radio form-icon form-text coupon-label mar-rgt">
+							<input 
+								type="radio" 
+								name="reserve[R01_Class]" 
+								value="<?= !empty($stocks['R02_Class'])?h($stocks['R02_Class']):''?>" 
+								<?= !empty($stocks['R02_Class']) && !empty($reserve['R01_Class']) && $stocks['R02_Class'] == $reserve['R01_Class'] ?'checked':'';?>
+							><?= !empty($stocks['R02_Class'])?h($stocks['R02_Class']).'クラス':'';?>　
+						</label>
+					<?php endforeach;?>
+				<?php endif;?>
+				<br>※台数に限りがあります。在庫台数はページ下の＜予約クラス在庫状況＞にてご確認ください。
+				<small><?= form_error('reserve[R01_Class]'); ?></small>
+			</td>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">貸出日/返却日</th>
+			<td>
+				<!--<input type="hidden" name="reserve[R01_FromDriveDate]" value="2024-03-30"/>
+				2024年3月30日(木)-->
+<?php
+				//レンタルパターンを取得>
+				$ptn = 0;
+				if(!empty($reserve['R01_FromDriveDate'])){
+					switch ($reserve['R01_FromDriveDate']) {
+						case	"2024-03-30":
+							if($reserve['R01_ToDriveDate']=="2024-04-01"){
+								$ptn = 1;
+							}else{
+								$ptn = 2;
+							}
+							break;
+						case	"2024-03-31":
+							$ptn = 3;
+							break;
+					}
+				}
+?>
+				<select name="reserve[R01_FromDriveDate]">
+					<option value="">- 選択してください</option>
+					<option value="2024-03-30#2024-04-01" <?=($ptn == 1) ? 'selected':''?>>2泊3日利用　3月30日(土)から4月1日(月)</option>
+					<option value="2024-03-30#2024-03-31" <?=($ptn == 2) ? 'selected':''?>>1泊2日利用　3月30日(土)から3月31日(日)</option>
+					<option value="2024-03-31#2024-04-01" <?=($ptn == 3) ? 'selected':''?>>1泊2日利用　3月31日(日)から4月1日(月)</option>
+				</select>
+				<input type="hidden" name="reserve[R01_FromDriveTime]" value="08:30"/>
+				<small><?= form_error('reserve[R01_FromDriveDate]'); ?></small>
+				<small><?= form_error('reserve[R01_FromDriveTime]'); ?></small>
+			</td>
+		</tr>
+<!--
+		<tr>
+			<th class="required" style="width:30%">返却日時</th>
+			<td>
+				<input type="hidden" name="reserve[R01_ToDriveDate]" value="2024-04-02" class="default_date"/>
+				2024年4月2日(日)
+				<input type="hidden" name="reserve[R01_ToDriveTime]" value="16:00"/>
+				</select>
+				<small><?= form_error('reserve[R01_ToDriveDate]'); ?></small>
+				<small><?= form_error('reserve[R01_ToDriveTime]'); ?></small>
+			</td>
+		</tr>
+-->
+		<tr>
+			<th class="required" style="width:30%">チャイルドシート(有料)</th>
+			<td>
+				<input type="hidden" name="reserve[R01_Child_Seat]" value=""/>
+				<select name="reserve[R01_Child_Seat]">
+					<?php if(!empty($this->child_seat)):?>
+						<option value="0">不要</option>
+						<?php foreach($this->child_seat as $index => $seat):?>
+							<option 
+								value="<?=$index?>"
+								<?= !empty($reserve['R01_Child_Seat']) && $index == $reserve['R01_Child_Seat'] ? 'selected':''?>
+							><?= $seat?></option>
+						<?php endforeach;?>
+					<?php endif;?>
+				</select><br><span style="color:red;">※現地精算　6歳未満のお子様はチャイルドシートの使用が運転者に義務付けられております</span>
+				<small><?= form_error('reserve[R01_Child_Seat]'); ?></small>
+			</td>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">レンタカー安心パック（RAP）(有料)</th>
+			<td>
+				<input type="hidden" name="reserve[R01_Car_Insurance]" value=""/>
+				<select name="reserve[R01_Car_Insurance]" required>
+					<option value="加入する" <?=!empty($reserve['R01_Car_Insurance']) && $reserve['R01_Car_Insurance'] == "加入する" ? 'selected':''?>>加入する</option>
+					<option value="加入しない" <?=!empty($reserve['R01_Car_Insurance']) && $reserve['R01_Car_Insurance'] == "加入しない" ? 'selected':''?>>加入しない</option>
+				</select><br><span style="color:red;">※現地精算　安心パックの内容は以下をご参考ください</span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">運転者氏名（漢字）</th>
+			<td>
+				<input type="text" name="reserve[R01_Name_Kanji]" value="<?=!empty($reserve['R01_Name_Kanji'])?h($reserve['R01_Name_Kanji']):''?>" required/>
+				<small><?= form_error('reserve[R01_Name_Kanji]'); ?></small>
+			</td>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">運転者氏名（カナ）</th>
+			<td>
+				<input type="text" name="reserve[R01_Name_Kana]" value="<?=!empty($reserve['R01_Name_Kana'])?h($reserve['R01_Name_Kana']):''?>" required/>
+				<small><?= form_error('reserve[R01_Name_Kana]'); ?></small>
+			</td>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">免許証番号</th>
+			<td>
+				<input type="text" name="reserve[R01_Driver_License_No]" value="<?=!empty($reserve['R01_Driver_License_No'])?h($reserve['R01_Driver_License_No']):''?>" required/>
+				<small><?= form_error('reserve[R01_Driver_License_No]'); ?></small>
+			</td>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">免許証有効期限</th>
+			<td>
+				<input type="date" name="reserve[R01_Driver_License_Expiry]" value="<?=!empty($reserve['R01_Driver_License_Expiry'])?h($reserve['R01_Driver_License_Expiry']):''?>" required/>
+				<small><?= form_error('reserve[R01_Driver_License_Expiry]'); ?></small>
+			</td>
+		</tr>
+	</table>
+
+<div style="text-align: center;margin-top:1em;">
+	<div class="his-button" style="border-radius: 5px;">
+		<a onclick="go_conf_back();" class="btn btn--bule">戻る</a>
+		&nbsp;&nbsp;&nbsp;
+		<input type="submit" class="btn btn--orange" style="border:none" value="登録">
+	</div>
+</div>
+</form>
+
+<?php if(!empty($reserve) && !empty($reserve['R01_Regist_Flg'])):?>
+<form action="<?php echo base_url();?>CarRental_con/cancel" method="post" autocomplete="off" onSubmit="return check()" >
+<input type="hidden" name="<?= $this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>"/>
+	<div style="text-align: center;margin-top:1em;">
+		<div class="his-button" style="border-radius: 5px;">
+			<input type="submit" class="btn btn--red" style="border:none" value="キャンセル">
+		</div>
+	</div>
+</form>
+<?php endif;?>
+
+<!--<img src="<?php echo base_url();?>img/car_Insurance.png" alt="" style="margin-top: 20px; margin-bottom: 30px; max-width: 100%; height: auto;"/>-->
+<br>
+<p style="font-size:large; font-weight: bold;">【レンタカー安心パック(RAP）】</p>
+<p>●RA・EAクラス ご利用料金 660円／24時間</p>
+<p>●WAクラス ご利用料金 1,320円／24時間</p>
+<p>●NOC(ノンオペレーションチャージ＝営業補償料)補償サービス万一の事故の際にお客様にご負担いただくＮＯＣ（2万円または5万円）のお支払いが免除されます。</p>
+<p>●パンク発生時の損傷タイヤの修理代等無償サービス</p>
+<p>お客様に損傷タイヤの修理代またはタイヤ代を一旦お立替頂く場合があります。その際、帰着時に領収証と引き換えにご精算いたします。新しいタイヤの購入にあたっては、原則、損傷タイヤと同等のもの上限2万円（税込）となります。</p>
+<p>●貸渡期間途中の加入・解約はできません。</p>
+<br>
+<p style="text-align: center; margin-top: 50px; font-size: 20px;">予約クラス在庫状況　(単位台数)<p>
+<div align="center" > 
+	<table class="border2" width="100%" style="width: 500px; margin: 0 auto;">
+		<tr>
+			<th></th>
+			<!--<th>S</th>-->
+			<th>RA</th>
+			<th>EA</th>
+			<th>WA</th>
+		</tr>
+
+		<?php foreach($rental_stocks_table as $stock):?>
+			<tr>
+				<td style="text-align: center;">
+					<?php	if($stock['day']<30){$ym="2024年4月";}else{$ym="2024年3月";} ?>
+					<?=$ym.$stock['day'] ?>日
+				</td>
+				<!--<td style="text-align: center;">
+					<?=$stock['S'] ?>
+				</td>-->
+				<td style="text-align: center;">
+					<?=$stock['RA'] ?>
+				</td>
+				<td style="text-align: center;">
+					<?=$stock['EA']?>
+				</td>
+				<td style="text-align: center;">
+					<?=$stock['WA']?>
+				</td>
+			</tr>
+		<?php endforeach;?>
+
+	</table>
+</div>
+
+</div>
+</section>
+<script>
+
+function setHenkyaku(wdate)
+{
+	let option = "";
+	let text = "";
+	const timearray_0822 = ['14:30','15:00','15:30','16:00','16:30','17:00','17:30'];
+	const timearray_0823 = ['08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30'];
+	const timearray_0824 = ['08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
+
+	let select = document.getElementById('returntime');
+	// option要素を削除（方法はいろいろありますが）
+	while (0 < select.childNodes.length) {
+		select.removeChild(select.childNodes[0]);
+	}
+	option = document.createElement('option');
+	text = document.createTextNode("--:--");
+	option.value = ""; 
+	option.appendChild(text);
+	select.appendChild(option);
+
+	if(wdate == "2024-04-02"){
+
+		timearray_0824.forEach(function(element){
+			// option要素を生成
+			option = document.createElement('option');
+			text = document.createTextNode(element);
+			option.value = element; 
+			option.appendChild(text);
+			select.appendChild(option);
+		});
+
+	}
+	if(wdate == "2024-04-01"){
+		timearray_0823.forEach(function(element){
+			// option要素を生成
+			option = document.createElement('option');
+			text = document.createTextNode(element);
+			option.value = element; 
+			option.appendChild(text);
+			select.appendChild(option);
+		});
+	}
+	if(wdate == "2024-03-31"){
+		timearray_0822.forEach(function(element){
+			// option要素を生成
+			option = document.createElement('option');
+			text = document.createTextNode(element);
+			option.value = element; 
+			option.appendChild(text);
+			select.appendChild(option);
+		});
+	}
+}
+function setKashidashi(wdate)
+{
+	let option = "";
+	let text = "";
+	const timearray_0822 = ['08:30','09:00','09:30','10:00','14:30','15:00','15:30','16:00'];
+	const timearray_0823 = ['08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
+	const timearray_0824 = ['08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00'];
+
+	let select = document.getElementById('fromtime');
+	// option要素を削除（方法はいろいろありますが）
+	while (0 < select.childNodes.length) {
+		select.removeChild(select.childNodes[0]);
+	}
+	option = document.createElement('option');
+	text = document.createTextNode("--:--");
+	option.value = ""; 
+	option.appendChild(text);
+	select.appendChild(option);
+
+	if(wdate == "2024-04-02"){
+
+		timearray_0824.forEach(function(element){
+			// option要素を生成
+			option = document.createElement('option');
+			text = document.createTextNode(element);
+			option.value = element; 
+			option.appendChild(text);
+			select.appendChild(option);
+		});
+
+	}
+	if(wdate == "2024-04-01"){
+		timearray_0823.forEach(function(element){
+			// option要素を生成
+			option = document.createElement('option');
+			text = document.createTextNode(element);
+			option.value = element; 
+			option.appendChild(text);
+			select.appendChild(option);
+		});
+	}
+	if(wdate == "2024-03-31"){
+		timearray_0822.forEach(function(element){
+			// option要素を生成
+			option = document.createElement('option');
+			text = document.createTextNode(element);
+			option.value = element; 
+			option.appendChild(text);
+			select.appendChild(option);
+		});
+	}
+
+}</script>

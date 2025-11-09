@@ -1,0 +1,362 @@
+#wrapper {
+	width: 960px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-top: 10px;
+}
+p {
+	margin: 0px;
+}
+.clear {
+	clear: both;
+}
+.l_mawari {
+	float: left;
+	padding-right: 5px;
+}
+#heder {
+	width: 960px;
+	margin-bottom: 30px;
+}
+#wrapper2 {
+	width: 960px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+#sidebar {
+	width: 210px;
+	float: left;
+	margin-right: 20px;
+	color: #81725d;
+}
+#branch {
+	width: 190px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.side_bt {
+	width: 205px;
+	height: 65px;
+	font-size: 14px;
+	font-weight: bold;
+	padding-left: 5px;
+	border-bottom: solid 1px #94846e;
+	padding-top: 5px;
+	vertical-align: middle;
+	background-color:#edede4;
+}
+.side_bt02 {
+	width: 175px;
+	background-image: url(img/bt02.gif);
+	text-align: right;
+	background-repeat: no-repeat;
+	margin-right: auto;
+	margin-left: auto;
+	height: 45px;
+	padding-top: 25px;
+	font-weight: bold;
+	padding-right: 15px;
+	line-height: 1em;
+}
+.side_bt03 {
+	width: 205px;
+	height: 65px;
+	font-weight: bold;
+	padding-left: 5px;
+	font-size: 14px;
+	background-color: #d6d6c9;
+	margin: 0;
+	border-bottom: solid 1px #94846e;
+	padding-top: 5px;
+}
+#tetsuzuki{
+	width: 190px;
+	padding: 10px;
+}
+#tetsuzuki ul {
+	list-style-image: url(img/arrow.gif);
+	list-style-type: disc;
+	font-size: 11px;
+	list-style-position: inside;
+	margin-left: -30px;
+}
+#side_body {
+	width: 210px;
+}
+#side_under {
+	width: 210px;
+}
+#contents {
+	float: left;
+	width: 730px;
+	line-height: 1.6
+}
+#con01 {
+	width: 690px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+	background-image: url(../img/bar.gif);
+	background-repeat: no-repeat;
+	margin: 0 0 5px 0;
+	width: 680px;
+	padding: 3px 0 0 10px;
+	height: 27px;
+	color:#FFFFFF;
+	letter-spacing:0.1em;
+}
+#con01 p {
+	margin: 0 0 0 0;
+}
+.con02 {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#moushi_l {
+	float: left;
+	width: 340px;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+#moushi_r {
+	float: left;
+	width: 305px;
+	padding-top: 10px;
+	padding-right: 5px;
+	text-align: center;
+}
+#his_info {
+	margin: 0px;
+	width: 668px;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	overflow: auto;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCC;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+	border-top-width: 0px;
+	margin-bottom:20px;
+}
+#group_info {
+	margin: 0px;
+	width: 668px;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	overflow: auto;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCC;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+}
+.oshirase_date {
+	font-weight: bold;
+	color: #009;
+}
+.oshirase_text {
+	margin: 0px;
+	padding: 10px;
+	height: 150px;
+	width: 668px;
+	background-image: url(img/usu.gif);
+}
+/*#footer {
+	color: #FFF;
+	height: 1px;
+	margin-top: 30px;
+}
+#footer_text {
+	font-size: 10px;
+	color: #999;
+	text-align: right;
+	padding-top: 5px;
+}*/
+#footer {
+    clear:left;
+	background:#333;
+	line-height:50px;
+	width:100%;
+	text-align:center;
+	font-size:15px;
+	margin:0 auto;
+	color: #fff;
+}
+.opwaku {
+	width:324px;
+	padding:5px;
+	border:solid 3px #cccccc;
+	overflow:hidden;
+	margin-bottom:10px;
+}
+.opwaku img{
+	float:left;
+}
+.opwaku .optext {
+	width:234px;
+	float:right;
+	font-size:88%;
+	line-height:1.2em;
+}
+.opwaku .oplink{
+	text-align:right;
+	clear:both;
+}
+.opwaku .optext p{
+	border-bottom:solid 1px;
+}
+#cust_bt {
+	width: 270px;
+	padding-left: 420px;
+}
+/* Tables
+-------------------------------------------------------------- */
+
+table.etc{
+	width:100%;
+	border: solid 1px #999;
+	border-collapse:collapse;
+	margin-bottom:1em; background-color:#FFF;
+	table-layout:auto;
+}
+/* ========TABLE======== */
+table.etc th,table.etc td{
+	border: solid 1px #999;
+	border-collapse:collapse;
+	padding:3px;
+	vertical-align:top;
+	table-layout:auto;
+}
+table.etc th{
+	background: #CCFFFF;
+	text-align: center;
+	white-space: nowrap; vertical-align:middle;
+	color: #666;
+}
+table.etc td.t10p{
+	width:10%;
+}
+table.etc td.t20p{
+	width:20%;
+}
+table.etc td.t70p{
+	width:70%;
+}
+table.etc td{
+	text-align:left;
+}
+table.etc td.tcenter{
+	text-align:center;
+	vertical-align:middle;
+}
+table.etc td.gross{
+	border-bottom:none;
+	font-weight:bold;
+	color:#F00;
+	font-size:130%;
+}
+table.etc caption{
+	text-align:left;
+}
+
+/* Div
+-------------------------------------------------------------- */
+
+.new{
+	border:#507ea4 solid 1px;
+	font-size:80%;
+	line-height:1.2em;
+	padding:10px;
+}
+.new span.date{
+	color:#507ea4;
+	font-weight:bold;
+	padding-right:10px;
+}
+
+#page-wrapper {width:1150px; margin: 0 auto; background-color: ff0;}
+#main-wrapper {width:1150px; margin: 0 auto; background-color: ff0;}
+
+/* ---------------------------------------------------------------------------------
+table
+--------------------------------------------------------------------------------- */
+
+/*メニュー------------*/
+table.pagemenu { border-collapse:collapse; border-spacing:0; }
+
+/*説明文------------*/
+#tour table.setsumei { border-collapse:collapse; border-spacing:0; margin-bottom:5px; }
+#tour table.setsumei th { background:#8EAEDD; color:#000000; font-weight:bold; padding:5px 12px; border:1px solid #666; }
+#tour table.setsumei td { background:#8EAEDD; padding:5px 12px; border:none; color:#ffffff; font-size:14px; text-align:left; }
+
+/*料金表------------*/
+#tour table.price{ width:98%; border-collapse:collapse; border-spacing:0; margin-bottom:5px; margin-left:10px; margin-right:10px; border-bottom:1px solid #666; }
+#tour table.price th { background:#333; color:#fff; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+#tour table.price td { padding:5px 12px; border:1px solid #666; font-size:13px; }
+
+
+/*行程表------------*/
+table.sch{ border-collapse:collapse; border-spacing:0; width:800px; margin-bottom:5px; margin-left:10px; font-size:85%; border-bottom:1px solid #666;  }
+table.sch th { background:#ccc; color:#000; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+table.sch td { padding:2px 7px; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:10px; border-bottom:1px solid #666; }
+.mark{ font-size:13px; }
+
+/*テーブルフォーム------------*/
+#tour table.entryform{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; }
+#tour table.entryform th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+#tour table.entryform td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff;	vertical-align : middle ; }
+#tour table.entryform td p{	padding-bottom:5px; }
+#tour table.entryform td .txtlong{ width:70%; }
+
+/*テーブル一般ボーダー------------*/
+table.border{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-collapse:collapse; }
+table.border th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+table.border td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff; vertical-align : middle ; }
+table.border td p{ padding-bottom:5px; }
+table.border td .txtlong{ width:70%; }	
+
+
+/* ---------------------------------------------------------------------------------
+	Navi-
+--------------------------------------------------------------------------------- */
+
+#nav { background-color:#333; height:50px; font-size: 12px; }
+
+	#nav #navcenter { z-index: 150; width:1150px; margin:0 auto; position: relative;  }
+	#nav  #navcenter .navmain {  height:40px; display: table; table-layout: fixed; text-align: center; width: 100%; padding-top:5px; padding-bottom:5px;  }
+	#nav  #navcenter .navmain li { display: table-cell; vertical-align: middle ; border-left: 1px #ccc solid;}
+	#nav  #navcenter .navmain li:first-child{ border-left:0;}
+	#nav  #navcenter .navmain li a { display:block; text-decoration:none; color: #fff;   }
+	#nav  #navcenter .navmain li a:hover { display:block; text-decoration:none; color: #ff0; }
+	
+
+#top{ height:0; }

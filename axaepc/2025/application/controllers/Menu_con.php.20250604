@@ -1,0 +1,575 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Menu_con extends CI_Controller
+{
+
+
+	//------------------------コンストラクタ------------------------
+	public function __construct()
+	{
+
+		parent::__construct();
+		$this->load->helper('url');
+		$this->load->helper('common_helper');
+		$this->load->model('menu_mo');
+		$this->load->model('mypage_mo');
+		$this->load->model('login_mo');
+		$this->load->library('session');
+		$this->load->model('common_mo');
+		$this->load->model('entry_mo');
+		$this->load->model('option_mo');
+
+		$this->load->library('email');
+		$this->child_seat = $this->config->item('child_seat');
+
+		date_default_timezone_set("Asia/Tokyo");
+	}
+
+
+	//------------------------INDEX------------------------
+
+	public function index()
+	{
+		// Check session
+		$admin_Id = $this->session->userdata('admin_id_session');
+
+		if (isset($admin_Id)) {
+			//++++++++++++++++++++++++++++++++++++++++
+			// Load content
+			//++++++++++++++++++++++++++++++++++++++++
+			$this->load->view('head_vi');
+			$this->load->view('header_vi');
+			$this->load->view('menu_vi');
+			$this->load->view('last_vi');
+		} else {
+			redirect(base_url("admin_con"));
+		}
+	}
+
+
+
+	//------------------------参加者検索------------------------
+
+	public function search()
+	{
+		if (isset($_POST['downloadcsv'])) {
+			$this->downloadcsv();
+			return;
+		}
+		// Check session
+		$admin_Id = $this->session->userdata('admin_id_session');
+		$Charger_Type = $this->session->userdata('Charger_Type');
+
+		if (isset($admin_Id)) {
+			$result = array();
+			$searchKey = $this->get_init_search_key();
+			if (isset($_POST['searchbtn'])) {
+				$searchKey = $this->get_search_key();
+				$result = $this->menu_mo->search_data($searchKey);
+			}
+
+			$data['searchbtn'] = $this->input->post("searchbtn");
+			$data['searchKey'] = $searchKey;
+			$data['result'] = $result;
+			$data['count_resever'] = count($result);
+			$data['branches'] = $this->menu_mo->get_branch_list();
+
+			$this->load->view('head_vi');
+			$this->load->view('header_vi');
+			$this->load->view('search_script_vi');
+			$this->load->view('search_vi', $data);
+			$this->load->view('last_vi');
+		} else {
+			redirect(base_url('admin_con'));
+		}
+	}
+
+	private function downloadcsv()
+	{
+		// Check session
+		$admin_Id = $this->session->userdata('admin_id_session');
+		$Charger_Type = $this->session->userdata('charger_type');
+		if (isset($admin_Id)) {
+			$searchKey = $this->get_search_key();
+			$result = $this->menu_mo->search_data_export($searchKey);
+			$times = $this->option_mo->get_times(0, 0);
+
+			foreach ($times as $v) {
+				$time_val[$v['M01_Stock_Id']] = $v['M01_Time_Text'];
+			}
+
+			array_unshift($times, array());
+			$options = $this->option_mo->get_options();
+			for ($i = 0; $i < count($options); $i++) {
+				$option = array_shift($options);
+				$options[$option['M01_Id']] = $option;
+			}
+
+			// ヘッダ文字列
+			$headers = $this->create_headers($Charger_Type);
+
+			$fileName = mb_convert_encoding("AXA" . date('Ymd_His') . ".csv", "SJIS", "UTF-8");
+
+			// output headers so that the file is downloaded rather than displayed
+			header('Content-Type: text/csv; charset=utf-8');
+			header('Content-Disposition: attachment; filename=' . $fileName);
+			// create a file pointer connected to the output stream
+			$output = fopen('php://output', 'w');
+			fprintf($output, chr(0xEF) . chr(0xBB) . chr(0xBF));
+			// output the column headings
+			fputcsv($output, $headers);
+			//データ抽出する
+
+			if ($result != NULL && count($result) > 0) {
+				$seqno = 1;
+				$jihisanka_cnt = 1;
+				$_id = '';
+				foreach ($result as $row) {
+					if ($_id != $row['R01_Id']) {
+						$jihisanka_cnt = 1;
+						$_id = $row['R01_Id'];
+					}
+					$csvdata = $this->create_columns($row, $options, $time_val, $jihisanka_cnt, $Charger_Type, $seqno);
+					$jihisanka_cnt++;
+					fputcsv($output, $csvdata);
+					$seqno++;
+				}
+			}
+			fclose($output);
+		}
+	}
+
+	private function get_init_search_key()
+	{
+		return array(
+			'R01_Id' => '',
+			'R01_Name' => '',
+			'R01_Roma_Last' => '',
+			'R01_Roma_First' => '',
+			'R01_Branch_Cd' => '',
+			'R01_Email' => '',
+			'R01_Branch_Cd' => '',
+			'R01_Login_Flg' => '',
+			'R01_Entry_Flg' => '',
+			'R01_Test_Flg' => '1',
+		);
+	}
+
+	private function get_search_key()
+	{
+		$searchKey = $this->input->post();
+		if (!isset($searchKey['R01_Test_Flg'])) {
+			$searchKey['R01_Test_Flg'] = '1';
+		}
+		return $searchKey;
+	}
+
+	private function create_headers($Charger_Type)
+	{
+		$headers = array();
+		$headers[] = '通し番号';
+		$headers[] = '順';
+		$headers[] = '更新日';
+		if ($Charger_Type == "9") {
+			$headers[] = '管理者メモ';
+		}
+		$headers[] = '登録状況';
+		$headers[] = '社員番号';
+		$headers[] = '枝番';
+		$headers[] = 'ID';
+		$headers[] = '本人・同伴';
+		$headers[] = '招待枠(本人含む)';
+		$headers[] = '同伴家族';
+		$headers[] = '参加者計';
+		$headers[] = '自費参加者';
+		$headers[] = 'カテゴリー';
+		$headers[] = '支社名';
+		$headers[] = '名前';
+		$headers[] = 'シ';
+		$headers[] = 'メイ';
+		$headers[] = '性別';
+		$headers[] = '生年月日';
+		$headers[] = '年齢';
+		$headers[] = '続柄';
+		$headers[] = '0歳　<宿泊>ベビーベッドのご希望について';
+		$headers[] = '0歳　<食事>お子様用ハイチェアについて';
+		$headers[] = '0歳　<食事>パーティ飲食について';
+		$headers[] = '0歳　＜航空機＞座席のご利用について';
+		$headers[] = '1-2歳　<宿泊>ベッドのご希望について';
+		$headers[] = '1-2歳　<食事>パーティ飲食について';
+		$headers[] = '1-2歳　<食事>お子様用ハイチェアについて';
+		$headers[] = '1-2歳　＜航空機＞座席のご利用について';
+		$headers[] = '3-6歳　<宿泊>ベッドのご希望について';
+		$headers[] = '3-6歳　<食事>パーティ飲食について';
+		$headers[] = '3-6歳　<食事>お子様用ハイチェアについて';
+		// $headers[] = '3-6歳　＜往路 新幹線利用＞座席のご利用について【東北・中部・関西発のみ】';
+		$headers[] = '7-11歳　<宿泊>ベッドのご希望について';
+		// $headers[] = '7-11歳　<食事>パーティ飲食について';
+		$headers[] = '備考';
+		$headers[] = '郵便番号';
+		$headers[] = '都道府県';
+		$headers[] = '市区郡';
+		$headers[] = '町村名番地番号';
+		$headers[] = '建物名・部屋番号等';
+		$headers[] = '連絡先電話番号';
+		$headers[] = '携帯電話番号';
+		$headers[] = 'メールアドレス';
+		$headers[] = '緊急連絡先お名前';
+		$headers[] = '緊急連絡先の続柄';
+		$headers[] = '緊急連絡先電話番号';
+		$headers[] = '請求書送付先';
+		$headers[] = '8月6日ゴルフコンペ';
+		// $headers[] = 'クラブ';
+		//$headers[] = 'シューズ';
+		$headers[] = '備考（ゴルフ）';
+		$headers[] = '8月6日オプション';
+		$headers[] = '8月7日オプション';
+		$headers[] = '8月5日 空港→会場/ホテル';
+		$headers[] = '1日目ホテル夕食必要有無';
+		$headers[] = '8月9日 ホテル→空港';
+		// $headers[] = '4月1日オプション';
+		// $headers[] = 'レンタカークラス';
+		// $headers[] = '期間';
+		// $headers[] = '運転者氏名（漢字）';
+		// $headers[] = '運転者氏名（カナ）';
+		// $headers[] = '運転免許証番号';
+		// $headers[] = '運転免許証有効期限';
+		// $headers[] = '自動車保険';
+		// $headers[] = 'チャイルドシート';
+		$headers[] = '作成日';
+		$headers[] = '支社コード';
+		//$headers[] = '往便名';
+		//$headers[] = '往券種';
+		if ($Charger_Type == "9") {
+			$headers[] = 'パスワード';
+		}
+		//$headers[] = '1Q家族招待OP';
+		//$headers[] = '４Qオプショナルツアー招待CP';
+		//$headers[] = 'OP/自費参加補助';
+		//$headers[] = '無料招待/自費参加補助';
+		//$headers[] = 'OP①';
+		//$headers[] = '国籍';
+		//$headers[] = 'その他国籍';
+		//$headers[] = 'OP①';
+		//$headers[] = 'OP②';
+		//$headers[] = 'メニュー';
+		//$headers[] = '時間';
+		//$headers[] = 'OP②';
+		//$headers[] = 'メニュー';
+		//$headers[] = '時間';
+		//$headers[] = 'OP③';
+		//$headers[] = '3月31日オプション（時間）';
+		//$headers[] = '4月1日オプション（時間）';
+		//$headers[] = 'レンタカーの利用';
+		//$headers[] = '貸出日';
+		//$headers[] = '貸出時間';
+		//$headers[] = '返却日';
+		//$headers[] = '返却時間';
+		//$headers[] = '7/31午前';
+		//$headers[] = '7/31午後';
+		//$headers[] = '8/2午前';
+		//$headers[] = 'image_file_name';
+
+		return $headers;
+	}
+
+	private function create_columns($row, $options, $time_val, $jihisanka_cnt, $Charger_Type, $seqno)
+	{
+		$around = [
+			0 => '(未登録)',
+			1 => 'シャトルバス',
+			2 => 'レンタカー(各自予約)',
+		];
+		$columns = array();
+		$seq = $row['R01_seq'] + 1;
+		//通し番号
+		$columns[] = $seqno;
+		//順
+		$columns[] = $row['seqno'] / 10;
+		// 更新日
+		$columns[] = empty_date($row['R01_Update_Date']) ? '' : $row['R01_Update_Date'];
+		// 管理者メモ
+		if ($Charger_Type == "9") {
+			if ($seq == 1) {
+				$columns[] = $row['admin_note'];
+			} else {
+				$columns[] = "";
+			}
+		}
+		//不参加状態
+		if ($row['R01_Cancel_Flg'] == 1) {
+			$columns[] = get_label('参加不参加', $row['R01_Cancel_Flg']);
+		} else {
+			$columns[] = get_label('入力状態', $row['R01_Entry_Flg']);
+		}
+		// 社員番号
+		$columns[] = $row['R01_Id'];
+		// SEQ
+		$columns[] = $seq;
+		// ID(個別）
+		$columns[] = $row['R01_Id'] . '-' . $seq;
+		// 代・同
+		if ($row['R01_seq'] == '0') {
+			$columns[] = "本人";
+		} else {
+			if ($row['R01_seq'] < $row['R01_Free_Invites']) {
+				$columns[] = "招待同伴者" . $row['R01_seq'];
+			} else {
+				$columns[] = "自費同伴者" . $row['R01_seq'];
+			}
+		}
+		// 招待人数
+		$columns[] = $row['R01_Free_Invites'];
+		// 同行者
+		$columns[] = $row['R01_Free_Invites'] + $row['R01_Charge_Invites'] - $row['cancel_pax'] - 1;
+		// 参加者計
+		$columns[] = $row['R01_Free_Invites'] + $row['R01_Charge_Invites'] - $row['cancel_pax'];
+		// 自費参加者
+		$columns[] = $row['R01_Charge_Invites'];
+		// カテゴリー
+		$columns[] = get_label('カテゴリ', $row['R01_Category_Flg']);
+		// 支社名
+		$columns[] = $row['R01_Branch_Name'];
+		// 名前
+		$columns[] = $row['R01_Name'];
+		// 名前（Surname）
+		$columns[] = $row['R01_Roma_Last'];
+		// 名前（Given name）
+		$columns[] = $row['R01_Roma_First'];
+		// 性別
+		$columns[] = get_label('性別', $row['R01_Gender']);
+		// 生年月日
+		$columns[] = empty_date($row['R01_Birthdate']) ? '' : $row['R01_Birthdate'];
+		// 年齢
+		$columns[] = empty_date($row['R01_Birthdate']) ? '' : $row['R01_Age'];
+		// 同行者と関係
+		$columns[] = empty($row['R01_Relationship']) ? '' : getRelationship($row['R01_Relationship']);
+		if (empty_date($row['R01_Birthdate'])) {
+			$tempAge = 999;
+		} else {
+			$tempAge = $row['R01_Age'];
+		}
+		// $columns[] = $tempAge;
+
+		// 0歳
+		if ($tempAge == 0) {
+			$columns[] = get_label('ベビーベッド', $row['R01_Baby_Bed']);
+			$columns[] = get_label('ハイチェア', $row['R01_Baby_Chair']);
+			$columns[] = get_label('パーティ飲食12', $row['R01_Baby_Meal']);
+			$columns[] = get_label('航空座席', $row['R01_Baby_Bassinet']);
+		} else {
+			$columns[] = "";
+			$columns[] = "";
+			$columns[] = "";
+			$columns[] = "";
+		}
+
+		// 1-2歳
+		if (($tempAge > 0) && ($tempAge < 3)) {
+			$columns[] = get_label('ベビーベッド2', $row['R01_Baby_Bed2']);
+			$columns[] = get_label('パーティ飲食12', $row['R01_Baby_Meal']);
+			$columns[] = get_label('ハイチェア', $row['R01_Baby_Chair']);
+			$columns[] = get_label('航空座席', $row['R01_Baby_Bassinet']);
+		} else {
+			$columns[] = "";
+			$columns[] = "";
+			$columns[] = "";
+			$columns[] = "";
+		}
+
+		// 3-6歳
+		if (($tempAge > 2) && ($tempAge < 7)) {
+			$columns[] = get_label('子供ベッド', $row['R01_Infant_Bed']);
+			$columns[] = get_label('パーティ飲食', $row['R01_Infant_Meal']);
+			$columns[] = get_label('子供ハイチェア', $row['R01_Infant_Chair']);
+			//$columns[] = get_label('航空座席', $row['R01_Infant_Bassinet']);
+		} else {
+			$columns[] = "";
+			$columns[] = "";
+			$columns[] = "";
+			//$columns[] = "";
+		}
+
+		// 7-11歳
+		if (($tempAge > 6) && ($tempAge < 12)) {
+			//$columns[] = get_label('子供ベッド', $row['R01_Infant_Bed']);
+			$columns[] = get_label('パーティ飲食', $row['R01_Infant_Meal']);
+		} else {
+			//$columns[] = "";
+			$columns[] = "";
+		}
+		// 備考
+		$columns[] = $row['R01_Note'];
+		// 郵便番号
+		$columns[] = $row['R01_Postal1'] . '-' . $row['R01_Postal2'];
+		// 都道府県
+		$columns[] = empty($row['R01_Prefecture']) ? '' : getPrefecture($row['R01_Prefecture']);
+		// 市区郡
+		$columns[] = $row['R01_Address'];
+		// 町村名番地番号
+		$columns[] = $row['R01_Address2'];
+		// 建物名・部屋番号等
+		$columns[] = $row['R01_Address3'];
+		// 連絡先電話番号
+		$columns[] = $row['R01_Tel_No'];
+		// 携帯電話番号
+		$columns[] = $row['R01_Mobile_No'];
+		// メールアドレス
+		$columns[] = $row['R01_Email'];
+		// 緊急連絡先お名前
+		$columns[] = $row['R01_Emer_Name'];
+		// 緊急連絡先の続柄
+		$columns[] = $row['R01_Emer_Relationship'];
+		// 緊急連絡先電話番号
+		$columns[] = $row['R01_Emer_Tel_No'];
+		// 請求書送付先
+		$columns[] = get_label('請求', $row['R01_Invoice_Flg']);
+		// FAゴルフコンペ
+		$columns[] = get_label('オプションゴルフ', $row['R02_Golf_Flg']);
+		// クラブ
+		// $columns[] = empty($row['R02_Golf_Flg']) ? '' : get_label('クラブ', $row['R02_Golf_Club']);
+
+		// シューズ
+		//if(empty($row['R02_Golf_Flg'])) {
+		//	$columns[] = '';
+		//} else if ($row['R02_Golf_Shoes'] == '99.0') {
+		//	$columns[] = '持参する';
+		//} else {
+		//	$columns[] = $row['R02_Golf_Shoes'].'cm';
+		//}
+
+		// 備考（ゴルフ）
+		$columns[] = empty($row['R02_Golf_Biko']) ? '' : $row['R02_Golf_Biko'];
+		// 8月6日
+		// $columns[] = isset($row['R02_Option1']) && $row['R02_Option1'] == 0 ? '不参加' : $options[$row['R02_Option1']]['M01_Name'];
+		if (isset($row['R02_Option1']) && $row['R02_Option1'] == 0) {
+			$columns[] = '不参加';
+		} else if (!isset($row['R02_Option1']) || $row['R02_Option1'] === '' || $row['R02_Option1'] === null) {
+			$columns[] = '';
+		} else {
+			$columns[] = $options[$row['R02_Option1']]['M01_Name'];
+		}
+
+		// 8月7日
+		if (isset($row['R02_Option2']) && $row['R02_Option2'] == 0) {
+			$columns[] = '不参加';
+		} else if (!isset($row['R02_Option2']) || $row['R02_Option2'] === '' || $row['R02_Option2'] === null) {
+			$columns[] = '';
+		} else {
+			$columns[] = $options[$row['R02_Option2']]['M01_Name'];
+		}
+
+		// 8月5日
+		$columns[] = empty($row['R02_bus_dep']) ? '(未登録)' : v($around, $row['R02_bus_dep']);
+		// 1日目ホテル夕食必要有無
+		if (!empty($row['R01_DinnerHotel_Flg']) && $row['R01_DinnerHotel_Flg'] == '1') {
+			$columns[] = '必要';
+		} else if (!empty($row['R01_DinnerHotel_Flg']) && $row['R01_DinnerHotel_Flg'] == '2') {
+			$columns[] = '不要';
+		} else {
+			$columns[] = '';
+		}
+		// 8月9日
+		$columns[] = empty($row['R02_bus_arr']) ? '(未登録)' : v($around, $row['R02_bus_arr']);
+		// 4月01日
+		// $columns[] = empty($row['R02_Option3'])?'':$options[$row['R02_Option3']]['M01_Name'];
+		// レンタカークラス
+		// $columns[] = empty($row['R01_Class'])?'':$row['R01_Class'];
+		// レンタル期間
+		// $from_cardatetime = empty($row['R01_FromDriveDate'])?'':$row['R01_FromDriveDate'];
+		// $to_cardatetime   = empty($row['R01_ToDriveDate'])?'':$row['R01_ToDriveDate'];
+		// $columns[] = empty($from_cardatetime)?'' :(date('m/d',strtotime($from_cardatetime))."～".date('m/d',strtotime($to_cardatetime)));
+		//$columns[] = $from_cardatetime."～".$to_cardatetime;
+
+		//運転者名
+		// $columns[] = empty($row['R01_Name_Kana'])?'':$row['R01_Name_Kana'];
+		// 運転免許証番号
+		// $columns[] = empty($row['R01_Driver_License_No'])?'':'\''.$row['R01_Driver_License_No'];
+		// 運転免許証有効期限
+		// $columns[] = empty($row['R01_Driver_License_Expiry'])?'':$row['R01_Driver_License_Expiry'];
+		// 自動車保険
+		// $columns[] = empty($row['R01_Car_Insurance'])?'':$row['R01_Car_Insurance'];
+		// チャイルドシート
+		// if(empty($row['R01_Child_Seat'])) {
+		// 	$columns[] = '';
+		// } else {
+		// 	$columns[] = v($this->child_seat, $row['R01_Child_Seat']);
+		// }
+		// 作成日
+		$columns[] = empty_date($row['R01_First_Login_Date']) ? '' : $row['R01_First_Login_Date'];
+		// 管理コード
+		$columns[] = $row['R01_Code'];
+		// 往便名
+		//$columns[] = $row['go_flight'];
+		// 往券種
+		//$columns[] = $row['go_ticket'];
+		// パスワード
+		if ($Charger_Type == "9") {
+			$columns[] = $row['R01_Password'];
+		}
+
+		// 1Q家族招待OP
+		//$columns[] = get_label('1Q', $row['R01_1Q_Flg']);
+		// 4Q家族招待OP
+		//$columns[] = $row['R01_4Q_Flg'];
+		// 4Q 自費参加補助
+		//		if($row['R01_4Q_Flg']!=""){
+		//			$columns[] = get_label('自費補助', $row['R01_4q']);
+		//		}else{
+		//			$columns[] = "";
+		//		}
+		// 無料招待/自費参加補助
+		//		if($row['R02_Option_Type']=="1" && $row['R01_Free_Invites'] >= $jihisanka_cnt){
+		//			$columns[] = "無料招待";
+		//		}else{
+		//			$columns[] = "自費参加";
+		//		}
+		// シーライフパーク
+		//$columns[] = get_label('パーク', $row['R01_Park_Flg']);
+
+		// 国籍
+		//		$columns[] = $row['R01_Nationality']=='日本'?'日本':'';
+		// その他国籍
+		//		$columns[] = $row['R01_Nationality']=='日本'?'':$row['R01_Nationality'];
+		// シーライフパーク（7/31）
+		//$columns[] = get_label('オプションパーク', $row['R02_Park_Flg']);
+		// クアロア牧場
+		//$columns[] = get_label('オプション牧場', $row['R02_Farm_Flg']);
+		// メニュー
+		//if(empty($row['R02_Farm_Flg'])) {
+		//	$columns[] = '';
+		//} else if (empty($row['R02_Farm_Tour'])) {
+		//	$columns[] = '不参加';
+		//} else {
+		//	$columns[] = $options[$row['R02_Farm_Tour']]['M01_Name'];
+		//}
+		// 時間
+		//$columns[] = (empty($row['R02_Farm_Flg']) || empty($row['R02_Farm_Time'])) ? ''
+		//				: $times[$row['R02_Farm_Time']]['M01_Period_Text'];
+		// クアロア牧場
+		//$columns[] = get_label('オプション牧場', $row['R02_Farm_Flg2']);
+		// メニュー
+		//if(empty($row['R02_Farm_Flg2'])) {
+		//	$columns[] = '';
+		//} else if (empty($row['R02_Farm_Tour2'])) {
+		//	$columns[] = '不参加';
+		//} else {
+		//	$columns[] = $options[$row['R02_Farm_Tour2']]['M01_Name'];
+		//}
+		// 時間
+		//$columns[] = (empty($row['R02_Farm_Flg2']) || empty($row['R02_Farm_Time2'])) ? ''
+		//				: $times[$row['R02_Farm_Time2']]['M01_Period_Text'];
+		// 8/1午前
+		//$columns[] = empty($row['R02_Option3'])?'':$options[$row['R02_Option3']]['M01_Name'];
+		// 8/1午後
+		//$columns[] = empty($row['R02_Option4'])?'':$options[$row['R02_Option4']]['M01_Name'];
+		// 8/2午前
+		//$columns[] = empty($row['R02_Option5'])?'':$options[$row['R02_Option5']]['M01_Name'];
+		// image_file_name
+		//$columns[] = $row['R01_Brochure_Img'];
+
+
+		return $columns;
+	}
+}

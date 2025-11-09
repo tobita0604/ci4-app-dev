@@ -1,0 +1,121 @@
+
+<p style ="border-bottom:2px solid #ccc;"></p>
+<div style ="width: 1150px; margin: 0 auto; position: relative; clear: both;">
+	<div class="title-header">
+		<div>
+			<form action = "<?php echo base_url();?>menu_con" name = "back_menu" method="post">
+				<h1>予約状況確認画面</h1>
+				<input type="submit" style="float: right; margin: 0 auto; margin-bottom: 10px; " name="menu_back" value="Menu" onclick="backMenu()">
+				<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+			</form>
+		</div>
+		<hr></hr>
+	</div>
+
+
+	<p style="text-align: center; margin-top: 50px; font-size: 20px;">OP予約状況<p>
+<div align="center" > 
+
+	
+	<table class="border2" width="100%" style="width: 1000px; margin: 0 auto;">
+		
+			<tr>
+				<th style="text-align: center;" colspan="2">
+					OP名
+				</th>
+				<th style="text-align: center;">
+					日付
+				</th>
+				<th style="text-align: center;">
+					時間
+				</th>
+				<th style="text-align: center;">
+					総数
+				</th>
+				<th style="text-align: center;">
+					予約数
+				</th>
+				<th style="text-align: center;">
+					残数
+				</th>
+				<th style="text-align: center;">
+					更新
+				</th>
+			</tr>
+
+
+			<?php 
+                 $prev_id = "";
+                 $prev_date = "";
+                 $form_id = 1;
+			     foreach( $stock as $value){
+			?>		
+			<tr>
+			<form name="form<?=$form_id?>" action="<?=base_url()?>optionstock_con/save" method="post">
+				<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" />
+				<input type="hidden" name="M01_Stock_Id" value="<?=$value['M01_Stock_Id'];?>">
+			<?php
+				$form_id++;
+				if($prev_id != $value['M01_id_name']){
+					$prev_id = $value['M01_id_name'];
+					$prev_date = "";
+            ?>
+				<td style="text-align: center;" rowspan="<?=$value['ct']?>">
+					<?=$value['M01_id_name']?>
+				</td>
+				<td style="text-align: center;" rowspan="<?=$value['ct']?>">
+					<?=trim($value['M01_Name'])?>
+				</td>
+			<?php
+				}
+            ?>
+			<?php
+                if($prev_date != $value['M01_Date_Flg']){
+                    $prev_date = $value['M01_Date_Flg'];
+            ?>
+				<td style="text-align: center;" rowspan="<?=$value['ct2']?>">
+				<?php
+					if($value['M01_Date_Flg'] =="1"){
+					    echo "8月6日";
+					}else{
+						if($value['M01_Date_Flg'] =="2"){
+					    	echo "8月7日";
+					    }else{
+					    	echo "------";
+					    }
+					}
+				?>
+				</td>
+			<?php
+				}
+			?>
+				<td style="text-align: center;">
+					<?=$value['M01_Time_Text']?>
+				</td>
+				<td style="text-align: center;">
+					<input type="text" size="3" value="<?=$value['M01_Stock']?>" name="M01_Stock">
+				</td>
+				<td style="text-align: center;">
+					<?=$value['M01_Reserve']?>
+				</td>
+				<td style="text-align: center;">
+					<?=$value['M01_Balance']?>
+					
+				</td>
+				<td style="text-align: center;">
+					<input type="submit" value="更新">
+				</td>
+				</form>
+				</tr>
+			
+			 <?php };?>
+			
+	</table>
+	
+			 <?php 
+			     echo '<br>';
+			     echo '<br>';
+              ?>
+	
+</div>
+</div>

@@ -1,0 +1,20 @@
+<body >
+<div id="wrapper">
+<!--header start-->
+<header id="header" class="topType">
+<!--pcheader start-->
+<div id="pcheader">
+	<div id="top">
+		<img src="<?php echo base_url();?>common/img/logo_2024.png" alt="" height= "70px"/>
+	</div>
+</div>
+<!--pc header end-->
+<!--phone header start-->
+<div id="spHeader">
+	<span class="companyLogoSp">
+		<img src="<?php echo base_url();?>common/img/logo_2024.png" alt=""/>
+	</span>
+	<div class="spHeaderOverlay">&nbsp;</div>
+</div>
+</header>
+<!--phone header end-->

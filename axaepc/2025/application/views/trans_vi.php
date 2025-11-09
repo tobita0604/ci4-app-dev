@@ -1,0 +1,170 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+	<!-- Section1 about--------------------------------------------------->
+	<style>
+		dl.tours {
+			padding-left: 2em;
+		}
+
+		dl.tours dt {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		dl.tours dd {
+			display: inline-block;
+		}
+
+		td.time {
+			word-break: keep-all;
+		}
+
+		table.border2 td.avail {
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.btn,
+		a.btn,
+		button.btn {
+			font-size: 1.3rem;
+			font-weight: 700;
+			line-height: 0.9;
+			position: relative;
+			display: inline-block;
+			padding: 1rem 4rem;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+			text-align: center;
+			vertical-align: middle;
+			text-decoration: none;
+			letter-spacing: 0.1em;
+			color: #212529;
+			border-radius: 0.5rem;
+		}
+
+		.btn--orange,
+		a.btn--orange {
+			color: #fff;
+			background-color: #eb6100;
+		}
+
+		.btn--orange:hover,
+		a.btn--orange:hover {
+			color: #fff;
+			background: #f56500;
+		}
+
+		.btn--bule,
+		a.btn--bule {
+			color: #fff;
+			background-color: #0027eb;
+		}
+
+		.btn--bule:hover,
+		a.btn--bule:hover {
+			color: #fff;
+			background: #3b00eb;
+		}
+	</style>
+	<section id="about">
+		<div id="main">
+			<!-- システムメッセージ -->
+			<div id="systemMsg"></div>
+			<form action="<?php echo base_url(); ?>Transfer_con/save_option" method="post" autocomplete="off" id="option_data" onSubmit="return check_regist()">
+				<h2 style="background:#005084">EPC2024 移動方法の登録　確認</h2>
+				<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" />
+				<input type="hidden" name="view_flg" value="7" />
+				<?php if (!empty($this->session->tempdata('success_flash'))) : ?>
+					<div class="alert alert-success" role="alert">
+						<strong><?= $this->session->tempdata('success_flash'); ?></strong>
+					</div>
+				<?php endif; ?>
+				<p>【注意事項について】</p>
+				<!--<p>●申込みいただいたレンタカーをキャンセルする場合は、再度申込み画面へ進み「キャンセル」ボタンを押してください。</p>-->
+				<p>●道内での移動方法（空港⇔表彰式会場/ホテル）についてご登録をお願いいたます。</p>
+				<p>●バスご利用の人数把握とレンタカー駐車場の利用状況把握の為、ご協力をお願いいたします。</p>
+				<br>
+				<table class="border2" width="100%" style="table-layout:fixed">
+					<tr>
+						<th width="30%">ご参加者名</th>
+						<th width="10%">年齢</th>
+						<th>8/5（火）会場→ホテル</th>
+						<th>8/9（土）ホテル→空港</th>
+					</tr>
+					<?php foreach ($members as $member) : ?>
+						<tr <?= !empty($member['R01_Cancel_Flg']) ? 'hidden' : '' ?>>
+							<td>
+								<?php
+								echo h($member['R01_Name']);
+								?>
+							</td>
+							<td>
+								<?php
+								$age = calculate_age($member['R01_Birthdate']);
+								if ($member['R01_Birthdate'] != '0000-00-00') {
+									echo $age . '才';
+								}
+								?>
+							</td>
+
+							<td>
+								<?php if ($member['R02_bus_dep'] == 0) {
+									echo '(未登録)';
+								} ?>
+								<?php if ($member['R02_bus_dep'] == 1) {
+									echo 'シャトルバス';
+								} ?>
+								<?php if ($member['R02_bus_dep'] == 2) {
+									echo 'レンタカー（各自予約）';
+								} ?>
+							</td>
+
+							<td>
+								<?php if ($member['R02_bus_arr'] == 0) {
+									echo '(未登録)';
+								} ?>
+								<?php if ($member['R02_bus_arr'] == 1) {
+									echo 'シャトルバス';
+								} ?>
+								<?php if ($member['R02_bus_arr'] == 2) {
+									echo 'レンタカー（各自予約）';
+								} ?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</table>
+
+
+				<div style="text-align: center;margin-top:1em;">
+					<div class="his-button" style="border-radius: 5px;">
+						<a href="<?php echo base_url(); ?>mypage_con" style="margin-bottom: 10px;" class="btn btn--bule">マイページに戻る</a>
+						<?php
+						//入力締め切り制御
+						$today = date('Y-m-d H:i:s');
+						$this->entry_limit = $this->config->item('entry_limit');
+						if (($today < $this->entry_limit) || ($common['R01_reentry'] == 1)) {
+						?>
+							&nbsp;&nbsp;&nbsp;
+							<?php if (!empty($current_date) && !empty($current_date)) : ?>
+								<?php if ($current_date >= $current_date) : ?>
+									<a href="<?php echo base_url(); ?>Transfer_con/edit" class="btn btn--orange" style="border:none; margin-bottom: 10px;">申し込み</a>
+								<?php endif; ?>
+							<?php endif; ?>
+						<?php
+						}
+						?>
+						<!-- <input type="submit" class="btn btn--orange" style="border:none; margin-bottom: 10px;" value="登録"> -->
+					</div>
+				</div>
+
+			</form>
+		</div>
+</div>
+</section>
+</div>

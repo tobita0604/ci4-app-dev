@@ -1,0 +1,352 @@
+body{
+	width:100%;
+	margin:0 auto;
+	margin-top:10px;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*SLIDE BAR 設定開始　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+@media screen and (max-width: 736px) {
+	#nvleft{
+	width:200px;
+	margin-left: 5px;
+}
+ 
+#nvleft h1{
+	background:#99CC00;
+	color:#FFFFFF;
+	font-size:14px;
+	text-align:center;
+}
+ 
+#nvleft ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+ 
+#nvleft ul a{
+	line-height:25px;
+	color:#333333;
+	background:#EEEEEE;
+	display:block;
+	height:65px;
+	border-top:1px solid #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	padding-left:10px;
+}
+
+#nvleft ul a:hover{
+	background:#FFCC99;
+}
+
+#nvleft2{
+	width:200px;
+	margin-left: 5px;
+}
+ 
+#nvleft2 h1{
+	background:#191970;
+	color:#FFFFFF;
+	font-size:14px;
+	text-align:center;
+}
+ 
+#nvleft2 ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+ 
+#nvleft2 ul a{
+	
+	line-height:25px;
+	color:#333333;
+	background:#EEEEEE;
+	display:block;
+	height:65px;
+	border-top:1px solid #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	padding-left:10px;
+}
+
+#nvleft2 ul a:hover{
+	background:#FFCC99;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*SLIDE BAR 設定終了　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+#tetuduki{
+  	width:190px;
+}
+
+#tetuduki ul{
+	list-style-type: square;
+	font-size: 12px;
+	list-style-position: inside;
+}
+
+#nvmenu{
+    min-height: 400px;
+    margin-bottom: 5px;
+	padding-top:10px;
+	float:left;
+	width:200px;
+}
+#main{overflow:hidden;
+}
+
+#contents {
+	float:right;
+	width:1200px;
+	min-height: 400px;
+    float:left;
+}
+
+ #footer {
+    clear:left;
+	background:#999;
+	line-height:50px;
+	width:960px;
+	text-align: center;
+	font-size:15px;
+	margin-right:50x;
+	margin-bottom:50px;
+	margin-top:50px;
+}
+#p{
+	margin:10px 5px 10px 5px;
+	padding-top:5px,10,5;
+	border:3px solid green;
+	background:FFFFFF;
+	width:920px;
+	height:150px;
+}
+.ringo{
+	color:#FF6600;
+}
+
+.note{
+	background:#66CCFF;
+	width:100%;
+	color:#FFFFFF;
+	font-size:15px;
+	line-height:40px;
+	padding-left:5px; 
+	/*-moz-border-radius-topleft:10px;
+    -webkit-border-top-left-radius:10px;
+	-moz-border-radius-topright:10px;
+	-webkit-border-top-right-radius:10px;*/
+	border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;
+}
+/* Tables
+-------------------------------------------------------------- */
+.group{
+	width:100%;
+	border: 1px solid #999;
+	border-collapse:middle; /*khoang trong giua cac duong vien trong table bi loai bo */
+	margin-bottom:1em;
+	background-color:#FFFFFF;
+	table-layout:auto;/*Chiều rộng cột của table được thiết lập theo cột có chiều rộng lớn nhất.*/
+}
+table.group th{
+	background: #CCFFFF;
+	text-align: center;
+	white-space: nowrap; /*Văn bản sẽ hiển thị trên cùng một hàng, chỉ xuống hàng khi gặp thẻ <br />.*/
+	vertical-align:middle;
+	color: #666;
+}
+	
+table.group th,table.group td{
+	border: solid 1px #999;
+	border-collapse:collapse;
+	padding:3px;
+	vertical-align:top; /*Canh phần trên cùng của thành phần theo phần trên cùng cao nhất của các thành phần trong cùng hàng.*/
+	table-layout:auto;
+	white-space: nowrap; 
+}
+table.group td.tcenter{ 
+	text-align:center;
+	vertical-align:middle; /*Thành phần sẽ được canh giữa theo thành phần bao ngoài.*/
+	white-space: nowrap; 
+}
+
+
+	
+}
+@media screen and (min-width: 737px) {
+	#nvleft{
+	width:200px;
+	margin-left: 5px;
+}
+ 
+#nvleft h1{
+	background:#99CC00;
+	color:#FFFFFF;
+	font-size:14px;
+	text-align:center;
+}
+ 
+#nvleft ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+ 
+#nvleft ul a{
+	line-height:25px;
+	color:#333333;
+	background:#EEEEEE;
+	display:block;
+	height:65px;
+	border-top:1px solid #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	padding-left:15px;
+}
+
+#nvleft ul a:hover{
+	background:#FFCC99;
+}
+
+#nvleft2{
+	width:200px;
+	margin-left: 5px;
+}
+ 
+#nvleft2 h1{
+	background:#191970;
+	color:#FFFFFF;
+	font-size:14px;
+	text-align:center;
+}
+ 
+#nvleft2 ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+ 
+#nvleft2 ul a{
+	
+	line-height:25px;
+	color:#333333;
+	background:#EEEEEE;
+	display:block;
+	height:65px;
+	border-top:1px solid #FFFFFF;
+	border-bottom:1px solid #CCCCCC;
+	padding-left:15px;
+}
+
+#nvleft2 ul a:hover{
+	background:#FFCC99;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*SLIDE BAR 設定終了　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+#tetuduki{
+  	width:190px;
+}
+
+#tetuduki ul{
+	list-style-type: square;
+	font-size: 12px;
+	list-style-position: inside;
+}
+
+#nvmenu{
+    min-height: 400px;
+    margin-bottom: 5px;
+	padding-top:10px;
+	float:left;
+	width:200px;
+}
+#main{overflow:hidden;
+}
+
+#contents {
+	float:right;
+	width:1200px;
+	min-height: 400px;
+    float:left;
+}
+
+ #footer {
+    clear:left;
+	background:#333;
+	line-height:50px;
+	width:100%;
+	text-align:center;
+	font-size:15px;
+	margin:0 auto;
+	 color: #fff;
+}
+#p{
+	margin:10px 5px 10px 5px;
+	padding-top:5px,10,5;
+	border:3px solid green;
+	background:FFFFFF;
+	width:920px;
+	height:150px;
+}
+.ringo{
+	color:#FF6600;
+}
+
+.note{
+	background:#66CCFF;
+	width:100%;
+	color:#FFFFFF;
+	font-size:15px;
+	line-height:40px;
+	padding-left:5px; 
+	/*-moz-border-radius-topleft:10px;
+    -webkit-border-top-left-radius:10px;
+	-moz-border-radius-topright:10px;
+	-webkit-border-top-right-radius:10px;*/
+	border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;
+}
+/* Tables
+-------------------------------------------------------------- */
+.group{
+	width:100%;
+	border: 1px solid #999;
+	border-collapse:middle; /*khoang trong giua cac duong vien trong table bi loai bo */
+	margin-bottom:1em;
+	background-color:#FFFFFF;
+	table-layout:auto;/*Chiều rộng cột của table được thiết lập theo cột có chiều rộng lớn nhất.*/
+}
+table.group th{
+	background: #CCFFFF;
+	text-align: center;
+	white-space: nowrap; /*Văn bản sẽ hiển thị trên cùng một hàng, chỉ xuống hàng khi gặp thẻ <br />.*/
+	vertical-align:middle;
+	color: #666;
+}
+	
+table.group th,table.group td{
+	border: solid 1px #999;
+	border-collapse:collapse;
+	padding:3px;
+	vertical-align:top; /*Canh phần trên cùng của thành phần theo phần trên cùng cao nhất của các thành phần trong cùng hàng.*/
+	table-layout:auto;
+	white-space: nowrap; 
+}
+table.group td.tcenter{ 
+	text-align:center;
+	vertical-align:middle; /*Thành phần sẽ được canh giữa theo thành phần bao ngoài.*/
+	white-space: nowrap; 
+}
+
+}
+
+

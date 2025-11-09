@@ -1,0 +1,78 @@
+
+ </div><!---End.contents-->
+ 
+
+
+  
+   <!---End#CONTENTS-------------------------------------------------------------------------------------------------->
+
+ 
+    
+<!---SiteMap-------------------------------------------------------------------------------------------------->
+  
+  <section id="sitemap">
+<div class="sitemap_contents">
+
+
+<h2>お問い合わせ</h2>
+<!--<h4>●ツアーについてのお問い合わせ</h4>-->
+<p><strong>近畿日本ツーリスト株式会社 トラベルサービスセンター東日本内</strong></p>
+<p><strong>「EPC2024」事務局</strong></p>
+<p class="font80">担当：浅木（あさぎ）・広瀬（ひろせ）</p>
+<p class="font80">〒135-0062 東京都江東区東雲1‐7₋12 KDX豊洲グランスクエア3階</p>
+<p class="font110">TEL ：0570-064-205　 FAX ：03-6730-3230</p>
+<p class="font80">※繋がりにくい場合はTEL:03-6730-3220におかけください。</p>
+<p class="font110">Eメール： <a href="mailto:axa-deskecc01@ora.knt.co.jp">axa-deskecc01@ora.knt.co.jp</a><br>
+ <strong><span style="color:#FF0000">《携帯・スマートフォンのアドレスをご利用の方》セキュリティ設定のためユーザー受信拒否と認識されているか、迷惑メール対策等で、ドメイン指定受信を設定されている場合に、メールが正しく届かないことがあります。</br>以下のドメインを受信できるように設定しておいてください。</br>＜ora.knt.co.jp＞</span></strong></p>
+<p class="font70"><span class="font80">営業日・営業時間 ：月～金 10:00～17:00 ・ 【休業日】 土・日・祝日<!--・春の大型連休（4/29～5/8）--></span></p>
+<p>★休業日・営業時間外にお送りいただいたEメールの返信は、翌営業日以降の返信となります。 </p>
+<p class="font80">★お取り消し、ご変更の連絡が休業日・営業時間外の場合は、翌営業日の扱いとなりますので、あらかじめご了承ください。 <br>
+</p>
+<!--
+<div class="box">
+  <p class="font80">総合旅行業務取扱管理者：黒田和之・木下智之</p>
+  <p class="font70">総合旅行業務取扱管理者とは、お客様の旅行を取り扱う営業所での取引責任者です。このご旅行の契約等に関し、担当者からの説明にご不明な点がございましたら、ご遠慮なく総合旅行業務取扱管理者にご質問ください。</p>
+</div>
+
+<h4>●旅行企画・実施</h4>
+<p><strong>株式会社近畿日本ツーリストコーポレートビジネス　第１営業支店</strong></p>
+<p class="font70">観光庁長官登録旅行業第1944号　一般社団法人日本旅行業協会正会員</p>
+<p class="font70">ボンド保証会員　旅行業公正取引協議会会員 </p>
+<p>〒101-0024 東京都千代田区神田和泉町1-13住友商事神田和泉町ビル12階</p>
+
+<h4>●お客様個人情報の取り扱いに関するお問い合わせ</h4>
+<p>個人情報管理者：松隈 佑介</p>
+<p>受付時間：月～金 10:00～17:00 ・ 【休業日】 土・日・祝日・春の大型連休（4/29～5/8）</p>
+<p>電話番号：03-6891-9301</p>
+-->
+ </div>
+ </section>
+   
+   
+   <!-- FOOTER---------------------------------------------------------------------------------------------------->
+
+ <div id="footer">
+   
+  <div class="foot">
+<ul class="footermain">
+
+
+
+<li><a href="https://biz.knt.co.jp/touroku" target="_blank">登録票・約款など</a></li>
+<!--<li><a href="http://www.knt.co.jp/keiki/privacy21.html" target="_blank">個人情報取扱い</a></li>-->
+<!--<li><a href="http://www.knt.co.jp/keiki/privacy2.html" target="_blank">個人情報保護方針</a></li>-->
+<li><a href="https://www.knt.co.jp/privacy/web/" target="_blank">個人情報保護方針</a></li>
+<li><a href="http://www.knt.co.jp" target="_blank">近畿日本ツーリストホームページ</a></li>
+
+
+</ul>
+</div>
+
+<p align="center"><small id="copy">Copyright&copy; All rights reserved by KNT Co.,Ltd.</small></p>
+</div><!---End.foot-->
+
+
+</div><!---End#footer-->
+
+
+</div><!---End#wrapper-->

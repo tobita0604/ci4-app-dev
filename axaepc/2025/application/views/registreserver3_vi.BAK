@@ -1,0 +1,291 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+<!-- Section1 about---------------------------------------------------> <style>
+	th.required::after {
+		content: "[必須]";
+		color:red;
+		font-weight:bold
+	}
+	.border2.gai th {
+		background: #ffff99;
+	}
+	.gai tr:first-child th:first-child::after {
+		content: "招待外";
+		color:red;
+	}
+</style>
+<section id="about">
+<div id="main">
+<!-- システムメッセージ -->
+<div id="systemMsg"></div>
+<div style="white-space:nowrap">
+<div class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">人数<br class="nobr">登録</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-2em" class="arrow-container current">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">本人<br class="nobr">登録</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-4em" class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">同伴者<br class="nobr">登録</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-6em" class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">情報<br class="nobr">確認</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-8em" class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">登録<br class="nobr">完了</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+</div>
+<form action="<?php echo base_url();?>register_con/save_reserver" method="post" autocomplete="off" id="entry_data" > 
+	<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+	<h2 style ="background:#005084">EPC2025　参加受付　本人登録</h2>
+	<table class="border2 invite" width="100%" id="invite0">
+		<tr>
+			<th width="30%">お名前</th>
+			<td>
+				<?=$reserve['R01_Name']?>
+				<input type="hidden" name="reserve[R01_Name]" value="<?=$reserve['R01_Name']?>"/>
+			</td>
+		</tr>
+		<tr>
+			<th>入賞者カテゴリー</th>
+			<td>
+				<?=get_label('カテゴリ',$common['R01_Category_Flg'])?><br>
+				<?=$common['R01_Category_Flg']=='E1'?DIAMOND_NOTE:''?>
+			</td>
+		</tr>
+<!--
+		<tr>
+			<th>１Q家族招待CP</th>
+			<td>
+				<?=get_label('1Q',$common['R01_1Q_Flg'])?>
+			</td>
+		</tr>
+		<tr>
+			<th>４Qオプショナルツアー招待CP</th>
+			<td>
+				<?=get_label('4Q',$common['R01_4Q_Flg'])?>
+			</td>
+		</tr>
+		<tr>
+			<th>xx無料権利</th>
+			<td>
+				<?=get_label('パーク',$common['R01_Park_Flg'])?>
+				<?=$common['R01_Park_Flg']=='1'?PARK_NOTE:''?>
+			</td>
+		</tr>
+-->
+		<tr>
+			<th>招待人数（本人含む）</th>
+			<td>
+				<?=$common['R01_Free_Invites']?>
+			</td>
+		</tr>
+		<tr>
+			<th>自費参加者</th>
+			<td>
+				<?=$common['R01_Charge_Invites']?><!--<?=INVITES_NOTE ?>-->
+			</td>
+		</tr>
+	</table>
+	<table class="border2 invite" width="100%" id="invite0">
+		<tr>
+			<th colspan="2">
+				■ご本人様情報
+				<input type="hidden" name="reserve[R01_Entry_Flg]" value="0"/>
+			</th>
+		</tr>
+		<tr>
+			<th width="30%" class="required">お名前:姓（カタカナ）</th>
+			<td>
+				<!--<input type="text" name="reserve[R01_Roma_Last]" id="R01_Roma_Last" value="<?=$reserve['R01_Roma_Last']?>" />-->
+				<?=$reserve['R01_Roma_Last']?>
+				<span class="error_msg" id="R01_Roma_Last_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前:名（カタカナ）</th>
+			<td>
+				<!--<input type="text" name="reserve[R01_Roma_First]" id="R01_Roma_First" value="<?=$reserve['R01_Roma_First']?>" />-->
+				<?=$reserve['R01_Roma_First']?>
+				<span class="error_msg" id="R01_Roma_First_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">生年月日</th>
+			<td>
+				<?
+					$Number_arr = explode_date($reserve['R01_Birthdate']);
+				?>
+				<input type="text" name="reserve[Birth_Year]" id="Birth_Year" value="<?=$Number_arr[0]?>" size="4" class="digits" onchange="age_changed()"/>年
+				<input type="text" name="reserve[Birth_Month]" id="Birth_Month" value="<?=$Number_arr[1]?>" size="4" class="digits" onchange="age_changed()"/>月
+				<input type="text" name="reserve[Birth_Day]" id="Birth_Day" value="<?=$Number_arr[2]?>" size="4" class="digits" onchange="age_changed()"/>日
+				<span class="error_msg" id="R01_Birthdate_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">年齢</th>
+			<td>
+				<input type="text" name="reserve[R01_Age]" value="<?=$reserve['R01_Age']?>" size="2" class="digits"/>
+				<span class="error_msg" id="R01_Age_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">性別</th>
+			<td>
+				<input type="hidden" name="reserve[R01_Gender]" value="0" />
+				<input type="radio" id="R01_Gender_1" name="reserve[R01_Gender]" value="1" <?='1'==$reserve['R01_Gender']?'checked':''?>/>
+				<label for="R01_Gender_1">男性</label><br>
+				<input type="radio" id="R01_Gender_2" name="reserve[R01_Gender]" value="2" <?='2'==$reserve['R01_Gender']?'checked':''?>/>
+				<label for="R01_Gender_2">女性</label><br>
+				<p class="error_msg" id="R01_Gender_error"></p>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">自宅郵便番号</th>
+			<td>
+				<input type="text" name="reserve[R01_Postal1]" value="<?=$reserve['R01_Postal1']?>" size="3" class="digits"/> -
+				<input type="text" name="reserve[R01_Postal2]" value="<?=$reserve['R01_Postal2']?>" size="4" class="digits"/>
+				<span class="error_msg" id="R01_Postal_error"></span>
+				<input type="button" value="住所検索" onclick="AjaxZip3.zip2addr('reserve[R01_Postal1]','reserve[R01_Postal2]','reserve[R01_Prefecture]','reserve[R01_Address]');"/>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">都道府県</th>
+			<td>
+				<select name="reserve[R01_Prefecture]">
+					<option value="0" selected="selected">選択してください</option>
+					<?php foreach(getPrefecture() as $id => $val):?>
+					<option value="<?php echo $id ?>"  <?=$id==$reserve['R01_Prefecture']?'selected':''?>><?php echo $val ?></option>
+					<?php endforeach;?>
+				</select>
+				<span class="error_msg" id="R01_Prefecture_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">自宅住所</th>
+			<td>
+				<input type="text" name="reserve[R01_Address]" value="<?=$reserve['R01_Address']?>" size="35"/>
+				<span class="error_msg" id="R01_Address_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">連絡先電話番号</th>
+			<td>
+				<?
+					$Number_arr = explode_date($reserve['R01_Tel_No']);
+				?>
+				<input type="text" name="reserve[Tel1]" value="<?=$Number_arr[0]?>" size="4"/> -
+				<input type="text" name="reserve[Tel2]" value="<?=$Number_arr[1]?>" size="4"/> -
+				<input type="text" name="reserve[Tel3]" value="<?=$Number_arr[2]?>" size="4"/>
+				<span class="error_msg" id="R01_Tel_No_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">携帯電話番号</th>
+			<td>
+				<?
+					$Number_arr = explode_date($reserve['R01_Mobile_No']);
+				?>
+				<input type="text" name="reserve[Mobile1]" value="<?=$Number_arr[0]?>" size="4"/> -
+				<input type="text" name="reserve[Mobile2]" value="<?=$Number_arr[1]?>" size="4"/> -
+				<input type="text" name="reserve[Mobile3]" value="<?=$Number_arr[2]?>" size="4"/>
+				<span class="error_msg" id="R01_Mobile_No_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">メールアドレス</th>
+			<td>
+				<input type="text" name="reserve[R01_Email]" value="<?=$reserve['R01_Email']?>" size="35"/>
+				<span class="error_msg" id="R01_Email_error"></span><br>
+				<input type="text" name="reserve[R01_Email_cfm]" value="<?=$reserve['R01_Email']?>" size="35"/>（確認用）
+				<span class="error_msg" id="R01_Email_cfm_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">沖縄ご旅行中の緊急連絡先：お名前</th>
+			<td>
+				<input type="text" name="reserve[R01_Emer_Name]" value="<?=$reserve['R01_Emer_Name']?>" />
+				<span class="error_msg" id="R01_Emer_Name_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">沖縄ご旅行中の緊急連絡先：続柄</th>
+			<td>
+				<input type="text" name="reserve[R01_Emer_Relationship]" value="<?=$reserve['R01_Emer_Relationship']?>" />
+				<span class="error_msg" id="R01_Emer_Relationship_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">沖縄ご旅行中の緊急連絡先：電話番号</th>
+			<td>
+				<?
+					$Number_arr = explode_date($reserve['R01_Emer_Tel_No']);
+				?>
+				<input type="text" name="reserve[Emer1]" value="<?=$Number_arr[0]?>" size="4"/> -
+				<input type="text" name="reserve[Emer2]" value="<?=$Number_arr[1]?>" size="4"/> -
+				<input type="text" name="reserve[Emer3]" value="<?=$Number_arr[2]?>" size="4"/>
+				<span class="error_msg" id="R01_Emer_Tel_No_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">請求書 送付先</th>
+			<td>
+				<input type="hidden" name="common[R01_Invoice_Flg]" value="0" />
+				<input type="radio" id="R01_Invoice_Flg_1" name="common[R01_Invoice_Flg]" value="1" <?='1'==$common['R01_Invoice_Flg']?'checked':''?>/>
+				<label for="R01_Invoice_Flg_1">ご自宅</label><br>
+				<input type="radio" id="R01_Invoice_Flg_2" name="common[R01_Invoice_Flg]" value="2" <?='2'==$common['R01_Invoice_Flg']?'checked':''?>/>
+				<label for="R01_Invoice_Flg_2">支社</label><br>
+				<span class="error_msg" id="R01_Invoice_Flg_error"></span>
+			</td>
+		</tr>
+		<tr class="bupload">
+			<th class="">パンフレット用写真アップロード</th>
+			<td>
+				<?php 
+				if(!empty($reserve['R01_Passport_Img'])) {
+					$color="#33BFDB";
+					$value = "再アップロード";
+				} else {
+					$color="red";
+					$value = "アップロード";
+				}
+				?>
+				<img id="R01_Brochure_Display" alt="アップロードしてください" onerror="this.onerror=null;this.src='<?=base_url()?>img/noupload.png';" src="<?=base_url().$common['R01_Brochure_Img']?>" style="max-width:300px"/><br>
+				<input type="file" id="R01_Brochure_Img_File"/>
+				<input type="button" id="R01_Brochure_Img_Btn" style="background:<?=$color;?>;" value="<?=$value;?>" onclick="savePhoto(<?=$reserve['R01_Id']?>, 0, '.bupload', 'passport');"></input>
+				<input type="hidden" name="common[R01_Brochure_Img]" id="R01_Brochure_Img" value="<?=$common['R01_Brochure_Img']?>"/>
+				<p class="error_msg" id="R01_Brochure_Img_error"></p>
+			</td>
+		</tr>
+		<tr>
+			<th class="">備考</th>
+			<td>
+				<textarea name="common[R01_Note]" style="width:100%" rows="5"><?=$common['R01_Note']?></textarea>
+			</td>
+		</tr>
+	</table>
+	
+</form>
+<div style="text-align: center;margin-top:1em;">
+<div class="his-button" style="border-radius: 5px;">
+	<input type="image" src="<?php echo base_url();?>img/back.png" onclick="go_back_entry_no();"/>
+<?php if(empty($back_to_top)):?>
+&nbsp;&nbsp;&nbsp;
+	<input type="image" src="<?php echo base_url();?>img/next.png" onclick="return validate_reserver();"/>
+<?php else:?>
+&nbsp;&nbsp;&nbsp;
+	<input type="image" src="<?php echo base_url();?>img/save.png" onclick="return validate_reserver(1);"/>
+<?php endif;?>
+</div>
+</div>
+</section>

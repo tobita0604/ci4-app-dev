@@ -1,0 +1,72 @@
+<?php
+$charger_type = $this->session->userdata('charger_type');
+?>
+<p style ="border-bottom:2px solid #ccc;"></P>
+<div class="contents">
+<section >
+	<div class="menuback">
+	<div align="right">
+		<form action = "<?php echo base_url();?>admin_con/logout" name = "logout" method="post">
+			<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+			<input type="submit" name="logout" value="ログアウト">　　　
+		</form>
+	</div>
+	<h1>管理者メニュー</h1>
+	<div align="center" class="bgblue">
+	<div class="join">
+		<br>
+		<form action="<?php echo base_url();?>menu_con/search" method="post">
+		<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+		
+		<div class="menubutton">
+<?php
+	if($charger_type=="3"){
+?>
+		<ul>	
+			<!--<li><input type="submit" name="submitForm" id="submitForm" value="登録者検索" /></li>
+			<li><input type="button" name="rate" id="rate" value="ログイン状況" onclick="window.location.href='<?php echo base_url();?>total_con/login';"/></li>
+			<li><input type="button" name="rate" id="rate" value="登録状況" onclick="window.location.href='<?php echo base_url();?>total_con/register';"/></li>-->
+			<li><input type="button" name="rate" id="rate" value="パンフレット写真ダウンロード" onclick="window.location.href='<?php echo base_url();?>download_con/photo';"/></li>
+		</ul>
+<?php
+	}else{
+		if($charger_type=="1"){
+?>
+		<ul>	
+			<li><input type="submit" name="submitForm" id="submitForm" value="登録者検索" /></li>
+			<li><input type="button" name="rate" id="rate" value="ログイン状況" onclick="window.location.href='<?php echo base_url();?>total_con/login';"/></li>
+			<li><input type="button" name="rate" id="rate" value="登録状況" onclick="window.location.href='<?php echo base_url();?>total_con/register';"/></li>
+			<!--<li><input type="button" name="rate" id="rate" value="パンフレット写真ダウンロード" onclick="window.location.href='<?php echo base_url();?>download_con/photo';"/></li>-->
+			<!--<li><input type="button" name="rate" id="rate" value="許可IP一覧" onclick="window.location.href='<?php echo base_url();?>IpSetting';"/></li>-->
+			<!--<li><input type="button" name="rate" id="rate" value="再入力許可設定" onclick="window.location.href='<?php echo base_url();?>reentry_con/search';"/></li>-->
+			<!--<li><input type="button" name="rate" id="rate" value="レンタカー予約検索" onclick="window.location.href='<?php echo base_url();?>CarRentalAdmin_con/search';"/></li>-->
+			<!--<li><input type="button" name="rate" id="rate" value="OP予約状況" onclick="window.location.href='<?php echo base_url();?>Optionstock_con/search';"/></li>-->
+		</ul>
+<?php
+		}else{
+?>
+		<ul>	
+			<li><input type="submit" name="submitForm" id="submitForm" value="登録者検索" /></li>
+			<li><input type="button" name="rate" id="rate" value="ログイン状況" onclick="window.location.href='<?php echo base_url();?>total_con/login';"/></li>
+			<li><input type="button" name="rate" id="rate" value="登録状況" onclick="window.location.href='<?php echo base_url();?>total_con/register';"/></li>
+			<!--<li><input type="button" name="rate" id="rate" value="パンフレット写真ダウンロード" onclick="window.location.href='<?php echo base_url();?>download_con/photo';"/></li>-->
+			<li><input type="button" name="rate" id="rate" value="許可IP一覧" onclick="window.location.href='<?php echo base_url();?>IpSetting';"/></li>
+			<li><input type="button" name="rate" id="rate" value="再入力許可設定" onclick="window.location.href='<?php echo base_url();?>reentry_con/search';"/></li>
+			<li><input type="button" name="rate" id="rate" value="移動方法状況" onclick="window.location.href='<?php echo base_url();?>TransferAdmin_con/search';"/></li>
+			<!-- <li><input type="button" name="rate" id="rate" value="レンタカー予約検索" onclick="window.location.href='<?php echo base_url();?>CarRentalAdmin_con/search';"/></li> -->
+			<li><input type="button" name="rate" id="rate" value="OP予約状況" onclick="window.location.href='<?php echo base_url();?>Optionstock_con/search';"/></li>
+		</ul>
+<?php
+		}
+	}
+?>
+		</div>
+			
+		</form>
+		
+	</div>
+	</div>
+</div>
+
+</section>
+</div>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+
+<title>EPC2024 お申込みサイト</title>
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="all" />
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" >
+ 
+  <!-- CSS設定
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<link rel="stylesheet" href="<?=base_url();?>common/css/common.css" type="text/css" />
+<link rel="stylesheet" href="<?=base_url();?>common/css/contents.css" type="text/css" />
+<link rel="stylesheet" href="<?=base_url();?>common/css/style.css" type="text/css" />
+<link rel="stylesheet" href="<?=base_url();?>common/css/table.css" type="text/css" />
+ 
+<link rel="stylesheet" href="<?=base_url();?>css/jquery-ui-1.13.1.css" type="text/css" />
+<script type="text/javascript" src="<?=base_url();?>js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="<?=base_url();?>js/jquery-ui-1.13.1.js"></script>
+<script type="text/javascript" src="<?=base_url();?>js/datepicker-ja.js"></script>
+<script type="text/javascript" src="<?=base_url();?>js/ajaxzip3.js"></script>
+
+<script>
+	base_url = '<?=base_url();?>';
+</script>
+</head>

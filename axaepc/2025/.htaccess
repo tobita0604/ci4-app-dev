@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteBase /potential-main/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /axaepc/2025/index.php [L]
+
+Header set Access-Control-Allow-Origin: https://localhost/axaepc/2025
+Header set Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+
+</IfModule>
+php_value max_input_vars 5000
+php_value max_execution_time 240

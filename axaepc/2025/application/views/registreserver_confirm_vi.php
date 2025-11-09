@@ -1,0 +1,303 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+	<!-- Section1 about--------------------------------------------------->
+	<style>
+		th.required::after {
+			content: "[必須]";
+			color: red;
+			font-weight: bold
+		}
+
+		.border2.gai th {
+			background: #ffff99;
+		}
+
+		.gai tr:first-child th:first-child::after {
+			content: "招待外";
+			color: red;
+		}
+	</style>
+	<section id="about">
+		<div id="main">
+
+			<form action="<?php echo base_url(); ?>register_con/save_reserver" method="post" autocomplete="off" id="entry_data">
+				<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+				<h2 style="background:#005084">EPC2024　参加受付　本人情報確認</h2>
+				<table class="border2 invite" width="100%" id="invite0">
+					<tr>
+						<th width="30%">お名前</th>
+						<td>
+							<?= h($reserve['R01_Name']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th>入賞者カテゴリー</th>
+						<td>
+							<?= get_label('カテゴリ', $common['R01_Category_Flg']) ?><br>
+							<?= $common['R01_Category_Flg'] == 'E1' ? DIAMOND_NOTE : '' ?>
+						</td>
+					</tr>
+					<!--
+		<tr>
+			<th>１Q家族招待CP</th>
+			<td>
+				<?= get_label('1Q', $common['R01_1Q_Flg']) ?>
+			</td>
+		</tr>
+-->
+					<!--
+		<tr>
+			<th>４Qオプショナルツアー招待CP</th>
+			<td>
+				<?= get_label('4Q', $common['R01_4Q_Flg']) ?>
+			</td>
+		</tr>
+-->
+					<!--
+		<tr>
+			<th>xx無料権利</th>
+			<td>
+				<?= get_label('パーク', $common['R01_Park_Flg']) ?>
+				<?= $common['R01_Park_Flg'] == '1' ? PARK_NOTE : '' ?>
+			</td>
+		</tr>
+-->
+					<tr>
+						<th>招待人数（本人含む）</th>
+						<td>
+							<?= h($common['R01_Free_Invites']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th>自費参加者</th>
+						<td>
+							<?= h($common['R01_Charge_Invites']) ?><!--<?= INVITES_NOTE ?>-->
+						</td>
+					</tr>
+				</table>
+				<table class="border2 invite" width="100%" id="invite0">
+					<tr>
+						<th colspan="2">
+							■ご本人様情報
+						</th>
+					</tr>
+					<tr>
+						<th width="30%" class="required">お名前:姓（カタカナ）</th>
+						<td>
+							<?= h($reserve['R01_Roma_Last']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">お名前:名（カタカナ）</th>
+						<td>
+							<?= h($reserve['R01_Roma_First']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">生年月日</th>
+						<td>
+							<?php
+							$Number_arr = [];
+							$Number_arr = explode_date($reserve['R01_Birthdate']);
+							?>
+							<?= !empty($Number_arr[0]) ? h($Number_arr[0]) : '' ?>年
+							<?= !empty($Number_arr[1]) ? h($Number_arr[1]) : '' ?>月
+							<?= !empty($Number_arr[2]) ? h($Number_arr[2]) : '' ?>日
+						</td>
+					</tr>
+					<tr>
+						<th class="required">年齢</th>
+						<td>
+							<?= h($reserve['R01_Age']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">性別</th>
+						<td>
+							<?php
+							$gender = '';
+							if (1 == $reserve['R01_Gender']) {
+								$gender = '男性';
+							} elseif (2 == $reserve['R01_Gender']) {
+								$gender = '女性';
+							}
+							?>
+							<?= !empty($gender) ? $gender : '' ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">自宅郵便番号</th>
+						<td>
+							<?= h($reserve['R01_Postal1']) ?> - <?= h($reserve['R01_Postal2']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">都道府県</th>
+						<td>
+							<?php foreach (getPrefecture() as $id => $val): ?>
+								<?= $id == $reserve['R01_Prefecture'] ? $val : '' ?>
+							<?php endforeach; ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">市区郡</th>
+						<td>
+							<?= h($reserve['R01_Address']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">町村名番地番号</th>
+						<td>
+							<?= h($reserve['R01_Address2']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th>建物名・部屋番号等</th>
+						<td>
+							<?= h($reserve['R01_Address3']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">連絡先電話番号</th>
+						<td>
+							<?php
+							$Number_arr = [];
+							$Number_arr = explode_date($reserve['R01_Tel_No']);
+							?>
+							<?= !empty($Number_arr[0]) ? h($Number_arr[0]) : '' ?>-<?= !empty($Number_arr[1]) ? h($Number_arr[1]) : '' ?>-<?= !empty($Number_arr[2]) ? h($Number_arr[2]) : '' ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">携帯電話番号</th>
+						<td>
+							<?
+							$Number_arr = [];
+							$Number_arr = explode_date($reserve['R01_Mobile_No']);
+							?>
+							<?= !empty($Number_arr[0]) ? h($Number_arr[0]) : '' ?>-<?= !empty($Number_arr[1]) ? h($Number_arr[1]) : '' ?>-<?= !empty($Number_arr[2]) ? h($Number_arr[2]) : '' ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">メールアドレス</th>
+						<td>
+							<?= h($reserve['R01_Email']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">ご旅行中の緊急連絡先：お名前</th>
+						<td>
+							<?= h($reserve['R01_Emer_Name']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">ご旅行中の緊急連絡先：続柄</th>
+						<td>
+							<?= h($reserve['R01_Emer_Relationship']) ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">ご旅行中の緊急連絡先：電話番号</th>
+						<td>
+							<?
+							$Number_arr = [];
+							$Number_arr = explode_date($reserve['R01_Emer_Tel_No']);
+							?>
+							<?= !empty($Number_arr[0]) ? h($Number_arr[0]) : '' ?>-<?= !empty($Number_arr[1]) ? h($Number_arr[1]) : '' ?>-<?= !empty($Number_arr[2]) ? h($Number_arr[2]) : '' ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">請求書 送付先</th>
+						<td>
+							<?php
+							$invoice = '';
+							if ('1' == $common['R01_Invoice_Flg']) {
+								$invoice = 'ご自宅';
+							} elseif ('2' == $common['R01_Invoice_Flg']) {
+								$invoice = '支社';
+							}
+							?>
+							<?= !empty($invoice) ? $invoice : '' ?>
+						</td>
+					</tr>
+					<tr>
+						<th class="required">1日目ホテル夕食必要有無</th>
+						<td>
+							<?php
+							$dinner_hotel = '';
+							if ('1' == $common['R01_DinnerHotel_Flg']) {
+								$dinner_hotel = '必要';
+							} elseif ('2' == $common['R01_DinnerHotel_Flg']) {
+								$dinner_hotel = '不要';
+							}
+							?>
+							<?= !empty($dinner_hotel) ? $dinner_hotel : '' ?>
+						</td>
+					</tr>
+					<!--
+				<tr class="bupload">
+			<th class="">パンフレット用写真アップロード</th>
+			<td>
+				<img id="R01_Brochure_Display" onerror="this.onerror=null;this.src='<?= base_url() ?>img/noupload.png';" src="<?= base_url() . $common['R01_Brochure_Img'] ?>" style="max-width:300px"/><br>
+			</td>
+		</tr>
+-->
+					<!--
+				<tr>
+			<th class="required" style="text-align: left;">沖縄滞在中での<br>レンタカーのご利用について</th>
+			<td>
+				<?php
+				$car_rental = '';
+				if ('1' == $common['R01_Car_Rental']) {
+					$car_rental = '当サイトよりレンタカーの手配をする';
+				} elseif ('2' == $common['R01_Car_Rental']) {
+					$car_rental = 'ご自身でレンタカーを手配する';
+				} elseif ('3' == $common['R01_Car_Rental']) {
+					$car_rental = '利用しない';
+				}
+				?>
+				<?= !empty($car_rental) ? $car_rental : '' ?>
+			</td>
+		</tr>
+-->
+					<input type="hidden" name="common[R01_4q]" value="" />
+					<?php
+					//if(!empty($common['R01_4Q_Flg'])){
+					?>
+					<!--
+		<tr>
+			<th class="required" style="text-align: left;">４Qオプショナルツアー招待CP</th>
+			<td>
+				<p>【4Qオプショナルツアー招待客キャンペーン】に入賞されている方で、自費参加補助を選択された方は入賞グレードにより自費参加の補助を致します。あくまで自費参加の補助となりますので、招待者については適用外となります。</p>
+				<p>オプショナルツアーをご選択された方は6月に受付開始となります。</p>
+				<?php
+				$q_4 = '';
+				if ('1' == $common['R01_4q']) {
+					$q_4 = 'オプショナルツアー';
+				} elseif ('2' == $common['R01_4q']) {
+					$q_4 = '自費参加補助';
+				} else {
+					$q_4 = '未指定';
+				}
+				?>
+				<?= !empty($q_4) ? '選択：' . $q_4 : '' ?>
+			</td>
+		</tr>
+-->
+					<?php
+					//}
+					?>
+					<tr>
+						<th class="">備考</th>
+						<td>
+							<?= nl2br(h($common['R01_Note'])) ?>
+						</td>
+					</tr>
+				</table>
+
+			</form>
+			<div style="text-align: center;margin-top:1em;">
+				<div class="his-button" style="border-radius: 5px;">
+					<input type="image" src="<?php echo base_url(); ?>img/back.png" onclick="go_back_mypege();" />
+				</div>
+			</div>
+	</section>

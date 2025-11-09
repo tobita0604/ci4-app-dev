@@ -1,0 +1,365 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+<!-- Section1 about---------------------------------------------------> <style>
+	th.required::after {
+		content: "[必須]";
+		color:red;
+		font-weight:bold
+	}
+	.border2.gai th {
+		background: #ffff99;
+	}
+	.gai tr:first-child th:first-child::after {
+		content: "招待外";
+		color:red;
+	}
+</style>
+<section id="about">
+<div id="main">
+<!-- システムメッセージ -->
+<div id="systemMsg"></div>
+<form action="<?php echo base_url();?>register_con/confirm" method="post" autocomplete="off" id="entry_data" > 
+	<h2 style ="background:#005084">EPC2024　参加受付</h2>
+	<p>
+		必要事項をご入力の上、送信ボタンを押してください。<br>
+		<!--※申込希望者本人がご入力ください。<br>
+		※お一人様当たり１回のお申込みです。<br>-->
+	</p>
+	<p style="font-weight: bolder; color: #f00">
+		※参加登録フォームは３０分でタイムアウトとなります。ご注意ください。<br>
+		※ご本人様情報及び同伴者人数の入力で、１度、ご登録することが可能です（「送信」ボタンを押してください。）。<br>
+		※登録個人ページより同伴者情報を追加でご入力することができます。<br>
+		※１度登録した同伴者人数は変更できません。変更をご希望の場合はEPC2024事務局までご連絡ください。<br>
+	</p>
+	<p>
+		<br>『EPC2024』WEBトップページは<a href="#!" >こちら</a><br><br>
+		ご入力内容に不備がございます。エラーが発生した項目を修正し、送信しなおしください<br><br>
+	</p>
+	
+	<table class="border2" width="100%">
+		<tr>
+			<th class="required">個人情報の取り扱い</th>
+			<td>
+				<input type="checkbox" id="cfm_flg" value="1"/>同意します
+				<p>
+					入力いただくお客様の個人情報は、お客様との連絡及び当該旅行サービスの提供のために利用させていただきます。<br>
+					また、お申込みいただいた当該旅行サービスの手続きに必要な範囲内で、手配代行者に対しお客様の個人情報を提供いたします。<br>
+					さらに、今後のお客様のご旅行申込を簡素化するために、JTBグループ企業とお客様の個人情報を共有する場合があります。<br>
+					<br>プライバシー全文は<a href="#" target="_blank">こちら</a>をご覧ください。
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<th width="30%">招待人数</th>
+			<td>
+				<?=$reserve['R01_Free_Invites']?>
+				<input type="hidden" name="reserve[R01_Free_Invites]" value="<?=$reserve['R01_Free_Invites']?>"/>
+			</td>
+		</tr>
+		<tr>
+			<th>自費参加者</th>
+			<td>
+				<select name="reserve[R01_Charge_Invites]" onchange="invite_changed(this)">
+					<?php for($i=0;$i<9;$i++):?>
+					<option value="<?=$i?>" <?=$i==$reserve['R01_Charge_Invites']?'selected':''?>><?php echo $i ?></option>
+					<?php endfor; ?>
+				</select>
+			</td>
+		</tr>
+	</table>
+	
+	<table class="border2 invite" width="100%" id="invite0">
+		<tr>
+			<th colspan="2">■ご本人様情報</th>
+		</tr>
+		<tr>
+			<th width="30%" class="required">支社名(2024年所属)</th>
+			<td>
+				<input type="text" name="reserve[R01_Branch_Name]" value="<?=$reserve['R01_Branch_Name']?>"/>
+				<span class="error_msg" id="R01_Branch_Name_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前</th>
+			<td>
+				<input type="text" name="reserve[R01_Name]" value="<?=$reserve['R01_Name']?>" />
+				<span class="error_msg" id="R01_Name_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前:姓（カタカナ）</th>
+			<td>
+				<input type="text" name="reserve[R01_Roma_Last]" value="<?=$reserve['R01_Roma_Last']?>" />
+				<span class="error_msg" id="R01_Roma_Last_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前:名（カタカナ）</th>
+			<td>
+				<input type="text" name="reserve[R01_Roma_First]" value="<?=$reserve['R01_Roma_First']?>" />
+				<span class="error_msg" id="R01_Roma_First_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">生年月日</th>
+			<td>
+				<?
+					$Date_arr = explode_date($reserve['R01_Birthdate']);
+				?>
+				<input type="text" name="reserve[Birth_Year]" value="<?=$Date_arr[0]?>" size="4" class="digits"/>年
+				<input type="text" name="reserve[Birth_Month]" value="<?=$Date_arr[1]?>" size="4" class="digits"/>月
+				<input type="text" name="reserve[Birth_Day]" value="<?=$Date_arr[2]?>" size="4" class="digits"/>日
+				<span class="error_msg" id="R01_Birthdate_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">年齢</th>
+			<td>
+				<input type="text" name="reserve[R01_Age]" value="<?=$reserve['R01_Age']?>" size="2"/>
+				<span class="error_msg" id="R01_Age_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">性別</th>
+			<td>
+				<input type="hidden" name="reserve[R01_Gender]" value="0" />
+				<input type="radio" id="R01_Gender_1" name="reserve[R01_Gender]" value="1" <?='1'==$reserve['R01_Gender']?'checked':''?>/>男性<br>
+				<input type="radio" id="R01_Gender_2" name="reserve[R01_Gender]" value="2" <?='2'==$reserve['R01_Gender']?'checked':''?>/>女性<br>
+				<p class="error_msg" id="R01_Gender_error"></p>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">自宅郵便番号</th>
+			<td>
+				<input type="text" name="reserve[R01_Postal1]" value="<?=$reserve['R01_Postal1']?>" size="3" class="digits"/> -
+				<input type="text" name="reserve[R01_Postal2]" value="<?=$reserve['R01_Postal2']?>" size="4" class="digits"/>
+				<span class="error_msg" id="R01_Postal_error"></span>
+				<input type="button" value="住所検索" onclick="AjaxZip3.zip2addr('reserve[R01_Postal1]','reserve[R01_Postal2]','reserve[R01_Prefecture]','reserve[R01_Address]');"/>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">都道府県</th>
+			<td>
+				<select name="reserve[R01_Prefecture]">
+					<option value="0" selected="selected">選択してください</option>
+					<?php foreach(getPrefecture() as $id => $val):?>
+					<option value="<?php echo $id ?>"  <?=$id==$reserve['R01_Prefecture']?'selected':''?>><?php echo $val ?></option>
+					<?php endforeach;?>
+				</select>
+				<span class="error_msg" id="R01_Prefecture_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">自宅住所</th>
+			<td>
+				<input type="text" name="reserve[R01_Address]" value="<?=$reserve['R01_Address']?>" size="40"/>
+				<span class="error_msg" id="R01_Address_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">連絡先電話番号</th>
+			<td>
+				<input type="text" name="reserve[R01_Tel_No]" value="<?=$reserve['R01_Tel_No']?>" />
+				<span class="error_msg" id="R01_Tel_No_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">携帯電話番号</th>
+			<td>
+				<input type="text" name="reserve[R01_Mobile_No]" value="<?=$reserve['R01_Mobile_No']?>" />
+				<span class="error_msg" id="R01_Mobile_No_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">メールアドレス</th>
+			<td>
+				<input type="text" name="reserve[R01_Email]" value="<?=$reserve['R01_Email']?>" size="40"/>
+				<span class="error_msg" id="R01_Email_error"></span><br>
+				<input type="text" name="reserve[R01_Email_cfm]" value="<?=$reserve['R01_Email']?>" size="40"/>（確認用）
+				<span class="error_msg" id="R01_Email_cfm_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">沖縄ご旅行中の緊急連絡先：お名前</th>
+			<td>
+				<input type="text" name="reserve[R01_Emer_Name]" value="<?=$reserve['R01_Emer_Name']?>" />
+				<span class="error_msg" id="R01_Emer_Name_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">沖縄ご旅行中の緊急連絡先：続柄</th>
+			<td>
+				<input type="text" name="reserve[R01_Emer_Relationship]" value="<?=$reserve['R01_Emer_Relationship']?>" />
+				<span class="error_msg" id="R01_Emer_Relationship_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">沖縄ご旅行中の緊急連絡先：電話番号</th>
+			<td>
+				<input type="text" name="reserve[R01_Emer_Tel_No]" value="<?=$reserve['R01_Emer_Tel_No']?>" />
+				<span class="error_msg" id="R01_Emer_Tel_No_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">請求書 送付先</th>
+			<td>
+				<input type="hidden" name="reserve[R01_Invoice_Flg]" value="0" />
+				<input type="radio" name="reserve[R01_Invoice_Flg]" value="1" <?='1'==$reserve['R01_Invoice_Flg']?'checked':''?>/>ご自宅<br>
+				<input type="radio" name="reserve[R01_Invoice_Flg]" value="2" <?='2'==$reserve['R01_Invoice_Flg']?'checked':''?>/>支社<br>
+				<span class="error_msg" id="R01_Invoice_Flg_error"></span>
+			</td>
+		</tr>
+	</table>
+	
+	<?php 
+	// var_dump($invites);
+	for($no=1;$no<10;$no++): 
+	$idx = $no - 1;
+	?>
+	<table class="border2 invite" id="invite<?php echo $no?>" hidden>
+		<tr>
+			<th colspan="2">
+				■招待同伴者<?=$no?>
+				<?php if(!empty($invites[$idx]['R01_Id'])):?><span style="float:right"><input type="button" value="キャンセル" onclick="cancel_member('<?=$no?>')"></span><?php endif;?>
+			</th>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">お名前</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Name]" value="<?=$invites[$idx]['R01_Name']?>" />
+				<span class="error_msg" id="R01_Name_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前:姓（カタカナ）</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Roma_Last]" value="<?=$invites[$idx]['R01_Roma_Last']?>" />
+				<span class="error_msg" id="R01_Roma_Last_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前:名（カタカナ）</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Roma_First]" value="<?=$invites[$idx]['R01_Roma_First']?>" />
+				<span class="error_msg" id="R01_Roma_First_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">生年月日</th>
+			<td>
+				<?
+					$Date_arr = explode_date($invites[$idx]['R01_Birthdate']);
+				?>
+				<input type="text" name="invites[<?=$no?>][Birth_Year]" value="<?=$Date_arr[0]?>" size="4" class="digits"/>年
+				<input type="text" name="invites[<?=$no?>][Birth_Month]" value="<?=$Date_arr[1]?>" size="4" class="digits"/>月
+				<input type="text" name="invites[<?=$no?>][Birth_Day]" value="<?=$Date_arr[2]?>" size="4" class="digits"/>日
+				<span class="error_msg" id="R01_Birthdate_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">年齢</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Age]" value="<?=$invites[$idx]['R01_Age']?>" size="2"/>
+				<span class="error_msg" id="R01_Age_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">性別</th>
+			<td>
+				<input type="hidden" name="invites[<?=$no?>][R01_Gender]" value="0" />
+				<input type="radio" id="R01_Gender_1" name="invites[<?=$no?>][R01_Gender]" value="1" <?='1'==$invites[$idx]['R01_Gender']?'checked':''?>/>男性<br>
+				<input type="radio" id="R01_Gender_2" name="invites[<?=$no?>][R01_Gender]" value="2" <?='2'==$invites[$idx]['R01_Gender']?'checked':''?>/>女性<br>
+				<p class="error_msg" id="R01_Gender_error"></p>
+			</td>
+		</tr>
+		
+		<tr>
+			<th class="required">携帯電話番号</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Mobile_No]" value="<?=$invites[$idx]['R01_Mobile_No']?>" />
+				<span class="error_msg" id="R01_Mobile_No_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">メールアドレス</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Email]" value="<?=$invites[$idx]['R01_Email']?>" size="40"/>
+				<span class="error_msg" id="R01_Email_error"></span><br>
+				<input type="text" name="invites[<?=$no?>][R01_Email_cfm]" value="<?=$invites[$idx]['R01_Email']?>" size="40"/>（確認用）
+				<span class="error_msg" id="R01_Email_cfm_error"></span>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input type="checkbox" name="invites[<?=$no?>][copy]" value="1" onchange="copy_checked(this)" />代表者と同じ 
+			</th>
+		</tr>
+		<tr class="copy">
+			<th class="required copy">自宅郵便番号</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Postal1]" value="<?=$invites[$idx]['R01_Postal1']?>" size="3" class="digits"/> -
+				<input type="text" name="invites[<?=$no?>][R01_Postal2]" value="<?=$invites[$idx]['R01_Postal2']?>" size="4" class="digits"/>
+				<span class="error_msg" id="R01_Postal_error"></span>
+				<input type="button" value="住所検索" onclick="AjaxZip3.zip2addr('invites[<?=$no?>][R01_Postal1]','invites[<?=$no?>][R01_Postal2]','invites[<?=$no?>][R01_Prefecture]','invites[<?=$no?>][R01_Address]');"/>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">都道府県</th>
+			<td>
+				<select name="invites[<?=$no?>][R01_Prefecture]">
+					<option value="0" selected="selected">選択してください</option>
+					<?php foreach(getPrefecture() as $id => $val):?>
+					<option value="<?php echo $id ?>" <?=$id==$invites[$idx]['R01_Prefecture']?'selected':''?>><?php echo $val ?></option>
+					<?php endforeach;?>
+				</select> 
+				<span class="error_msg" id="R01_Prefecture_error"></span>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">自宅住所</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Address]" value="<?=$invites[$idx]['R01_Address']?>" size="40"/>
+				<span class="error_msg" id="R01_Address_error"></span>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">連絡先電話番号</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Tel_No]" value="<?=$invites[$idx]['R01_Tel_No']?>" />
+				<span class="error_msg" id="R01_Tel_No_error"></span>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">沖縄ご旅行中の緊急連絡先：お名前</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Emer_Name]" value="<?=$invites[$idx]['R01_Emer_Name']?>" />
+				<span class="error_msg" id="R01_Emer_Name_error"></span>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">沖縄ご旅行中の緊急連絡先：続柄</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Emer_Relationship]" value="<?=$invites[$idx]['R01_Emer_Relationship']?>" />
+				<span class="error_msg" id="R01_Emer_Relationship_error"></span>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">沖縄ご旅行中の緊急連絡先：電話番号</th>
+			<td>
+				<input type="text" name="invites[<?=$no?>][R01_Emer_Tel_No]" value="<?=$invites[$idx]['R01_Emer_Tel_No']?>" />
+				<span class="error_msg" id="R01_Emer_Tel_No_error"></span>
+			</td>
+		</tr>
+	</table>
+	<?php endfor; ?>
+	</form>
+	<div style="text-align: center;margin-top:1em;">
+	<div class="his-button" style="border-radius: 5px;">
+		<input type="image"  src="<?php echo base_url();?>img/next.png" onclick="return validate_form();"/>
+	</div>
+	</div>
+	
+</section>
+<div id="dialog-confirm" title="確認">
+	<p>全ての情報を入力してください。<br>尚、途中までの入力で保存したい方は続行ボタンを押してください。</p>
+</div>

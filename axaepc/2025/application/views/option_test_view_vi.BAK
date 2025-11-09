@@ -1,0 +1,544 @@
+﻿<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+	<!-- Section1 about--------------------------------------------------->
+	<style>
+		dl.tours {
+			padding-left: 2em;
+		}
+
+		dl.tours dt {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		dl.tours dd {
+			display: inline-block;
+		}
+
+		td.time {
+			word-break: keep-all;
+		}
+
+		td.avail {
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		*,
+		*:before,
+		*:after {
+			-webkit-box-sizing: inherit;
+			box-sizing: inherit;
+		}
+
+		html {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			font-size: 62.5%;
+		}
+
+		.btn,
+		a.btn,
+		button.btn {
+			font-size: 1.3rem;
+			font-weight: 700;
+			line-height: 0.9;
+			position: relative;
+			display: inline-block;
+			padding: 1rem 4rem;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+			text-align: center;
+			vertical-align: middle;
+			text-decoration: none;
+			letter-spacing: 0.1em;
+			color: #212529;
+			border-radius: 0.5rem;
+		}
+
+		.btn--orange,
+		a.btn--orange {
+			color: #fff;
+			background-color: #eb6100;
+		}
+
+		.btn--orange:hover,
+		a.btn--orange:hover {
+			color: #fff;
+			background: #f56500;
+		}
+
+		.btn--bule,
+		a.btn--bule {
+			color: #fff;
+			background-color: #0027eb;
+		}
+
+		.btn--bule:hover,
+		a.btn--bule:hover {
+			color: #fff;
+			background: #3b00eb;
+		}
+	</style>
+	<section id="about">
+		<div id="main">
+
+
+			<div id="systemMsg"></div>
+			<!-- フォーム -->
+
+			<form action="" method="post" autocomplete="off">
+				<h2 style="background:#005084">EPC2025　4Qオプショナルツアー招待キャンペーン申込　確認</h2>
+
+				<div class="comp center">
+					<?php if (!empty($common['R01_4Q_Flg'])) : ?>
+						<div style="margin-left: auto; margin-right: auto;">
+							<p style="font-size: 18px; margin-bottom: 5px;">あなたのランク：<?= $common['R01_4Q_Flg'] ?>ランク</p>
+							<p style="font-size: 18px; margin-bottom: 5px;">特典：<?= get_label('4Q', $common['R01_4Q_Flg']); ?></p>
+							<B>
+								<?php if (!empty($members)) : ?>
+									<?php
+									$msg = '未選択';
+									if ($members[0]['R02_Option_Type'] == 1) {
+										$msg = '無料招待利用';
+									} elseif ($members[0]['R02_Option_Type'] == 2) {
+										$msg = '自費参加補助利用';
+									}
+									?>
+									<p style="font-size: 18px; margin-bottom: 5px; color: #ff0000;">ツアーご登録時にご選択いただいた内容：<?= $msg ?></p>
+								<?php else : ?>
+									<p style="font-size: 18px; margin-bottom: 5px;">オプショナルツアー招待または自費参加費補助をご選択ください。</p>
+								<?php endif; ?>
+							</B>
+						</div>
+
+						<table class="border" width="80%" style="margin-left: auto; margin-right: auto; margin-top: 10px;">
+							<tr>
+								<th style="background-color: orange;">Grade</th>
+								<th style="background-color: orange;" colspan="2">オプショナルツアー無料招待</th>
+								<th style="background-color: orange;">自費参加費の旅行代金補助</th>
+							</tr>
+
+							<?php if ($common['R01_4Q_Flg'] == 'S') : ?>
+								<!-- S -->
+								<tr>
+									<td rowspan="2" style="background-color: orange;"><strong>S</strong></td>
+									<td>招待対象者</td>
+									<td>本人・家族招待枠・自費参加者３名まで無料</td>
+									<td rowspan="2">自費参加費１０万円の旅行代金補助</td>
+								</tr>
+								<tr>
+									<td>対象ツアー</td>
+									<td>S01～E01まで全てのツアー</td>
+								</tr>
+
+							<?php elseif ($common['R01_4Q_Flg'] == 'A') : ?>
+								<!-- A -->
+								<tr>
+									<td rowspan="2" style="background-color: orange;"><strong>A</strong></td>
+									<td>招待対象者</td>
+									<td>本人・家族招待枠・自費参加者２名まで無料</td>
+									<td rowspan="2">自費参加費６万円の旅行代金補助</td>
+								</tr>
+								<tr>
+									<td>対象ツアー</td>
+									<td>A01～E01までのツアー（S01・S02は選択不可）</td>
+								</tr>
+
+							<?php elseif ($common['R01_4Q_Flg'] == 'B') : ?>
+								<!-- B -->
+								<tr>
+									<td rowspan="2" style="background-color: orange;"><strong>B</strong></td>
+									<td>招待対象者</td>
+									<td>本人・家族招待枠まで無料</td>
+									<td rowspan="2">自費参加費３万円の旅行代金補助</td>
+								</tr>
+								<tr>
+									<td>対象ツアー</td>
+									<td>BC01～E01までのツアー（S01・A07は選択不可）</td>
+								</tr>
+
+							<?php elseif ($common['R01_4Q_Flg'] == 'C') : ?>
+								<!-- C -->
+								<tr>
+									<td rowspan="2" style="background-color: orange;"><strong>C</strong></td>
+									<td>招待対象者</td>
+									<td>本人まで無料</td>
+									<td rowspan="2">自費参加費２万円の旅行代金補助</td>
+								</tr>
+								<tr>
+									<td>対象ツアー</td>
+									<td>BC01～E01までのツアー（S01・A07は選択不可）</td>
+								</tr>
+							<?php endif; ?>
+
+							<table>
+
+							<?php endif; ?>
+
+							<br>
+							<table class="border2" width="100%" style="table-layout:fixed">
+								<tr>
+									<th width="30%">オプショナルツアー<br>ご参加者名</th>
+									<th width="10%">年齢</th>
+									<th>8月23日</th>
+									<th>8月24日</th>
+								</tr>
+								<?php foreach ($members as $member) : ?>
+									<tr <?= !empty($member['R01_Cancel_Flg']) ? 'hidden' : '' ?>>
+										<td>
+											<?php
+											echo $member['R01_Name'];
+											?>
+										</td>
+										<td>
+											<?php
+											$age = calculate_age($member['R01_Birthdate']);
+											if ($age != -1) {
+												echo $age . '才';
+											}
+											?>
+										</td>
+										<td>
+											<?= !empty($member['R02_Option1']) ? v($schedule, $member['R02_Option1']) : '不参加' ?>
+											<span class="time" <?= empty($member['R02_Option1_Time']) ? 'hidden' : '' ?>>
+												<br>時間
+												<?= !empty($member['R02_Option1_Time']) ? $member['R02_Option1_Time'] : '' ?>
+											</span>
+
+											<!-- <?= get_label('オプションゴルフ', $member['R02_Golf_Flg']); ?><br> -->
+
+											<!-- <span class="club" <?= empty($member['R02_Golf_Flg']) ? 'hidden' : '' ?>>
+										ゴルフクラブ<br>
+										<?= get_label('クラブ', $member['R02_Golf_Club']); ?>
+										</span>
+
+										<br>
+										<span class="shoes" <?= empty($member['R02_Golf_Flg']) ? 'hidden' : '' ?>>
+										ゴルフシューズ<br>
+										<?= $member['R02_Golf_Shoes'] ?>cm
+										</span> -->
+										</td>
+										<td>
+											<?= !empty($member['R02_Option2']) ? v($schedule, $member['R02_Option2']) : '不参加' ?>
+											<span class="time" <?= empty($member['R02_Option2_Time']) ? 'hidden' : '' ?>>
+												<br>時間
+												<?= !empty($member['R02_Option2_Time']) ? $member['R02_Option2_Time'] : '' ?>
+											</span>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</table>
+				</div>
+			</form>
+
+			<?php if (!empty($common['R01_4Q_Flg'])) : ?>
+				<div style="text-align: center; font-size: 18px;">
+					どちらかご選択ください。
+				</div>
+				<div style="text-align: center;margin-top:1em;">
+					<div class="his-button" style="border-radius: 5px;">
+						<form action="<?php echo base_url(); ?>option_con/save_jihi" method="post" autocomplete="off" onSubmit="return check_jihi()">
+							<a href="<?php echo base_url(); ?>option_con/option_4q" style="margin-bottom: 10px;" class="btn btn--orange">オプショナルツアー招待</a>
+							&nbsp;&nbsp;&nbsp;
+							<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" />
+							<input type="submit" class="btn btn--orange" style="border:none; margin-bottom: 10px;" value="自費参加費　ご旅行代金補助">
+						</form>
+					</div>
+				</div>
+				<div style="text-align: center;margin-top:1em;">
+					<div class="his-button" style="border-radius: 5px;">
+						<a href="<?php echo base_url(); ?>mypage_con" class="btn btn--bule">マイページに戻る</a>
+					</div>
+				</div>
+			<?php else : ?>
+				<div style="text-align: center;margin-top:1em;">
+					<div class="his-button" style="border-radius: 5px;">
+						<a href="<?php echo base_url(); ?>mypage_con" style="margin-bottom: 10px;" class="btn btn--bule">マイページに戻る</a>
+						&nbsp;&nbsp;&nbsp;
+						<a href="<?php echo base_url(); ?>option_con/option_7" style="margin-bottom: 10px;" class="btn btn--orange">オプショナルツアー申し込み</a>
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<br><br><br><br>
+
+			<div id="contents">
+				<section class="detail op_sp">
+					<h2>オプショナルツアー</h2>
+					<p class="mB20">沖縄での自由時間をより楽しく、有意義にお過ごしいただけますように、8月23日(火)、8月24日(水)にご参加いただけるオプショナルツアーをご用意いたしました。<br />
+						ご参加をご希望の場合は、オプショナルツアー詳細をご参照の上、<strong><u>7月13日(水)までに当サイトよりお申込みください。</u></strong></p>
+					<p class="mB20">お支払いにつきましては、お申込み内容の確定後、8月上旬頃に近畿日本ツーリストコーポレートビジネスよりご請求書をお送りいたしますので、ご案内の期日(ご旅行開始前)までに各自お振込みまたはカードでのお支払いをお願いいたします。</p>
+					<form name="defaultLink" method="post" action="https://etravels.jp/axa2025/" target="_blank">
+						<input type="hidden" name="accpswd" value="axa2025">
+					</form>
+					<br />
+					<p><strong>【注意事項】</strong><br />
+						①コースは混載ツアーとなり、それぞれの催行人数は、詳細のご案内をご確認ください。<br />
+						②一部のツアーは年齢制限や身長制限がございます。お申込み前に参加条件を必ずご確認ください。<br />
+						※なお参加条件を満たしていなかった場合、当日ご参加をお断りすることがございます。その場合でもご返金はいたしかねますのであらかじめご了承ください。<br />
+						③18歳未満の方のご参加は保護者の同伴を条件とします。<br />
+						④催行人数により、ご指定いただいたお時間を変更していただく場合がございます。<br />
+						⑤すべてのツアーにホテルからの往復送迎がついております。（権利放棄不可）<br />
+						⑥夕食のお時間に重なるアクティビティもございますのでご注意ください。<br />
+						⑦すべてのツアー（BC02おきなわワールド手作り体験を除く）には保険料が含まれております。<br />
+						⑧必ず、各オプショナルツアーの注意事項をご確認の上、お申込みください。</p>
+					<br />
+					<p class="mt20"><strong>【キャンセルポリシー】</strong><br />
+						お申込み後、お客様のご都合にてキャンセルをされる場合、お取消しされる日により、以下の通り既定の取消料が発生いたします。</p>
+					<table class="mL20">
+						<tr>
+							<td></td>
+							<td>お申込み期間</td>
+							<td>無料</td>
+						</tr>
+						<tr>
+							<td height="40">31日前まで</td>
+							<td>お申込み期間終了～2022年7月22日(金)17:00</td>
+							<td>10%</td>
+						</tr>
+						<tr>
+							<td>30～21日前</td>
+							<td>2022年7月22日(金)17:00～2022年8月2日(火)17:00</td>
+							<td>20%</td>
+						</tr>
+						<tr>
+							<td>20～11日前</td>
+							<td>2022年8月2日(火)17:00～2022年8月12日(金)17:00</td>
+							<td>50%</td>
+						</tr>
+						<tr>
+							<td>10～3日前</td>
+							<td>2022年8月12日(金)17:00～2022年8月19日(金)17:00</td>
+							<td>80%</td>
+						</tr>
+						<tr>
+							<td>2日前～当日または無連絡不参加</td>
+							<td>2022年8月19日(金)17:00以降または無連絡不参加の場合</td>
+							<td>100%</td>
+						</tr>
+					</table>
+
+					<ul class="list">
+						<li>※キャンセルのご連絡が休業日・営業時間外の場合、翌営業日の扱いとなりますので、あらかじめご了承ください。<br />
+							　また、休業日・営業時間外にお送りいただいたお問合せは、翌営業日以降の返信となります。<br />
+							&ensp;【営業日・営業時間】月～金 10:00～17:00　 (土・日・祝日・8/11～8/14は休み)　</li>
+						<li>※第4Q入賞者の方で権利を使用してのお申込みの場合、取消料が発生するタイミングでのキャンセルの場合取消料は無料となりますが、権利放棄となります。</li>
+					</ul>
+					<br />
+
+					<p class="mt20"><strong>【“4Qオプショナルツアー招待キャンペーン”に入賞されている方】</strong><br />
+						ご入賞ランクにより、無料でご参加いただけるオプショナルツアーが異なります。（ご入賞ランクはマイページにてご確認いただけます。）<br />
+						それぞれのオプショナルツアー詳細にて、ご入賞ランクのマークがついているツアーにつきましては、無料にてご参加いただけます。（先行受付対象）<br />
+						無料参加の対象外ツアーであっても、自費でもお申込みは可能です。<br />
+						ただし、先行受付の対象外となり、先行受付で完売となる場合もございますのであらかじめご了承ください。<br />
+						*なお招待キャンペーンでお申込みされ、取消料が発生するタイミングでキャンセルされた場合、取消料は無料となりますが、権利放棄扱いとなりますのであらかじめご了承ください。</p>
+
+					<?php if (!empty($common['R01_4Q_Flg'])) : ?>
+						<div style="text-align: right; margin-top:1em;">
+							<div class="his-button" style="border-radius: 5px;">
+								<?php
+								// 表示制御
+								$this->current_date = date('Y-m-d H:i:s');
+								$this->jihi_sanka_limit = date('Y-m-d H:i:s', strtotime($this->config->item('test_jihi_sanka_limit')));
+								?>
+								<?php if ($this->current_date >= $this->jihi_sanka_limit) : ?>
+									<a href="<?php echo base_url(); ?>option_con/option_7" style="margin-bottom: 10px; line-height: 120%;" class="btn btn--orange">お申込みはこちら</a>
+								<?php else : ?>
+									<a style="margin-bottom: 10px; line-height: 120%; pointer-events:none;" class="btn btn--orange">お申込み開始までお待ちください</a>
+								<?php endif; ?>
+							</div>
+						</div>
+					<?php endif; ?>
+
+					<p align="center" style="font-weight: bold;">【お申込み受付期間(先行)】6月29日（水）午前10時より 7月5日（火）午後11時59分まで<br />
+						【お申込み受付期間(一般)】7月6日（水）午前10時より 7月13日（水）午後11時59分まで</p>
+
+					<div class="scroll mt50">
+						<p style="text-align: right;font-weight: bold;color: red;font-size: 120%;">※<span style="background-color: yellow;">　　　　　</span>は23日のみ実施の時間枠です。</p>
+						<table class="border2" width="100%">
+							<tr>
+								<th rowspan="2" width="7%">ID</th>
+								<th rowspan="2" width="20%">ツアー名</th>
+								<th colspan="2" width="20%">催行日</th>
+								<th colspan="2" width="15%">料金</th>
+								<th rowspan="2" width="20%">所要時間・定員</th>
+								<th rowspan="2" width="19%">参加条件</th>
+							</tr>
+							<tr>
+								<th>8/23<br />(火)</th>
+								<th>8/24<br />(水)</th>
+								<th>大人</th>
+								<th>子供</th>
+							</tr>
+							<tr>
+								<td align="center">S01</td>
+								<td>パラセーリング+選べる2種<br />アクティビティツアー</td>
+								<td align="center">●</td>
+								<td align="center">×</td>
+								<td colspan="2" align="center">11,000円<br />(6～60歳)</td>
+								<td align="center"><span class="op_nittei">①11:00～15:30<br />(10名)<br />②12:00～16:30<br />(10名)</span></td>
+								<td>①持病や投薬によっては参加不可の可能性あり<br />②妊娠中の方は参加不可</td>
+							</tr>
+
+							<tr>
+								<td align="center">S02</td>
+								<td>青の洞窟体験ダイビング</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td colspan="2" align="center">11,000円<br />(10～65歳)</td>
+								<td align="center">
+									<p>①8:20～12:10<br />(6名)<br />②11:20～15:10<br />(6名)<br /><span class="op_nittei">③14:20～18:10<br />(6名) </span></p>
+								</td>
+								<td>①満10～65歳の健康な方<br />②持病や投薬によっては参加不可の可能性あり<br />③妊娠中の方は参加不可</td>
+							</tr>
+							<tr>
+								<td align="center">A01</td>
+								<td>
+									<p>無人島シーカヤック</p>
+									<p> +シュノーケルツアー</p>
+								</td>
+								<td align="center">●</td>
+								<td align="center">×</td>
+								<td colspan="2" align="center">8,000円<br />(4～65歳)</td>
+								<td align="center"><span class="op_nittei">11:30～17:10<br />(15名)</span></td>
+								<td>①対象年齢：4～65歳<br />
+									②妊娠中の方は参加不可</td>
+							</tr>
+							<tr>
+								<td align="center">A02</td>
+								<td>やんばる東村<br />バギーアドベンチャーツアー</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td align="center">7,000円<br />(16歳以上)</td>
+								<td align="center">6,000円<br />(4～15歳)</td>
+								<td align="center">①8:30～13:45<br />(8名)<br />②9:15～14:30<br />(8名)</td>
+								<td>①11歳以上:ご自身で運転<br />
+									②4～10歳:保護者の運転に同乗<br />
+									③3歳以下:参加不可</td>
+							</tr>
+							<tr>
+								<td align="center">A03</td>
+								<td>シーウォーカー体験</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td colspan="2" align="center">8,000円<br />(8～60歳)</td>
+								<td align="center">①11:00～15:30<br />(8名)<br /><span class="op_nittei">②12:00～16:30<br />(8名)<br />③13:00～17:30<br />(8名) </span></td>
+								<td>①満8～60歳までの健康な方（身長120cm以上/肩幅38cm以上）<br />②持病や投薬によっては参加不可の可能性あり<br />③妊娠中の方は参加不可</td>
+							</tr>
+							<tr>
+								<td align="center">A04</td>
+								<td>マングローブカヤック体験<br />＆マングローブ観察</td>
+								<td align="center">●</td>
+								<td align="center">×</td>
+								<td align="center">6,000円<br />(12歳以上)</td>
+								<td align="center">5,000円<br />(2～11歳)</td>
+								<td align="center"><span class="op_nittei">12:45～17:45<br />(120名)</span></td>
+								<td>2歳から参加可能</td>
+							</tr>
+							<tr>
+								<td align="center">A05</td>
+								<td>やんばる清流<br />リバートレッキングツアー</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td colspan="2" align="center">6,000円<br />(4～65歳)</td>
+								<td align="center">7:20～14:30<br />(40名)</td>
+								<td>対象年齢：4～65歳</td>
+							</tr>
+							<tr>
+								<td align="center">A06</td>
+								<td>ゴーカート体験</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td colspan="2" align="center">5,000円<br />(4歳以上)</td>
+								<td align="center">①9:20～11:40<br />(12名)<br />
+									②10:50～13:10<br />
+									(12名)<br />
+									③12:20～14:40<br />
+									(12名)</td>
+								<td>
+									①4歳以上<br />
+									②身長140cm未満のお子様は大人の方（要運転免許）が運転する2人用カートへ同乗いただく形になります。</td>
+							</tr>
+							<tr>
+								<td align="center">A07</td>
+								<td>マリンアクティビティ</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td align="center">8,000円<br />(13歳以上)</td>
+								<td align="center">7,500円<br />(3～12歳)</td>
+								<td align="center">①7:15～11:30<br />(10名)<br />
+									②8:15～12:30<br />(10名)<br />
+									③11:15～15:30<br />(10名)<br />
+									<span class="op_nittei">④12:15～16:30<br />(10名) </span>
+								</td>
+								<td>①3歳以上<br />②妊娠中の方は参加不可</td>
+							</tr>
+							<tr>
+								<td align="center">BC01</td>
+								<td>大型水中観光船ツアー</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td align="center">3,000円<br />(13歳以上)</td>
+								<td align="center">1,500円<br />(6～12歳)</td>
+								<td align="center">①9:00～12:00<br />(30名)<br />②12:45～15:45<br />(30名)</td>
+								<td>6歳未満無料</td>
+							</tr>
+							<tr>
+								<td align="center">BC02</td>
+								<td>おきなわワールド手作り体験</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td align="center">8,000円<br />(15歳以上)</td>
+								<td align="center">7,000円<br />(4～14歳)</td>
+								<td align="center">9:15～15:30<br />(15名)</td>
+								<td>ガラス体験は別途送料がかかります</td>
+							</tr>
+							<tr>
+								<td align="center">BC03</td>
+								<td>ナイトジャングル<br />ウォーキング体験</td>
+								<td align="center">●</td>
+								<td align="center">×</td>
+								<td align="center">4,000円<br />(15歳以上)</td>
+								<td align="center">2,500円<br />(4～14歳)</td>
+								<td align="center"><span class="op_nittei">①18:00～21:10<br />
+										②18:20～21:30<br />
+										③18:40～21:50<br />(全体で20名)<br />
+										※時間枠の選択不可</span></td>
+								<td>食事会などを予定している方は重ならないよう気を付けてください。</td>
+							</tr>
+							<tr>
+								<td align="center">BC04</td>
+								<td>やんばる東村<br />ジップラインツアー</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td align="center">5,000円<br />(15歳以上)</td>
+								<td align="center">4,000円<br />(15歳未満)</td>
+								<td align="center">①8:15～13:30<br />(8/23：20名 / 8/24：10名)<br />
+									<span class="op_nittei">②11:15～16:30<br />(20名)</span>
+								</td>
+								<td>身長:125cm以上<br />
+									体重:25～100kg</td>
+							</tr>
+							<tr>
+								<td align="center">E01</td>
+								<td>美ら海水族館<br />バスプラン</td>
+								<td align="center">●</td>
+								<td align="center">●</td>
+								<td align="center">2,000円<br />(18歳以上)</td>
+								<td align="center">1,500円<br />(高校生)<br />1,000円<br />(小・中学生)</td>
+								<td align="center">9:00~15:30<br />(30名)</td>
+								<td>6歳未満無料</td>
+							</tr>
+						</table>
+					</div>
+				</section>
+			</div>
+		</div>
+	</section>
+</div>

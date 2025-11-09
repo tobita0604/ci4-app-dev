@@ -1,0 +1,65 @@
+<p style="border-bottom:2px solid #ccc;"></p>
+<div style="width: 1150px; margin: 0 auto; position: relative; clear: both;">
+	<div class="title-header">
+		<div>
+			<form action="<?php echo base_url(); ?>menu_con" name="back_menu" method="post">
+				<h1>予約状況確認画面</h1>
+				<input type="submit" style="float: right; margin: 0 auto; margin-bottom: 10px; " name="menu_back" value="Menu" onclick="backMenu()">
+				<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+			</form>
+		</div>
+		<hr>
+		</hr>
+	</div>
+
+
+	<p style="text-align: center; margin-top: 50px; font-size: 20px;">OP予約状況
+	<p>
+	<div align="center">
+
+
+		<table class="border2" width="100%" style="width: 1000px; margin: 0 auto;">
+
+			<tr>
+				<th style="text-align: center;" colspan="2">
+					OP名
+				</th>
+				<th style="text-align: center;">
+					日付
+				</th>
+				<th style="text-align: center;">
+					総数
+				</th>
+			</tr>
+
+			<?php foreach ($stock as $value) : ?>
+				<tr>
+					<td style="text-align: center;" rowspan="1">
+						<?= $value['M01_id'] ?>
+					</td>
+					<td style="text-align: center;" rowspan="1">
+						<?= trim($value['M01_Name']) ?>
+					</td>
+					<td style="text-align: center;" rowspan="1">
+						<?= trim($value['R02_Date']) ?>
+					</td>
+					<?php if ($value['M01_id'] == "S01") : ?>
+						<td style="text-align: center;" rowspan="1">
+							<?= $value['S01_Total'] ?>
+						</td>
+					<?php elseif ($value['M01_id'] == "H01") : ?>
+						<td style="text-align: center;">
+							<?= $value['H01_Total'] ?>
+						</td>
+					<?php endif; ?>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+
+		<?php
+		echo '<br>';
+		echo '<br>';
+		?>
+
+	</div>
+</div>

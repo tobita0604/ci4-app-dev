@@ -1,0 +1,268 @@
+﻿@CHARSET "UTF-8";
+body,td,th {
+color: #666;
+
+font-family:segoe UI,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", sans-serif;
+
+}
+.error {
+	color: red;
+}
+label {
+	margin-right: 10px;
+}
+
+
+.title-header {
+	text-align:center;
+	background-color:#FFA500;
+}
+
+
+/*Vien ADD 20160328 START*/
+body{
+	position: relative; 
+}
+.headerContainer {
+	z-index: 100;
+	width: 100%;
+	text-align:center;
+	background-color:#FFA500;
+	margin: 0 auto;
+}
+.contentContainer{
+	margin: 0 auto;
+}
+
+/*Vien ADD 20160328 END*/
+
+element.style {
+  float:right;
+  margin:0 auto 10px;
+}
+.button {
+  background-color:#EEEEEE;
+  border:medium none;
+  box-sizing:border-box;
+  color:#666666;
+  cursor:pointer;
+  display:inline-block;
+  font-family:'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-size:16px;
+  font-weight:300;
+  height:30px;
+  line-height:40px;
+  margin:0;
+  padding:0 40px;
+  text-align:center;
+  text-decoration:none;
+  transition-duration:0.3s;
+  transition-property:all;
+}
+
+div#content {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: 50px;
+}
+
+div#systemMsg {
+	text-align: left;
+	margin-bottom: 30px;
+}
+
+
+table#form2 {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+table#form {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+#form th {
+	//width: 25%;
+	text-align: left;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	background-color: #EAE8F2;
+	padding: 5px 10px;
+	font-size:14px;
+}
+#form td {
+	/*width: 70%;*/
+	text-align: left;
+	background-color: ;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	padding: 5px 10px;
+}
+
+
+
+#form2 th {
+	width: 6
+	0%;
+	text-align: left;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	background-color: #EAE8F2;
+	padding: 5px 10px;
+	font-size:14px;
+}
+
+#form3 th {
+	text-align: left;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	background-color: #EAE8F2;
+	padding: 5px 10px;
+	font-size:14px;
+}
+
+td {
+	width: au;
+	text-align: left;
+	background-color: ;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	padding: 5px 10px;
+}
+
+.title {
+	margin:0 0 10px 0;
+	padding:12px 10px;
+	background: #1D8ADE;
+	color:#FFF;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	text-shadow:1px 1px 2px #333;
+        box-shadow:inset -1px -1px 2px rgba(0,0,0, 0.6),inset 1px 1px 2px rgba(255,255,255,0.8);
+}
+.th1 {
+	background-color:#F5F5F5;
+	width:100%;
+	text-align: center;
+}
+strong.required {
+	color: red;
+	font-size: x-small;
+}
+
+p#info {
+	text-align: left;
+	margin-bottom: 0;
+}
+#reg {
+	display:none;
+}
+#otherairport {
+	display:none;
+}
+
+#err1, #err2, #err3, #err4, #err5, #err6, #err7, #err8, #err9, #err10, #err11, #err12, #err13, #err14, #err15, #err16, #err17, #err18, #err19, #err20, #err21, #err22, #err23, #err24, #err25, #err26, #err27, #err28, #err29, #err30, #err31, #err32, #err33, #err34, #err35, #err36, #err37, #err38, #err39, #err40, #err41, #err42, #err43, #err44, #err45 {
+	color:#FF0000;
+	font-weight:bold;
+	
+}
+.chui {
+	background-color:;
+	color: 	#B22222;
+	font-weight:;
+	padding:1px;
+	border:;
+	font-size:14px;
+	text-align:;
+}
+.sample {
+    width:500px;
+    font-size:13px;
+    font-weight:bold;
+    text-decoration:none;
+    /* display:block; */
+    text-align:center;
+    padding:8px 0 10px;
+    color:#333;
+    border:1px solid #333;
+}
+div#formButton {
+	margin-bottom: 50px;
+}
+input#keyword:focus {
+  outline: none;
+
+}
+input[type="radio"] {
+    /* ラベルでのみ選択させる場合はnoneにする */
+    display:;
+    /* firefoxなど一部ブラウザではサイズ指定が効かない仕様 */
+    width:16px;
+    height:16px;
+}
+/* ラジオボタンに対応するラベル */
+input[type="radio"]+label {
+    display:inline;
+    font-size:14px;
+    border:1px solid black;
+    border-radius:;
+    padding:4px;
+    background:gray;
+    color:white;
+    margin-right:14px;
+    line-height:250%;
+}
+.buttonimg{
+	font-size:15px;
+	letter-spacing: 2px;
+	width:120px;
+	font-weight:bold;
+	
+	padding: 5px 0 5px 0;
+}
+/* 選ばれているラジオボタンに対応するラベル */
+input[type="radio"]:checked+label {
+    background:white;
+    color:black;
+}
+table.type12 {
+	border-collapse: separate;
+	border-spacing: 3px;
+	text-align: center;
+	line-height: 1.5;
+}
+table.type12 th {
+	width: 155px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: center;
+	color: #fff;
+	background: #666;
+}
+table.type12 td {
+	width: 155px;
+	padding: 30px 10px;
+	text-align: center;
+	background: #eee;
+}
+table.type12 th.col01 {background: #060;}
+table.type12 td.col01 {background: #cfc;}
+table.type12 th.col02 {background: #f60;}
+table.type12 td.col02 {background: #fc9;}
+table.type12 th.col03 {background: #036;}
+table.type12 td.col03 {background: #e2eeff;}

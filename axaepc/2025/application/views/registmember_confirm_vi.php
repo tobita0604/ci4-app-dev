@@ -1,0 +1,360 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+<!-- Section1 about---------------------------------------------------> 
+<style>
+	th.required::after {
+		content: "[必須]";
+		color:red;
+		font-weight:bold
+	}
+	.border2.gai th {
+		background: #ffff99;
+	}
+	.border2.cxl th {
+		background: #e5e5e5;
+	}
+	.border2.gai.cxl th {
+		background: #e5e5e5;
+	}
+	.gai tr:first-child th:first-child::after {
+		content: "招待外";
+		color:red;
+	}
+	/*.cxl tr:first-child th:first-child::after {
+		content: "不参加";
+		color:red;
+	}
+	.gai.cxl tr:first-child th:first-child::after {
+		content: "招待外 不参加";
+		color:red;
+	}*/
+</style>
+<section id="about">
+<div id="main">
+<form action="<?php echo base_url();?>register_con/save_member" method="post" autocomplete="off" id="entry_data" > 
+	<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+	<?php 
+	$no = $idx + 1;
+	?>
+	<h2 style ="background:#005084">EPC2024　エントリー　同伴者<?=$no?>情報確認</h2>
+	<input type="hidden" name="idx" value="<?=h($idx)?>" />
+	<table class="border2 invite" width="100%" id="invite0">
+		<tr>
+			<th width="30%">お名前</th>
+			<td>
+				<?=h($reserve['R01_Name'])?>
+			</td>
+		</tr>
+		<tr>
+			<th>入賞者カテゴリー</th>
+			<td>
+				<?=get_label('カテゴリ',h($common['R01_Category_Flg']))?><br>
+				<?=h($common['R01_Category_Flg'])=='E1'?DIAMOND_NOTE:''?>
+			</td>
+		</tr>
+<!--
+		<tr>
+			<th>１Q家族招待CP</th>
+			<td>
+				<?=get_label('1Q',h($common['R01_1Q_Flg']))?>
+			</td>
+		</tr>
+		<tr>
+			<th>４Q家族招待CP</th>
+			<td>
+				<?=get_label('4Q',h($common['R01_4Q_Flg']))?>
+			</td>
+		</tr>
+		<tr>
+			<th>xx無料権利</th>
+			<td>
+				<?=get_label('パーク',h($common['R01_Park_Flg']))?>
+				<?=h($common['R01_Park_Flg'])=='1'?PARK_NOTE:''?>
+			</td>
+		</tr>
+-->
+		<tr>
+			<th>招待人数（本人含む）</th>
+			<td>
+				<?=h($common['R01_Free_Invites'])?>
+			</td>
+		</tr>
+		<tr>
+			<th>自費参加者</th>
+			<td>
+				<?=h($common['R01_Charge_Invites'])?><?=INVITES_NOTE ?>
+			</td>
+		</tr>
+	</table>
+	<table class="border2 invite <?=!empty($invites[$idx]['R01_Cancel_Flg'])?'cxl':''?> <?=$gai?>" id="invite<?=$no?>">
+		<tr>
+			<th colspan="2">
+				■<?=$no<$common['R01_Free_Invites']?'招待':''?>同伴者<?=$no?>
+			</th>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">お名前:姓</th>
+			<td>
+				<?=h($invites[$idx]['R01_Name_Last'])?>
+			</td>
+		</tr>
+		<tr>
+			<th class="required" style="width:30%">お名前:名</th>
+			<td>
+				<?=h($invites[$idx]['R01_Name_First'])?>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前:姓（カタカナ）</th>
+			<td>
+				<?=h($invites[$idx]['R01_Roma_Last'])?>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">お名前:名（カタカナ）</th>
+			<td>
+				<?=h($invites[$idx]['R01_Roma_First'])?>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">生年月日</th>
+			<td>
+				<?php
+					$Number_arr = [];
+					$Number_arr = explode_date($invites[$idx]['R01_Birthdate']);
+				?>
+				<?= !empty($Number_arr[0])?h($Number_arr[0]):'' ?>年
+				<?= !empty($Number_arr[1])?h($Number_arr[1]):'' ?>月
+				<?= !empty($Number_arr[2])?h($Number_arr[2]):'' ?>日
+				<input type="hidden" name="invite[Birth_Year]" id="Birth_Year" value="<?= !empty($Number_arr[0])?h($Number_arr[0]):'' ?>" size="4" class="digits"/>
+				<input type="hidden" name="invite[Birth_Month]" id="Birth_Month" value="<?= !empty($Number_arr[1])?h($Number_arr[1]):'' ?>" size="4" class="digits"/>
+				<input type="hidden" name="invite[Birth_Day]" id="Birth_Day" value="<?= !empty($Number_arr[2])?h($Number_arr[2]):'' ?>" size="4" class="digits"/>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">年齢</th>
+			<td>
+				<?=h($invites[$idx]['R01_Age'])?>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">性別</th>
+			<td>
+				<?php
+					$gender = '';
+					if(1 == h($invites[$idx]['R01_Gender'])) {
+						$gender = '男性';
+					} elseif(2 == h($invites[$idx]['R01_Gender'])) {
+						$gender = '女性';
+					}
+				?>
+				<?= !empty($gender)?$gender:'' ?>
+			</td>
+		</tr>
+		<tr>
+			<th class="required">続柄</th>
+			<td>
+				入賞者本人の
+				<?php foreach(getRelationship() as $id => $val):?>
+					<?=$id==$invites[$idx]['R01_Relationship']?$val:''?>
+				<?php endforeach;?>
+			</td>
+		</tr>
+		<tr>
+			<th class="">携帯電話番号</th>
+			<td>
+				<?php
+					$Number_arr = [];
+					$Number_arr = explode_date($invites[$idx]['R01_Mobile_No']);
+				?>
+				<?= !empty($Number_arr[0])?h($Number_arr[0]):'' ?>-<?= !empty($Number_arr[1])?h($Number_arr[1]):'' ?>-<?= !empty($Number_arr[2])?h($Number_arr[2]):'' ?>
+			</td>
+		</tr>
+		<tr>
+			<th class="">メールアドレス</th>
+			<td>
+				<?=h($invites[$idx]['R01_Email'])?>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				連絡先情報
+			</th>
+		</tr>
+		<tr class="copy">
+			<th class="required copy">自宅郵便番号</th>
+			<td>
+				<?=h($invites[$idx]['R01_Postal1'])?>-<?=h($invites[$idx]['R01_Postal2'])?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">都道府県</th>
+			<td>
+				<?php foreach(getPrefecture() as $id => $val):?>
+					<?=$id==$invites[$idx]['R01_Prefecture']?$val:''?>
+				<?php endforeach;?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">市区郡</th>
+			<td>
+				<?=h($invites[$idx]['R01_Address'])?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">町村名番地番号</th>
+			<td>
+				<?=h($invites[$idx]['R01_Address2'])?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th>建物名・部屋番号等</th>
+			<td>
+				<?=h($invites[$idx]['R01_Address3'])?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">連絡先電話番号</th>
+			<td>
+				<?php
+					$Number_arr = [];
+					$Number_arr = explode_date($invites[$idx]['R01_Tel_No']);
+				?>
+				<?= !empty($Number_arr[0])?h($Number_arr[0]):'' ?>-<?= !empty($Number_arr[1])?h($Number_arr[1]):'' ?>-<?= !empty($Number_arr[2])?h($Number_arr[2]):'' ?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">ご旅行中の緊急連絡先：お名前</th>
+			<td>
+				<?=h($invites[$idx]['R01_Emer_Name'])?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">ご旅行中の緊急連絡先：続柄</th>
+			<td>
+				<?=h($invites[$idx]['R01_Emer_Relationship'])?>
+			</td>
+		</tr>
+		<tr class="copy">
+			<th class="required">ご旅行中の緊急連絡先：電話番号</th>
+			<td>
+				<?php
+					$Number_arr = [];
+					$Number_arr = explode_date($invites[$idx]['R01_Emer_Tel_No']);
+				?>
+				<?= !empty($Number_arr[0])?h($Number_arr[0]):'' ?>-<?= !empty($Number_arr[1])?h($Number_arr[1]):'' ?>-<?= !empty($Number_arr[2])?h($Number_arr[2]):'' ?>
+			</td>
+		</tr>
+		<tr class="baby">
+			<th colspan="2">
+				お子様アンケート
+			</th>
+		</tr>
+		<tr class="baby">
+			<th class="required">＜宿泊＞<br>ベビーベッドのご希望について<br></th>
+			<td>
+				<?php
+					$baby_bed = '';
+					if('1' == $invites[$idx]['R01_Baby_Bed']) {
+						$baby_bed = '希望する：ベビーベッドサイズ　100cm x 66m x 92cm　（対象：身長89cm以下）';
+					} elseif('2' == $invites[$idx]['R01_Baby_Bed']) {
+						$baby_bed = '希望しない：大人の方と添い寝になります';
+					} elseif('3' == $invites[$idx]['R01_Baby_Bed']) {
+						$baby_bed = '大人用ベッドを1台利用する　＊別途費用が発生いたします';
+					}
+				?>
+				<?= !empty($baby_bed)?$baby_bed:'' ?>
+			</td>
+		</tr>
+
+		<tr class="baby">
+			<th class="required">＜食事＞<br>パーティ飲食について<br></th>
+			<td>
+				<?php
+					$baby_meal = '';
+					if('1'==$invites[$idx]['R01_Baby_Meal']) {
+						$baby_meal = 'キッズプレートを希望する　＊別途費用が発生いたします';
+					} elseif('2'==$invites[$idx]['R01_Baby_Meal']) {
+						$baby_meal = '希望しない';
+					}
+				?>
+				<?= !empty($baby_meal)?$baby_meal:'' ?>
+			</td>
+		</tr>
+
+		<tr class="baby">
+			<th class="required">＜食事＞<br>お子様用ハイチェアについて<br></th>
+			<td>
+				<?php
+					$baby_chair = '';
+					if('1'==$invites[$idx]['R01_Baby_Chair']) {
+						$baby_chair = '希望する';
+					} elseif('2'==$invites[$idx]['R01_Baby_Chair']) {
+						$baby_chair = '希望しない';
+					}
+				?>
+				<?= !empty($baby_chair)?$baby_chair:'' ?><br>
+				席数が非常に少ないため、ご希望にそえない場合もございますので、予めご了承ください。
+			</td>
+		</tr>
+
+		<tr class="baby">
+			<th class="required">＜航空機＞<br>座席のご利用について<br></th>
+			<td>
+				<?php
+					$baby_bassinet = '';
+					if('1'==$invites[$idx]['R01_Baby_Bassinet']) {
+						$baby_bassinet = '大人1名のお膝の上';
+					} elseif('2'==$invites[$idx]['R01_Baby_Bassinet']) {
+						$baby_bassinet = '座席を利用する　＊別途費用が発生いたします';
+					}
+				?>
+				<?= !empty($baby_bassinet)?$baby_bassinet:'' ?>
+			</td>
+		</tr>
+
+		<tr class="infant">
+			<th colspan="2">
+				お子様アンケート
+			</th>
+		</tr>
+		<tr class="infant">
+			<th class="required">＜宿泊＞<br>ベッドのご希望について<br></th>
+			<td>
+				<?php
+					$infant_bed = '';
+					if('1'==$invites[$idx]['R01_Infant_Bed']) {
+						$infant_bed = '大人用ベッドを1台利用する　＊別途費用が発生いたします';
+					} elseif('2'==$invites[$idx]['R01_Infant_Bed']) {
+						$infant_bed = '希望しない　＊大人の方と添い寝になります';
+					}
+				?>
+				<?= !empty($infant_bed)?$infant_bed:'' ?>
+			</td>
+		</tr>
+		<tr class="infant-chair">
+			<th class="required">＜食事＞<br>お子様用ハイチェアについて<br></th>
+			<td>
+				<?php
+					$infant_chair = '';
+					if('1'==$invites[$idx]['R01_Infant_Chair']) {
+						$infant_chair = '希望する';
+					} elseif('2'==$invites[$idx]['R01_Infant_Chair']) {
+						$infant_chair = '希望しない';
+					}
+				?>
+				<?= !empty($infant_chair)?$infant_chair:'' ?><br>
+				席数が非常に少ないため、ご希望にそえない場合もございますので、予めご了承ください。
+			</td>
+		</tr>
+
+	</table>
+	
+</form>
+<div style="text-align: center;margin-top:1em;">
+<div class="his-button" style="border-radius: 5px;">
+	<input type="image" src="<?php echo base_url();?>img/back.png" onclick="go_back_mypege();"/>
+</div>
+</div>
+	
+</section>

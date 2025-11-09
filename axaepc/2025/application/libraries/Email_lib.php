@@ -1,0 +1,124 @@
+<?php
+class Email_lib {
+    private $CI;
+    private $from_name;
+    private $sbj;
+    private $body;
+    private $email;
+    private $_bcc=[];
+    public function __construct()
+    {
+        $this->CI = & get_instance ();
+        $this->CI->load->library('email');
+        $this->CI->load->helper('common_helper');
+        $this->CI->load->helper('url_helper');
+        $config = [
+			'protocol' => 'smtp',
+			'smtp_host' => 'smtp.kagoya.net',
+			'smtp_port' => 587,
+			'smtp_user' => 'kir918047.axaepcinfo',
+			'smtp_pass' => 'Nssproduct2025',
+			'smtp_timeout' => 5,
+
+            'mailtype' => 'text', 
+            'charset' => 'UTF-8',
+            'crlf' => "\r\n",
+            'newline' => "\r\n",
+            'wordwrap'=>FALSE,
+            'wrapchars' => 76
+        ];
+//        $config = [
+//            'protocol' => "sendmail",
+//            'mailpath' => '/usr/sbin/sendmail',
+//            'mailtype' => 'text', 
+//            'charset' => 'UTF-8',
+//            'crlf' => "\r\n",
+//            'newline' => "\r\n",
+//            'wordwrap'=>FALSE,
+//            'wrapchars' => 76
+//        ];
+        
+        $this->CI->email->initialize($config);
+        date_default_timezone_set('Asia/Tokyo');
+        mb_language("Japanese");
+        mb_internal_encoding("utf8");
+        $this->from_name = mb_encode_mimeheader(FROM_NAME, "ISO-2022-JP", "UTF-8,EUC-JP,auto");
+        $this->_bcc=$this->CI->config->item('bcc_mail');
+    }
+
+    public function reservationCompleteMail($data){
+        $this->sbj = 'EPC2024　参加受付　本人登録完了しました。';
+        $this->body=$this->reservationCompleteMailBody($data);
+        $this->email=$data['reporter_mail'];
+        $this->sendCommonMail();
+    }
+
+    private function reservationCompleteMailBody($data){
+        $body = "\r\n";
+        $body .= $data['reporter_name']."様";
+        $body .= "\r\n";
+        $body .= "\r\n";
+        $body .= "この度は、「EPC2024」にご登録をいただきまして有難うございました。";
+        $body .= "\r\n";
+        $body .= "専用サイトでのご本人様の登録が完了いたしました。";
+        $body .= "\r\n";
+        $body .= "\r\n";
+        $body .= "引き続き同伴者様の参加登録、オプショナルツアー、北海道内の移動について、ゴルフコンペのお申込みをマイページよりお願いいたします。";
+        $body .= "\r\n";
+        $body .= "■登録期限：5月30日（金）23:59まで（オプショナルツアー、北海道内の移動について、ゴルフコンペ含む）";
+        $body .= "\r\n";
+        $body .= "■登録内容の確認：登録後はログインすると、マイページが表示されますので、登録内容の確認ができます。";
+        $body .= "\r\n";
+        $body .= "■同伴者のご登録：";
+        $body .= "\r\n";
+        $body .= "(1)ログイン後、マイページより各参加者様の＜詳細＞ボタンを押下し、＜登録済＞の表示になるまで登録を完了してください。";
+        $body .= "\r\n";
+        $body .= "　必須項目が全て登録されない場合は＜未登録＞の表示のままですので、ご注意ください。";
+        $body .= "\r\n";
+        $body .= "(2)また、利用しない招待者枠がある場合は、該当枠に＜不参加＞ボタンを押下し登録を完了ください。";
+        $body .= "\r\n";
+        $body .= "(3)同伴者登録後は自動返信メールはございませんので、マイページにて確認後＜ログアウト＞ボタンより登録を完了してください。";
+        $body .= "\r\n";
+        $body .= "\r\n";
+        $body .= "\r\n";
+        $body .= "■入力内容に変更がある場合";
+        $body .= "\r\n";
+        $body .= "(1)5月30日（金）23:59までは当専用サイトにて変更が可能ですので、＜詳細＞ボタンを押下して編集ください。";
+        $body .= "\r\n";
+        $body .= "(2)以降の変更は「FA営業推進部 FA推進グループ」までメールでご報告ください。";
+        $body .= "\r\n";
+// Footer
+        $body .= "\r\n";
+        $body .= "当メールは自動配信システムを利用しておりますので、返信によるご質問、お問い合わせにはお答えできません。\r\n";
+        $body .= "メールによるご連絡は下記事務局宛てにお願いします。\r\n";
+        $body .= "***************************************************************************\r\n";
+        $body .= "株）近畿日本ツーリストコーポレートビジネス トラベルサービスセンター東日本内\r\n";
+        $body .= "「EPC2024」事務局\r\n";
+        $body .= "〒135-0062　東京都江東区東雲1‐7₋12 KDX豊洲グランスクエア3階\r\n";
+        $body .= "担当：浅木・広瀬\r\n";
+        $body .= "TEL ：0570-064-205　 FAX ：03-6730-3230\r\n";
+        $body .= "※繋がりにくい場合はTEL:03-6730-3220　におかけください\r\n";
+        $body .= "Eメール：axa-deskecc01@ora.knt.co.jp\r\n";
+        $body .= "営業時間　月～金 10:00～17:00 ・ 【休業日】 土・日・祝日\r\n";
+        $body .= "***************************************************************************\r\n";
+        $body .= "\r\n";
+        return $body;
+    }
+    private function sendCommonMail(){
+        $this->CI->email->from(FROM_MAIL, $this->from_name);
+        $this->CI->email->to($this->email);
+        if(!empty( $this->_bcc )){
+            $this->CI->email->bcc($this->_bcc);
+        }
+        $this->CI->email->subject($this->sbj);
+        $this->CI->email->message( $this->body);
+        $this->CI->email->send();
+    }
+    /**
+     * footer
+     */
+    private function setMailFooter(){
+        $footer = "";
+        return $footer;
+    }
+}

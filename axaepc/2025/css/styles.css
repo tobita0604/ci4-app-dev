@@ -1,0 +1,73 @@
+﻿	
+/** (1)基本設定
+==========================================================================**/
+
+body,td,th {
+
+color: #666;
+
+font-family:segoe UI,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", sans-serif;
+
+}
+
+	
+/* ---------------------------------------------------------------------------------
+table
+--------------------------------------------------------------------------------- */
+
+/*メニュー------------*/
+table.pagemenu { border-collapse:collapse; border-spacing:0; }
+
+/*説明文------------*/
+#tour table.setsumei { border-collapse:collapse; border-spacing:0; margin-bottom:5px; }
+#tour table.setsumei th { background:#8EAEDD; color:#000000; font-weight:bold; padding:5px 12px; border:1px solid #666; }
+#tour table.setsumei td { background:#8EAEDD; padding:5px 12px; border:none; color:#ffffff; font-size:14px; text-align:left; }
+
+/*料金表------------*/
+#tour table.price{ width:98%; border-collapse:collapse; border-spacing:0; margin-bottom:5px; margin-left:10px; margin-right:10px; border-bottom:1px solid #666; }
+#tour table.price th { background:#333; color:#fff; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+#tour table.price td { padding:5px 12px; border:1px solid #666; font-size:13px; }
+
+
+/*行程表------------*/
+table.sch{ border-collapse:collapse; border-spacing:0; width:800px; margin-bottom:5px; margin-left:10px; font-size:85%; border-bottom:1px solid #666;  }
+table.sch th { background:#ccc; color:#000; text-align:center; font-weight:normal; padding:5px 12px; border:1px solid #666; }
+table.sch td { padding:2px 7px; border-left:1px solid #666; border-right:1px solid #666; }
+.endline{ padding-bottom:10px; border-bottom:1px solid #666; }
+.mark{ font-size:13px; }
+
+/*テーブルフォーム------------*/
+#tour table.entryform{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; }
+#tour table.entryform th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+#tour table.entryform td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff;	vertical-align : middle ; }
+#tour table.entryform td p{	padding-bottom:5px; }
+#tour table.entryform td .txtlong{ width:70%; }
+
+/*テーブル一般ボーダー------------*/
+table.border{ width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-collapse:collapse; }
+table.border th{ font-weight: bolder; background-color: #9CB5E0; color: #ffffff; border: 1px solid #000000; padding: 5px; vertical-align : middle ; }
+table.border td{ padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; color: #111111; border: 1px solid #000000; background-color: #ffffff; vertical-align : middle ; }
+table.border td p{ padding-bottom:5px; }
+table.border td .txtlong{ width:70%; }	
+
+
+/* ---------------------------------------------------------------------------------
+	Navi-
+--------------------------------------------------------------------------------- */
+
+#nav { background-color:#333; height:50px; font-size: 12px; }
+
+	#nav #navcenter { z-index: 150; width:1150px; margin:0 auto; position: relative;  }
+	#nav  #navcenter .navmain {  height:40px; display: table; table-layout: fixed; text-align: center; width: 100%; padding-top:5px; padding-bottom:5px;  }
+	#nav  #navcenter .navmain li { display: table-cell; vertical-align: middle ; border-left: 1px #ccc solid;}
+	#nav  #navcenter .navmain li:first-child{ border-left:0;}
+	#nav  #navcenter .navmain li a { display:block; text-decoration:none; color: #fff;   }
+	#nav  #navcenter .navmain li a:hover { display:block; text-decoration:none; color: #ff0; }
+	
+
+#top{ height:0; }
+
+
+.toplan{ text-align:center; background-color:#333; color:#fff; padding:10px 10px 10px 10px; }
+
+.bgblue{ background-color:#131E60;}

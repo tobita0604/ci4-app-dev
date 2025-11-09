@@ -1,0 +1,885 @@
+
+/** (2)LAYOUT
+==========================================================================**/
+
+/*WEB全体の背景色*/
+#wrapper { background:none; }
+
+/*ヘッダー部分の背景色*/
+.bg-01 { background:#DADADA; }
+
+/*フッター部分の背景色*/
+/*メニュー文字色*/
+
+#contents_body{
+	background-color:#FFF;}
+	
+#pcmenu{
+	background-color:#0657C4;
+	background-color: rgba(0,87,191,0.80);}
+
+
+.touryoko dl dt{
+	background-color:#0657C4;
+	background-color: rgba(0,87,191,0.75);}
+
+	
+.contents_title{color:#2EEFCA;}
+.contents_hosoku{color:#8A8A8A;}
+.contents_in{color:#555555;}
+
+.service_icon{color:#fff;}
+.service_icon p.title{color:#00D3BC;}
+.service_icon p.second_title{color:#fff;}
+
+.program_icon p.title{ color:#0179E9}
+
+
+
+.touroku{background: linear-gradient(transparent 20%, #ffff66 50%);}
+	
+/** (6)COMMON 
+==========================================================================**/
+
+/*ボックス Box/TourPoint
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/	
+/*ボックス① ノーマル------------------------------------*/
+
+.box { border-color:#666; }
+
+/*　　　　　 ノーマル(マージンあり)----------------------*/
+
+.box2 { border-color:#666; }
+	
+/*ボックス② 点線枠--------------------------------------*/
+
+.box_dot { border-color:#666; }
+
+/*ボックス③ 背景色あり----------------------------------*/
+
+.box_bg{ background-color:#DAE7F0; }
+
+.box_bg p.title{ color:#1c2d5a;border-bottom-color:#1c2d5a; }
+
+/*ボックス④ フレームあり--------------------------------*/
+
+.box_fr{ border-color:#2EFE9A; }
+
+.box_fr p.title { color:#277749;border-bottom-color:#277749; }
+	
+/*ボックス⑤ 表型----------------------------------------*/
+
+.box_info{	border-color:#cccccc; }	
+
+.box_info p.title {	color: #FFFFFF;background-color: #BDBDBD; }
+
+/*ボックス⑥ 強調1---------------------------------------*/
+
+.box_em1 { }	
+		
+.box_em1 p.title { color: #FFFFFF;background: #303030;border-top-color:#ff6347; }
+	
+.box_em1 p.title:after {
+	border-color:transparent;
+	border-top-color:#1B1B1B;
+	border-right-color:#1B1B1B; }
+
+/*ボックス⑦ 強調2--------------------------------*/
+
+.box_em2 { background:#ddd; }
+
+.box_em2:before, .box_em2:after { background:#000; }	
+
+.box_em2 p.title { 	}
+
+/*ボックス⑧ 強調3------------------------------*/
+
+.box_em3 { background:#ffffa8;color:#1f3134; }
+
+.box_em3 p.title{ color:#ffe8e8;background:#f99;
+    background-image: -webkit-gradient(linear, left top, left bottom,
+			from(			rgba(0, 0, 0, 0.0)), 
+			color-stop(0.08, rgba(255, 255, 255, 0.5)),
+			color-stop(0.12, rgba(255, 255, 255, 0.5)),
+			color-stop(0.12, rgba(0, 0, 0, 0.0)),
+			color-stop(0.88, rgba(0, 0, 0, 0.0)),
+			color-stop(0.88, rgba(255, 255, 255, 0.5)),
+			color-stop(0.92, rgba(255, 255, 255, 0.5)),
+			color-stop(0.92, rgba(0, 0, 0, 0.0)),
+			to(				rgba(0, 0, 0, 0.0))
+			);
+	background-image: -moz-linear-gradient(top,
+			transparent 8%,
+            rgba(255, 255, 255, 0.5) 8%,
+            rgba(255, 255, 255, 0.5) 12%,
+            transparent 12%,
+            transparent 88%,
+            rgba(255, 255, 255, 0.5) 88%,
+            rgba(255, 255, 255, 0.5) 92%,
+            transparent 92%	
+			);
+	background-image: -o-linear-gradient(top,
+			transparent 8%,
+            rgba(255, 255, 255, 0.5) 8%,
+            rgba(255, 255, 255, 0.5) 12%,
+            transparent 12%,
+            transparent 88%,
+            rgba(255, 255, 255, 0.5) 88%,
+            rgba(255, 255, 255, 0.5) 92%,
+            transparent 92%	
+			);
+	background-image: linear-gradient(to bottom,
+			transparent 8%,
+            rgba(255, 255, 255, 0.5) 8%,
+            rgba(255, 255, 255, 0.5) 12%,
+            transparent 12%,
+            transparent 88%,
+            rgba(255, 255, 255, 0.5) 88%,
+            rgba(255, 255, 255, 0.5) 92%,
+            transparent 92%	
+			);}
+			
+.box_em3 p.title:before{ border-bottom-color:#c66; }
+
+.box_em3 p.title:after{	border-top-color: }		
+
+/*ボックス⑨ 強調4-----------------------------------*/
+
+.box_em4{
+	background-color:#F00;
+	color:#FFF;
+
+	background: -webkit-gradient(linear, left top, left bottom, from(#06C), to(#036));/* webkit */
+	background: -moz-linear-gradient(top,  #06C,  #036);/* fx */
+    -pie-background:linear-gradient(top,  #06C,  #036);/* PIE */
+	background: linear-gradient(to bottom, #E9E9E9, #D6D6D6);　}
+
+.box_em4 p.title { color:#B00002; }
+
+.box_em4:after{
+	background: -webkit-gradient(linear, left top, left bottom, from(#06C), to(#036));/* webkit */
+	background: -moz-linear-gradient(top,  #06C,  #036);/* fx */
+    -pie-background:linear-gradient(top,  #06C,  #036);/* PIE */
+	background: linear-gradient(to bottom, #ff0000, #B00002);　}	
+
+
+.box_em4 p.title:before{
+	background:B00002;	}	
+/*ボックス⑩ 強調5----------------------------------*/
+.box_em5{ background:#88ccef; }
+
+.box_em5 p.title{ color:#ffffff; }
+	
+.box_em5 :before{ border-bottom-color:#88ccef; }
+	
+/*ボックス⑪ 強調6----------------------------------*/
+.box_em6 { background:#e9e9e9; }
+
+.box_em6:before{
+    border-color:#bbb; }
+
+.box_em6 p.title{ }
+
+/*ボックス⑫ 背景画像------------------------------*/
+.box_bgimg { }
+
+.box_bgimg p.title { }
+
+/*フィールドセット--------------------------------*/
+fieldset{ color:#000000;border-color:#000000;　}
+
+legend{ color:#000000;	}	
+
+
+/** table
+==========================================================================**/
+
+/*通常テーブル border
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*通常テーブル① 空箱--------------------------------*/
+
+table.border{ border-color:#000000; }
+	
+table.border tr th{
+	color:#FFF;
+	background-color:#333;
+	border-color:#000000; }
+	
+table.border tr td{
+	background-color:;
+	border-color:#000000; }
+
+/*通常テーブル② td(左寄せ・上寄せ)------------------*/
+
+table.border2{ border-color:#000000; }
+	
+table.border2 tr th{
+	color:#FFF;
+	background-color: #7C7C7C;
+	border-color:#000000; }
+	
+table.border2 tr td{
+	background-color:#FFF;
+	border-color:#000000; }
+
+/*通常テーブル③ td(左寄せ・中央寄せ)----------------*/
+
+table.border3{ border-color:#000000; }
+
+table.border3 tr th{
+	color:#FFF;
+	background-color:#146BD1;
+	border-color:#000000; }
+
+table.border3 tr td{
+	background-color:#FFF;
+	border-color:#000000; }
+
+/*通常テーブル④ td(中央寄せ・上寄せ)----------------*/
+
+table.border3{ border-color:#000000; }
+
+table.border3 tr th{
+	color:#FFF;
+	background-color:#146BD1;
+	border-color:#000000; }
+
+table.border3 tr td{
+	background-color:#FFF;
+	border-color:#000000; }
+
+/*通常テーブル⑤ td(中央寄せ・中央寄せ)--------------*/
+
+table.border3{ border-color:#000000; }
+
+table.border3 tr th{
+	color:#FFF;
+	background-color:#146BD1;
+	border-color:#000000; }
+
+table.border3 tr td{
+	background-color:#FFF;
+	border-color:#000000; }
+
+/*行程表 sch
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*行程表① ノーマル----------------------------------*/
+
+table.sch { border-color:#666; }
+
+table.sch th {
+	background:#7A7A7A;
+	color:#ffffff;
+	border-color:#666; }
+
+table.sch td {
+	cololr:#000000;
+	border-left-color:#666;
+	border-right-color:#666; }
+
+table.sch td.endline{ border-bottom-color:#666; }
+
+table.sch td.info {
+	cololr:#000000;
+	border-left-color:#666;
+	border-right-color:#666; }
+
+/*行程表② 列毎に色付1(日次あり)--------------------*/
+
+table.sch2 { border-bottom-color:#666; }
+
+table.sch2 th {
+	background:#477fc2;
+	color:#ffffff;
+	border-color:#666; }
+
+table.sch2 td {
+	cololr:#000000;
+	border-left-color:#666;
+	border-right-color:#666; }
+
+/* tdの装飾 */
+/* 1列目 */ table.sch2 tr td { background-color: #C0DEFE; }
+/* 2列目 */ table.sch2 tr td + td { background-color: #CCFFFF; }
+/* 3列目 */ table.sch2 tr td + td + td { background-color:#ffffff; }
+/* 4列目 */ table.sch2 td + td + td +td { background-color:#ffffff; }
+
+table.sch2 td.endline{ border-bottom-color:#666; }
+
+/*行程表③ 列毎に色付2(日次なし)--------------------*/
+
+table.sch3 { border-bottom-color:#666; }
+
+table.sch3 th {
+	background:#477fc2;
+	color:#ffffff;
+	border-color:#666; }
+
+table.sch3 td {
+	cololr:#000000;
+	border-left-color:#666;
+	border-right-color:#666; }
+
+/* tdの装飾 */
+/* 1列目 */ table.sch3 tr td { background-color: #C0DEFE; }
+/* 2列目 */ table.sch3 tr td + td { background-color: #CCFFFF; }
+/* 3列目 */ table.sch3 tr td + td + td { background-color:#ffffff; }
+/* 4列目 */ table.sch3 td + td + td +td { background-color:#ffffff; }
+
+table.sch3 td.endline{ border-bottom-color:#666; }
+
+/*行程表 共通要素--------------------------------*/
+
+.point {
+	color: #ffffff;
+	background-color: #E70003; }
+
+.point2 {
+	color: #ffffff;
+	background-color: #2CB150; }
+
+.point3 {
+	color: #ffffff;
+	background-color: #155EE0; }
+
+.point_sch {
+	color: #000000;
+	background-color:#FCFABF; }
+
+/*料金表 price
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+table.price tr th{
+	color:#FFF;
+	background-color:#146BD1;
+	border-color:#000000; }
+
+table.price tr td{
+	background-color:#FFF; 
+	border-color:#000000; }
+
+/** ツアー要素
+==========================================================================**/
+
+/*申込要素 entry_step
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+.entry_step { border-color:#F36;background-color:#FFFFEE; }
+
+.entry_step_num { color:#ffffff;background-color:#F36; }
+
+.bank { background-color: #FFFFFF;border-color:#cccccc; }
+
+/*募集要項 yoko
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+
+/**ボタン button
+==========================================================================**/
+
+/*ボタン④　Yes/Noボタン------------------------*/
+	
+.btn_yesno a.yes{ color:#518cca; }
+.btn_yesno a.yes:after{	color:#518cca; }  
+
+.btn_yesno a.no{ color:#67c0a5; }
+.btn_yesno a.no:after{ color:#67c0a5; } 
+
+/*ホバー① 文字色変化--------------------------------*/
+.click1 {/*リンクされた文字*/ color:#fff; }
+.click1:link {/*未訪問のリンク*/ color:#fff; }
+.click1:visited {/*訪問後のリンク*/ color:#fff; }
+.click1:hover {/*マウスをのせたとき*/ color:#FF0; }
+.click1:active {/*クリック中*/ color:#fff; }
+
+/*ホバー② モヤがかる--------------------------------*/
+.click2 {/*リンクされた文字*/ color:#fff; }
+.click2:link {/*未訪問のリンク*/ color:#fff; }
+.click2:visited {/*訪問後のリンク*/ color:#fff; }
+.click2:hover {/*マウスをのせたとき*/ color:#fff; }
+.click2:active {/*クリック中*/ color:#fff; }
+
+/*ホバー③ 表示位置がずれる----------------------------*/
+.click3 {/*リンクされた文字*/ color:#fff; }
+.click3:link {/*未訪問のリンク*/ color:#fff; }
+.click3:visited {/*訪問後のリンク*/ color:#fff; }
+.click3:hover {/*マウスをのせたとき*/ color:#fff; }
+.click3:active {/*クリック中*/ color:#fff; }
+
+/*ホバー④ アニメーション----------------------------*/
+
+.click4:link {/*未訪問のリンク*/ color:#fff; text-decoration:none;  }
+.click4:visited {/*訪問後のリンク*/ color:#fff; text-decoration:none; }
+.click4:hover {/*マウスをのせたとき*/
+	color:#fff;
+	background-color: rgba(5,165,255,0.25);
+	border-color: #0086C7; }
+.click4:active {/*クリック中*/ color:#59b1eb; }
+
+
+/*ホバー⑤ アニメーション----------------------------*/
+.click5 {/*リンクされた文字*/ color:#fff; }
+.click5:link {/*未訪問のリンク*/ color:#fff; }
+.click5:visited {/*訪問後のリンク*/ color:#fff; }
+.click5:hover {/*マウスをのせたとき*/ color:#fff; }
+.click5:active {/*クリック中*/ color:#fff; }
+
+/*ホバー⑥ アニメーション----------------------------*/
+
+.click6 {/*リンクされた文字*/ color:#fff; }
+.click6:link {/*未訪問のリンク*/ color:#fff; }
+.click6:visited {/*訪問後のリンク*/ color:#fff; }
+.click6:hover {/*マウスをのせたとき*/
+	color:#fff;
+	background-color:#23ADE7;
+	border-color:transparent; }	
+.click6:active {/*クリック中*/ color:#fff; }
+
+
+.click_entry:link {/*未訪問のリンク*/ color:#fff; text-decoration:none;  }
+.click_entry:visited {/*訪問後のリンク*/ color:#fff; text-decoration:none; }
+.click_entry:hover {/*マウスをのせたとき*/
+	color:#fff;
+	background-color: #424242;
+	border-color: #000; }
+.click_entry:active {/*クリック中*/ color:#59b1eb; }
+
+
+
+/** ログイン
+==========================================================================**/
+
+/*ログインフォームの枠-------------------------------*/
+
+#login_form{
+  background:#fff;
+  background: rgba(255,255,255,0.85);
+  color: #848484; }
+
+#login_form .form-title{
+  color: #fff;
+  border-bottom-color:#fff;
+ }
+
+/*ログインフォームの送信ボタン------------------------*/
+
+.submit input{
+	color: #fff;
+	background-color: rgba(164,164,164,0.80); }
+
+.submit input:hover{
+	color:#ffffff;
+	background-color: rgba(0,155,158,0.80); }
+
+/**(8) 右カラム
+==========================================================================**/
+
+/*新着情報 What's New
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*what's new---------------------------------------------------------*/
+
+#whatsnew{ border-color:#000000; }
+
+#whatsnew p.title{	background-color:#333;color:#fff; }		
+
+/*KNT情報
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*KNTロゴリスト------------------------------------*/
+
+#kntinfo{
+	background-color:#F0EDE6; }
+
+#kntinfo p.title{ color:#8C8CB0; }
+
+/*メルマガ会員-----------------------------------------*/
+
+.kaiin{
+	border-color:#6775A5;
+	background-color:#DCE8F0; }
+
+.kaiin p.title {
+	background-color: #6775A5;
+	color:#FFF; }
+
+.kaiin a {
+	border-color:#5E5D5D;
+	color: #fff;
+	background-color:#5E5D5D; }	
+
+/*KNT SPORTSメニュー-----------------------------*/
+.sports_menu{ border-color:#6775A5; }
+
+.sports_menu p.title {
+	background-color: #6775A5;
+	color:#FFF; }
+
+
+/*お問い合わせ Inquiry 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+.inquiry {
+	font-size:90%;
+	padding:8px 10px;
+	background-color:#DAE7F0;
+	margin-top:10px; }
+
+
+/** FOOTER   
+==========================================================================**/
+
+#footer a{/*リンクされた文字*/ color:#537C9A; }
+#footer a:link {/*未訪問のリンク*/ color:#537C9A; }
+#footer a:visited {/*訪問後のリンク*/ color:#537C9A; }
+#footer a:hover {/*マウスをのせたとき*/ color:#42BB93; }
+#footer a:active {/*クリック中*/ color:#FF6F01; }
+
+
+
+
+
+
+
+
+/* #################################################################################################################################### 
+
+          　　　　　　　　　　　　　　　　カラーサンプル集(※コードはいじらないでください)　　　　　　　　　　　　　　　　　　
+
+   #################################################################################################################################### */
+
+
+
+/** 単色(背景色設定)
+==========================================================================**/
+
+.red{ background-color:#ff0000;}
+
+.orange{ background-color:#F8612F; }
+
+.gray{ background-color:#333; }
+
+.gray2{ background-color:#BCBCBC; }
+
+
+/** グラデーション(背景色設定)
+==========================================================================**/
+
+/*----------------------------------*/
+
+.g_red{
+	background-color:#F00;
+
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#7B0000));/* webkit */
+	background: -moz-linear-gradient(top,  #C00,  #7B0000);/* fx */
+    -pie-background:linear-gradient(top,  #C00,  #7B0000);/* PIE */
+	background: linear-gradient(to bottom, #C00, #7B0000);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.g_blue{
+	background-color:#F00;
+
+	background: -webkit-gradient(linear, left top, left bottom, from(#06C), to(#036));/* webkit */
+	background: -moz-linear-gradient(top,  #06C,  #036);/* fx */
+    -pie-background:linear-gradient(top,  #06C,  #036);/* PIE */
+	background: linear-gradient(to bottom, #06C, #036);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.g_gwhite{
+	background-color:#D3D3D3;
+	
+	background: -moz-linear-gradient(top,#FFF 0%,#E6E6E6);
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#E6E6E6));	
+	-pie-background: linear-gradient(top, #FFF, #E6E6E6);
+	background: linear-gradient(to bottom, #FFF, #E6E6E6);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.g_awhite{
+	background-color:#e8e0da;
+
+	background: -moz-linear-gradient(top,#FFF 0%,#e8e0da);
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#e8e0da));	
+	-pie-background: linear-gradient(top, #FFF, #e8e0da);
+	background: linear-gradient(to bottom, #FFF, #e8e0da);
+	/*PIE setting */ behavior: url(PIE.htc); }
+	
+.g_blue2 dt {
+	background-color:#06F;
+	background: -webkit-gradient(linear, left top, left bottom, from(#06F), to(#039));/* webkit */
+	background: -moz-linear-gradient(top,  #06F,  #039);/* fx */
+    -pie-background:linear-gradient(top,  #06F,  #039);/* PIE */
+    background:-ms-linear-gradient(top,  #06F,  #039);/* PIE */
+		
+	/*PIE setting */ behavior: url(PIE.htc); }
+	
+
+.g_test{
+		background: -webkit-gradient(linear, left top, left bottom, from(#F39800), to(#EA5514));/* webkit */
+	background: -moz-linear-gradient(top,  #F39800,  #EA5514);/* fx */
+    -pie-background:linear-gradient(top,  #F39800,  #EA5514);/* PIE */
+	background: linear-gradient(to bottom, #F39800, #EA5514);
+	/*PIE setting */ behavior: url(PIE.htc); }
+	
+.g_test2{
+	background: -webkit-gradient(linear, left top, left bottom, from(#F78181), to(#DF0101));/* webkit */
+	background: -moz-linear-gradient(top,  #F78181,  #DF0101);/* fx */
+    -pie-background:linear-gradient(top,  #F78181,  #DF0101);/* PIE */
+	background: linear-gradient(to bottom, #F78181, #DF0101);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.g_test3{
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#7B0000));/* webkit */
+	background: -moz-linear-gradient(top,  #C00,  #7B0000);/* fx */
+    -pie-background:linear-gradient(top,  #C00,  #7B0000);/* PIE */
+	background: linear-gradient(to bottom, #C00, #7B0000);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+
+
+/** ナビメニュー Top NaviMenu　
+==========================================================================**/
+
+/*黒×青 (PC用ナビメニュー)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*バーの色-----------------------------------------*/
+
+.navcolor1 {
+	/*--バー背景色--*/
+    background: #141414;
+	background: -moz-linear-gradient(top, #32323a 0%, #141414 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #32323a), color-stop(100%, #141414));
+    background: -webkit-linear-gradient(top, #32323a 0%, #141414 100%);
+    background: -o-linear-gradient(top, #32323a 0%, #141414 100%);
+    -pie-background: linear-gradient(top, #32323a 0%, #141414 100%);
+    background: linear-gradient(to bottom, #32323a 0%, #141414 100%);
+	/*PIE setting */ behavior: url(PIE.htc);
+	
+	/*--バー下線の色--*/
+    border-bottom-color:#0054AD; }
+
+/*親メニューの色--------------------------------------*/
+
+.navcolor1 ul li.level-0.hover {/*マウスオーバー時の背景色*/
+    background: #070707;
+    background: -moz-linear-gradient(top, #26262c 0%, #070707 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #26262c), color-stop(100%, #070707));
+    background: -webkit-linear-gradient(top, #26262c 0%, #070707 100%);
+    background: -o-linear-gradient(top, #26262c 0%, #070707 100%);
+    -pie-background: linear-gradient(top, #26262c 0%, #070707 100%);
+    background: linear-gradient(to bottom, #26262c 0%, #070707 100%);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.navcolor1 ul li a { color:#ffffff;/*文字色*/ }
+
+/*子メニューの色--------------------------------------*/
+
+.navcolor1 ul li.level-0 ul { background: #0fa1e0;/*背景色*/ }
+
+.navcolor1 ul li.level-0 span.arrow.hover{ border-bottom-color:#0fa1e0;/*上部の▲の色*/ }
+
+.navcolor1 ul li.level-0 li {	border-bottom-color:#6fc7ec;/*中の下線色*/ }
+
+.navcolor1 ul li.level-0 li.hover{ background: #0c7fb0;/*マウスオーバー時の背景色*/ }
+
+.navcolor1 ul li ul li a { color:#ffffff;/*文字色*/ }
+
+/*孫メニューの色--------------------------------------*/
+
+.navcolor1 ul li.level-0 ul li ul { background: #0fa1e0;/*背景色*/ }
+
+.navcolor1 ul li.level-0 ul li ul li {	border-bottom-color:#6fc7ec;/*中の下線色*/ }
+
+.navcolor1 ul li.level-0 ul li ul li.hover{ background: #0c7fb0;/*マウスオーバー時の背景色*/ }
+
+.navcolor1 ul li ul li ul li a { color:#ffffff;/*文字色*/ }
+
+
+/*Mobile用 ナビメニュー
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+#top {/*モバイル用トップ*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#001870), to(#FFFFFF));/* webkit */
+	background: -moz-linear-gradient(top,  #001870,  #0660E6);/* fx */
+	background: linear-gradient(to bottom, #001870, #0660E6);
+    -pie-background:linear-gradient(top,  #001870,  #0660E6);/* PIE */
+	background: linear-gradient(to bottom, #001870, #0660E6);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.nav-btn {/*モバイル用トップ*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#001870), to(#FFFFFF));/* webkit */
+	background: -moz-linear-gradient(top,  #001870,  #0660E6);/* fx */
+	background: linear-gradient(to bottom, #001870, #0660E6);
+    -pie-background:linear-gradient(top,  #001870,  #0660E6);/* PIE */
+	background: linear-gradient(to bottom, #001870, #0660E6);
+	/*PIE setting */ behavior: url(PIE.htc);
+
+	background: #002288 url("../img/nav-icon.png") left center no-repeat;
+}
+
+
+/*サブメニュー SubMenu
+==========================================================================**/
+
+/*ノーマルサブメニュー
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*青×水色----------------------------------------------*/
+
+ul.subcolor1 li{
+	border-left-color:#003;
+	background-color:#06C;
+	color:#FFF;
+	border-bottom-color:#003; }	
+
+ul.subcolor1 li a{/*リンクされた文字*/ color:#fff; }
+ul.subcolor1 li a:link {/*未訪問のリンク*/ color:#fff; }
+ul.subcolor1 li a:visited {/*訪問後のリンク*/ color:#fff; }
+ul.submenu li a:hover {/*マウスをのせたとき*/ color:#FF0; }
+ul.subcolor1 li a:active {/*クリック中*/ color:#fff; }
+
+ul.subcolor1 p.title{
+	background-color:#003;
+	color:#FFF; }
+
+/*ブロックアコーディオン
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*赤------------------------------------------------*/
+#accordion_bl > li{
+  border-left-color:#3a9fc0; }
+  
+#accordion_bl li a{
+  borde-color:#c9c9c9;
+  background-color:#BF0003;
+  color: #ffffff; }
+    
+#accordion_bl li a:hover {
+  border-color:#cccccc;
+  background-color: #FFC1C2;
+  color: #ff0000; }
+
+.rotate { color:#2f7f99; }
+  
+#accordion_bl li ul { background:#FD7274; }
+
+#accordion_bl li ul li a{
+  border-top-color:#fff;
+  border-bottom-color:#a0d2e2; }
+  
+#accordion_bl li ul li a:before { color: #2f7f99; }
+
+#accordion_bl li ul li:last-child a{ border-bottom-color:#5fb3ce; }
+
+#accordion_bl li ul li a:hover{
+  background: #d4ebf2;
+  border-top-color: #eef7fa; }
+
+/*スライドアコーディオン
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*灰色×白----------------------------------------------*/
+
+#accordion_sl p.title{
+	background:#ccc;
+	color:#ffffff; }
+
+#accordion_sl { border-color:#ccc; }
+		
+#accordion_sl li a{ color:#333333; }
+		
+#accordion_sl li a:after{
+            border-top-color:#333;
+            border-right-color:#333;}
+
+#accordion_sl li ul{background:#999;
+        margin:5px -20px 0px -20px;
+        overflow:hidden; }			
+
+#accordion_sl li ul li{ background:#999; }	
+
+#accordion_sl li ul li a{ color:#fff; }
+
+#accordion_sl li ul li a:hover{background-color:#666}
+
+/*お問い合わせ Inquiry 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+.inquiry {
+	background-color:#DAE7F0;
+	color:#1A1A1A;}
+
+.inquiry p.title{ color:#1A1A1A; }
+
+
+
+
+/*三上追加募集要項 yoko
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""*/
+/*dt グラデーション yoko*/
+@media(min-width: 721px){
+.yokog .yokolistg, .dt_gred dt {
+	color:#fff;
+	background-color:#7B0000;
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#7B0000));/* webkit */
+	background: -moz-linear-gradient(top,  #C00,  #7B0000);/* fx */
+    -pie-background:linear-gradient(top,  #C00,  #7B0000);/* PIE */
+	background: linear-gradient(to bottom, #C00, #7B0000);
+	/*PIE setting */ behavior: url(PIE.htc); 
+	 }
+	 }
+@media(max-width: 720px){
+.yokog.dt_gred dt {
+	color:#000;
+	 }
+	 }
+
+	 
+
+.dt_gblue dt{
+	color:#fff;
+	background-color:#036;
+	background: -webkit-gradient(linear, left top, left bottom, from(#06C), to(#036));/* webkit */
+	background: -moz-linear-gradient(top,  #06C,  #036);/* fx */
+    -pie-background:linear-gradient(top,  #06C,  #036);/* PIE */
+	background: linear-gradient(to bottom, #06C, #036);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.dt_gwhite dt{
+	color:#000;
+	background-color:#E6E6E6;
+	
+	background: -moz-linear-gradient(top,#FCFCFC 0%,#E6E6E6);
+    background: -webkit-gradient(linear, left top, left bottom, from(#FCFCFC), to(#E6E6E6));	
+	-pie-background: linear-gradient(top, #FCFCFC, #E6E6E6);
+	background: linear-gradient(to bottom, #FCFCFC, #E6E6E6);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+
+.dt_ggreen dt{
+	color:#fff;
+	background-color:#0C6;
+	
+	background: -moz-linear-gradient(top,#0C9 0%,#396);
+    background: -webkit-gradient(linear, left top, left bottom, from(#0C9), to(#396));	
+	-pie-background: linear-gradient(top, #0C9, #396);
+	background: linear-gradient(to bottom, #0C9, #396);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.dt_gorange dt{
+	color:#fff;
+	background-color:#F60;
+	
+	background: -moz-linear-gradient(top,#F93 0%,#F60);
+    background: -webkit-gradient(linear, left top, left bottom, from(#F93), to(#F60));	
+	-pie-background: linear-gradient(top, #F93, #F60);
+	background: linear-gradient(to bottom, #F93, #F60);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+.dt_gpurple dt{
+	color:#fff;
+	background-color:#63C;
+	
+	background: -moz-linear-gradient(top,#66F 0%,#63C);
+    background: -webkit-gradient(linear, left top, left bottom, from(#66F), to(#63C));	
+	-pie-background: linear-gradient(top, #66F, #63C);
+	background: linear-gradient(to bottom, #66F, #63C);
+	/*PIE setting */ behavior: url(PIE.htc); }
+
+
+/*dt 単色 yoko*/
+
+.dt_red dt {color:#fff;	background-color:#f00;}
+.dt_blue dt{color:#fff;	background-color:#036;}
+.dt_white dt{color:#000;background-color:#E6E6E6;}
+.dt_green dt{color:#fff;background-color:#0C6;}
+.dt_orange dt{color:#fff;background-color:#F60;}
+.dt_purple dt{color:#fff;background-color:#63C;}

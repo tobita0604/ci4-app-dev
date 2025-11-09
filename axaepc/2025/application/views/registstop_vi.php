@@ -1,0 +1,116 @@
+<!-- CONTENTS-------------------------------------------------------------------------------------------------->
+<div class="contents">
+<!-- Section1 about---------------------------------------------------> <style>
+	th.required::after {
+		content: "[必須]";
+		color:red;
+		font-weight:bold
+	}
+	table.border2 tr.gai th {
+		background: #ffff99;
+	}
+	table.border2 tr.cxl th,
+	table.border2 tr.gai.cxl th	{
+		background: #e5e5e5;
+	}
+	table.border2 tr.gai th::after {
+		content: "招待外";
+		color:red;
+	}
+</style>
+<section id="about">
+<div id="main">
+<!-- システムメッセージ -->
+<div id="systemMsg"></div>
+<div style="white-space:nowrap">
+<div class="arrow-container current">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">人数<br class="nobr">登録</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-2em" class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">本人<br class="nobr">登録</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-4em" class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">同伴者<br class="nobr">登録</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-6em" class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">情報<br class="nobr">確認</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+<div style="left:-8em" class="arrow-container">
+	<div id="zz" class="arrow-left"></div>
+	<div id="zz" class="arrow-ctr">登録<br class="nobr">完了</div>
+	<div id="zz" class="arrow-right"></div>
+</div>
+</div>
+<form action="<?php echo base_url();?>register_con/save_entry_no" method="post" autocomplete="off" id="entry_data" > 
+	<?php require(APPPATH . "views/element/csrf_input.php"); ?>
+	<h2 style ="background:#005084">EPC2024　<?=$reserve['R01_Entry_Flg']=='1'?'マイページ':'エントリーフォーム'?></h2>
+	<p><strong>エントリー受付は終了しました。</strong></p>
+	<br><br>
+	<table class="border2" width="100%">
+		<tr>
+			<th width="30%">支社名</th>
+			<td>
+				<?=h($common['R01_Branch_Name'])?>
+			</td>
+		</tr>
+		<tr>
+			<th>お名前</th>
+			<td>
+				<?=h($reserve['R01_Name'])?>
+			</td>
+		</tr>
+		<tr>
+			<th>入賞者カテゴリー</th>
+			<td>
+				<?=get_label('カテゴリ',h($common['R01_Category_Flg']))?><br>
+				<?=h($common['R01_Category_Flg'])=='E1'?DIAMOND_NOTE:''?>
+				<!-- <p>
+					招待権１名分を使ってビジネスクラスへの変更を可能とします。<br>
+					但し、フライトの混雑により、ご希望に添えない場合があります。<br>
+					（１名分→１名様、フライトは先着順、同日の場合は同日着との抽選） <br>
+					ご希望の際は備考欄へご記入いただくか、事務局へご連絡ください。<br>
+				</p> -->
+			</td>
+		</tr>
+<!--
+		<tr>
+			<th>１Q家族招待CP</th>
+			<td>
+				<?=get_label('1Q',h($common['R01_1Q_Flg']))?>
+			</td>
+		</tr>
+-->
+<!--
+		<tr>
+			<th>４Qオプショナルツアー招待CP</th>
+			<td>
+				<?=get_label('4Q',h($common['R01_4Q_Flg']))?>
+			</td>
+		</tr>
+-->
+<!--
+		<tr>
+			<th>xx無料権利</th>
+			<td>
+				<?=get_label('パーク',h($common['R01_Park_Flg']))?>
+				<?=h($common['R01_Park_Flg'])=='1'?PARK_NOTE:''?>
+			</td>
+		</tr>
+-->
+		<tr>
+			<th>招待人数（本人含む）</th>
+			<td>
+				<?=h($common['R01_Free_Invites'])?><!--<?=INVITES_NOTE ?>-->
+			</td>
+		</tr>
+	</table>
+</form>
+</section>

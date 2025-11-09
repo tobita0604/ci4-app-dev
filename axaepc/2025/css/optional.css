@@ -1,0 +1,309 @@
+html {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: small;
+    vertical-align: middle;
+}
+
+body,td,th {
+	color: #666;
+	font-family:segoe UI,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", sans-serif;
+}
+body {
+    width: 960px;
+    margin: 0px auto;
+    margin-top: 0px;
+    background: #FFFFFF;
+}
+
+div#content {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: 20px;
+	background: #FFFFFF;
+}
+
+
+.row {
+    margin: -50px 0 -1px -50px;
+}
+
+.row > * {
+    padding: 50px 0 0 70px;
+}
+
+.boxpost {
+    max-width: 1000px;
+}
+
+
+#page-wrapper {
+	margin: auto;
+	padding: 0;
+	border: 0;
+	vertical-align: middle;
+}
+
+div {
+    padding: 0;
+    border: 0;
+    font-size: small;
+    font: inherit;
+    vertical-align: middle;
+}
+
+table {
+	width: 100%;
+	/* border: solid 0.5px #000; */
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+
+ul, ol, dl, table, blockquote {
+	margin-bottom: 1.5em;
+}
+
+input {
+    -webkit-appearance: textfield;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    cursor: auto;
+    padding: 1px;
+}
+
+input, textarea, keygen, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    /* text-indent: 0px; */
+    /* display: inline-block; */
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 13.3333px Arial;
+}
+
+
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+input[type="radio"] {
+    display: ;
+    width: 16px;
+    height: 16px;
+}
+
+input[type="radio" i] {
+    margin: 3px 3px 0px 5px;
+	-webkit-appearance: radio;
+    box-sizing: border-box;
+}
+
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    padding: 1px 6px;
+}
+
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border: 2px outset buttonface;
+    font-weight: bold;
+	outline: none !important;
+}
+
+input[type="button" i], input[type="submit" i], input[type="reset" i] {
+    -webkit-appearance: push-button;
+    -webkit-user-select: none;
+    white-space: pre;
+}
+
+input[type="radio" i], input[type="checkbox" i] {
+    background-color: initial;
+    margin: 3px 0.5ex;
+    padding: initial;
+    border: initial;
+}
+
+input[type="radio"]+label {
+    display: inline;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: ;
+    padding: 4px;
+    background: gray;
+    color: white;
+    margin-right: 14px;
+    line-height: 250%;
+}
+
+select:not(:-internal-list-box) {
+    overflow: visible !important;
+}
+
+select {
+    -webkit-appearance: menulist;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    color: black;
+    cursor: default;
+}
+
+/* Phan hien thi hinh anh va description cua optional*/
+.optional table {
+	width: 90% !important;
+	border-collapse: collapse;
+	vertical-align: top;
+	margin: 10px;
+	font-size: small;
+}
+
+.optional th {
+	white-space:nowrap;
+	font-weight: bold;
+	line-height:150%;
+	color: #fff;
+	padding: 5px 15px 5px 15px;
+	font-size: large;
+	background: orange;
+	text-align: left;
+}
+
+.optional td {
+	font-size: x-small;
+	line-height:150%;
+	padding: 5px 15px 5px 15px;
+	font-size: small;
+	color: #080808;
+}
+
+/* Phan hien thi cac noi dung can phan chia muc cua optional*/
+.optional-content table {
+	width: 90% !important;
+	border: solid 0.5px #000;
+	border-collapse: collapse;
+	vertical-align: top;
+	margin: 10px;
+	font-size: small;
+}
+
+.optional-content th {
+    white-space: nowrap;
+    border-top: solid 0.5px #000;
+    border-left: solid 0.5px #000;
+    border-right: solid 0.5px #000;
+    border-bottom: solid 0.5px #000;
+    font-weight: bold;
+    line-height: 150%;
+    color: #ffffff;
+    padding: 5px 15px 5px 15px;
+    font-size: large;
+    background: #08D8C5;
+    text-align: left;
+}
+
+.optional-content td {
+	font-size: x-small;
+	line-height:150%;
+	padding: 5px 15px 5px 15px;
+	font-size: small;
+	color: #080808;
+	border: solid 0.5px;
+}
+
+/* Phan hien thi cac noi dung khong phan chia muc cua optional*/
+.optional-end table {
+	width: 90% !important;
+	border-collapse: collapse;
+	vertical-align: top;
+	margin: 10px;
+	font-size: small;
+	border: solid 0.5px #000;
+}
+
+.optional-end th {
+	white-space:nowrap;
+	font-size: large;
+	font-weight: bold;
+	line-height:150%;
+	color: #ffffff;
+	padding: 5px 15px 5px 15px;
+	font-size: large;
+	background: #08D8C5;
+	text-align: left;
+	border: solid 0.5px #000;
+}
+
+.optional-end td {
+	font-size: x-small;
+	line-height:150%;
+	padding: 5px 15px 5px 15px;
+	font-size: small;
+	color: #080808;
+	border: solid 0.5px #000;
+}
+
+/**/
+table #form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border-spacing: 2px;
+    border: solid 0.5px;
+    border-color: grey;
+}
+
+#form th {
+	white-space:nowrap;
+	font-size: large;
+	font-weight: normal;
+	line-height:150%;
+	padding: 5px 15px 5px 15px;
+	font-size: large;
+	background: #08D8C5;
+	text-align: left;
+	border: solid 0.5px #000;
+	color: #fff;
+}
+
+#form td {
+	width: 70%;
+	text-align: left;
+	padding: 10px 10px 10px;
+	border: solid 0.5px;
+	font-size: small;
+	color: #000;
+}
+
+#page-top {
+	display: block;
+	position: fixed;
+	z-index: 9999;
+	bottom: 10px;
+	right: 10px;
+	width: 80px;
+	padding: 20px 10px;
+	background: rgba(0, 0, 0, .7);
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+
+#page-top:hover {
+	background: rgba(0, 0, 0, .8);
+}
+
+
+/*
+END
+*/
