@@ -17,26 +17,126 @@
 ```
 app/
 ├── Controllers/
-│   ├── Template/              # テンプレート管理関連コントローラー
-│   ├── Category/              # カテゴリ管理関連コントローラー
-│   └── Admin/                 # 管理画面共通コントローラー
-├── Models/
-│   ├── Template/              # テンプレート関連モデル
-│   ├── Category/              # カテゴリ関連モデル
-│   └── User/                  # ユーザー関連モデル
+│   ├── Admin/                     # 管理画面専用コントローラー
+│   │   ├── Dashboard.php
+│   │   ├── Template/
+│   │   │   ├── TemplateController.php
+│   │   │   ├── CategoryController.php
+│   │   │   └── VersionController.php
+│   │   ├── User/
+│   │   │   └── UserController.php
+│   │   └── Auth/
+│   │       ├── LoginController.php
+│   │       └── LogoutController.php
+│   │
+│   └── Front/                     # フロント画面専用コントローラー
+│       ├── Home.php
+│       ├── Template/
+│       │   ├── TemplateViewController.php
+│       │   └── TemplateSearchController.php
+│       └── Auth/
+│           ├── LoginController.php
+│           └── RegisterController.php
+│
+├── Models/                        # 共通モデル（Admin/Front両方で使用）
+│   ├── Template/
+│   │   ├── TemplateModel.php
+│   │   ├── CategoryModel.php
+│   │   └── VersionModel.php
+│   └── User/
+│       └── UserModel.php
+│
 ├── Views/
-│   ├── template/              # テンプレート管理画面
-│   ├── category/              # カテゴリ管理画面
-│   └── admin/                 # 管理画面共通レイアウト
-├── Services/                  # ビジネスロジック層
-├── Libraries/                 # カスタムライブラリ
-├── Helpers/                   # ヘルパー関数
-├── Config/                    # 設定ファイル
+│   ├── admin/                     # 管理画面ビュー
+│   │   ├── layouts/
+│   │   │   ├── main.php          # 管理画面共通レイアウト
+│   │   │   └── sidebar.php
+│   │   ├── dashboard/
+│   │   │   └── index.php
+│   │   ├── template/
+│   │   │   ├── list.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── preview.php
+│   │   └── auth/
+│   │       └── login.php
+│   │
+│   └── front/                     # フロント画面ビュー
+│       ├── layouts/
+│       │   ├── main.php          # フロント共通レイアウト
+│       │   ├── header.php
+│       │   └── footer.php
+│       ├── home/
+│       │   └── index.php
+│       ├── template/
+│       │   ├── list.php
+│       │   ├── detail.php
+│       │   └── search.php
+│       └── auth/
+│           ├── login.php
+│           └── register.php
+│
+├── Services/                      # ビジネスロジック層（共通）
+│   ├── Template/
+│   │   ├── TemplateService.php
+│   │   ├── CategoryService.php
+│   │   ├── VersionService.php
+│   │   └── ExportService.php
+│   └── User/
+│       └── AuthService.php
+│
+├── Filters/                       # アクセス制御
+│   ├── AdminAuthFilter.php       # 管理画面認証フィルター
+│   └── FrontAuthFilter.php       # フロント認証フィルター
+│
+├── Libraries/                     # カスタムライブラリ
+├── Helpers/                       # ヘルパー関数
+├── Config/                        # 設定ファイル
+│   └── Routes.php                # ルーティング設定（admin/frontで分離）
 └── Database/
-    ├── Migrations/            # データベースマイグレーション
-    └── Seeds/                 # テストデータ
+    ├── Migrations/                # データベースマイグレーション
+    └── Seeds/                     # テストデータ
 ```
 
+**アセット構造（public/）:**
+```
+public/
+├── admin/                         # 管理画面専用アセット
+│   ├── css/
+│   ├── js/
+│   │   └── vue/                  # Vue.js コンポーネント
+│   └── images/
+│
+└── front/                         # フロント専用アセット
+    ├── css/
+    ├── js/
+    │   └── vue/
+    └── images/
+```
+
+**その他:**
+- `writable/`: ログ、キャッシュ、セッションファイル
+- `vendor/`: Composerパッケージ
+- `node_modules/`: npm パッケージ（Vue.js、Tailwind CSS等）
+
+**ルーティング設計:**
+```php
+// Config/Routes.php
+// Admin routes
+$routes->group('admin', ['filter' => 'admin-auth', 'namespace' => 'App\Controllers\Admin'], function($routes) {
+    $routes->get('/', 'Dashboard::index');
+    $routes->resource('templates', ['controller' => 'Template\TemplateController']);
+    $routes->resource('categories', ['controller' => 'Template\CategoryController']);
+});
+
+// Front routes
+$routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) {
+    $routes->get('/', 'Home::index');
+    $routes->get('templates', 'Template\TemplateViewController::index');
+    $routes->get('templates/(:num)', 'Template\TemplateViewController::show/$1');
+});
+```
+## 重要なディレクトリとファイル
 - `public/`: 静的ファイル（CSS、JavaScript、画像など）
 - `writable/`: ログ、キャッシュ、セッションファイル
 - `vendor/`: Composerパッケージ
@@ -90,6 +190,13 @@ app/
 - サービス層を活用してコントローラーの肥大化を防ぐ
 - 日本語対応（文字コードUTF-8）に注意
 - 業務ロジックが複雑な場合は、適切にコメントを記載する
+- **管理画面とフロント画面の分離:**
+  - コントローラーは`Admin/`と`Front/`で明確に分離
+  - ビューも`admin/`と`front/`で分離
+  - アセット（CSS/JS）も`public/admin/`と`public/front/`で分離
+  - モデル・サービスは共通利用（重複を避ける）
+  - ルーティングは`admin`グループと`/`グループで分離
+  - 認証フィルターは管理画面用とフロント用で別々に実装
 - Vue.jsコンポーネントの設計：
   - 単一責任の原則に従い、再利用可能なコンポーネントを作成
   - props、emit、composablesを適切に使用
@@ -97,6 +204,7 @@ app/
   - 既存のHTMLページにVue.jsを段階的に導入
   - ページごとに独立したVueインスタンスを作成
   - 大規模なコンポーネント階層は避け、フラットな構造を維持
+  - 管理画面とフロントでVueコンポーネントを分離管理
 - Tailwind CSS + Prelineの活用：
   - カスタムCSSよりもTailwindのユーティリティクラスを優先
   - PrelineコンポーネントをVue.jsで適切に初期化
