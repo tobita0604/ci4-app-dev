@@ -1,13 +1,75 @@
-# CodeIgniter 4 Application Starter
+# CodeIgniter 4 Application with Velzon Admin Template
 
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
 More information can be found at the [official site](https://codeigniter.com).
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+This repository holds a composer-installable app starter with integrated **Velzon Admin Template**.
+
+## Velzon Admin Template Integration
+
+This project includes the Velzon admin dashboard template, migrated from the original template to be fully compatible with **CodeIgniter 4.6.1** and **PHP 8.3**.
+
+### Features
+
+- ✅ Modern, responsive admin dashboard
+- ✅ Bootstrap 5 based UI components
+- ✅ Multiple dashboard layouts (vertical, horizontal, two-column)
+- ✅ Rich set of UI components and charts
+- ✅ CodeIgniter 4.6.1 compatible view syntax
+- ✅ PHP 8.3 type-safe controllers
+
+### Admin Panel Access
+
+Access the admin dashboard at: `http://your-domain.com/admin`
+
+### Version Compatibility
+
+- **Framework**: CodeIgniter 4.6.1
+- **PHP**: 8.3+
+- **Template**: Velzon (migrated and updated)
+
+### Migration Notes
+
+The Velzon template was originally built for an older version of CodeIgniter 4 (PHP 7.4/8.0). Key updates made for compatibility:
+
+1. **View Syntax**: Updated `$this->include()` calls to use proper paths
+2. **Asset Paths**: All asset references now use `base_url()` helper
+3. **Controllers**: Updated to PHP 8.3 with proper type hints and return types
+4. **Routing**: Implemented route groups with namespace routing
+5. **Security**: Output escaping with `esc()` helper
+
+### Directory Structure
+
+```
+app/
+├── Controllers/
+│   └── Admin/
+│       └── DashboardController.php
+├── Views/
+│   └── admin/
+│       ├── dashboard.php
+│       └── partials/
+│           ├── main.php
+│           ├── title-meta.php
+│           ├── head-css.php
+│           ├── menu.php
+│           ├── topbar.php
+│           ├── sidebar.php
+│           ├── footer.php
+│           ├── vendor-scripts.php
+│           ├── page-title.php
+│           └── customizer.php
+public/
+└── assets/
+    ├── css/
+    ├── js/
+    ├── images/
+    ├── fonts/
+    ├── libs/
+    └── scss/
+```
 
 More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
 
