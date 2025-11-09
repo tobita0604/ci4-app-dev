@@ -1,86 +1,86 @@
-# Velzon Template Migration Guide
+# Velzon テンプレート移行ガイド
 
-## Overview
+## 概要
 
-This document details the migration of the Velzon admin template from the legacy Velzon_temp folder to the current CodeIgniter 4.6.1 environment.
+このドキュメントでは、レガシーのVelzon_tempフォルダからCodeIgniter 4.6.1環境へのVelzon管理画面テンプレートの移行について詳しく説明します。
 
-## Migration Summary
+## 移行概要
 
-### Source Environment
-- **Framework**: CodeIgniter 4 (older version)
+### 移行元環境
+- **フレームワーク**: CodeIgniter 4（旧バージョン）
 - **PHP**: 7.4/8.0
-- **Location**: `Velzon_temp/` directory
-- **Status**: Legacy template code
+- **場所**: `Velzon_temp/` ディレクトリ
+- **ステータス**: レガシーテンプレートコード
 
-### Target Environment  
-- **Framework**: CodeIgniter 4.6.1
+### 移行先環境  
+- **フレームワーク**: CodeIgniter 4.6.1
 - **PHP**: 8.3
-- **Location**: Integrated into main `app/` and `public/` directories
-- **Status**: Production-ready
+- **場所**: メインの`app/`および`public/`ディレクトリに統合
+- **ステータス**: 本番環境対応済み
 
-## Changes Made
+## 実施した変更
 
-### 1. Asset Migration
+### 1. アセットの移行
 
-All static assets were copied from `Velzon_temp/public/assets/` to `public/assets/`:
+すべての静的アセットを`Velzon_temp/public/assets/`から`public/assets/`にコピー：
 
 ```
 public/assets/
-├── css/         (Bootstrap, app styles, icons)
-├── js/          (Custom JavaScript)
-├── libs/        (50+ vendor libraries)
-├── images/      (Logos, backgrounds, icons)
-├── fonts/       (Icon fonts, web fonts)
-├── scss/        (Source SCSS files)
-├── json/        (Data files)
-└── lang/        (Localization)
+├── css/         (Bootstrap、アプリスタイル、アイコン)
+├── js/          (カスタムJavaScript)
+├── libs/        (50以上のベンダーライブラリ)
+├── images/      (ロゴ、背景、アイコン)
+├── fonts/       (アイコンフォント、Webフォント)
+├── scss/        (ソースSCSSファイル)
+├── json/        (データファイル)
+└── lang/        (多言語対応)
 ```
 
-**Total Size**: ~140MB
+**合計サイズ**: 約140MB
 
-### 2. View Files
+### 2. ビューファイル
 
-Created new admin view structure with CI4.6.1 compatibility:
+CI4.6.1互換性を持つ新しい管理画面ビュー構造を作成：
 
-#### Main Dashboard
-- `app/Views/admin/dashboard.php` - Main dashboard page
+#### メインダッシュボード
+- `app/Views/admin/dashboard.php` - メインダッシュボードページ
 
-#### Partials (Layout Components)
+#### パーシャル（レイアウトコンポーネント）
 ```
 app/Views/admin/partials/
-├── main.php              (HTML document root)
-├── title-meta.php        (Meta tags, title)
-├── head-css.php          (CSS includes)
-├── menu.php              (Menu wrapper)
-├── topbar.php            (Top navigation - 731 lines)
-├── sidebar.php           (Sidebar navigation - 1268 lines)
-├── footer.php            (Footer component)
-├── vendor-scripts.php    (JS includes)
-├── page-title.php        (Breadcrumb/title)
-└── customizer.php        (Theme customizer)
+├── main.php              (HTMLドキュメントルート)
+├── title-meta.php        (メタタグ、タイトル)
+├── head-css.php          (CSS読み込み)
+├── menu.php              (メニューラッパー)
+├── topbar.php            (トップナビゲーション - 731行)
+├── sidebar.php           (サイドバーナビゲーション - 1268行)
+├── footer.php            (フッターコンポーネント)
+├── vendor-scripts.php    (JS読み込み)
+├── page-title.php        (パンくずリスト/タイトル)
+└── customizer.php        (テーマカスタマイザー)
 ```
 
-#### Key View Updates
+#### ビューの主な更新点
 
-**Before (Velzon_temp)**:
+**変更前（Velzon_temp）**:
 ```php
 <?= $this->include('partials/main') ?>
 <link href="/assets/css/app.min.css" />
 <title><?= ($title) ? $title : '' ?></title>
 ```
 
-**After (CI4.6.1)**:
+**変更後（CI4.6.1）**:
 ```php
 <?= $this->include('admin/partials/main') ?>
 <link href="<?= base_url('assets/css/app.min.css') ?>" />
 <title><?= esc($title ?? 'Dashboard') ?></title>
 ```
 
-### 3. Controllers
+### 3. コントローラー
 
-Created new Admin controller namespace with PHP 8.3 features:
+PHP 8.3機能を使用した新しいAdminコントローラー名前空間を作成：
 
-**File**: `app/Controllers/Admin/DashboardController.php`
+**ファイル**: `app/Controllers/Admin/DashboardController.php`
 
 ```php
 <?php
@@ -104,20 +104,20 @@ class DashboardController extends BaseController
 
     public function analytics(): string
     {
-        // Implementation...
+        // 実装...
     }
 }
 ```
 
-**PHP 8.3 Features Used**:
-- Return type declarations (`: string`)
-- Type hints for parameters
-- PHPDoc comments
-- Namespace organization
+**使用したPHP 8.3機能**:
+- 戻り値の型宣言（`: string`）
+- パラメータの型ヒント
+- PHPDocコメント
+- 名前空間の整理
 
-### 4. Routes Configuration
+### 4. ルート設定
 
-**File**: `app/Config/Routes.php`
+**ファイル**: `app/Config/Routes.php`
 
 ```php
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
@@ -127,82 +127,82 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static functio
 });
 ```
 
-**Features**:
-- Route grouping for admin section
-- Namespace routing
-- Clean URL structure
+**機能**:
+- 管理画面セクションのルートグループ化
+- 名前空間ルーティング
+- クリーンなURL構造
 
-### 5. Security Enhancements
+### 5. セキュリティ強化
 
-#### Output Escaping
-All dynamic output uses the `esc()` helper:
+#### 出力のエスケープ
+すべての動的出力に`esc()`ヘルパーを使用：
 ```php
 <title><?= esc($title ?? 'Dashboard') ?></title>
 ```
 
-#### Asset Path Security
-All asset paths use `base_url()`:
+#### アセットパスのセキュリティ
+すべてのアセットパスに`base_url()`を使用：
 ```php
 <link href="<?= base_url('assets/css/app.min.css') ?>" />
 ```
 
-#### Type Safety
-Controllers use strict typing:
+#### 型安全性
+コントローラーで厳密な型付けを使用：
 ```php
 public function index(): string
 {
-    // Type-safe implementation
+    // 型安全な実装
 }
 ```
 
-## Framework Compatibility Updates
+## フレームワーク互換性の更新
 
-### View Syntax Changes
+### ビュー構文の変更
 
-| Old (Velzon_temp) | New (CI4.6.1) | Reason |
+| 旧（Velzon_temp） | 新（CI4.6.1） | 理由 |
 |-------------------|---------------|--------|
-| `$this->include('partials/...')` | `$this->include('admin/partials/...')` | Proper namespace separation |
-| `view('partials/title-meta', array('title'=>'X'))` | `view('admin/partials/title-meta', ['title' => 'X'])` | Modern array syntax |
-| `/assets/` | `base_url('assets/')` | Framework helper usage |
-| `<?= $title ?>` | `<?= esc($title) ?>` | XSS protection |
+| `$this->include('partials/...')` | `$this->include('admin/partials/...')` | 適切な名前空間の分離 |
+| `view('partials/title-meta', array('title'=>'X'))` | `view('admin/partials/title-meta', ['title' => 'X'])` | モダンな配列構文 |
+| `/assets/` | `base_url('assets/')` | フレームワークヘルパーの使用 |
+| `<?= $title ?>` | `<?= esc($title) ?>` | XSS対策 |
 
-### Helper Functions
+### ヘルパー関数
 
-| Helper | Usage | Purpose |
+| ヘルパー | 使用方法 | 目的 |
 |--------|-------|---------|
-| `base_url()` | `base_url('assets/css/app.css')` | Generate full asset URLs |
-| `esc()` | `esc($user_input)` | Escape output for XSS protection |
-| `view()` | `view('admin/dashboard', $data)` | Render views with data |
+| `base_url()` | `base_url('assets/css/app.css')` | 完全なアセットURLを生成 |
+| `esc()` | `esc($user_input)` | XSS対策のための出力エスケープ |
+| `view()` | `view('admin/dashboard', $data)` | データを含むビューのレンダリング |
 
-## Testing Results
+## テスト結果
 
-### Development Server
+### 開発サーバー
 ```bash
 cd ci4-app
 php spark serve --host=0.0.0.0 --port=8080
 ```
 
-✅ **Server Status**: Running successfully
-✅ **Admin URL**: http://localhost:8080/admin
-✅ **Page Load**: Success (200 OK)
-✅ **Assets Loading**: All CSS, JS, images load correctly
-✅ **Layout Rendering**: Complete layout with sidebar, topbar, footer
+✅ **サーバーステータス**: 正常に動作中
+✅ **管理画面URL**: http://localhost:8080/admin
+✅ **ページ読み込み**: 成功（200 OK）
+✅ **アセット読み込み**: すべてのCSS、JS、画像が正常に読み込まれる
+✅ **レイアウトレンダリング**: サイドバー、トップバー、フッターを含む完全なレイアウト
 
-### Security Checks
+### セキュリティチェック
 
-✅ **No dangerous functions** (eval, exec, system, etc.)
-✅ **No direct superglobal usage** ($_GET, $_POST, etc.)
-✅ **Output escaping** implemented with esc()
-✅ **Type safety** enforced in controllers
-✅ **CSRF protection** (CodeIgniter default)
+✅ **危険な関数なし**（eval、exec、systemなど）
+✅ **スーパーグローバル変数の直接使用なし**（$_GET、$_POSTなど）
+✅ **出力のエスケープ** esc()で実装
+✅ **型安全性** コントローラーで強制
+✅ **CSRF保護**（CodeIgniterデフォルト）
 
-## Directory Structure
+## ディレクトリ構造
 
 ```
 ci4-app/
 ├── app/
 │   ├── Config/
-│   │   └── Routes.php                 (Admin routes added)
+│   │   └── Routes.php                 (管理画面ルートを追加)
 │   ├── Controllers/
 │   │   └── Admin/
 │   │       └── DashboardController.php
@@ -232,26 +232,26 @@ ci4-app/
         └── lang/
 ```
 
-## Included Libraries
+## 含まれるライブラリ
 
-The template includes 50+ JavaScript/CSS libraries:
+テンプレートには50以上のJavaScript/CSSライブラリが含まれています：
 
-- **UI Frameworks**: Bootstrap 5
-- **Charts**: ApexCharts, Chart.js, ECharts
-- **Icons**: Feather Icons, Boxicons, Material Design Icons, Remix Icons
-- **Forms**: Choices.js, Flatpickr, Cleave.js
-- **Rich Text**: CKEditor, Quill, Summernote
-- **File Upload**: Dropzone, Filepond
-- **Data Tables**: DataTables, GridJS, List.js
-- **Maps**: Leaflet, JSVectorMap
-- **Utilities**: Swiper, SweetAlert2, Toastify
-- And many more...
+- **UIフレームワーク**: Bootstrap 5
+- **チャート**: ApexCharts、Chart.js、ECharts
+- **アイコン**: Feather Icons、Boxicons、Material Design Icons、Remix Icons
+- **フォーム**: Choices.js、Flatpickr、Cleave.js
+- **リッチテキスト**: CKEditor、Quill、Summernote
+- **ファイルアップロード**: Dropzone、Filepond
+- **データテーブル**: DataTables、GridJS、List.js
+- **地図**: Leaflet、JSVectorMap
+- **ユーティリティ**: Swiper、SweetAlert2、Toastify
+- その他多数...
 
-## Adding New Admin Pages
+## 新しい管理画面ページの追加方法
 
-To add a new admin page:
+新しい管理画面ページを追加するには：
 
-1. **Create View File**:
+1. **ビューファイルの作成**:
 ```php
 // app/Views/admin/new-page.php
 <?= $this->include('admin/partials/main') ?>
@@ -265,7 +265,7 @@ To add a new admin page:
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
-                    <!-- Your content here -->
+                    <!-- ここにコンテンツを追加 -->
                 </div>
             </div>
             <?= $this->include('admin/partials/footer') ?>
@@ -276,7 +276,7 @@ To add a new admin page:
 </html>
 ```
 
-2. **Add Controller Method**:
+2. **コントローラーメソッドの追加**:
 ```php
 // app/Controllers/Admin/DashboardController.php
 public function newPage(): string
@@ -287,61 +287,61 @@ public function newPage(): string
 }
 ```
 
-3. **Add Route**:
+3. **ルートの追加**:
 ```php
-// app/Config/Routes.php (in admin group)
+// app/Config/Routes.php (adminグループ内)
 $routes->get('new-page', 'DashboardController::newPage');
 ```
 
-## Version Differences
+## バージョン間の違い
 
-### Velzon_temp (Old)
+### Velzon_temp（旧）
 - PHP 7.4/8.0
-- Older CI4 version
-- Direct asset paths (`/assets/`)
-- Array syntax: `array('key' => 'value')`
-- No type hints
+- 古いCI4バージョン
+- 直接のアセットパス（`/assets/`）
+- 配列構文：`array('key' => 'value')`
+- 型ヒントなし
 
-### Current (New)
+### 現在（新）
 - PHP 8.3
 - CodeIgniter 4.6.1
-- Helper-based paths (`base_url('assets/')`)
-- Modern array syntax: `['key' => 'value']`
-- Full type safety
+- ヘルパーベースのパス（`base_url('assets/')`）
+- モダンな配列構文：`['key' => 'value']`
+- 完全な型安全性
 
-## Troubleshooting
+## トラブルシューティング
 
-### Assets Not Loading
-- Verify `app.baseURL` in `.env` file
-- Check public folder permissions
-- Ensure assets are in `public/assets/`
+### アセットが読み込まれない
+- `.env`ファイルの`app.baseURL`を確認
+- publicフォルダの権限を確認
+- アセットが`public/assets/`にあることを確認
 
-### Views Not Found
-- Check view paths include `admin/` prefix
-- Verify file exists in `app/Views/admin/`
-- Check file permissions
+### ビューが見つからない
+- ビューパスに`admin/`プレフィックスが含まれているか確認
+- `app/Views/admin/`にファイルが存在するか確認
+- ファイルの権限を確認
 
-### Controller Not Found
-- Verify namespace in Routes.php
-- Check controller class name matches file name
-- Ensure PSR-4 autoloading is working
+### コントローラーが見つからない
+- Routes.phpで名前空間を確認
+- コントローラークラス名がファイル名と一致しているか確認
+- PSR-4オートローディングが機能しているか確認
 
-## Maintenance
+## メンテナンス
 
-### Updating Assets
-To update CSS/JS libraries:
-1. Download new version
-2. Replace files in `public/assets/libs/[library]/`
-3. Update version references if needed
-4. Test thoroughly
+### アセットの更新
+CSS/JSライブラリを更新するには：
+1. 新しいバージョンをダウンロード
+2. `public/assets/libs/[library]/`のファイルを置き換え
+3. 必要に応じてバージョン参照を更新
+4. 徹底的にテスト
 
-### Adding Custom CSS/JS
-1. Add files to `public/assets/css/` or `public/assets/js/`
-2. Include in view files using `base_url()`
-3. Or add to `head-css.php` / `vendor-scripts.php` partials
+### カスタムCSS/JSの追加
+1. `public/assets/css/`または`public/assets/js/`にファイルを追加
+2. `base_url()`を使用してビューファイルに含める
+3. または`head-css.php`/`vendor-scripts.php`パーシャルに追加
 
-## Conclusion
+## まとめ
 
-The Velzon template has been successfully migrated to CodeIgniter 4.6.1 with full PHP 8.3 compatibility. All assets, views, controllers, and routes are properly structured and follow modern best practices for security and maintainability.
+VelzonテンプレートはCodeIgniter 4.6.1に正常に移行され、PHP 8.3との完全な互換性を持っています。すべてのアセット、ビュー、コントローラー、ルートが適切に構造化され、セキュリティと保守性に関するモダンなベストプラクティスに従っています。
 
-The admin dashboard is now accessible at `/admin` and provides a solid foundation for building comprehensive admin interfaces.
+管理画面ダッシュボードは`/admin`でアクセス可能で、包括的な管理インターフェースを構築するための強固な基盤を提供します。
