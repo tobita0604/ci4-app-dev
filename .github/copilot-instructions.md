@@ -6,7 +6,7 @@
 ## 技術スタック
 - バックエンド：CodeIgniter 4
 - フロントエンド：Vue.js 3（jQueryは使用せず、Vue.jsで動的UIを実装）
-- スタイル/UI：Tailwind CSS + Preline（Tailwind CSSベースUIコンポーネントライブラリ）
+- スタイル/UI：Bootstrap 5 + Velzon（Bootstrap 5ベース管理画面テンプレート）
 - 主要PHPライブラリ（Composer管理）：
   - `phpoffice/phpspreadsheet`（Excelファイル操作）
   - `symfony/cache`（キャッシュ機能）
@@ -172,7 +172,7 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) 
 - テンプレートのインポート/エクスポート機能（Excel、JSON形式）
 - Vue.jsベースのリアルタイムプレビュー機能
 - 日本語テンプレートに対応（文字コードUTF-8）
-- レスポンシブデザイン対応（Tailwind CSS使用）
+- レスポンシブデザイン対応（Bootstrap 5使用）
 
 ## セキュリティ要件
 - SQLインジェクション対策のためにCodeIgniter 4のクエリビルダを使用
@@ -205,9 +205,11 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) 
   - ページごとに独立したVueインスタンスを作成
   - 大規模なコンポーネント階層は避け、フラットな構造を維持
   - 管理画面とフロントでVueコンポーネントを分離管理
-- Tailwind CSS + Prelineの活用：
-  - カスタムCSSよりもTailwindのユーティリティクラスを優先
-  - PrelineコンポーネントをVue.jsで適切に初期化
+- Bootstrap 5 + Velzonの活用：
+  - Bootstrap 5のコンポーネントとユーティリティクラスを優先的に使用
+  - Velzonテンプレートの既存レイアウト・コンポーネントを活用
+  - カスタムCSSが必要な場合はBootstrapの変数・mixinを使用
+  - Vue.jsとBootstrapコンポーネント（モーダル、ドロップダウンなど）の統合に注意
 - テンプレートエディタにはWYSIWYGエディタ（Vue.js対応）の統合を検討
 - テンプレート変数の命名規則を統一（例: {{variable_name}}）
 - テンプレートバージョン管理のためのデータベース設計に注意
