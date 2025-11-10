@@ -15,102 +15,96 @@
 
 ## プロジェクト構造
 ```
-app/
+ app/
 ├── Controllers/
-│   ├── Admin/                     # 管理画面専用コントローラー
+│   ├── Admin/
 │   │   ├── Dashboard.php
-│   │   ├── Template/
-│   │   │   ├── TemplateController.php
-│   │   │   ├── CategoryController.php
-│   │   │   └── VersionController.php
-│   │   ├── User/
-│   │   │   └── UserController.php
-│   │   └── Auth/
-│   │       ├── LoginController.php
-│   │       └── LogoutController.php
-│   │
-│   └── Front/                     # フロント画面専用コントローラー
+│   │   ├── Reserver/
+│   │   │   └── ReserverController.php
+│   │   ├── Member/
+│   │   │   └── MemberController.php
+│   │   ├── Option/
+│   │   │   └── OptionController.php
+│   │   ├── CarRental/
+│   │   │   └── CarRentalController.php
+│   │   ├── Auth/
+│   │   │   ├── LoginController.php
+│   │   │   └── LogoutController.php
+│   └── Front/
 │       ├── Home.php
-│       ├── Template/
-│       │   ├── TemplateViewController.php
-│       │   └── TemplateSearchController.php
+│       ├── Reservation/
+│       │   └── ReservationController.php
 │       └── Auth/
 │           ├── LoginController.php
 │           └── RegisterController.php
-│
-├── Models/                        # 共通モデル（Admin/Front両方で使用）
-│   ├── Template/
-│   │   ├── TemplateModel.php
-│   │   ├── CategoryModel.php
-│   │   └── VersionModel.php
-│   └── User/
-│       └── UserModel.php
-│
+├── Models/
+│   ├── Reserver/
+│   │   ├── ReserverModel.php
+│   │   ├── MemberModel.php
+│   │   └── NoteModel.php
+│   ├── Option/
+│   │   ├── OptionModel.php
+│   │   └── OptionTimeModel.php
+│   └── CarRental/
+│       ├── CarRentalModel.php
+│       └── StockModel.php
+├── Services/
+│   ├── Reservation/
+│   │   ├── ReservationService.php
+│   │   └── MemberService.php
+│   ├── Option/
+│   │   ├── OptionService.php
+│   │   └── AvailabilityService.php
+│   └── CarRental/
+│       └── CarRentalService.php
 ├── Views/
-│   ├── admin/                     # 管理画面ビュー
+│   ├── admin/
 │   │   ├── layouts/
-│   │   │   ├── main.php          # 管理画面共通レイアウト
+│   │   │   ├── main.php
 │   │   │   └── sidebar.php
-│   │   ├── dashboard/
-│   │   │   └── index.php
-│   │   ├── template/
+│   │   ├── reserver/
 │   │   │   ├── list.php
-│   │   │   ├── create.php
 │   │   │   ├── edit.php
-│   │   │   └── preview.php
-│   │   └── auth/
-│   │       └── login.php
-│   │
-│   └── front/                     # フロント画面ビュー
+│   │   │   └── detail.php
+│   │   ├── member/
+│   │   │   ├── list.php
+│   │   │   └── edit.php
+│   │   ├── option/
+│   │   └── car_rental/
+│   └── front/
 │       ├── layouts/
-│       │   ├── main.php          # フロント共通レイアウト
+│       │   ├── main.php
 │       │   ├── header.php
 │       │   └── footer.php
-│       ├── home/
-│       │   └── index.php
-│       ├── template/
-│       │   ├── list.php
-│       │   ├── detail.php
-│       │   └── search.php
+│       ├── reservation/
+│       │   ├── step1.php
+│       │   ├── step2.php
+│       │   └── confirm.php
 │       └── auth/
-│           ├── login.php
-│           └── register.php
-│
-├── Services/                      # ビジネスロジック層（共通）
-│   ├── Template/
-│   │   ├── TemplateService.php
-│   │   ├── CategoryService.php
-│   │   ├── VersionService.php
-│   │   └── ExportService.php
-│   └── User/
-│       └── AuthService.php
-│
-├── Filters/                       # アクセス制御
-│   ├── AdminAuthFilter.php       # 管理画面認証フィルター
-│   └── FrontAuthFilter.php       # フロント認証フィルター
-│
-├── Libraries/                     # カスタムライブラリ
-├── Helpers/                       # ヘルパー関数
-├── Config/                        # 設定ファイル
-│   └── Routes.php                # ルーティング設定（admin/frontで分離）
-└── Database/
-    ├── Migrations/                # データベースマイグレーション
-    └── Seeds/                     # テストデータ
+├── Database/
+│   └── Migrations/
+│       ├── 001_create_c00_charger.php
+│       ├── 002_create_r01_reserver.php
+│       ├── ...
+│       └── 013_create_r03_admin_ip.php
 ```
 
 **アセット構造（public/）:**
 ```
 public/
-├── admin/                         # 管理画面専用アセット
+├── admin/
 │   ├── css/
 │   ├── js/
-│   │   └── vue/                  # Vue.js コンポーネント
+│   │   └── alpinejs/
+│   │       ├── sidebar.js
+│   │       ├── dropdown.js
+│   │       ├── modal.js
+│   │       └── toast.js
 │   └── images/
-│
-└── front/                         # フロント専用アセット
+└── front/
     ├── css/
     ├── js/
-    │   └── vue/
+    │   └── alpinejs/
     └── images/
 ```
 
