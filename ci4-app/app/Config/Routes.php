@@ -18,6 +18,20 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'ad
     $routes->get('dashboard', 'DashboardController::index');
     $routes->get('dashboard/analytics', 'DashboardController::analytics');
     
+    // 予約者管理
+    $routes->resource('reserver', ['controller' => 'Reserver\ReserverController']);
+    
+    // 会員管理
+    $routes->resource('member', ['controller' => 'Member\MemberController']);
+    
+    // オプション管理
+    $routes->resource('option', ['controller' => 'Option\OptionController']);
+    $routes->get('option/(:segment)/stock', 'Option\OptionController::stock/$1');
+    
+    // レンタカー管理
+    $routes->resource('car-rental', ['controller' => 'CarRental\CarRentalController']);
+    $routes->get('car-rental/stock', 'CarRental\CarRentalController::stock');
+    
     // テンプレート管理
     $routes->resource('templates', ['controller' => 'Template\TemplateController']);
     $routes->get('templates/(:num)/preview', 'Template\TemplateController::preview/$1');
@@ -47,16 +61,28 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], static function ($
     // ホーム
     $routes->get('', 'Home::index');
     
+    // 予約フロー
+    $routes->get('reservation/step1', 'Reservation\ReservationController::step1');
+    $routes->post('reservation/step1', 'Reservation\ReservationController::step1');
+    $routes->get('reservation/step2', 'Reservation\ReservationController::step2');
+    $routes->post('reservation/step2', 'Reservation\ReservationController::step2');
+    $routes->get('reservation/confirm', 'Reservation\ReservationController::confirm');
+    $routes->post('reservation/complete', 'Reservation\ReservationController::complete');
+    $routes->get('reservation/thanks', 'Reservation\ReservationController::thanks');
+    
     // テンプレート閲覧
     $routes->get('templates', 'Template\TemplateViewController::index');
     $routes->get('templates/(:segment)', 'Template\TemplateViewController::show/$1');
     $routes->get('search', 'Template\TemplateSearchController::index');
-    
-    // 認証
-    $routes->get('login', 'Auth\LoginController::index');
-    $routes->post('login', 'Auth\LoginController::login');
-    $routes->get('register', 'Auth\RegisterController::index');
-    $routes->post('register', 'Auth\RegisterController::register');
-    $routes->get('logout', 'Auth\LogoutController::index');
+});
+
+// フロント認証（セッションフィルター適用除外）
+$routes->group('auth', ['namespace' => 'App\Controllers\Front\Auth'], static function ($routes) {
+    $routes->get('login', 'LoginController::index');
+    $routes->post('login', 'LoginController::login');
+    $routes->get('logout', 'LoginController::logout');
+    $routes->get('register', 'RegisterController::index');
+    $routes->post('register', 'RegisterController::register');
+    $routes->get('register/complete', 'RegisterController::complete');
 });
 
