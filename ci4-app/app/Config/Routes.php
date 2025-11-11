@@ -31,25 +31,13 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'ad
     // レンタカー管理
     $routes->resource('car-rental', ['controller' => 'CarRental\CarRentalController']);
     $routes->get('car-rental/stock', 'CarRental\CarRentalController::stock');
-    
-    // テンプレート管理
-    $routes->resource('templates', ['controller' => 'Template\TemplateController']);
-    $routes->get('templates/(:num)/preview', 'Template\TemplateController::preview/$1');
-    $routes->post('templates/(:num)/duplicate', 'Template\TemplateController::duplicate/$1');
-    
-    // カテゴリ管理
-    $routes->resource('categories', ['controller' => 'Template\CategoryController']);
-    
-    // バージョン管理
-    $routes->get('templates/(:num)/versions', 'Template\VersionController::index/$1');
-    $routes->post('templates/(:num)/versions/(:num)/restore', 'Template\VersionController::restore/$1/$2');
 });
 
 // 管理画面ログイン（認証フィルター適用除外）
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], static function ($routes) {
-    $routes->get('login', 'Auth\LoginController::index');
-    $routes->post('login', 'Auth\LoginController::login');
-    $routes->get('logout', 'Auth\LogoutController::index');
+    $routes->get('auth/login', 'Auth\LoginController::index');
+    $routes->post('auth/login', 'Auth\LoginController::login');
+    $routes->get('auth/logout', 'Auth\LogoutController::index');
 });
 
 /*
@@ -69,11 +57,6 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], static function ($
     $routes->get('reservation/confirm', 'Reservation\ReservationController::confirm');
     $routes->post('reservation/complete', 'Reservation\ReservationController::complete');
     $routes->get('reservation/thanks', 'Reservation\ReservationController::thanks');
-    
-    // テンプレート閲覧
-    $routes->get('templates', 'Template\TemplateViewController::index');
-    $routes->get('templates/(:segment)', 'Template\TemplateViewController::show/$1');
-    $routes->get('search', 'Template\TemplateSearchController::index');
 });
 
 // フロント認証（セッションフィルター適用除外）
