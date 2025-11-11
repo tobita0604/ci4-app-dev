@@ -13,11 +13,19 @@ use CodeIgniter\HTTP\ResponseInterface;
 class LoginController extends BaseController
 {
     /**
+     * コンストラクタ
+     */
+    public function __construct()
+    {
+        helper(['url', 'form']);
+    }
+
+    /**
      * ログインフォーム表示
      * 
      * @return string|ResponseInterface
      */
-    public function index()
+    public function index(): string|\CodeIgniter\HTTP\RedirectResponse
     {
         // 既にログイン済みの場合はマイページへリダイレクト
         if (session()->get('member_logged_in')) {
@@ -36,7 +44,7 @@ class LoginController extends BaseController
      * 
      * @return ResponseInterface
      */
-    public function login()
+    public function login(): \CodeIgniter\HTTP\RedirectResponse
     {
         $validation = \Config\Services::validation();
         
@@ -68,7 +76,7 @@ class LoginController extends BaseController
      * 
      * @return ResponseInterface
      */
-    public function logout()
+    public function logout(): \CodeIgniter\HTTP\RedirectResponse
     {
         session()->remove('member_logged_in');
         session()->remove('member_email');
