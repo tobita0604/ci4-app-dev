@@ -3,6 +3,7 @@
 namespace App\Controllers\Front\Auth;
 
 use App\Controllers\BaseController;
+use App\Services\Auth\AuthService;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -14,11 +15,17 @@ use CodeIgniter\HTTP\ResponseInterface;
 class LoginController extends BaseController
 {
     /**
+     * @var AuthService 認証関連サービス
+     */
+    protected AuthService $authService;
+
+    /**
      * コンストラクタ
      */
     public function __construct()
     {
         helper(['url', 'form']);
+        $this->authService = new AuthService();
     }
 
     /**
@@ -29,8 +36,8 @@ class LoginController extends BaseController
     public function index(): string|RedirectResponse
     {
         // 既にログイン済みの場合はマイページへリダイレクト
-        if (session()->get('member_logged_in')) {
-            return $this->response->redirect(site_url('/mypage'));
+        if ($this->authService->isReserverLoggedIn()) {
+            return $this->response->redirect(site_url('mypage'));
         }
 
         $data = [
@@ -50,7 +57,7 @@ class LoginController extends BaseController
         $validation = \Config\Services::validation();
         
         $validation->setRules([
-            'email' => 'required|valid_email',
+            'reserver_id' => 'required',
             'password' => 'required',
         ]);
 
@@ -60,18 +67,21 @@ class LoginController extends BaseController
                 ->with('errors', $validation->getErrors());
         }
 
-        $email = $this->request->getPost('email');
+        $reserverId = $this->request->getPost('reserver_id');
         $password = $this->request->getPost('password');
 
-        // TODO: 会員認証処理実装
+        // AuthServiceで認証処理
+        if (!$this->authService->reserverLogin($reserverId, $password)) {
+            return $this->response->redirect(previous_url())
+                ->withInput()
+                ->with('error', '予約者IDまたはパスワードが正しくありません');
+        }
 
-        // 仮の実装
-        session()->set([
-            'member_logged_in' => true,
-            'member_email' => $email,
-        ]);
+        // リダイレクト先URLがセッションに保存されていれば、そこへリダイレクト
+        $redirectUrl = session()->get('redirect_url') ?? site_url('mypage');
+        session()->remove('redirect_url');
 
-        return $this->response->redirect(site_url('/mypage'))
+        return $this->response->redirect($redirectUrl)
             ->with('success', 'ログインしました');
     }
 
@@ -82,9 +92,8 @@ class LoginController extends BaseController
      */
     public function logout(): RedirectResponse
     {
-        session()->remove('member_logged_in');
-        session()->remove('member_email');
-        session()->remove('member_id');
+        // AuthServiceでログアウト処理
+        $this->authService->reserverLogout();
         
         return $this->response->redirect(site_url('/'))
             ->with('success', 'ログアウトしました');

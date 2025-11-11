@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin\Auth;
 
 use App\Controllers\BaseController;
+use App\Services\Auth\AuthService;
 use CodeIgniter\HTTP\RedirectResponse;
 
 /**
@@ -13,6 +14,19 @@ use CodeIgniter\HTTP\RedirectResponse;
 class LogoutController extends BaseController
 {
     /**
+     * @var AuthService 認証関連サービス
+     */
+    protected AuthService $authService;
+
+    /**
+     * コンストラクタ
+     */
+    public function __construct()
+    {
+        $this->authService = new AuthService();
+    }
+
+    /**
      * ログアウト処理
      * 
      * セッションを破棄し、ログイン画面へリダイレクトします。
@@ -21,16 +35,10 @@ class LogoutController extends BaseController
      */
     public function index(): RedirectResponse
     {
-        // セッション情報をクリア
-        session()->remove('admin_logged_in');
-        session()->remove('charger_id');
-        session()->remove('charger_name');
-        session()->remove('charger_type');
-        
-        // セッション全体を破棄
-        session()->destroy();
+        // AuthServiceでログアウト処理
+        $this->authService->chargerLogout();
 
-        return $this->response->redirect(site_url('/admin/login'))
+        return $this->response->redirect(site_url('admin/auth/login'))
             ->with('success', 'ログアウトしました');
     }
 }

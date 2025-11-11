@@ -36,8 +36,8 @@ class LoginController extends BaseController
     public function index(): string|RedirectResponse
     {
         // 既にログイン済みの場合はダッシュボードへリダイレクト
-        if (session()->get('admin_logged_in')) {
-            return $this->response->redirect(site_url('/admin'));
+        if ($this->authService->isChargerLoggedIn()) {
+            return $this->response->redirect(site_url('admin/dashboard'));
         }
 
         $data = [
@@ -70,16 +70,18 @@ class LoginController extends BaseController
         $chargerId = $this->request->getPost('charger_id');
         $password = $this->request->getPost('password');
 
-        // TODO: AuthServiceでの認証処理実装
-        // $result = $this->authService->authenticate($chargerId, $password);
+        // AuthServiceで認証処理
+        if (!$this->authService->chargerLogin($chargerId, $password)) {
+            return $this->response->redirect(previous_url())
+                ->withInput()
+                ->with('error', '担当者IDまたはパスワードが正しくありません');
+        }
 
-        // 仮の実装
-        session()->set([
-            'admin_logged_in' => true,
-            'charger_id' => $chargerId,
-        ]);
+        // リダイレクト先URLがセッションに保存されていれば、そこへリダイレクト
+        $redirectUrl = session()->get('redirect_url') ?? site_url('admin/dashboard');
+        session()->remove('redirect_url');
 
-        return $this->response->redirect(site_url('/admin'))
+        return $this->response->redirect($redirectUrl)
             ->with('success', 'ログインしました');
     }
 }
