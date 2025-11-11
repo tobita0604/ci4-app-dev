@@ -78,15 +78,16 @@ class AdminAuthFilter implements FilterInterface
                 $session->set('redirect_url', $currentPath);
             }
             
-            return redirect()->to('/admin/login')
-                           ->with('error', 'ログインが必要です');
+            $session->setFlashdata('error', 'ログインが必要です');
+            return service('response')->redirect(site_url('admin/auth/login'));
         }
 
         // 管理者権限が必要な場合のチェック（オプション引数で指定可能）
         if (isset($arguments['role']) && $arguments['role'] === 'admin') {
             if (!$this->authService->isAdmin()) {
-                return redirect()->to('/admin/dashboard')
-                               ->with('error', '管理者権限が必要です');
+                $session = session();
+                $session->setFlashdata('error', '管理者権限が必要です');
+                return service('response')->redirect(site_url('admin/dashboard'));
             }
         }
 

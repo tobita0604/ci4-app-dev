@@ -53,8 +53,8 @@ class FrontAuthFilter implements FilterInterface
                 $session->set('redirect_url', $currentPath);
             }
             
-            return redirect()->to('/login')
-                           ->with('error', 'ログインが必要です');
+            $session->setFlashdata('error', 'ログインが必要です');
+            return service('response')->redirect(site_url('auth/login'));
         }
 
         // リクエストに予約者情報を付与（コントローラーで利用可能）
