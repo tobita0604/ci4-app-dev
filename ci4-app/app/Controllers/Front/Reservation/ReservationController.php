@@ -4,6 +4,7 @@ namespace App\Controllers\Front\Reservation;
 
 use App\Controllers\BaseController;
 use App\Services\Reservation\ReservationService;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -44,15 +45,15 @@ class ReservationController extends BaseController
     /**
      * 予約フォーム ステップ2（オプション選択）
      * 
-     * @return string|ResponseInterface
+     * @return string|RedirectResponse
      */
-    public function step2()
+    public function step2(): string|RedirectResponse
     {
         // セッションから基本情報を取得
         $reservationData = session()->get('reservation_step1');
         
         if (!$reservationData) {
-            return redirect()->to('/reservation/step1');
+            return $this->response->redirect(site_url('/reservation/step1'));
         }
 
         $data = [
@@ -66,16 +67,16 @@ class ReservationController extends BaseController
     /**
      * 予約内容確認画面
      * 
-     * @return string|ResponseInterface
+     * @return string|RedirectResponse
      */
-    public function confirm()
+    public function confirm(): string|RedirectResponse
     {
         // セッションから予約情報を取得
         $reservationData = session()->get('reservation_step1');
         $optionData = session()->get('reservation_step2');
         
         if (!$reservationData || !$optionData) {
-            return redirect()->to('/reservation/step1');
+            return $this->response->redirect(site_url('/reservation/step1'));
         }
 
         $data = [
@@ -90,9 +91,9 @@ class ReservationController extends BaseController
     /**
      * 予約完了処理
      * 
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function complete()
+    public function complete(): RedirectResponse
     {
         // TODO: 予約データの保存処理実装
         
@@ -100,7 +101,8 @@ class ReservationController extends BaseController
         session()->remove('reservation_step1');
         session()->remove('reservation_step2');
 
-        return redirect()->to('/reservation/thanks')->with('success', '予約が完了しました');
+        return $this->response->redirect(site_url('/reservation/thanks'))
+            ->with('success', '予約が完了しました');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Controllers\Admin\Auth;
 
 use App\Controllers\BaseController;
 use App\Services\Auth\AuthService;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -30,13 +31,13 @@ class LoginController extends BaseController
     /**
      * ログインフォーム表示
      * 
-     * @return string|ResponseInterface
+     * @return string|RedirectResponse
      */
-    public function index()
+    public function index(): string|RedirectResponse
     {
         // 既にログイン済みの場合はダッシュボードへリダイレクト
         if (session()->get('admin_logged_in')) {
-            return redirect()->to('/admin');
+            return $this->response->redirect(site_url('/admin'));
         }
 
         $data = [
@@ -49,9 +50,9 @@ class LoginController extends BaseController
     /**
      * ログイン処理
      * 
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function login()
+    public function login(): RedirectResponse
     {
         $validation = \Config\Services::validation();
         
@@ -61,7 +62,9 @@ class LoginController extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return $this->response->redirect(previous_url())
+                ->withInput()
+                ->with('errors', $validation->getErrors());
         }
 
         $chargerId = $this->request->getPost('charger_id');
@@ -76,6 +79,7 @@ class LoginController extends BaseController
             'charger_id' => $chargerId,
         ]);
 
-        return redirect()->to('/admin')->with('success', 'ログインしました');
+        return $this->response->redirect(site_url('/admin'))
+            ->with('success', 'ログインしました');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Controllers\Admin\CarRental;
 
 use App\Controllers\BaseController;
 use App\Services\CarRental\CarRentalService;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -79,12 +80,12 @@ class CarRentalController extends BaseController
      * レンタカー予約情報更新
      * 
      * @param int $id レンタカー予約ID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/car-rental');
+        return $this->response->redirect(site_url('/admin/car-rental'));
     }
 
     /**

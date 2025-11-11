@@ -5,6 +5,7 @@ namespace App\Controllers\Admin\Option;
 use App\Controllers\BaseController;
 use App\Services\Option\OptionService;
 use App\Services\Option\AvailabilityService;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -86,12 +87,12 @@ class OptionController extends BaseController
      * オプション情報更新
      * 
      * @param string $id オプションID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/option');
+        return $this->response->redirect(site_url('/admin/option'));
     }
 
     /**

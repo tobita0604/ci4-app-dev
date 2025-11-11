@@ -4,6 +4,7 @@ namespace App\Controllers\Admin\Member;
 
 use App\Controllers\BaseController;
 use App\Services\Reservation\MemberService;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -63,11 +64,11 @@ class MemberController extends BaseController
      * 会員情報更新
      * 
      * @param int $id 会員ID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/member');
+        return $this->response->redirect(site_url('/admin/member'));
     }
 }

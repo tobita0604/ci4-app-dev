@@ -4,6 +4,7 @@ namespace App\Controllers\Admin\Reserver;
 
 use App\Controllers\BaseController;
 use App\Services\Reservation\ReservationService;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -79,23 +80,23 @@ class ReserverController extends BaseController
      * 予約者情報更新
      * 
      * @param int $id 予約者ID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function update($id)
+    public function update($id): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/reserver');
+        return $this->response->redirect(site_url('/admin/reserver'));
     }
 
     /**
      * 予約者削除
      * 
      * @param int $id 予約者ID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function delete($id)
+    public function delete($id): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/reserver');
+        return $this->response->redirect(site_url('/admin/reserver'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin\Template;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -45,12 +46,12 @@ class CategoryController extends BaseController
     /**
      * カテゴリ作成処理
      * 
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function create()
+    public function create(): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/categories');
+        return $this->response->redirect(site_url('/admin/categories'));
     }
 
     /**
@@ -74,23 +75,23 @@ class CategoryController extends BaseController
      * カテゴリ更新処理
      * 
      * @param int $id カテゴリID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function update($id = null)
+    public function update($id = null): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/categories/' . $id);
+        return $this->response->redirect(site_url('/admin/categories/' . $id));
     }
 
     /**
      * カテゴリ削除処理
      * 
      * @param int $id カテゴリID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function delete($id = null)
+    public function delete($id = null): RedirectResponse
     {
         // TODO: 実装
-        return redirect()->to('/admin/categories');
+        return $this->response->redirect(site_url('/admin/categories'));
     }
 }

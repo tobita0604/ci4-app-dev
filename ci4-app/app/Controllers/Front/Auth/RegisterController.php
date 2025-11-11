@@ -3,6 +3,7 @@
 namespace App\Controllers\Front\Auth;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -29,9 +30,9 @@ class RegisterController extends BaseController
     /**
      * 会員登録処理
      * 
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function register()
+    public function register(): RedirectResponse
     {
         $validation = \Config\Services::validation();
         
@@ -43,12 +44,15 @@ class RegisterController extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return $this->response->redirect(previous_url())
+                ->withInput()
+                ->with('errors', $validation->getErrors());
         }
 
         // TODO: 会員登録処理実装
 
-        return redirect()->to('/auth/register/complete')->with('success', '会員登録が完了しました');
+        return $this->response->redirect(site_url('/auth/register/complete'))
+            ->with('success', '会員登録が完了しました');
     }
 
     /**

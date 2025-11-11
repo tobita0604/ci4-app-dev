@@ -4,6 +4,7 @@ namespace App\Controllers\Admin\Template;
 
 use App\Controllers\BaseController;
 use App\Services\Template\TemplateService;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -56,12 +57,12 @@ class TemplateController extends BaseController
     /**
      * テンプレート作成処理
      * 
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function create()
+    public function create(): RedirectResponse
     {
         // TODO: バリデーション、サービス層での処理実装
-        return redirect()->to('/admin/templates');
+        return $this->response->redirect(site_url('/admin/templates'));
     }
 
     /**
@@ -102,24 +103,24 @@ class TemplateController extends BaseController
      * テンプレート更新処理
      * 
      * @param int $id テンプレートID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function update($id = null)
+    public function update($id = null): RedirectResponse
     {
         // TODO: バリデーション、サービス層での処理実装
-        return redirect()->to('/admin/templates/' . $id);
+        return $this->response->redirect(site_url('/admin/templates/' . $id));
     }
 
     /**
      * テンプレート削除処理
      * 
      * @param int $id テンプレートID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function delete($id = null)
+    public function delete($id = null): RedirectResponse
     {
         // TODO: サービス層での削除処理実装
-        return redirect()->to('/admin/templates');
+        return $this->response->redirect(site_url('/admin/templates'));
     }
 
     /**
@@ -142,11 +143,11 @@ class TemplateController extends BaseController
      * テンプレート複製処理
      * 
      * @param int $id テンプレートID
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function duplicate($id = null)
+    public function duplicate($id = null): RedirectResponse
     {
         // TODO: サービス層での複製処理実装
-        return redirect()->to('/admin/templates');
+        return $this->response->redirect(site_url('/admin/templates'));
     }
 }
