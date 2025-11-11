@@ -30,6 +30,9 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
+# .htaccessを有効化するためにAllowOverrideを設定
+RUN sed -i '/<\/VirtualHost>/i \    <Directory /var/www/html/public>\n        Options Indexes FollowSymLinks\n        AllowOverride All\n        Require all granted\n    </Directory>' /etc/apache2/sites-available/000-default.conf
+
 # PHP設定の最適化（テンプレート管理システム用）
 RUN echo "upload_max_filesize = 100M" >> /usr/local/etc/php/conf.d/template-system.ini \
     && echo "post_max_size = 100M" >> /usr/local/etc/php/conf.d/template-system.ini \
