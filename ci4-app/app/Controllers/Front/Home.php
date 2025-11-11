@@ -23,6 +23,6 @@ class Home extends BaseController
             'title' => 'ホーム',
         ];
 
-        return view('front/home', $data);
+        return view('front/home/index', $data);
     }
 }
