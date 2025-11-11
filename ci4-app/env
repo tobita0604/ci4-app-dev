@@ -75,7 +75,7 @@ database.default.port = 3306
 
 # IP制限機能の有効/無効（true=有効, false=無効）
 # 開発環境ではfalse推奨、本番環境ではtrue推奨
-# IP_RESTRICTION_ENABLED = true
+# IP_RESTRICTION_ENABLED = false
 
 #--------------------------------------------------------------------
 # CUSTOM APPLICATION SETTINGS
