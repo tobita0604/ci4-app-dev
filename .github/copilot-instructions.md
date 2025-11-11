@@ -5,8 +5,8 @@
 
 ## 技術スタック
 - バックエンド：CodeIgniter 4
-- フロントエンド：Alpine.js（jQueryは使用せず、Alpine.jsで動的UIを実装）
-- スタイル/UI：Bootstrap 5 + Velzon（Bootstrap 5ベース管理画面テンプレート）
+- フロントエンド：Vue.js 3（jQueryは使用せず、Vue.jsで動的UIを実装）
+- スタイル/UI：Tailwind CSS + Preline（Tailwind CSSベースUIコンポーネントライブラリ）
 - 主要PHPライブラリ（Composer管理）：
   - `phpoffice/phpspreadsheet`（Excelファイル操作）
   - `symfony/cache`（キャッシュ機能）
@@ -15,96 +15,102 @@
 
 ## プロジェクト構造
 ```
- app/
+app/
 ├── Controllers/
-│   ├── Admin/
+│   ├── Admin/                     # 管理画面専用コントローラー
 │   │   ├── Dashboard.php
-│   │   ├── Reserver/
-│   │   │   └── ReserverController.php
-│   │   ├── Member/
-│   │   │   └── MemberController.php
-│   │   ├── Option/
-│   │   │   └── OptionController.php
-│   │   ├── CarRental/
-│   │   │   └── CarRentalController.php
-│   │   ├── Auth/
-│   │   │   ├── LoginController.php
-│   │   │   └── LogoutController.php
-│   └── Front/
+│   │   ├── Template/
+│   │   │   ├── TemplateController.php
+│   │   │   ├── CategoryController.php
+│   │   │   └── VersionController.php
+│   │   ├── User/
+│   │   │   └── UserController.php
+│   │   └── Auth/
+│   │       ├── LoginController.php
+│   │       └── LogoutController.php
+│   │
+│   └── Front/                     # フロント画面専用コントローラー
 │       ├── Home.php
-│       ├── Reservation/
-│       │   └── ReservationController.php
+│       ├── Template/
+│       │   ├── TemplateViewController.php
+│       │   └── TemplateSearchController.php
 │       └── Auth/
 │           ├── LoginController.php
 │           └── RegisterController.php
-├── Models/
-│   ├── Reserver/
-│   │   ├── ReserverModel.php
-│   │   ├── MemberModel.php
-│   │   └── NoteModel.php
-│   ├── Option/
-│   │   ├── OptionModel.php
-│   │   └── OptionTimeModel.php
-│   └── CarRental/
-│       ├── CarRentalModel.php
-│       └── StockModel.php
-├── Services/
-│   ├── Reservation/
-│   │   ├── ReservationService.php
-│   │   └── MemberService.php
-│   ├── Option/
-│   │   ├── OptionService.php
-│   │   └── AvailabilityService.php
-│   └── CarRental/
-│       └── CarRentalService.php
+│
+├── Models/                        # 共通モデル（Admin/Front両方で使用）
+│   ├── Template/
+│   │   ├── TemplateModel.php
+│   │   ├── CategoryModel.php
+│   │   └── VersionModel.php
+│   └── User/
+│       └── UserModel.php
+│
 ├── Views/
-│   ├── admin/
+│   ├── admin/                     # 管理画面ビュー
 │   │   ├── layouts/
-│   │   │   ├── main.php
+│   │   │   ├── main.php          # 管理画面共通レイアウト
 │   │   │   └── sidebar.php
-│   │   ├── reserver/
+│   │   ├── dashboard/
+│   │   │   └── index.php
+│   │   ├── template/
 │   │   │   ├── list.php
+│   │   │   ├── create.php
 │   │   │   ├── edit.php
-│   │   │   └── detail.php
-│   │   ├── member/
-│   │   │   ├── list.php
-│   │   │   └── edit.php
-│   │   ├── option/
-│   │   └── car_rental/
-│   └── front/
+│   │   │   └── preview.php
+│   │   └── auth/
+│   │       └── login.php
+│   │
+│   └── front/                     # フロント画面ビュー
 │       ├── layouts/
-│       │   ├── main.php
+│       │   ├── main.php          # フロント共通レイアウト
 │       │   ├── header.php
 │       │   └── footer.php
-│       ├── reservation/
-│       │   ├── step1.php
-│       │   ├── step2.php
-│       │   └── confirm.php
+│       ├── home/
+│       │   └── index.php
+│       ├── template/
+│       │   ├── list.php
+│       │   ├── detail.php
+│       │   └── search.php
 │       └── auth/
-├── Database/
-│   └── Migrations/
-│       ├── 001_create_c00_charger.php
-│       ├── 002_create_r01_reserver.php
-│       ├── ...
-│       └── 013_create_r03_admin_ip.php
+│           ├── login.php
+│           └── register.php
+│
+├── Services/                      # ビジネスロジック層（共通）
+│   ├── Template/
+│   │   ├── TemplateService.php
+│   │   ├── CategoryService.php
+│   │   ├── VersionService.php
+│   │   └── ExportService.php
+│   └── User/
+│       └── AuthService.php
+│
+├── Filters/                       # アクセス制御
+│   ├── AdminAuthFilter.php       # 管理画面認証フィルター
+│   └── FrontAuthFilter.php       # フロント認証フィルター
+│
+├── Libraries/                     # カスタムライブラリ
+├── Helpers/                       # ヘルパー関数
+├── Config/                        # 設定ファイル
+│   └── Routes.php                # ルーティング設定（admin/frontで分離）
+└── Database/
+    ├── Migrations/                # データベースマイグレーション
+    └── Seeds/                     # テストデータ
 ```
 
 **アセット構造（public/）:**
 ```
 public/
-├── admin/
+├── admin/                         # 管理画面専用アセット
 │   ├── css/
 │   ├── js/
-│   │   └── alpinejs/
-│   │       ├── sidebar.js
-│   │       ├── dropdown.js
-│   │       ├── modal.js
-│   │       └── toast.js
+│   │   └── vue/                  # Vue.js コンポーネント
 │   └── images/
-└── front/
+│
+└── front/                         # フロント専用アセット
     ├── css/
     ├── js/
-    │   └── alpinejs/
+    │   └── vue/
     └── images/
 ```
 
@@ -146,15 +152,15 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) 
   - クラス: クラスの役割、責任、使用方法を明記
   - メソッド・関数: 引数の型と説明、戻り値の型と説明、例外がある場合はその説明
   - 複雑なロジックには、処理内容のフローをコメントとして記載
-- Alpine.js/JavaScriptコード: 
-  - jQueryは使用せず、Alpine.jsで動的UIを実装
-  - 既存のHTMLにAlpine.jsディレクティブを追加して部分的な動的機能を提供
+- Vue.js/JavaScriptコード: 
+  - jQueryは使用せず、Vue.js 3をjQueryの代用品として動的UIを実装
+  - 既存のHTMLにVue.jsインスタンスをマウントして部分的な動的機能を提供
   - SPAは実装せず、従来のMPAアーキテクチャを維持
-  - DOM操作、イベントハンドリング、フォーム処理にAlpine.jsを活用
-  - API通信にはaxiosまたはfetch APIを使用
-  - シンプルで宣言的なコードを優先し、複雑なロジックは避ける
-- CSS: Bootstrap 5のユーティリティクラスを優先的に使用
-- UIコンポーネント: Velzonテンプレートのコンポーネントを活用
+  - DOM操作、イベントハンドリング、フォーム処理にVue.jsを活用
+  - API通信にはaxiosライブラリを使用
+  - 複雑なコンポーネント設計は避け、シンプルなVueインスタンスを優先
+- CSS: Tailwind CSSのユーティリティクラスを優先的に使用
+- UIコンポーネント: Prelineコンポーネントを活用
 
 ## アプリケーション特有の知識
 - このアプリケーションは管理画面のテンプレート機能に特化した管理システムです
@@ -164,9 +170,9 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) 
 - テンプレート変数（プレースホルダー）の動的置換機能（例: {{variable_name}}）
 - テンプレートバージョン管理機能（履歴・復元機能）
 - テンプレートのインポート/エクスポート機能（Excel、JSON形式）
-- Alpine.jsベースのリアルタイムプレビュー機能
+- Vue.jsベースのリアルタイムプレビュー機能
 - 日本語テンプレートに対応（文字コードUTF-8）
-- レスポンシブデザイン対応（Bootstrap 5使用）
+- レスポンシブデザイン対応（Tailwind CSS使用）
 
 ## セキュリティ要件
 - SQLインジェクション対策のためにCodeIgniter 4のクエリビルダを使用
@@ -177,7 +183,7 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) 
 - テンプレート変数の不正な値注入を防ぐバリデーション
 - 管理者権限の適切なアクセス制御（CodeIgniter 4のFiltersを使用）
 - テンプレート編集時の権限チェック
-- Alpine.jsコンポーネント間でのセキュアなデータ受け渡し
+- Vue.jsコンポーネント間でのセキュアなデータ受け渡し
 
 ## 開発時の注意点
 - 既存のコードスタイルに合わせて実装する
@@ -191,20 +197,18 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) 
   - モデル・サービスは共通利用（重複を避ける）
   - ルーティングは`admin`グループと`/`グループで分離
   - 認証フィルターは管理画面用とフロント用で別々に実装
-- Alpine.jsコンポーネントの設計：
-  - HTMLに直接ディレクティブを記述する宣言的なアプローチ
-  - x-data、x-show、x-if、x-forなどのディレクティブを活用
-  - 複雑な状態管理が必要な場合はAlpine.storeを使用
-  - 既存のHTMLページにAlpine.jsを段階的に導入
-  - ページごとに独立したx-dataスコープを作成
+- Vue.jsコンポーネントの設計：
+  - 単一責任の原則に従い、再利用可能なコンポーネントを作成
+  - props、emit、composablesを適切に使用
+  - Composition APIを優先的に使用
+  - 既存のHTMLページにVue.jsを段階的に導入
+  - ページごとに独立したVueインスタンスを作成
   - 大規模なコンポーネント階層は避け、フラットな構造を維持
-  - 管理画面とフロントでAlpine.jsコンポーネントを分離管理
-- Bootstrap 5 + Velzonの活用：
-  - Bootstrap 5のコンポーネントとユーティリティクラスを優先的に使用
-  - Velzonテンプレートの既存レイアウト・コンポーネントを活用
-  - カスタムCSSが必要な場合はBootstrapの変数・mixinを使用
-  - Alpine.jsとBootstrapコンポーネント（モーダル、ドロップダウンなど）の統合に注意
-- テンプレートエディタにはWYSIWYGエディタ（Alpine.js対応）の統合を検討
+  - 管理画面とフロントでVueコンポーネントを分離管理
+- Tailwind CSS + Prelineの活用：
+  - カスタムCSSよりもTailwindのユーティリティクラスを優先
+  - PrelineコンポーネントをVue.jsで適切に初期化
+- テンプレートエディタにはWYSIWYGエディタ（Vue.js対応）の統合を検討
 - テンプレート変数の命名規則を統一（例: {{variable_name}}）
 - テンプレートバージョン管理のためのデータベース設計に注意
 - プレビュー機能でのセキュリティリスクを考慮した実装
@@ -214,7 +218,7 @@ $routes->group('/', ['namespace' => 'App\Controllers\Front'], function($routes) 
 ## テスト
 - 変更を加える前に既存の機能への影響を十分に検討
 - データベース操作を伴う機能は特に注意深くテスト
-- Alpine.jsコンポーネントの動作テスト実装を推奨
+- Vue.jsコンポーネントの単体テスト実装を推奨
 - API endpoints のテスト実装
 
 このファイルは随時更新されます。質問や提案があれば追記してください。
