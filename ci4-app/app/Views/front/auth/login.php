@@ -67,21 +67,21 @@
                                                 <li><?= esc($error) ?></li>
                                             <?php endforeach; ?>
                                         </ul>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" onclick="this.parentElement.remove()" aria-label="Close"></button>
                                     </div>
                                 <?php endif; ?>
 
                                 <?php if (session()->has('error')): ?>
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         <?= esc(session('error')) ?>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" onclick="this.parentElement.remove()" aria-label="Close"></button>
                                     </div>
                                 <?php endif; ?>
 
                                 <?php if (session()->has('success')): ?>
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <?= esc(session('success')) ?>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" onclick="this.parentElement.remove()" aria-label="Close"></button>
                                     </div>
                                 <?php endif; ?>
 
@@ -172,7 +172,6 @@
     <!-- end auth-page-wrapper -->
 
     <!-- JAVASCRIPT -->
-    <script src="<?= base_url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('assets/libs/simplebar/simplebar.min.js') ?>"></script>
     <script src="<?= base_url('assets/libs/node-waves/waves.min.js') ?>"></script>
     <script src="<?= base_url('assets/libs/feather-icons/feather.min.js') ?>"></script>

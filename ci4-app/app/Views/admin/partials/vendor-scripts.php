@@ -9,6 +9,7 @@
 <script src="<?= base_url('admin/js/alpine/modal.js') ?>"></script>
 <script src="<?= base_url('admin/js/alpine/toast.js') ?>"></script>
 <script src="<?= base_url('admin/js/alpine/accordion.js') ?>"></script>
+<script src="<?= base_url('admin/js/alpine/collapse.js') ?>"></script>
 <script src="<?= base_url('admin/js/alpine/tabs.js') ?>"></script>
 
 <!-- Note: Bootstrap JS は削除しました。すべてAlpine.jsで実装 -->
