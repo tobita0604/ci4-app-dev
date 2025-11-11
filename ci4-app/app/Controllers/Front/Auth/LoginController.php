@@ -3,6 +3,7 @@
 namespace App\Controllers\Front\Auth;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -23,13 +24,13 @@ class LoginController extends BaseController
     /**
      * ログインフォーム表示
      * 
-     * @return string|ResponseInterface
+     * @return string|RedirectResponse
      */
-    public function index(): string|\CodeIgniter\HTTP\RedirectResponse
+    public function index(): string|RedirectResponse
     {
         // 既にログイン済みの場合はマイページへリダイレクト
         if (session()->get('member_logged_in')) {
-            return redirect()->to('/mypage');
+            return $this->response->redirect(site_url('/mypage'));
         }
 
         $data = [
@@ -42,9 +43,9 @@ class LoginController extends BaseController
     /**
      * ログイン処理
      * 
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function login(): \CodeIgniter\HTTP\RedirectResponse
+    public function login(): RedirectResponse
     {
         $validation = \Config\Services::validation();
         
@@ -54,7 +55,9 @@ class LoginController extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return $this->response->redirect(previous_url())
+                ->withInput()
+                ->with('errors', $validation->getErrors());
         }
 
         $email = $this->request->getPost('email');
@@ -68,20 +71,22 @@ class LoginController extends BaseController
             'member_email' => $email,
         ]);
 
-        return redirect()->to('/mypage')->with('success', 'ログインしました');
+        return $this->response->redirect(site_url('/mypage'))
+            ->with('success', 'ログインしました');
     }
 
     /**
      * ログアウト処理
      * 
-     * @return ResponseInterface
+     * @return RedirectResponse
      */
-    public function logout(): \CodeIgniter\HTTP\RedirectResponse
+    public function logout(): RedirectResponse
     {
         session()->remove('member_logged_in');
         session()->remove('member_email');
         session()->remove('member_id');
         
-        return redirect()->to('/')->with('success', 'ログアウトしました');
+        return $this->response->redirect(site_url('/'))
+            ->with('success', 'ログアウトしました');
     }
 }
