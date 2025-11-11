@@ -1,0 +1,43 @@
+# Apache設定（本番環境用）
+# 
+# この設定はDockerfile内のApache設定と同等です。
+# 本番サーバーではこのファイルがApacheのVirtualHost設定として機能します。
+# Dockerfileの設定: sed -i '/<\/VirtualHost>/i ...' /etc/apache2/sites-available/000-default.conf
+
+<IfModule mod_rewrite.c>
+    # Rewriteエンジンを有効化
+    RewriteEngine On
+    
+    # DocumentRootがpublicディレクトリでない場合のリダイレクト
+    # 本番環境でDocumentRootが ci4-app/ の場合、public/ にリダイレクト
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# ディレクトリ設定（DocumentRootがci4-app/の場合に必要）
+<Directory "${DOCUMENT_ROOT}/public">
+    Options -Indexes +FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+# セキュリティヘッダー
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# サーバー情報の露出を防ぐ
+ServerSignature Off
+
+# PHPの設定
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_value upload_max_filesize 100M
+    php_value post_max_size 100M
+    php_value memory_limit 512M
+    php_value max_execution_time 600
+    php_value max_input_time 600
+</IfModule>

@@ -27,6 +27,9 @@
 # app.forceGlobalSecureRequests = false
 # app.CSPEnabled = false
 
+# URLからindex.phpを削除（mod_rewriteが有効な場合は''に設定）
+# app.indexPage = ''
+
 #--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
